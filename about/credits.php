@@ -10,7 +10,7 @@ $t->loadTemplateFile("credits.tpl");
 $contrib = "";
 foreach (file("../credits.dat") as $v)
 {
-    $v = ereg_replace("\n", "", $v);
+    $v = preg_replace("/\n/", "", $v);
 
     if ($contrib != "")
         $contrib.= ", ";

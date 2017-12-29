@@ -240,8 +240,8 @@ function run_multitab_page($state, $line)
     $prev_section = "";
     foreach ($sections as $section => $ranges)
     {
-        $segment = ereg_replace(":.*", "", $section);
-        $section = ereg_replace(".*: ", "", $section);
+        $segment = preg_replace("/:.*/", "", $section);
+        $section = preg_replace("/.*: /", "", $section);
 
         if ($segment != $prev_segment and $segment >= 1
             and $prev_segment_text != $segment_text[$segment])
@@ -1007,8 +1007,8 @@ function run_history_mode($state, $line, $data)
     $prev_section = "";
     foreach ($sections as $section => $ranges)
     {
-        $segment = ereg_replace(":.*", "", $section);
-        $section = ereg_replace(".*: ", "", $section);
+        $segment = preg_replace("/:.*/", "", $section);
+        $section = preg_replace("/.*: /", "", $section);
 
         if ($segment != $prev_segment and $segment >= 1
             and $prev_segment_text != $segment_text[$segment])

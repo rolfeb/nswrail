@@ -641,7 +641,7 @@ function add_photo_thumbnails($state, $location, $line_state, $line, $segment)
     {
         if ($status == "Y")
         {
-            $base = ereg_replace(".jpg", "", $file);
+            $base = preg_replace("/.jpg$/", "", $file);
 
             $url = "/locations/gphoto.php?"
                 . urlenc("name=$state:$location:$seqno");

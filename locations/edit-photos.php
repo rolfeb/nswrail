@@ -91,10 +91,10 @@ function run_edit_mode($state, $location, $line, $redirect)
 
     while ($stmt->fetch())
     {
-        $caption = ereg_replace("^[ \t\n\r]*", "", $caption);
-        $caption = ereg_replace("[\n\r]", " ", $caption);
-        $caption = ereg_replace("'", "\'", $caption);
-        $caption = ereg_replace("\"", "\'", $caption);
+        $caption = preg_replace("/^[ \t\n\r]*/", "", $caption);
+        $caption = preg_replace("/[\n\r]/", " ", $caption);
+        $caption = preg_replace("/'/", "\'", $caption);
+        $caption = preg_replace("/\"/", "\'", $caption);
 
         $date = date_cpts2text($day, $month, $year, $year_error);
         if (!$owner)

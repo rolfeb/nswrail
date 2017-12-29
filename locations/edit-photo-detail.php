@@ -85,8 +85,8 @@ function run_edit_mode($state, $location, $seqno, $line, $redirect)
 
     if ($stmt->fetch())
     {
-        $caption = ereg_replace("^[ \t\n\r]*", "", $caption);
-        $caption = ereg_replace("[\n\r]", " ", $caption);
+        $caption = preg_replace("/^[ \t\n\r]*/", "", $caption);
+        $caption = preg_replace("/[\n\r]/", " ", $caption);
 
         $date = date_cpts2text($day, $month, $year, $year_error);
         if (!$owner)
@@ -146,7 +146,7 @@ function save_changes($state, $location, $seqno, $redirect)
         $themes .= "night,";
     if ($theme_turntable)
         $themes .= "turntable,";
-    $themes = ereg_replace(",$", "", $themes);
+    $themes = preg_replace("/,$/", "", $themes);
 
     $stmt = $dbi->stmt_init();
     $stmt->prepare("
