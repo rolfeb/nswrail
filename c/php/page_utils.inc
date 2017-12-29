@@ -135,7 +135,6 @@ function display_page($title, $content, $args = null)
     }
     $p->setVariable("PAGE-CONTENT", $content);
     $p->parseCurrentBlock();
-
     $p->show();
 }
 

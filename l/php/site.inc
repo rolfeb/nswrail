@@ -7,9 +7,9 @@
 # AUSRAIL_STATE     The name of the state (lower-case).
 # AUSRAIL_PHOTO_DIR The full path to the rail photos directory.
 #
-$BASE_PATH          = "/home/rolfeb/public_html";
+$BASE_PATH          = "/work/dev/nswrail-dev/public_html";
 $AUSRAIL_STATE      = "nsw";
-$AUSRAIL_PHOTO_DIR  = "/home/rolfeb/public_html/locations/photos";
+$AUSRAIL_PHOTO_DIR  = "/work/dev/nswrail-dev/public_html/locations/photos";
 
 require_once "local.inc";
 require_once "common.inc";

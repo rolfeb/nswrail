@@ -99,14 +99,14 @@ function locn_fulltitle($location, $type)
     if ($type == "station" or $type == "halt")
         return "$location Station";
     else
-    if ($type == "loop" and !ereg("Loop", $location))
+    if ($type == "loop" and !preg_match("/Loop/", $location))
         return "$location Loop";
     else
-    if ($type == "siding" and !ereg("Siding", $location))
+    if ($type == "siding" and !preg_match("/Siding/", $location))
         return "$location Siding";
     else
-    if ($type == "platform" and !ereg("Platform", $location)
-        and !ereg("Siding", $location))
+    if ($type == "platform" and !preg_match("/Platform/", $location)
+        and !preg_match("/Siding/", $location))
             return "$location Platform";
     else
         return $location;
@@ -142,8 +142,8 @@ function html_markup_textblock($text)
     if ($text == "")
         return "";
 
-    $text = ereg_replace("(\r?\n){2,}", "</p>\n<p>", $text);
-    $text = ereg_replace("\r?\n", " ", $text);
+    $text = preg_replace("/(\r?\n){2,}/", "</p>\n<p>", $text);
+    $text = preg_replace("/\r?\n/", " ", $text);
 
     return "<p>$text</p>";
 }
@@ -182,7 +182,7 @@ function quote_external($text)
 function make_canonical_name($name)
 {
     # replace _ with space
-    $name = ereg_replace("_", " ", $name);
+    $name = preg_replace("/_/", " ", $name);
 
     # capitalize the first letter of each word
     $name = ucwords(strtolower($name));
@@ -196,10 +196,10 @@ function make_canonical_name($name)
 function make_file_name($name)
 {
     # replace space with _
-    $name = ereg_replace("[-\n\r\t ]+", "_", $name);
+    $name = preg_replace("/[-\n\r\t ]+/", "_", $name);
 
     # remove ()
-    $name = ereg_replace("[()]", "", $name);
+    $name = preg_replace("/[()]/", "", $name);
 
     # convert to lowercase
     $name = strtolower($name);
@@ -209,7 +209,7 @@ function make_file_name($name)
 
 function urlenc($string)
 {
-    return htmlentities(ereg_replace(" ", "+", $string), ENT_QUOTES, "UTF-8");
+    return htmlentities(preg_replace("/ /", "+", $string), ENT_QUOTES, "UTF-8");
 }
 
 #
@@ -225,10 +225,10 @@ function changelog($file)
 
     foreach (file($file) as $v)
     {
-        if (ereg("^#", $v) or preg_match("/^[ \t]*$/", $v))
+        if (preg_match("/^#/", $v) or preg_match("/^[ \t]*$/", $v))
             continue;
 
-        if (!ereg("^[ \t]", $v))
+        if (!preg_match("/^[ \t]/", $v))
         {
             #
             # $v is a date
@@ -256,7 +256,7 @@ function changelog($file)
             #
             # $v is a line of text
             #
-            $v = ereg_replace("^[ \t]", "", $v);    # strip leading whitespace
+            $v = preg_replace("/^[ \t]/", "", $v);    # strip leading whitespace
             $text = $text . "$v ";
         }
     }
