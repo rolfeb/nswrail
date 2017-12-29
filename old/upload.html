@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="rail.css">
+<link rel="shortcut icon" type="image/gif" href="images/railicon.gif">
+<title>Photograph Upload</title>
+</head>
+<body>
+
+<h1>Photograph Upload</h1>
+
+XXX
+
+<form action="/cgi-bin/upload.cgi" method="POST" enctype="multipart/form-data">
+
+Photograph to upload: <input type="file" name="photo"></input>
+
+<br>
+Location: <input type="text" length="50" name="Location"></input>
+<br>
+Direction taken:
+<select name="direction">
+<option selected>choose one...</option>
+<option>Up</option>
+<option>Down</option>
+<option>North</option>
+<option>South</option>
+<option>East</option>
+<option>West</option>
+<option>unknown</option>
+</select>
+</form>
+
+</body>
+</html>

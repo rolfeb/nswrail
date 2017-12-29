@@ -1,0 +1,19 @@
+#
+# Rules to preserve bookmarks under /lines that people have made.
+#
+RewriteEngine   on
+
+# redirect: http://.../lines/XXX/
+RewriteRule ^([^\/]+)/$              /lines/show.php?state=NSW&line=$1 [R]
+
+# redirect: http://.../lines/XXX/index.html
+RewriteRule ^([^\/]+)/index.html$   /lines/show.php?state=NSW&line=$1 [R]
+
+# redirect: http://.../lines/XXX/history.html
+RewriteRule ^([^\/]+)/history.html$ /lines/show.php?state=NSW&line=$1&mode=history [R]
+
+# redirect: http://.../lines/XXX/YYY.html
+RewriteRule ^[^\/]+/([^\/]+).html /locations/show.php?state=NSW&location=$1 [R]
+
+# redirect: http://.../lines/XXX/photos/YYYNN.html
+RewriteRule ^[^\/]+/photos/([^\/]+)([0-9][0-9]).html /locations/photo.php?state=NSW&location=$1&seqno=$2 [R]

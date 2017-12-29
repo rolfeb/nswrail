@@ -1,0 +1,97 @@
+/* the menubar div */
+.menubar {
+    width: 100%;
+    height: 21px;
+    margin-top: 0px;
+    margin-bottom: 3px;
+
+    font-family: Arial, Helvetica, sanserif;
+    font-size: 1em;
+    font-weight: bold;
+
+    /* defaults: will be overridden */
+    background-color: #666;
+    color: #fff;
+}
+
+/*
+ * The top-level list - the menu items
+ */
+.menubar > ul {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menubar a {
+    text-decoration: none;
+}
+
+/*
+ * Styles for the menubar items
+ */
+.menubar > ul > li {
+    float: left;
+    position: relative;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 30px;
+    height: 21px;
+    cursor: default;
+    border-right: 1px solid #888;
+}
+
+/*
+ *  Overrides for right-aligned menu items
+ */
+.menubar > ul > li.rhs {
+    float: right !important;
+    border-left: 1px solid #888;
+    border-right: 0px;
+}
+
+.menubar > ul > li > a {
+    display: block;     /* block display so we can adjust position */
+    padding-top: 3px;   /* shift label down to center it */
+}
+
+/*
+ * The drop-down submenu
+ */
+.menubar > ul > li > ul {
+    z-index: 1000;  /* make sure we're on top */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    /*margin-left: -10px;*/ /* cancel out the padding of the parent li */
+    padding-left: 0px;
+}
+
+/* XXX TODO */
+/* enable the submenu; li.over is set via javascript for IE */
+.menubar > ul > li:hover > ul, .menubar > ul > li.over > ul {
+    display: block;
+}
+
+/*
+ * The sub-menu items
+ */
+.menubar > ul > li li {
+    display: block;
+    float: none;
+    background-color: transparent;
+    border: 0;
+    border-top: 1px solid #fff;
+    height: 21px;
+    width: 12em;
+}
+
+.menubar > ul > li li a {
+    display: block;
+    padding-top: 3px;       /* shift label down to center it */
+    padding-left: 10px;
+    font-weight: normal;
+}

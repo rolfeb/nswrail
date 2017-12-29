@@ -1,0 +1,3 @@
+<map name="imap">
+<area shape="rect" coords="320, 298, 399, 313" href="/locations/show.php?name=NSW:Girilambone" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

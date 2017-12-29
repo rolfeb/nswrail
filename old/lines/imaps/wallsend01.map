@@ -1,0 +1,23 @@
+<map name="imap">
+<area shape="rect" coords="216, 117, 365, 132" href="/locations/show.php?name=NSW:Hanbury West Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="399, 157, 544, 171" href="/locations/show.php?name=NSW:Hanbury East Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="458, 446, 533, 461" href="/locations/show.php?name=NSW:Adamstown" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="346, 211, 459, 226" href="/locations/show.php?name=NSW:Hanbury Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="81, 463, 255, 478" href="/locations/show.php?name=NSW:Sulphide Junction Platform" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="270, 324, 379, 338" href="/locations/show.php?name=NSW:Waratah Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="412, 173, 484, 188" href="/locations/show.php?name=NSW:Warabrook" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="370, 87, 431, 102" href="/locations/show.php?name=NSW:Sandgate" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="273, 279, 387, 294" href="/locations/show.php?name=NSW:Elermore Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="439, 372, 531, 387" href="/locations/show.php?name=NSW:Broadmeadow" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="59, 337, 172, 352" href="/locations/show.php?name=NSW:Wallsend Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="317, 461, 360, 476" href="/locations/show.php?name=NSW:Kotara" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="31, 443, 145, 458" href="/locations/show.php?name=NSW:Sulphide Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="346, 51, 474, 66" href="/locations/show.php?name=NSW:Sandgate Cemetery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="459, 268, 514, 283" href="/locations/show.php?name=NSW:Waratah" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="118, 257, 177, 272" href="/locations/show.php?name=NSW:Wallsend" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="259, 87, 354, 102" href="/locations/show.php?name=NSW:Jct (Sandgate)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="441, 528, 545, 543" href="/locations/show.php?name=NSW:Redhead Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="91, 480, 135, 495" href="/locations/show.php?name=NSW:Cardiff" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="315, 246, 448, 261" href="/locations/show.php?name=NSW:New Tunnel Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="401, 316, 506, 331" href="/locations/show.php?name=NSW:Goninans Works" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

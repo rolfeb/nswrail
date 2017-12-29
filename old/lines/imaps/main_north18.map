@@ -1,0 +1,11 @@
+<map name="imap">
+<area shape="rect" coords="156, 228, 243, 243" href="/locations/show.php?name=NSW:Temple Court" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="135, 189, 186, 204" href="/locations/show.php?name=NSW:Ardglen" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="106, 118, 158, 133" href="/locations/show.php?name=NSW:Kankool" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="308, 477, 356, 492" href="/locations/show.php?name=NSW:Wingen" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="339, 285, 402, 300" href="/locations/show.php?name=NSW:Blandford" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="374, 390, 428, 405" href="/locations/show.php?name=NSW:Murrulla" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="21, 27, 97, 42" href="/locations/show.php?name=NSW:Willow Tree" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="230, 244, 302, 259" href="/locations/show.php?name=NSW:Murrurundi" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="78, 223, 130, 238" href="/locations/show.php?name=NSW:Pangela" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

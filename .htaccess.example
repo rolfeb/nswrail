@@ -1,0 +1,43 @@
+Header set Cache-Control no-store
+
+#
+# PHP lookup path. Should include:
+#   - state-specific PHP utility files
+#   - common PHP utility files
+#   - PEAR files
+#
+php_value include_path ".:/work/ausrail-v2/live/l/php:/work/ausrail-v2/live/c/php:/u1/work/pear/PEAR"
+
+#
+# Configuration parameters
+#
+SetEnv AUSRAIL_BASE_DIR     "/work/ausrail-v2/live"
+SetEnv AUSRAIL_STATE        "nsw"
+Setenv AUSRAIL_PHOTO_DIR    "/work/nswrail-photos/"
+
+Options FollowSymLinks MultiViews
+DirectoryIndex index.php
+
+#
+# .txt files are passed through the BBCode parser
+#
+RewriteEngine on
+
+RewriteCond %{REMOTE_ADDR}      !^144\.136\.115\.
+# RewriteCond %{REMOTE_ADDR}      !^192\.168\.13\.100$
+RewriteRule !^offline.php$      /offline.php [L]
+
+RewriteRule ^(.*).txt$          /c/php/txtpage.php?file=$1.txt [L]
+
+#
+# Permissions
+#
+Order allow,deny
+
+<FilesMatch "^$">
+    Allow from all
+</FilesMatch>
+
+<FilesMatch "\.(php|gif|png|jpg|css|js|ico|txt)$">
+    Allow from all
+</FilesMatch>

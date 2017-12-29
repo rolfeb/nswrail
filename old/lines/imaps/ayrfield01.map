@@ -1,0 +1,7 @@
+<map name="imap">
+<area shape="rect" coords="315, 371, 486, 386" href="/locations/show.php?name=NSW:Whitburn Colliery Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="291, 228, 350, 242" href="/locations/show.php?name=NSW:Branxton" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="502, 361, 538, 376" href="/locations/show.php?name=NSW:Greta" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="290, 317, 429, 332" href="/locations/show.php?name=NSW:Ayrfield No 3 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="433, 275, 546, 290" href="/locations/show.php?name=NSW:Whitburn Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

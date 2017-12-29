@@ -1,0 +1,3 @@
+<!-- BEGIN CONTENT -->
+{TEXT}
+<!-- END CONTENT -->

@@ -1,0 +1,6 @@
+<map name="imap">
+<area shape="rect" coords="261, 245, 411, 260" href="/locations/show.php?name=NSW:Bullenbung Creek Tank" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="407, 321, 478, 335" href="/locations/show.php?name=NSW:Belfrayden" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="91, 168, 139, 183" href="/locations/show.php?name=NSW:Arajoel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="226, 227, 276, 242" href="/locations/show.php?name=NSW:Bulgary" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

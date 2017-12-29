@@ -1,0 +1,7 @@
+<map name="imap">
+<area shape="rect" coords="196, 129, 239, 144" href="/locations/show.php?name=NSW:Awaba" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="122, 319, 265, 334" href="/locations/show.php?name=NSW:Eraring Coal Unloader" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="374, 423, 508, 438" href="/locations/show.php?name=NSW:Wangi Power Station" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="434, 54, 526, 69" href="/locations/show.php?name=NSW:Blackalls Park" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="435, 135, 486, 150" href="/locations/show.php?name=NSW:Toronto" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

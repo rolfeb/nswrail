@@ -1,0 +1,7 @@
+<map name="imap">
+<area shape="rect" coords="286, 352, 349, 367" href="/locations/show.php?name=NSW:St Heliers" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="19, 274, 108, 289" href="/locations/show.php?name=NSW:Muswellbrook" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="427, 385, 491, 400" href="/locations/show.php?name=NSW:Grasstree" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="75, 7, 133, 22" href="/locations/show.php?name=NSW:Koolbury" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="284, 197, 460, 212" href="/locations/show.php?name=NSW:Muswellbrook No 2 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

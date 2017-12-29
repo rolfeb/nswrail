@@ -1,0 +1,875 @@
+<html>
+<head>
+<title> Configuration</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<meta name="GENERATOR" content="Namo WebEditor v5.0(Trial)">
+<meta name="description" content="Blank document with no style.">
+</head>
+<body>
+
+<TABLE cellSpacing="0" cellPadding="0" width="95%" bordercolordark="white" bordercolorlight="black">
+  <TR vAlign="top"> 
+    <TD bgColor="white" > 
+      <TABLE width="100%" bgcolor="#8484FF">
+        <TR> 
+          <TD bgcolor="white"> &nbsp;  <b>Administration: Configuration</b></TD>
+        </TR>
+      </TABLE>
+    </TD>
+        <td></td>
+  </TR>
+  <TR>
+    <TD> 
+   <DIV class="content"> 
+        <H4> Configuration Functions</H4>
+        <table  cellpadding="0" cellspacing="0" width="338">
+          <tr> 
+            <td valign=top width="249">
+                    <p><FONT size=-1>•  <a href="#MCC Preferences and Settings">Preferences and Settings</a><BR>
+• <a href="#Modify the Template">Modify the Template</a><BR>
+• <a href="#Edit small template">Edit small template<BR></a>
+• <a href="#Edit News">Edit News</a><BR>
+• <a href="#Edit Welcome text">Edit Welcome text<BR></a>
+• <a href="#Edit Flexible Profile">Edit Flexible Profile</a><BR>
+•<a href="#Edit Area Redirect script"> Edit Area Redirect script</a><BR>
+• <a href="#Edit Registration Conditions">Edit Registration Conditions</a></FONT><br>
+        
+                    </p>
+</td>
+            <td valign=top width="89"></td>
+          </tr>
+        </table>
+
+      </DIV>
+    <p>Be carefull with changes in you configuration it may cause the MCC to 
+    fall over. In that case you have to edit Settings.pl by hand to correct 
+    the problem.</p>
+    <p><b><a name="MCC Preferences and Settings">Preferences and Settings</a></b></p>
+    
+    <p>To help you setup your system we created an example page below. Be carefull 
+    with the password filter it can disable registering or even your whole site. 
+    Of course also all the URL and path should be changed with cautions.</p>
+<table align="center" border="0">
+  <tr>
+    <td>
+			<table width="90%" border="0" cellspacing="1" cellpadding="0" bgcolor="#6394BD" class="bordercolor" align="center">
+				<tr>
+				<td>
+				<table border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr>
+						<td class="titlebg" bgcolor="#6E94B7" colspan=2>
+						
+						<font size=2 class="text1" color="#FFFFFF"><b>MCC Preferences and Settings</b></font></td>
+					</tr><tr>
+						<td class="windowbg" bgcolor="#AFC6DB" colspan=2><BR><font size="1">This page allows you to change every setting for your MCC.  Be very careful with these settings, as they may render your MCC disfunctional.</font><BR><BR></td>
+					</tr><tr>
+						<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">MCC Name</font></td>
+						<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="mbname" size="35" value="J2Use - Demo"></td>
+					</tr><tr>
+						<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Root URL</font></td>
+						<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="rooturl" size="45" value="http://www.mysite.com/cgi-bin/mcc"></td>
+					</tr><tr>
+						<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Language Pack You Wish to Use</font></td>
+						<td class="windowbg2" bgcolor="#F8F8F8"><select name="language">
+		    <option value="english.lng" selected>english
+    <option value="dutch.lng">dutch
+    <option value="italian.lng">italian
+
+					</select></td>					</tr><tr>
+						<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Database driver</font></td>
+						<td class="windowbg2" bgcolor="#F8F8F8"><select name="databasedriver">
+		<option value="TextFiles.dbd" selected>TextFiles
+
+					</select></td>
+						</tr><tr>
+							<td colspan=2 class="windowbg2" bgcolor="#F8F8F8">
+							<HR size=1 width="100%" class="hr"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Default Length for login cookies to last (in minutes)</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="cookielength" size="5" value="360"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Cookie Name - Username</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="cookieusername" size="20" value="cookieUsername"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Cookie Name - Password</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="cookiepassword" size="20" value="cookiePassword"></td>
+						</tr><tr>
+							<td colspan=2 class="windowbg2" bgcolor="#F8F8F8">
+							<HR size=1 width="100%" class="hr"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Show not authorized areas</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=checkbox name="shownotauthorized"  checked></td>
+					  </tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Enable logging at bottom of page</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=checkbox name="logging" ></td>
+					  </tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Member active on creation</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=checkbox name="defaultmemberstate"  checked></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Send welcome message</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=checkbox name="sendwelcome"  checked></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Show all fields profile on register</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=checkbox name="allonregister"  checked></td>
+							</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Hide memberlist</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=checkbox name="hidememberlist"  checked></td>
+
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Disable Register 
+                                                function</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=checkbox name="disableregister"></td>						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Allow double E-mail addresses</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=checkbox name="allowdoubleemail" ></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Using personalized emails</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=checkbox name="personalemail" ></td>
+
+
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Default Groups used for a new member seperator +</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="defaultgroups" size="40" value="area1+area2"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Area filename</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="areasFile" size="20" value="areas.db"></td>
+						</tr><tr>
+						  <td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Group filename</font></td>
+						  <td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="groupsFile" size="20" value="groups.db"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Member filename</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="membersFile" size="20" value="members.db"></td>
+						</tr><tr>
+							<td colspan=2 class="windowbg2" bgcolor="#F8F8F8">
+							<HR size=1 width="100%" class="hr"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Location of Sendmail Program</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="mailprog" size="20" value="/usr/lib/sendmail"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">SMTP-Server</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="smtp_server" size="20" value="smtp.mysite.com"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Webmaster Email Address</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="webmaster_email" size="35" value="dummy@yoursite.com"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Send Mails using</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8">
+							<select name="mailtype" size=1>
+							<option value="0" selected>sendmail
+							<option value="1">SMTP
+							<option value="2">Net::SMTP
+							</select></td>
+						</tr><tr>
+							<td colspan=2 class="windowbg2" bgcolor="#F8F8F8">
+							<HR size=1 width="100%" class="hr"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Root Directory</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="rootdir" size="30" value="."></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Sources Directory</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="sourcedir" size="30" value="source"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Data Directory</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="datadir" size="30" value="data"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Add-On Directory</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="addondir" size="30" value="addon"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Images URL</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="imagesdir" size="45" value="http://www.mysite.com/mcc/images"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">URL to News Fader file (fader.js)</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="faderpath" size="45" value="http://www.mysite.com/mcc/fader.js"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Help File</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="helpfile" size="45" value="http://www.mysite.com/mcc/help/index.html"></td>
+						</tr><tr>
+							<td colspan=2 class="windowbg2" bgcolor="#F8F8F8">
+							<HR size=1 width="100%" class="hr"><b><font size="1"></font></b></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Title BG Color</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="titlebg" size="10" value="#6E94B7"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Title Text Color</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="titletext" size="10" value="#FFFFFF"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Window BG Color</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="windowbg" size="10" value="#AFC6DB"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Window BG Color #2</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="windowbg2" size="10" value="#F8F8F8"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Window BG Color #3</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="windowbg3" size="10" value="#6394BD"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Category BG Color</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="catbg" size="10" value="#DEE7EF"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Table Border Color</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="bordercolor" size="10" value="#6394BD"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">News Fader Text Color</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="fadertext" size="10" value="#D4AD00"></td>
+						</tr><tr>
+							<td colspan=2 class="windowbg2" bgcolor="#F8F8F8">
+							<HR size=1 width="100%" class="hr"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Show News Fader?</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=checkbox name="shownewsfader" ></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Milliseconds to delay between messages in the news fader</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="fadertime" size="5" value="5000"></td>
+						</tr><tr>
+							<td colspan=2 class="windowbg2" bgcolor="#F8F8F8">
+							<HR size=1 width="100%" class="hr"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Items Per Page in Lists (Member/Groups/Areas)</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="ItemsPerPage" size="5" value="10"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Number of days until an inactive member is removed</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="maxinactive" size="5" value="30"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Target frame when opening full page function</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="smalltarget" size="40" value="_blank"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Error message, wrong password filter</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="passwordtext" size="40" value="Min length 5 max 15"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Password filter</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><textarea cols=45 rows=3 name="passwordfilter">\A[\s0-9A-Za-z!@#$%\^&amp;*\(\)_\+|`~\-=\:;\'\&quot;,\.\/?\[\]\{\}]{5,15}\Z</textarea></td>
+						</tr><tr>
+							<td colspan=2 class="windowbg2" bgcolor="#F8F8F8">
+							<HR size=1 width="100%" class="hr"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Use File-Locking?</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8">
+							<select name="use_flock" size=1>
+							<option value="0">No File-Locking
+							<option value="1" selected>Unix/Linux &amp; Win2k/NT File-Locking
+							<option value="2">Windows 9x/ME File-Locking
+							</select></td>
+													</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Password method</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8">
+							<select name="cryptmethod" size=1>
+							<option value="0" selected>PERL Crypt
+							<option value="1">Apache-MD5
+							</select></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Use 'Fake' File Truncation. This option should only be enabled if your server gives an error: 'truncate() not supported on this platform.'</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=checkbox name="faketruncation"></td>
+						</tr><tr>
+							<td class="windowbg2" bgcolor="#F8F8F8"><font size="2">Trap errors and show on HTML Page</font></td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=checkbox name="traperros" checked></td>
+						</tr>
+<tr>
+							<td class="windowbg2" bgcolor="#F8F8F8">Server 
+                                                time offset in hours</td>
+							<td class="windowbg2" bgcolor="#F8F8F8"><input type=text name="smalltarget" size="3" value="0"></td>
+						</tr>					</table>
+					</td>
+                        <td></td>
+					</tr><tr>
+						<td class="windowbg" bgcolor="#AFC6DB" colspan="2" align="center" valign="middle">
+						<BR><input type=submit value="Save">
+						</td>
+					</tr>
+				</table>		
+ </td>
+  </tr>
+</table>
+    <p><b>Settings explained</b></p>
+        <p>In this paragraph we asume that MCC is installed at <font color="blue">www.mysite.com</font>, 
+            so replace this name with your website throughout the paragraph. 
+            This is one of the more &quot;exciting&quot; menu options where 
+             you are able 
+          to set the parameters that we explain below. Note that the screen 
+            can contain more settings if you are using one or more add-ons. 
+            The settings for the add-ons should be explained in the documentation 
+            of the add-on.
+        </p>
+        <ul>
+          <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"><u><i>MCC 
+                Name</i></u></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">The 
+                    name of your Member Control Center. Is also used on the 
+                    bottom of E-mails to your members and on other places throughout 
+                    the solution.</font></li>
+            </ul>
+          <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Root 
+                URL</u></font>  </i></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Set 
+                this to the URL for the MCC. Ex: </font><a href="http://www.myboard.com/cgi-bin/yabb/YaBB.pl"><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">http://www.mysite.com/cgi-bin/mcc/mcc.pl</font></a></li>
+            </ul>
+                <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"><u><i>Language pack</i></u></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">English 
+                is default, select the other available languages you want to support</font></li>
+            </ul>
+                <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"><u><i>Database 
+                driver</i></u></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">TextFiles 
+                is default, select the other available database drivers use</font></li>
+            </ul>
+          <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><i><u>Default 
+            Length for login cookies to last (in minutes &amp; &gt; 5)</u>  
+            </i></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Set 
+                this for a default time for cookies to last, in minutes (e.g., 
+                360=6 hrs)</font></li>
+            </ul>
+          <li><font color="#000000"><i><u><font face="Arial, Helvetica, sans-serif" size="2">Cookie 
+            Name - Username</font></u>  </i></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Default: 
+                &quot;cookieUsername&quot; This is simply the name of the cookie 
+                that will be stored on user's pc when they log in (and contains 
+                their username).</font></li>
+            </ul>
+          <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Cookie 
+            Name - Password</u></font>  </i></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Default: 
+                &quot;cookiePassword&quot; This is simply the name of the cookie 
+                that will be stored on user's pc when they log in (and contains 
+                their password).</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Show 
+                not authorized Areas</u></font>  </i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Using 
+                    this option will show all available areas to he member also 
+                    the onces he/she is not authorized form. Using this option 
+                    will give members the capablities to request access to a 
+                    other area.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Enable 
+                Logging at Bottom</u></font>  </i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Use 
+                    this option only when you are having problems with your 
+                    MCC. Because it will print additional information about 
+                    the processing at the bottom of your pages.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Member 
+                Active on Creation</u></font>  </i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">When 
+                    checked a members I active on creation and does not have 
+                    to enter a activation code that would have been send to 
+                    him in the welcome message. When not checked a member is 
+                    registerd but has to activate his account by entering a 
+                    activation code.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Send 
+                Welcome message</u></font>  </i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Check 
+                    this option when you want to send a welcome message to you 
+                    new members. The message can be edit form the option on 
+                    the admin webpage.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Show all 
+                fields on register</u></font>  </i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">MCC 
+                    has the ablilty to add additional fields to the member profile. 
+                    Some of them can be required. Default behaviour is to show 
+                    only the required fields on registration and not the optional 
+                    fields. Check this option if you want to show all fields 
+                    at registration time.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Hide 
+                Memberlist</u></font></i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">When 
+                    option checked the memberlist functions are removed from 
+                    the toolbar. Admin user can still edit members using the 
+                    admin page.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Disable 
+                Register function</u></font></i></font></li>
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">When 
+                    option checked the registration of new members is disabled.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Allow 
+                double E-mail addresses</u></font></i></font></li>
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">When 
+                    option checked system will allow same e-mail form more then 
+                    one member.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Use 
+                personalized E-mail</u></font></i></font></li>
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">When 
+                    option checked all outgoing message will be personalized. 
+                    Personalisation replaces all &lt;field member_field_[recnr]&gt; 
+                    tags by the corresponding value of the member record. [recnr] 
+                    should be replace by the field number of the memberrecord.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Default 
+                Groups used for new member</u></font>  </i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Filling 
+                    the field with groups that are seperated by a + sign will 
+                    result in that new members are assigned to these groups. 
+                    For example you want that all new members are a part of 
+                    Group1 and Group2 just type: Group1+Group2. The groups you 
+                    can use the give members access to areas.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Area 
+                filename</u></font>  </i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Filename 
+                    used to store Area information, default ./data/areas.db.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Group 
+                filename</u></font>  </i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Filename 
+                    used to store Group information, default ./data/groups.db.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Member 
+                filename</u></font>  </i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Filename 
+                    used to store Member information, default ./data/members.db.</font></li>
+            </ul>
+                <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Location 
+            of Sendmail Program</u></font>  </i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Directory 
+                of host &quot;sendmail&quot; program. Default is: /usr/sbin/sendmail</font></li>
+            </ul>
+          <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><i><u>SMTP-Server</u></i> 
+            </font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">The 
+                name of your SMTP server (email send server). Only valid if the 
+                following is set to use SMTP.</font></li>
+            </ul>
+          <li><font color="#000000"><i><font face="Arial, Helvetica, sans-serif" size="2"><u>Send 
+            Mails using: sendmail | SMTP</u></font>  </i></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Set 
+                to &quot;sendmail&quot; if your host uses sendmail, or use SMTP 
+                if your host uses this protocol.</font></li>
+            </ul>
+          <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><i><u>Webmaster 
+            Email Address</u></i> </font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Email 
+                address for the webmaster of the MCC.</font></li>
+            </ul>
+ 
+          <li><font color="#000000"><u><font face="Arial, Helvetica, sans-serif" size="2"><i>Root 
+            Directory</i></font>  </u></font> 
+            <ul>
+              <li> 
+                <font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Default is &quot;.&quot; This could also be the absolute server 
+                path to your MCC folder (such as /usr/home/account/cgi-bin/mcc)</font></li>
+            </ul>
+          <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"><i><u>Sources 
+            Directory</u></i></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Default 
+                is &quot;./sources&quot;. Contains the source files for MCC. 
+                Relative to MCC root directory above.</font></li>
+            </ul>
+          <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"><i><u>Data 
+            Directory</u></i></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Default 
+                is &quot;./data&quot;. Contains the user editable files for MCC. 
+                Relative to MCC root directory above.</font></li>
+            </ul>
+          <li><font color="#000000"><u><font face="Arial, Helvetica, sans-serif" size="2"><i>Images 
+            Directory</i></font>  </u></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">http://www.mysite.com/mcc/images. 
+                Again, set this to the directory you chose to set up &quot;mcc/images&quot;, 
+                relative to your URL.</font></li>
+            </ul>
+          <li><font color="#000000"><u><font face="Arial, Helvetica, sans-serif" size="2"><i>Help 
+            File</i></font>  </u></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">The 
+                URL location of the help file. Default is: http://www.mysite.com/mcc/help/index.html. 
+                Set this to the correct URL for your installation.</font></li>
+            </ul>
+          <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"><u><i>URL 
+            to News Fader file (fader.js)</i></u></font> 
+            <ul>
+              <li><font face="Arial,Helvetica" size="2" color="#000000">Default 
+                is </font><font size="2" face="Arial">http://www.mysite.com/mcc/fader.js make sure that 
+                    the script is included in the url. Otherwise you will get 
+                    a java script error &quot;fade not found&quot; when using 
+                    the news fader on the main page.</font></li>
+            </ul>
+ </ul>
+            <p><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">----- 
+            Note these colors are also reflected in the CSS tag of template.html 
+            and stemplate.html (so change them to the SAME colors) -----</font></p>
+        <ul>
+          <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><i><u>Title 
+            BG Color</u></i> </font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">The 
+                background color of the title text. This color is used mostly 
+                on table header text.</font></li>
+            </ul>
+          <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><u><i>Title 
+            Text Color</i></u> </font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">The 
+                color of the title text.</font></li>
+            </ul>
+          <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><u><i>Window 
+            BG Color</i></u> </font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">The 
+                background color of one of the two alternating &quot;panels&quot; in MCC</font></li>
+            </ul>
+          <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><i><u>Window 
+            BG Color #2</u></i> </font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">The 
+                background color of the second &quot;row&quot;.</font></li>
+            </ul>
+          <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><u><i>Windows 
+            BG Color #3</i></u> </font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">The 
+                background color of  table rows on the Area Index and 
+                used in a few other places.</font></li>
+            </ul>
+          <li><font color="#000000"><u><font face="Arial, Helvetica, sans-serif" size="2"><i>Table 
+            Border Color</i></font>  </u></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">This 
+                color is actually used as a table &quot;background&quot; color, but the 
+                way the tables are rendered, this makes border lines between table 
+                rows and columns be this color.</font></li>
+            </ul>
+          <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><u><i>News 
+            Fader Title Color</i></u> </font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">This 
+                is the News Fader Title color for the News Fader (if you have 
+                it turned on).</font></li>
+            </ul>
+          <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><u><i>Show 
+            News Fader?</i>  </u></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">When 
+                users first logon, show the sequenced &quot;news&quot; items. 
+                See the Admin functions for explanations on &quot;news&quot; items.</font></li>
+            </ul>
+ 
+                <li><font face="Arial,Helvetica" size="2" color="black"><u>Milliseconds 
+                between News Fades</u></font><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">.</font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">A 
+                    news message can contain more the one message. With this 
+                    options you can specify in milliseconds the time between 
+                    the news messages.</font></li>
+            </ul>
+ 
+                <li><font color="#000000"><u><font face="Arial, Helvetica, sans-serif" size="2"><i>Items 
+            Per Page in Lists</i></font></u></font></li>
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Set 
+                this to the maximum number of lines to display in each 
+                page. Applies to Members,Areas and Groups</font></li>
+            </ul>
+                <li><font color="#000000"><u><font face="Arial, Helvetica, sans-serif" size="2"><i>Number 
+                of days until an inactive members is removed</i></font></u></font></li>
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">The 
+                    options in admin to &quot;remove inactive members&quot; 
+                    takes this parameter in days as an input for removing inactive 
+                    members.The days are counted from the last time they logged-in.</font></li>
+            </ul>
+                <li><font color="#000000"><u><font face="Arial, Helvetica, sans-serif" size="2"><i>Target 
+                frame when opening full page function</i></font></u></font></li>
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">MCC 
+                    can also be used in a </font><a href="advanced.html"><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">small 
+                    mode</font></a><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">, 
+                    resulting in only a small login screen and a link list. 
+                    Sometimes it is needed to display the full page to a member, 
+                    for example when a new member whats to register. If you 
+                    are using frames fill here the name of target frame or use 
+                    _blank to open a new window..</font></li>
+            </ul>
+                <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><i><u>Error 
+                Message,wrong password filter  </u></i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">The 
+                    message you enter here is shown to a member when he/she 
+                    enters a password that is not correct according to the password 
+                    filter. See option below.</font></li>
+            </ul>
+ 
+                <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><i><u>Password 
+                filter?  </u></i></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">The 
+                    password filter contains a PERL validation experession that 
+                    is used to validate the password. The default is all normal 
+                    characters and it should be between 5 and 15 long. People 
+                    should be carefull with changing this option because it 
+                    can cause MCC to fall over. For the expression syntax please 
+                    use a PERL manual.</font></li>
+            </ul>
+ 
+                <li><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"><i><u>Send 
+                Welcome Message?  </u></i></font></li>
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">If 
+                this option is turned on, a welcome message will be send to 
+                    new Members. You can edit the welcome text from you admin 
+                    page.</font></li>
+            </ul>
+ 
+          <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"><u><i>Use 
+            File-Locking?</i></u></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Whether 
+                to use it and what type of file-locking to use. This locks files 
+                while they are being written to (for safety). The options are:</font> 
+                <ul>
+                  <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">No 
+                    File-Locking - Use for systems that don't provide a file-locking 
+                    mechanism.</font></li>
+                  <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Unix/Linux 
+                    File-Locking - Use for this OS.</font></li>
+                  <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Windows 
+                    File-Locking - Use for this OS.</font></li>
+                </ul>
+            </ul>
+          <li><a name="Password Method"><i><u><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Password 
+                Method</font></u></i></a> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Select 
+                    the password method you want to use. Note the Windows users 
+                    should only select MD5 because PERL Crypt is not supported 
+                    on Windows. If you don't have MD5 support installed check 
+                    your PERL&nbsp;provider for how to install it.</font></li>
+                    <li><font face="Arial" size="2">Apache mod_perl should only 
+                    be selected when you are using a apache server that supports 
+                    mod_perl. This option will use the MCC database for the 
+                    authentication and authorization. Therefor only a .htaccess 
+                    file will be created, but this file must contain more fields 
+                    then the other two. Change the htaccess template by (un)commenting 
+                    the appropriate sections.</font></li>
+            </ul>
+          <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"><u><i>Use 
+                fake file truncate </i></u></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">This 
+                    option should only be used when you get a error message 
+                    &quot;truncate not supported on this platform&quot;</font>            </ul>
+          <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"><u><i>Traperrors 
+                and shown on HTML Page </i></u></font> 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">By 
+                    default check this option. Only uncheck if you want to run 
+                    perl in warning mode. (perl -w). When checked script errors 
+                    are shown on the webpage.</font>            </ul>
+                <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"><u><i>Server 
+                time offset in hours </i></u></font></li>
+ 
+            <ul>
+              <li><font face="Arial, Helvetica, sans-serif" size="2" color="#000000">Specify 
+                    the time in hours between the server and the country of 
+                    origin of your website.</font>            </ul>
+ </ul>
+            <p><b><a name="Modify the Template">Modify the Template</a></b></p>
+    <p>Open 'template.html' and modify the layout as you wish (to make it look 
+    like your site). Note: the tags beginning with &quot;&lt;subs &quot; MUST 
+    REMAIN in the template.html file. You may move them around as you wish, 
+    but leave &nbsp;them somewhere in the file, or things will not show up. 
+    It is recommended that you do not change template.html either until you 
+    get MCC working!</p>
+    <p><a name="Edit small template"><b>Edit small template</b></a></p>
+    <p>Open 'stemplate.html' and modify the layout as you wish (to make it look 
+    like your site). Note: the tags beginning with &quot;&lt;subs &quot; MUST 
+    REMAIN in the stemplate.html file. You may move them around as you wish, 
+    but leave &nbsp;them somewhere in the file, or things will not show up. 
+    It is recommended that you do not change stemplate.html either until you 
+    get MCC working! The small template is used if you want to use MCC in small 
+    mode (mcc.pl;small=1)</p>
+    <p><b><a name="Edit News">Edit News</a></b></p>
+    <p>This allows you to set the text for news items displayed on the Index 
+    page. Add any item you want (e.g., &quot;Don't miss the conference this 
+    Tuesday!&quot;). Each news item must be separated by a carriage-return. 
+    You are also allowed to use HTML tags in your news for variety!. The news 
+    fader&nbsp;is only shown when active and fader.js script is available. See 
+    <a href="#MCC Preferences and Settings">preferences and settings</a>.</p>
+    <p><b><a name="Edit Welcome text">Edit Welcome text</a></b></p>
+    <p>Edit the welcome message that will be send to a new member on registration 
+    when option is checked in <a href="configuration.html#MCC Preferences and Settings">preferences 
+    and settings</a>. You can use &quot;&lt;field XXX&gt;&quot; tags to include 
+    information from MCC into the message. XXX can be replaced by the following 
+    fieldsnames:</p>
+    <table border="1" cellspacing="0" bordercolordark="white" bordercolorlight="black">
+        <tr>
+            <td width="112" height="6" bgcolor="#8484FF">
+                <p align="center"><b><span style="background-color:rgb(132,132,255);">XXX</span></b></p>
+            </td>
+            <td width="100%" height="6" bgcolor="#8484FF">
+                <p align="center"><b><span style="background-color:rgb(132,132,255);">Description</span></b></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="112" height="21">
+                <p>mbname</p>
+            </td>
+            <td width="100%" height="21">
+                <p>Name of MCC</p>
+            </td>
+        </tr>
+        <tr>
+            <td width="112">
+                <p>newmember</p>
+            </td>
+            <td width="100%">
+                <p>User name of the member</p>
+            </td>
+        </tr>
+        <tr>
+            <td width="112">
+                <p>newname</p>
+            </td>
+            <td width="100%">
+                <p>Full name of member</p>
+            </td>
+        </tr>
+        <tr>
+            <td width="112">
+                <p>newpassword</p>
+            </td>
+            <td width="100%">
+                <p>Password of member</p>
+            </td>
+        </tr>
+        <tr>
+            <td width="112">
+                <p>newcode</p>
+            </td>
+            <td width="100%">
+                <p>Activation code if members are not active on creation.</p>
+            </td>
+        </tr>
+        <tr>
+            <td width="112">
+                <p>scripturl</p>
+            </td>
+            <td width="100%">
+                <p>The url to mcc.pl</p>
+            </td>
+        </tr>
+    </table>
+    <p><b><a name="Edit Flexible Profile">Edit Flexible Profile</a></b></p>
+    <p>MCC has the option to add fields to the profile and do validation on 
+    the input. The input 
+        should contain for each member a line and the fields within the line 
+        are separated by a '~'. The sequence of fields is as follows:
+<font color="red">0=Disabled,1=on,2=required ~ length ~ Name ~ Comment ~ Perl Filter 
+    ~ Error message </font><b>Do not</b> put 
+        spaces between the separators, here it's only done to make the helpfile 
+        readable.Be aware that no syntax checking is done and that lines starting with 
+        # are threaded as comments.
+    
+    <p><b>Example<BR>
+</b>#a not required address field and a required country<BR>
+1~80~Address<BR>
+2~20~Country<BR>#a disabeld sex field with checking for MF or mf<BR>
+0~1~Sex~~[MFmf]~Only m of f allowed<BR>
+1~15~Birthday~Use format YYYY/MM/DD~\d\d\d\d/\d\d/\d\d<BR></p>
+
+
+    <p><b><a name="Edit Area Redirect script">Edit Area Redirect script</a></b></p>
+    <p>On the index page a user will see all the hyperlinks to his areas. During 
+    setup of an area you can define if you want to use this javascript or use 
+    a normal redirect. We have provided a default script but you are free to 
+    change it. Giving the posiblity to use popup windows or some other high 
+    tech stuff. The default script is copied below. You must keep function name 
+    the same but may change script based on action. To increase performance 
+            on redirect in same frame using the option to embbed commands into 
+            your script.</p>
+    <pre>&lt;script language=&quot;JavaScript1.2&quot; type=&quot;text/javascript&quot;&gt;
+//Special functions are added to speed-up redirects in same frame.
+//Use word .all to turn all redirects on or off see example below
+//Replacing .all by the area name allows you to turn a specfic area on or off
+//redirect.all=off <br>//redirect.area1=on  use fast redirect for area with id area1
+function AreaRedirect(action,area,uri,title,targetframe) {
+ if (action == &quot;popup&quot;) {
+  window.open(uri);
+ } else if (action == &quot;redirect&quot;) {
+  window.location=uri;
+ } else if (action == &quot;targetredirect&quot;) {
+    i = 0;
+    while (i &lt; parent.length) {
+       win = parent.frames[i];
+       if (win.name == targetframe) {
+           win.location=uri;
+           return;
+       }
+       i = i + 1;
+    }
+    window.location=uri;
+ } else {
+   window.location=uri;
+ }
+}
+&lt;/script&amp;gr;</pre> 
+    <p><b><a name="Edit Registration Conditions">Edit Registration Conditions</a></b></p>
+    <p>Use this option to edit the registration conditions you want new members 
+    to read during there registration. When empty no message is shown.</p>
+      <DIV class="footer"> 
+                <ol type="1">
+        <HR noShade SIZE="1">
+        <a href="http://www.j2use.com/mcc.html">MCC</a>: Copyright © 2002 <a href="http://www.j2use.com">j2use</a>. 
+        All Rights Reserved.
+</DIV>
+            </ol>
+    </TD>
+    <td></td>
+  </TR>
+<tr>
+    <TD> 
+        <p>&nbsp;</p>
+    </TD>
+    <td>
+        <p>&nbsp;</p>
+</td>
+</tr>
+</TABLE>
+
+<p>&nbsp;</p>
+</body>
+</html>

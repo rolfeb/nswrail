@@ -1,0 +1,17 @@
+##When usign crypt or MD5 use this section, when not comment with #
+##Make sure that your apache server config has following option set: AllowOverride All
+AuthType Basic
+AuthName "<field areaname>"
+AuthUserFile <field areadir>/.htpasswd
+require valid-user
+
+##When usign apache mod_perl use this section, when not comment with #
+#PerlRequire "<field mccsourcedir>/MCCAuth.pl"
+#PerlSetVar MCCPath "<field mccdir>"
+#PerlSetVar area "<field areaid>"
+#PerlAuthenHandler MCCAuth::authen
+#AuthType Basic
+#PerlSetVar RedirectOnError 1
+#ErrorDocument 403 <field cgi>
+#AuthName "<field areaname>"
+#require valid-user

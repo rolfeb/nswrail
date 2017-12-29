@@ -1,0 +1,80 @@
+TABLE.clean TD.location {
+    width: 25%;
+}
+
+TABLE.clean TD.caption {
+    width: 75%;
+}
+
+/*
+ * Styles for the 2-column contributer list
+ */
+DIV.column1 {
+    float: left;
+    margin-top: 0;
+    padding-top: 0;
+    width: 30%;
+}
+
+DIV.column2 {
+    float: left;
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: 10px;
+    width: 30%;
+}
+
+DIV.column3 {
+    float: left;
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: 10px;
+    width: 30%;
+}
+
+TD.name {
+    width: 90%;
+}
+
+TD.count {
+    width: 10%;
+    text-align: right;
+}
+
+
+/*
+ * Thumbnail styles
+ */
+td.thumb {
+    width: 170px;
+    height: 170px;
+    text-align: center;
+}
+
+
+/*
+ * Styles for the upload screen
+  */
+table#up_header {
+    margin-bottom: 0;
+}
+table#up_header tr {
+    background-color: #eee;
+}
+td.up_location, th.up_location {
+    width: 30%;
+}
+td.up_date, th.up_date {
+    width: 20%;
+}
+td.up_size, th.up_size {
+    width: 20%;
+}
+td.up_uploaded, th.up_uploaded {
+    width: 20%;
+    text-align: right;
+}
+td.up_status, th.up_status {
+    width: 10%;
+}
+

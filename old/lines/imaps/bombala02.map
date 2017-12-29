@@ -1,0 +1,9 @@
+<map name="imap">
+<area shape="rect" coords="293, 242, 339, 257" href="/locations/show.php?name=NSW:Tarago" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="318, 216, 500, 231" href="/locations/show.php?name=NSW:Lake Bathurst Ballast Siding" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="40, 514, 103, 529" href="/locations/show.php?name=NSW:Butmaroo" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="292, 197, 416, 211" href="/locations/show.php?name=NSW:Jct (Lake Bathurst)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="289, 146, 379, 160" href="/locations/show.php?name=NSW:Lake Bathurst" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="192, 440, 269, 455" href="/locations/show.php?name=NSW:Mount Fairy" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="290, 47, 369, 62" href="/locations/show.php?name=NSW:Inveralochy" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

@@ -1,0 +1,101 @@
+h1 {
+    text-align: center;
+}
+
+table#locations TD.icon {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+table#locations TD.icon img {
+    width: 22px;
+    height 22px;
+    vertical-align: bottom;     /* in strict mode, default is baseline */
+}
+
+table#locations TD.name {
+}
+
+table#locations TD.facility {
+}
+
+table#locations TD.status {
+}
+
+table#locations TD.opened {
+    text-align: right;
+}
+
+table#locations TD.closed {
+    text-align: right;
+}
+
+table#locations TD.distance {
+    text-align: right;
+}
+
+table#locations TD.photos {
+    text-align: center;
+}
+
+table#locations TD.links {
+    text-align: center;
+}
+
+UL.line-list {
+    list-style: none;
+    padding-left: 15px;
+}
+
+UL.line-list LI.open {
+    list-style-image: url(images/bullet_green.png);
+}
+
+UL.line-list LI.closed {
+    list-style-image: url(images/bullet_red.png);
+}
+
+UL.line-list LI.lifted {
+    list-style-image: url(images/bullet_grey.png);
+}
+
+UL.line-list LI.tourist {
+    list-style-image: url(images/bullet_blue.png);
+}
+
+UL.line-list LI.open-closed {
+    list-style-image: url(images/bullet_green-red.png);
+}
+
+UL.line-list LI.not-opened {
+    list-style-image: url(images/bullet_light_grey.png);
+}
+
+H3.region-name {
+    margin-bottom: 0px;
+}
+
+IMG.imagemap {
+    border: 2px solid #888;
+}
+
+
+/*
+ * Styles for the map sheet display page
+ */
+#navigate {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+#navigate SPAN {
+    font-size: 1.2em;
+    vertical-align: 10%;
+}
+#navigate IMG {
+    border: 0px;
+}
+
+#linemap IMG {
+    border: 1px solid black;
+}

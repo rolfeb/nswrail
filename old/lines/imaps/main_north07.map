@@ -1,0 +1,7 @@
+<map name="imap">
+<area shape="rect" coords="271, 383, 307, 398" href="/locations/show.php?name=NSW:Wyee" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="231, 14, 374, 29" href="/locations/show.php?name=NSW:Eraring Coal Unloader" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="280, 209, 335, 223" href="/locations/show.php?name=NSW:Morisset" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="289, 305, 456, 320" href="/locations/show.php?name=NSW:Vales Point Coal Unloader" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="312, 110, 385, 124" href="/locations/show.php?name=NSW:Dora Creek" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

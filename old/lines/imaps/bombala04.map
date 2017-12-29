@@ -1,0 +1,13 @@
+<map name="imap">
+<area shape="rect" coords="139, 295, 220, 309" href="/locations/show.php?name=NSW:Queanbeyan" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="358, 195, 494, 209" href="/locations/show.php?name=NSW:Bungendore Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="103, 252, 256, 267" href="/locations/show.php?name=NSW:Pine Range No 1 Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="449, 114, 527, 129" href="/locations/show.php?name=NSW:Bungendore" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="48, 270, 106, 285" href="/locations/show.php?name=NSW:Molonglo" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="310, 244, 439, 258" href="/locations/show.php?name=NSW:Brooks Bank Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="32, 293, 83, 308" href="/locations/show.php?name=NSW:Harman" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="271, 286, 325, 301" href="/locations/show.php?name=NSW:Burbong" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="450, 420, 532, 435" href="/locations/show.php?name=NSW:Hoskinstown" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="234, 268, 387, 283" href="/locations/show.php?name=NSW:Pine Range No 2 Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="85, 314, 157, 329" href="/locations/show.php?name=NSW:Letchworth" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

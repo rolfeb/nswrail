@@ -1,0 +1,9 @@
+<map name="imap">
+<area shape="rect" coords="326, 219, 364, 234" href="/locations/show.php?name=NSW:Junee" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="203, 143, 266, 158" href="/locations/show.php?name=NSW:Old Junee" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="446, 170, 498, 185" href="/locations/show.php?name=NSW:Marinna" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="118, 465, 187, 479" href="/locations/show.php?name=NSW:Shepherds" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="212, 375, 272, 389" href="/locations/show.php?name=NSW:Harefield" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="41, 121, 102, 136" href="/locations/show.php?name=NSW:Rockview" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="331, 190, 463, 205" href="/locations/show.php?name=NSW:Junee West Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

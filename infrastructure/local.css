@@ -1,0 +1,16 @@
+/*
+ * Styles for displaying certain location attributes
+ */
+td.distance {
+    text-align: right;
+}
+
+td.longitude {
+    text-align: right;
+    width: 100px;
+}
+
+td.latitude {
+    text-align: right;
+    width: 100px;
+}

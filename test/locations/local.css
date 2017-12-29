@@ -1,0 +1,119 @@
+TD.property {
+    font-weight: bold;
+}
+
+TABLE.photo-ops {
+    border-collapse: collapse;
+    padding: 0;
+    margin: 0;
+}
+
+TABLE.photo-ops TR {
+    padding: 0;
+    margin: 0;
+}
+
+TABLE.photo-ops TD {
+    padding: 0;
+    margin: 0;
+}
+
+IMG#STATUS_U {
+    border: 2px solid #ee0;
+}
+
+IMG#STATUS_Y {
+    border: 2px solid #0c0;
+}
+
+IMG#STATUS_N {
+    border: 2px solid #f00;
+}
+
+SPAN#photo-date {
+    font-size: 0.7em;
+    font-family: sans-serif;
+}
+
+IMG.thumbnail {
+    margin: 3px;
+}
+
+/*
+ * Styles for the photo-display page
+ */
+DIV.navigate {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+DIV.navigate SPAN {
+    font-size: 1.2em;
+    vertical-align: 10%;
+}
+DIV.navigate IMG {
+    border: 0px;
+}
+
+/*
+ * Styles for the Google map window on the location page
+ */
+DIV.location-map {
+    float: right;
+    margin-left: 10px;
+}
+DIV.location-map DIV#map {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+}
+
+DIV.location-map #message1 {
+    color: #888;
+    font-style: italic;
+}
+
+DIV.location-map #message2, div.msg-missing {
+    color: #daa;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/*
+ * Styles for editing elements
+ */
+SPAN.edit-link A {
+    color: #008;
+    font-size: 80%;
+}
+
+TEXTAREA.edit {
+    width: 100%;
+    border-width: 1px;
+    background-color: #eee;
+}
+
+TABLE.edit {
+    border: 1px solid black;
+}
+
+
+
+
+table#navlayout td#location {
+    width: 60%;
+    text-align: left;
+}
+
+table#navlayout td#nextprev {
+    width: 40%;
+    text-align: center;
+}
+
+span.alert {
+    color: #f00;
+}
+

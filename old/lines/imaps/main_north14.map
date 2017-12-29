@@ -1,0 +1,19 @@
+<map name="imap">
+<area shape="rect" coords="210, 185, 346, 200" href="/locations/show.php?name=NSW:Mount Owen Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="138, 284, 272, 299" href="/locations/show.php?name=NSW:Camberwell Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="112, 118, 221, 133" href="/locations/show.php?name=NSW:Newdell Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="377, 444, 493, 459" href="/locations/show.php?name=NSW:Jct (Whittingham)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="40, 512, 192, 527" href="/locations/show.php?name=NSW:Warkworth Coal Loader" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="189, 225, 238, 240" href="/locations/show.php?name=NSW:Nundah" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="386, 459, 468, 474" href="/locations/show.php?name=NSW:Whittingham" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="296, 262, 446, 277" href="/locations/show.php?name=NSW:Rixs Creek Coal Loader" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="117, 497, 243, 512" href="/locations/show.php?name=NSW:Saxonvale Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="20, 75, 136, 90" href="/locations/show.php?name=NSW:Old Main North DE" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="29, 158, 113, 173" href="/locations/show.php?name=NSW:Ravensworth" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="194, 87, 353, 102" href="/locations/show.php?name=NSW:Mount Owen Coal Loader" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="292, 245, 449, 260" href="/locations/show.php?name=NSW:Camberwell Coal Loader" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="220, 528, 394, 543" href="/locations/show.php?name=NSW:Mount Thorley Coal Loader" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="6, 39, 170, 54" href="/locations/show.php?name=NSW:Old Main North DE (1966)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="326, 397, 387, 412" href="/locations/show.php?name=NSW:Singleton" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="106, 209, 204, 224" href="/locations/show.php?name=NSW:Glennies Creek" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

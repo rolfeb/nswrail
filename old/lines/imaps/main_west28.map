@@ -1,0 +1,3 @@
+<map name="imap">
+<area shape="rect" coords="244, 212, 304, 227" href="/locations/show.php?name=NSW:Coolabah" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

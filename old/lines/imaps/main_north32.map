@@ -1,0 +1,4 @@
+<map name="imap">
+<area shape="rect" coords="235, 330, 305, 344" href="/locations/show.php?name=NSW:Deepwater" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="430, 72, 474, 87" href="/locations/show.php?name=NSW:Bolivia" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

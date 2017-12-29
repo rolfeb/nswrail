@@ -1,0 +1,10 @@
+<map name="imap">
+<area shape="rect" coords="320, 314, 434, 329" href="/locations/show.php?name=NSW:Wyalong Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="158, 64, 206, 78" href="/locations/show.php?name=NSW:Calleen" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="453, 134, 493, 149" href="/locations/show.php?name=NSW:Wyrra" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="220, 332, 312, 347" href="/locations/show.php?name=NSW:West Wyalong" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="486, 522, 530, 537" href="/locations/show.php?name=NSW:Yiddah" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="389, 334, 486, 349" href="/locations/show.php?name=NSW:South Wyalong" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="417, 30, 491, 45" href="/locations/show.php?name=NSW:Clear Ridge" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="329, 358, 385, 373" href="/locations/show.php?name=NSW:Wyalong" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

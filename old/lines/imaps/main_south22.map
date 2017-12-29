@@ -1,0 +1,10 @@
+<map name="imap">
+<area shape="rect" coords="103, 333, 195, 348" href="/locations/show.php?name=NSW:Wagga Wagga" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="80, 426, 136, 441" href="/locations/show.php?name=NSW:Kapooka" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="292, 256, 336, 271" href="/locations/show.php?name=NSW:Bomen" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="394, 147, 463, 162" href="/locations/show.php?name=NSW:Shepherds" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="478, 498, 545, 513" href="/locations/show.php?name=NSW:Ladysmith" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="488, 57, 548, 72" href="/locations/show.php?name=NSW:Harefield" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="390, 402, 520, 416" href="/locations/show.php?name=NSW:RAAF Wagga Wagga" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="303, 421, 370, 436" href="/locations/show.php?name=NSW:Forest Hill" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

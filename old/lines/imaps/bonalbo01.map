@@ -1,0 +1,11 @@
+<map name="imap">
+<area shape="rect" coords="478, 333, 521, 348" href="/locations/show.php?name=NSW:Casino" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="397, 55, 455, 70" href="/locations/show.php?name=NSW:Baraimol" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="425, 153, 484, 168" href="/locations/show.php?name=NSW:Fairy Hill" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="431, 434, 529, 448" href="/locations/show.php?name=NSW:Shannon Brook" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="326, 298, 467, 312" href="/locations/show.php?name=NSW:Casino North Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="448, 255, 521, 269" href="/locations/show.php?name=NSW:Nammoona" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="447, 273, 530, 288" href="/locations/show.php?name=NSW:North Casino" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="414, 3, 489, 18" href="/locations/show.php?name=NSW:Cedar Point" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="398, 470, 449, 485" href="/locations/show.php?name=NSW:Leeville" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

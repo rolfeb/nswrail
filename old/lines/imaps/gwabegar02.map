@@ -1,0 +1,14 @@
+<map name="imap">
+<area shape="rect" coords="266, 94, 384, 109" href="/locations/show.php?name=NSW:Carlos Gap Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="346, 409, 414, 424" href="/locations/show.php?name=NSW:Ben Bullen" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="226, 35, 269, 50" href="/locations/show.php?name=NSW:Vulcan" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="305, 318, 412, 333" href="/locations/show.php?name=NSW:Capertee Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="289, 212, 343, 226" href="/locations/show.php?name=NSW:Torbane" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="279, 282, 338, 296" href="/locations/show.php?name=NSW:Capertee" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="394, 510, 512, 525" href="/locations/show.php?name=NSW:Baal Bone Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="170, 106, 222, 121" href="/locations/show.php?name=NSW:Weenga" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="180, 89, 250, 104" href="/locations/show.php?name=NSW:Carlos Gap" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="335, 466, 457, 481" href="/locations/show.php?name=NSW:Baal Bone Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="78, 4, 173, 19" href="/locations/show.php?name=NSW:Brogans Creek" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="182, 133, 242, 148" href="/locations/show.php?name=NSW:Excelsior" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

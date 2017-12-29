@@ -1,0 +1,3 @@
+<map name="imap">
+<area shape="rect" coords="120, 242, 188, 257" href="/locations/show.php?name=NSW:Weemelah" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

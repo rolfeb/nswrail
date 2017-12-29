@@ -1,0 +1,13 @@
+<map name="imap">
+<area shape="rect" coords="284, 302, 408, 317" href="/locations/show.php?name=NSW:Dartbrook Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="366, 436, 429, 450" href="/locations/show.php?name=NSW:St Heliers" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="279, 414, 368, 429" href="/locations/show.php?name=NSW:Muswellbrook" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="97, 529, 263, 544" href="/locations/show.php?name=NSW:Mount Arthur Coal Loader" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="367, 388, 543, 403" href="/locations/show.php?name=NSW:Muswellbrook No 2 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="223, 326, 281, 341" href="/locations/show.php?name=NSW:Koolbury" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="235, 11, 274, 26" href="/locations/show.php?name=NSW:Scone" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="291, 274, 438, 288" href="/locations/show.php?name=NSW:Dartbrook Coal Loader" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="35, 522, 97, 537" href="/locations/show.php?name=NSW:Roxburgh" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="415, 451, 479, 465" href="/locations/show.php?name=NSW:Grasstree" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="281, 231, 344, 246" href="/locations/show.php?name=NSW:Aberdeen" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

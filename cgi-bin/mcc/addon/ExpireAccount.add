@@ -1,0 +1,82 @@
+#Un remark the functions you want to implement
+use Time::Local;
+$ExpireAccount_version="1.04";
+$exacc{'1'} = "Expire Account Settings";
+$exacc{'2'} = "Expire date postion within flexprofile";
+$exacc{'3'} = "Trial period in days";
+$exacc{'4'} = "Expire message";
+$exacc{'5'} = "Account expired on:";
+
+#Add items to the settings page, Create row and add it to $subsmain
+sub ExpireAccount_SettingsPage{
+	$subsmain .= qq~<tr>
+			<td class="titlebg" bgcolor="$color{'titlebg'}" colspan=2>
+				<font size=2 class="text1" color="$color{'titletext'}"><b>$exacc{'1'}</b></font></td>
+		</tr><tr>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$exacc{'2'}</font></td>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=text name="exaccposition" size="4" value="$exaccposition"></td>
+		</tr><tr>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$exacc{'3'}</font></td>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=text name="exacctrialdays" size="4" value="$exacctrialdays"></td>
+		</tr><tr>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$exacc{'4'}</font></td>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><textarea cols=40 rows=3 name="exaccmessage">$exaccmessage</textarea></td>
+		</tr>~;
+}
+
+#Save items of settings page. Add settings stuff in $addonsettings
+sub ExpireAccount_SettingsSave{
+	$exaccposition = int($FORM{'exaccposition'});
+	$exacctrialdays = int($FORM{'exacctrialdays'});
+	$exaccmessage = $FORM{'exaccmessage'};
+	$addonsettings .= qq~\$exaccposition = "$exaccposition"; #Position of expire date within flexprofile
+\$exacctrialdays = "$exacctrialdays"; #Number of days before a new account expires
+\$exaccmessage = q^$exaccmessage^; #The message shown to an expired account
+~;
+}
+
+#The functions are called when one of the items is changed
+#$action-> 1=add,2=modify,3=delete
+sub ExpireAccount_Members {
+	my ($action,$member) = @_;
+	if ($action<3 and !$inExpireAccount and $exaccposition>0) {
+		$inExpireAccount=1;
+		my @record = get_member_info($member);
+		if ($record[9+$exaccposition] eq '') { #add or empty
+		  my @t = localtime(time + (3600*$timeoffset) +  ($exacctrialdays*86400));
+			$record[9+$exaccposition] = sprintf("%02d-%02d-%04d", $t[3], $t[4]+1, $t[5] + 1900);
+			set_member_info($member,$record[1],@record[4..@record]);
+		}
+		$inExpireAccount=0;
+	}
+}
+
+sub get_time{
+	my ($date) = @_;
+	return time+10 if (!$date);
+	$date =~ s~-~\/~g;
+	$date =~ s~\\~\/~g;
+	$date =~ s~\.~\/~g;
+	my ($mday, $mon, $year) = split(/\//, $date);
+	return timelocal(0,0,0,$mday,$mon-1,$year-1900);
+}
+
+#Called after a member has succesfully login
+sub ExpireAccount_Login {
+	my ($member) = @_;
+	return 0 if ($exaccposition<=0); #Disable when not set
+	my @record = get_member_info($member);
+	#Admin cannot expire
+	if ($record[7]==0 and get_time($record[9+$exaccposition]) <= time) {
+		#Account has expired
+		my $date = $record[9+$exaccposition];
+		#deavtivate member
+		if ($record[3]) {
+			set_member_state($member,0);
+			commit_database();
+		}
+		message_page("$exacc{'5'} $date",$exaccmessage);
+	}
+}
+
+1;

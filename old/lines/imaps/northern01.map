@@ -1,0 +1,14 @@
+<map name="imap">
+<area shape="rect" coords="242, 237, 361, 252" href="/locations/show.php?name=NSW:Jct (Cockle Creek)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="194, 451, 255, 466" href="/locations/show.php?name=NSW:Fassifern" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="326, 375, 384, 390" href="/locations/show.php?name=NSW:Booragul" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="315, 344, 365, 358" href="/locations/show.php?name=NSW:Teralba" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="164, 13, 259, 27" href="/locations/show.php?name=NSW:West Wallsend" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="414, 221, 499, 236" href="/locations/show.php?name=NSW:Cockle Creek" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="398, 181, 512, 195" href="/locations/show.php?name=NSW:Sulphide Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="59, 395, 168, 410" href="/locations/show.php?name=NSW:Newstan Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="331, 260, 504, 275" href="/locations/show.php?name=NSW:Stockton Borehole Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="42, 50, 181, 65" href="/locations/show.php?name=NSW:Seaham No 2 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="188, 286, 300, 301" href="/locations/show.php?name=NSW:Northern Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="45, 158, 176, 172" href="/locations/show.php?name=NSW:Killingworth Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

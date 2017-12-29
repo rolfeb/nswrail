@@ -1,0 +1,14 @@
+##Log information about the visitor
+$Log_version="1.04";
+sub Log_NewDateLogin {
+	my ($member,$accesscount,$lastdate) = @_;
+  $date = localtime(time+(3600*$timeoffset));
+  $user = $ENV{'REMOTE_USER'};
+  $ip = $ENV{'REMOTE_ADDR'};
+  $ref = $ENV{'HTTP_REFERER'};
+  $browser = $ENV{'HTTP_USER_AGENT'};
+  fopen (LOG, ">>$datadir/userlog.txt");
+  print LOG "$member|$accesscount|$ip|$ref|$browser|$date|$lastdate\n";
+  fclose (LOG);
+}
+1;

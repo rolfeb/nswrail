@@ -1,0 +1,13 @@
+<map name="imap">
+<area shape="rect" coords="398, 101, 506, 116" href="/locations/show.php?name=NSW:Bellbird Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="41, 417, 218, 432" href="/locations/show.php?name=NSW:Stanford Main No 2 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="244, 72, 424, 87" href="/locations/show.php?name=NSW:Aberdare Extended Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="228, 108, 376, 123" href="/locations/show.php?name=NSW:Cessnock No 2 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="261, 334, 367, 349" href="/locations/show.php?name=NSW:Kalingo Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="158, 266, 253, 281" href="/locations/show.php?name=NSW:Pelton Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="175, 165, 279, 179" href="/locations/show.php?name=NSW:Bellbird Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="325, 433, 473, 448" href="/locations/show.php?name=NSW:Cessnock No 1 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="474, 78, 535, 93" href="/locations/show.php?name=NSW:Cessnock" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="75, 379, 222, 394" href="/locations/show.php?name=NSW:Maitland Main Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="342, 290, 508, 305" href="/locations/show.php?name=NSW:Aberdare Central Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

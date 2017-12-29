@@ -1,0 +1,12 @@
+<map name="imap">
+<area shape="rect" coords="418, 171, 526, 186" href="/locations/show.php?name=NSW:Bellbird Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="14, 471, 161, 486" href="/locations/show.php?name=NSW:Maitland Main Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="184, 165, 364, 179" href="/locations/show.php?name=NSW:Aberdare Extended Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="200, 427, 306, 441" href="/locations/show.php?name=NSW:Kalingo Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="98, 358, 193, 373" href="/locations/show.php?name=NSW:Pelton Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="167, 201, 315, 216" href="/locations/show.php?name=NSW:Cessnock No 2 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="265, 525, 413, 540" href="/locations/show.php?name=NSW:Cessnock No 1 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="365, 193, 426, 208" href="/locations/show.php?name=NSW:Cessnock" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="114, 257, 218, 272" href="/locations/show.php?name=NSW:Bellbird Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="281, 382, 447, 397" href="/locations/show.php?name=NSW:Aberdare Central Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

@@ -1,0 +1,65 @@
+#Template.pl
+$License_version="1.09.0316";
+$license{'1'} = "License information";
+$license{'2'} = "This version of Member Control Centre is,<BR>licensed to: $licensename<BR>for website:";
+$license{'3'} = "License information";
+$license{'4'} = "Licensed to";
+$license{'5'} = "Website";
+$license{'6'} = "License code";
+$license{'7'} = "Copyright footer";
+
+License_validate();
+#sub License_AdminMenu{}
+sub License_AdminPanel{
+	if (!$validlicense) {return;}
+		$subsmain .= qq~<table border="0" cellpadding="5" cellspacing="1" align="center" bgcolor="$color{'bordercolor'}" class="bordercolor" width="100%">
+			<tr>
+			<td class="catbg" bgcolor="$color{'catbg'}" colspan="2"><img src="$imagesdir/info.gif" alt="" border="0"> <font size="2"><B>$license{'1'}</B></font></td>
+			</tr><tr>
+				<td class="windowbg2" bgcolor="$color{'windowbg2'}" colspan="2">
+				<font size="1">$license{'2'} $licensesitename</font>
+				</font></td>
+			</tr>
+		</table><BR>~;
+}
+
+#Add items to the settings page, Create row and add it to $subsmain
+sub License_SettingsPage{
+		$subsmain .= qq~<tr>
+				<td class="titlebg" bgcolor="$color{'titlebg'}" colspan=2>
+					<font size=2 class="text1" color="$color{'titletext'}"><b>$license{'3'}</b></font></td>
+			</tr><tr>
+				<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$license{'4'}</font></td>
+				<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=text name="licensename" size="40" value="$licensename"></td>
+		</tr><tr>
+				<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$license{'5'}</font></td>
+				<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=text name="licensesite" size="40" value="$licensesite"></td>
+		</tr><tr>
+				<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$license{'6'}</font></td>
+				<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=text size="40" name="licensecode" value="$licensecode"></td>
+		</tr><tr>
+				<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$license{'7'}</font></td>
+				<td class="windowbg2" bgcolor="$color{'windowbg2'}"><textarea rows=4 cols=30 name="licensefooter">$licensefooter</textarea></td>
+		</tr>~;
+}
+
+#Save items of settings page. Add settings stuff in $addonsettings
+sub License_SettingsSave{
+	$licensename = $FORM{'licensename'};
+	$licensesite = $FORM{'licensesite'};
+	$licensecode = $FORM{'licensecode'};
+	$licensefooter = $FORM{'licensefooter'};
+	$addonsettings .= qq~########## License Settings ###########
+\$licensename = "$licensename"; #License given to name
+\$licensesite = "$licensesite"; #License given to website
+\$licensecode = q^$licensecode^; #License code used
+\$licensefooter = q^$licensefooter^; #License footer replaces copyright
+~;
+}
+
+sub License_validate {
+  $licensesitename = $licensesite;
+	$l234055021045040130303="31085l16416l28515l25956l8307l8253l28787l26988l10356l8239l11311l27684l25449l28261l25971l28515l25956l15145l31085l16416l25966l25463l25711l29541l15648l10272l25380l25711l29541l12379l11357l29283l28793l10356l9250l26988l25955l29550l28261l28001l11365l27684l25449l28261l25971l26995l25972l11298l25380l25711l29541l12379l10589l15145l26217l10272l28522l28265l10024l10016l16428l28515l25956l10611l25888l8305";$l04535501040336="30309l27745l28712l25441l10347l29479l10026l29484l27760l29801l10024l10092l8748l31524l12908l13363l13616l12341l12594l13360l12341l12340l13105l13104l13104l27773l31524l13164l12340l13110l13872l12339l13110l13872l13618l13107l13876l13875l27773l31524l12396l13106l13109l12342l13363l14647l14132l12338l13876l13875l32052l10530l10537l8251";$l340630630630625334636="28522l28265l10024l10016l16428l25966l25463l25711l29541l10537l31520l31085l9248l25971l30322l29285l24942l25965l15648l27680l10339l17700l22094l10107l17747l22098l21061l20063l19777l10053l10621l26939l8294l9256l25971l30322l29285l24942l25965l25888l8305l25452l9256l26988l25955l29550l29541l29801l10597l28448l8306l9256l26988l25955l29550l29541l29801l8293l29029l10016l20053l18764l18765l17748l10052";$l02353603479472046364="10537l31520l30244l27745l25705l26988l25955l29550l15717l15153l8224l25380l28783l27001l15726l15153l8224l29476l25205l25459l28783l29305l26473l29800l8253l27684l25449l28261l25971l28518l29807l29285l8251l9248l26988l25955l29550l29541l29801l28261l28001l8293l8253l29476l29285l25974l28274l28001l8293l26217l10272l27684l25449l28261l25971l26995l25972l25888l8305l21799l19534l19785l21577l17477l10535l8251l32125";ll($l04535501040336);$l02353690335253446327="10537l31520l30244l27745l25705l26988l25955l29550l15717l15153l8224l25380l28783l27001l15726l15153l8224l29476l25205l25459l28783l29305l26473l29800l8253l27684l25449l28261l25971l28518l29807l29285l8251l9248l26988l25955l29550l29541l29801l28261l28001l8293l8253l29476l29285l25974l28274l28001l8293l26217l10272l27684l25449l28261l25971l26995l25972l25888l8305l21799l19534l19785l21577l17477l10535l8251l32125";
+}
+1;
+

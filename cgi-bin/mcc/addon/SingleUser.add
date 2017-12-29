@@ -1,0 +1,160 @@
+$SingleUser_version="1.09.0316";
+$single{'1'} = "Single User Add-on";
+$single{'2'} = "Single usermode ";
+$single{'3'} = "Timeout (s) between reuse of unique combination IP &amp; MemberId";
+$single{'4'} = "Deactivate on fraud";
+$single{'5'} = "Your account [<field member_field_0>] has been deactivate because of fraud usage of account, please change you password and reqeust an activation code\n Regards $mbname";
+$single{'6'} = "Edit fraud template";
+$single{'7'} = "Fraud detected with ";
+#Add on force SingleUser login
+
+my $updatetimeout = 0; # Timout used before log is updated
+
+sub SingleUser_Login {
+ my ($member) = (@_);
+ if ($singleuser) {
+   #Clear user name when login fails
+   if (!isSingleUser($member)) {
+		 $username='';
+		 &fatal_error("$single{'7'} $member");
+	 }
+ }
+}
+
+sub SingleUser_Logout {
+ my ($member) = (@_);
+ logoutSingleUser($member) if ($singleuser);
+}
+
+sub SingleUser_SettingsPage{
+	if ($singleuser) { $singlechecked = ' checked'; }
+	if ($singlefraud) { $singlefraudchecked = ' checked'; }
+	$subsmain .= qq~<tr>
+			<td class="titlebg" bgcolor="$color{'titlebg'}" colspan=2>
+				<font size=2 class="text1" color="$color{'titletext'}"><b>$single{'1'}</b></font></td>
+		</tr><tr>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$single{'2'}</font></td>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=checkbox name="singleuser" $singlechecked></td>
+		</tr><tr>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$single{'4'}</font></td>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=checkbox name="singlefraud" $singlefraudchecked></td>
+		</tr><tr>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$single{'3'}</font></td>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=text name="singletimeout" size="10" value="$singletimeout"></td>
+		</tr>~;
+}
+
+sub SingleUser_Main {
+  my ($action) = @_;
+  return if(!$action);
+  if ($action eq 'editfraudtemplate') {
+		require "$sourcedir/AdminEdit.pl";
+    Editor($single{'6'},'',"$datadir/fraudmail.txt",0);
+  }
+}
+
+sub SingleUser_AdminEditorLine{
+ $subsmain .= qq~- <a href="$cgi;action=editfraudtemplate">$single{'6'}</a><br>~;
+}
+
+#Save items of settings page. Add settings stuff in $addonsettings
+sub SingleUser_SettingsSave{
+	my @onoff = qw/singleuser singlefraud/;
+	# Set as 0 or 1 if box was checked or not
+	my $fi;
+	map { $fi = lc $_; ${$_} = $FORM{$fi} eq 'on' ? 1 : 0; } @onoff;
+	$singletimeout = $FORM{'singletimeout'} || 120;
+	$addonsettings .= qq~\$singleuser = $singleuser; #Are we in single user mode
+\$singlefraud = $singlefraud; #Deactivate member whit fraud
+\$singletimeout = $singletimeout; #Time between logins we allow to change IP
+~;
+}
+
+sub SingleUser_ModPerl {
+	my ($hashref) = @_;
+	$$hashref{'Result'} = isSingleUser($$hashref{'User'}) ? 0 : 1;
+}
+
+#Check if user is not allready logged in
+sub isSingleUser {
+ my ($member) = @_;
+ my @record = readSingleUserLog($member);
+ my $dif = time - $record[1];
+ if ($record[2] eq $ENV{'REMOTE_ADDR'} or $dif > $singletimeout) {
+   writeSingleUserLog($member,$ENV{'REMOTE_ADDR'}) if ($dif>$updatetimeout); #save time
+   return 1;
+ }
+  #Fraud
+ $date = localtime(time+(3600*$timeoffset));
+ my $line ='';
+ foreach my $key (keys %ENV) {
+	 $line .= ',' if ($line);
+	 $line .= "$key:$ENV{$key}";
+ }
+ $line = "[$line]";
+ $ip = $ENV{'REMOTE_ADDR'};
+ fopen (LOG, ">>$datadir/fraud.log");
+ print LOG "$member|$record[2]<-->$ip|$date|Environment:$line\n";
+ fclose (LOG);
+ my @member = get_email_member_info($member,1);
+ if (!$member[3] and $singlefraud) { #Only Send message when we are
+	 my $line = $single{'5'};
+	 $name = $member[8];
+	 $email = $member[9];
+
+	 if (fopen(FILE,"$datadir/fraudmail.txt")) {
+		my @lines = <FILE>;
+		fclose(FILE);
+		$line = join('',@lines);
+	 }
+	 $line =~ s~<field\s+(\w+)>~${"$1"}~g;
+	 $subject = "$single{'7'} $mbname : $member";
+	 &sendmail($email, $subject, $line);
+	 set_member_state($member,0);
+	 commit_database();
+ }
+ return 0;
+}
+
+sub logoutSingleUser {
+ my ($member) = @_;
+ my $memberfile = toFile($member);
+ unlink "$datadir/$memberfile.log";
+ info("Single User Logout $member ");
+}
+
+sub readSingleUserLog {
+ my ($member) = @_;
+ my $memberfile = toFile($member);
+ my @record = ($member,time,$ENV{'REMOTE_ADDR'});
+ if (fopen(FILE, "$datadir/$memberfile.log")) {
+    @record = <FILE>;
+    fclose(FILE);
+    foreach (@record) { $_ =~ s~[\n\r]~~g; }
+ } else {
+	 writeSingleUserLog($member,$ENV{'REMOTE_ADDR'});
+ }
+ return @record;
+}
+
+sub writeSingleUserLog {
+ my ($member,$ip) = @_;
+ my $memberfile = toFile($member);
+ my @record = ($member,time,$ip);
+ if (fopen(FILE, ">$datadir/$memberfile.log")) {
+   foreach my $line (@record) {
+ 			print FILE "$line\n";
+		}
+   fclose(FILE);
+ }
+ return @record;
+}
+
+#remove all not wanted chars from user name, whe assume all is ok.
+sub toFile {
+ my ($file) = @_;
+ $file =~ s~[\n\r\\/\:]~_~g;
+ return $file;
+}
+
+1;

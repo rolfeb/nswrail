@@ -1,0 +1,45 @@
+/*
+ * Styles for the Google map window
+ */
+DIV#map {
+    width: 600px;
+    height: 600px;
+    border: 1px solid black;
+}
+
+DIV#position {
+    float: left;
+    margin-left: 10px;
+}
+
+DIV#position SPAN.parameter {
+    color: #444;
+    background-color: #eee;
+}
+
+DIV#position DIV.value {
+}
+
+span.inuse {
+    color: #090;
+}
+
+span.outofuse {
+    color: #f00;
+}
+
+span.tourist {
+    color: #00f;
+}
+
+span.lifted {
+    color: #666;
+}
+
+img.map {
+    border: 1px solid black;
+}
+
+img.plain {
+    border: 0px;
+}

@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Administrator FAQ</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<meta name="GENERATOR" content="Namo WebEditor v5.0(Trial)">
+<meta name="description" content="Blank document with no style.">
+</head>
+<body>
+
+<TABLE cellSpacing="0" cellPadding="0" width="95%" border="0">
+  <TR vAlign="top"> 
+    <TD bgColor="white" > 
+      <TABLE width="100%" bgcolor="#8484FF">
+        <TR> 
+          <TD bgcolor="white"> <b>&nbsp;</b>  <b>Administrator FAQ</b></TD>
+        </TR>
+      </TABLE>
+    </TD>
+  </TR>
+    <TD> 
+        <p>&nbsp;</p>
+    </TD>
+  </TR>
+    <TD> 
+      <DIV class=content> 
+        <H4>What About???</H4>
+        <TABLE cellPadding=5 border=0 width="284">
+          <TR> 
+            <TD vAlign=top width="258"><FONT size=-1>• <a href="#MCC: Cannot open .htpasswd file">MCC: 
+                    Cannot open . htpasswd file</a><br>•<a href="#No News Fader"> No 
+                    News Fade</a>r<br>• <a href="#@INC Error">@INC error</a><br>•<a href="#Login Problems"> 
+                    Login Problems</a></FONT></TD>
+            <TD vAlign=top width="0"></TD>
+          </TR>
+        </TABLE>
+        </DIV>
+    <p><b><a name="MCC: Cannot open .htpasswd file">MCC: Cannot open .htpasswd 
+    file</a></b></p>
+    <p>We noticed that a lot of users had problems with the error message MCC: 
+    Cannot open .htpasswd file. In release 1.0 also the location of the file 
+    is reported, but some help can still be given. The files .htpasswd and .htaccess 
+    are used webserver to protect directory's of files on you webserver bij 
+    username and password. MCC creates these files for you and provides the 
+    means to manage them easily. There are two main reasons for this error message:</p>
+    <ol type="1">
+        <li>The path specified in one of your areas is incorrect. Use the browse 
+        function to select it.</li>
+        <li>You webbrowser is not allowed to created the two files in the specified 
+        path of the areas. To solve this set the rights to 777 for the directory 
+        or create empty&nbsp;files (.htpasswd and .htaccess)&nbsp;and set the 
+        rights to 666.</li>
+    </ol>
+    <p><b>&nbsp;<a name="No News Fader">No News Fader</a></b></p>
+    <p>If you did not specify the correct url to the fader.js <font size="2" face="Verdana, Arial, Helvetica, sans-serif">(such as </font>http://www.mysite.com/mcc/fader.js) 
+    &nbsp;you will get no newsfader but a script error called &quot;fade not 
+    found&quot;</p>
+    <p><b>Areas on Windows</b></p>
+    <p>Members ho are using MCC on windows should be carefull using the directory 
+    in there path of an Area. Use /dir instead of d:/dir because it can cause 
+    the webserver to crach or sometimes MCC does not work.</p>
+    <p><b><a name="@INC Error">@INC Error</a></b></p>
+    <p>On some server you will encounter a error:<br>Can't locate Settings.pl 
+    in @INC (@INC contains: c:/Perl/lib c:/Perl/site/lib .) <br>This comes because 
+    perl is not started in the same directroy as mcc.pl. To fix this problem 
+    open MCC.pl and change $pushlocalpath = 0; to $pushlocalpath=1; this should 
+    solve your problems.</p>
+    <p><b><a name="Login Problems">Login Problems</a></b></p>
+    <p>Some webservers have problems with the perl password crypto method we 
+    use. This shows when some users can login and others cannot. Try using MD5 
+    the password crypto method that you can set as admin in the preference and 
+    settings. When you use this method your perl version must contain a MD5 
+    library.</p>
+      <DIV class="footer"> 
+        <HR noShade SIZE="1">
+        <a href="http://www.j2use.com/mcc.html">MCC</a>: Copyright © 2002 <a href="http://www.j2use.com">j2use</a>. 
+        All Rights Reserved.</DIV>
+    </TD>
+  </TR>
+</TABLE>
+
+<p>&nbsp;</p>
+</body>
+</html>

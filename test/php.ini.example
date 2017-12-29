@@ -1,0 +1,13 @@
+#
+# Set the PHP environment where .htaccess doesn't work.
+#
+# This file is currently sourced by /var/www/interpreters/php-script in
+# production.
+# 
+# Directories that need to be included (in this order):
+#
+#   <base>/l/php
+#   <base>/c/php
+#   <home>/pear/PEAR
+#
+include_path = "<base>/l/php:<base>/c/php:<home>/pear/PEAR"

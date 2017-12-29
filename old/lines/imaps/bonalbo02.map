@@ -1,0 +1,3 @@
+<map name="imap">
+<area shape="rect" coords="87, 202, 139, 216" href="/locations/show.php?name=NSW:Bonalbo" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

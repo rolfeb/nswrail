@@ -1,0 +1,4 @@
+<map name="imap">
+<area shape="rect" coords="397, 310, 461, 325" href="/locations/show.php?name=NSW:Gum Lake" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="121, 191, 186, 206" href="/locations/show.php?name=NSW:Kaleentha" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

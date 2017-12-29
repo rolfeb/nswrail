@@ -1,0 +1,17 @@
+<map name="imap">
+<area shape="rect" coords="243, 171, 367, 186" href="/locations/show.php?name=NSW:Long Island Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="290, 232, 421, 246" href="/locations/show.php?name=NSW:Boronia No 3 Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="228, 320, 270, 334" href="/locations/show.php?name=NSW:Cowan" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="380, 192, 456, 206" href="/locations/show.php?name=NSW:Long Island" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="383, 171, 543, 186" href="/locations/show.php?name=NSW:Long Island Tunnel (1st)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="284, 258, 415, 272" href="/locations/show.php?name=NSW:Boronia No 2 Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="368, 33, 444, 47" href="/locations/show.php?name=NSW:Wondabyne" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="401, 52, 509, 67" href="/locations/show.php?name=NSW:Woy Woy Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="165, 201, 296, 216" href="/locations/show.php?name=NSW:Boronia No 5 Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="259, 298, 390, 313" href="/locations/show.php?name=NSW:Boronia No 1 Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="1, 485, 113, 500" href="/locations/show.php?name=NSW:Mount Kuring-Gai" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="381, 147, 510, 161" href="/locations/show.php?name=NSW:Mullet Creek Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="162, 216, 293, 231" href="/locations/show.php?name=NSW:Boronia No 4 Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="377, 208, 495, 223" href="/locations/show.php?name=NSW:Hawkesbury River" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="174, 424, 228, 439" href="/locations/show.php?name=NSW:Berowra" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

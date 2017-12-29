@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Create Addons</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<meta name="GENERATOR" content="Namo WebEditor v5.0(Trial)">
+<meta name="description" content="Blank document with no style.">
+</head>
+<body>
+
+<TABLE cellSpacing="0" cellPadding="0" width="95%" border="0">
+  <TR vAlign="top"> 
+    <TD bgColor="white" > 
+      <TABLE width="100%" bgcolor="#8484FF">
+        <TR> 
+          <TD bgcolor="white"> &nbsp;  <b>Creating your own add-ons</b></TD>
+        </TR>
+      </TABLE>
+    </TD>
+  </TR>
+    <TD> 
+        <p>&nbsp;</p>
+    </TD>
+  </TR>
+    <TD> 
+      <DIV class="content"> 
+        <p>You can create you own add-ons very easy by using the template.add 
+        as your basis. Replace &lt;file&gt; with the name of you file and save 
+        the file with extension .add. Now uncomment the sub you want to catch. 
+        We added the template file below </p>
+      </DIV>
+    <pre><font color="#009900">#Template for a MCC addon
+#Replace &lt;file&gt; with the name of the file without the extention.
+#Un remark the functions you want to implement
+
+#Called from within the main function of MCC after user is validated
+#sub &lt;file&gt;_Main { my ($action) = @_; }
+#Called from within the main function of MCC just before action is validated
+#sub &lt;file&gt;_Init{}
+
+#Add HTML to admin menu. Create table or line and add it to $subsmain
+#sub &lt;file&gt;_AdminMenu{}
+#sub &lt;file&gt;_AdminPanel{}
+#sub &lt;file&gt;_AdminLine{}
+
+#Add items to the settings page, Create row and add it to $subsmain
+#sub &lt;file&gt;_SettingsPage{}
+
+#Save items of settings page. Add settings stuff in $addonsettings
+#sub &lt;file&gt;_SettingsSave{}
+
+#The functions are called when one of the items is changed
+#$action-&gt; 1=add,2=modify,3=delete
+#sub &lt;file&gt;_Members { my ($action,$member) = @_; }
+#sub &lt;file&gt;_Groups { my ($action,$group) = @_; }
+#sub &lt;file&gt;_Areas { my ($action,$area) = @_; }
+
+#Called after a member has succesfully login
+#sub &lt;file&gt;_Login { my ($member) = @_; }
+#Called after a member has succesfully login once a day
+#sub &lt;file&gt;_NewDateLogin { my ($member) = @_; }
+
+#Add HTML to RegisterPage or Profile, Create table and add it to $subsmain
+#sub &lt;file&gt;_RegisterPage{}
+#sub &lt;file&gt;_RegisterSave{}
+#sub &lt;file&gt;_ProfilePage{}
+#sub &lt;file&gt;_ProfileSave{}
+
+#Add HTML to HomePage, $place 1=toolbar,2=before index,3=after index
+#sub &lt;file&gt;_HomePage{ my ($place) = @_; }
+
+#Handle a request to other area
+#sub &lt;file&gt;_RequestAccess { my ($member,$area,$onoff) = @_;}
+1;</font></pre>
+      <DIV class="footer"> 
+        <HR noShade SIZE="1">
+        <a href="http://www.j2use.com/mcc.html">MCC</a>: Copyright © 2002 <a href="http://www.j2use.com">j2use</a>. 
+        All Rights Reserved.</DIV>
+    </TD>
+  </TR>
+</TABLE>
+
+<p>&nbsp;</p>
+</body>
+</html>

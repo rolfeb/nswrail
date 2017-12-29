@@ -1,0 +1,15 @@
+<map name="imap">
+<area shape="rect" coords="266, 398, 384, 413" href="/locations/show.php?name=NSW:Jct (Wallerawang)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="317, 86, 439, 101" href="/locations/show.php?name=NSW:Baal Bone Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="416, 392, 500, 407" href="/locations/show.php?name=NSW:Wallerawang" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="288, 313, 358, 327" href="/locations/show.php?name=NSW:Pipers Flat" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="303, 180, 387, 195" href="/locations/show.php?name=NSW:Cullen Bullen" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="206, 298, 261, 313" href="/locations/show.php?name=NSW:Portland" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="339, 344, 395, 359" href="/locations/show.php?name=NSW:Irondale" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="470, 532, 534, 547" href="/locations/show.php?name=NSW:Cooerwull" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="456, 498, 522, 513" href="/locations/show.php?name=NSW:Bowenfels" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="399, 454, 483, 469" href="/locations/show.php?name=NSW:Marrangaroo" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="376, 130, 494, 145" href="/locations/show.php?name=NSW:Baal Bone Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="328, 30, 396, 44" href="/locations/show.php?name=NSW:Ben Bullen" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="347, 516, 383, 531" href="/locations/show.php?name=NSW:Rydal" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

@@ -1,0 +1,13 @@
+td.line {
+    width: 12em;
+}
+
+td.height {
+    text-align: right;
+    width: 6em;
+}
+
+td.location {
+    width: 20em;
+}
+

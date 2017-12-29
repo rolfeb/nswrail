@@ -1,0 +1,55 @@
+
+#
+# PHP lookup path. Should include:
+#   - state-specific PHP utility files
+#   - common PHP utility files
+#   - PEAR files
+#
+php_value include_path "/home/rolfeb/public_html/l/php:/home/rolfeb/public_html/c/php:/home/rolfeb/tools/pear/PEAR"
+
+#
+# Configuration parameters
+#
+SetEnv AUSRAIL_BASE_DIR     "/home/rolfeb/public_html"
+SetEnv AUSRAIL_STATE        "nsw"
+Setenv AUSRAIL_PHOTO_DIR    "/home/rolfeb/public_html/locations/photos/"
+
+Options FollowSymLinks MultiViews
+DirectoryIndex index.php
+
+#
+# .txt files are passed through the BBCode parser
+#
+RewriteEngine on
+
+###RewriteCond %{REMOTE_ADDR}      !^144\.136\.115\.
+###RewriteCond %{REMOTE_ADDR}      !^192\.168\.13\.100$
+###RewriteRule !^offline.php$      /offline.php [L]
+
+RewriteRule ^(.*).txt$          /c/php/txtpage.php?file=$1.txt [L]
+RewriteRule ^index.html$	/ [R]
+RewriteRule ^maps/browse.php 	/maps/google.php [R]
+RewriteRule ^maps/index.php 	/ [R]
+RewriteRule ^lines/main_north/photos/belford01\.jpg$	/locations/photos/belford01.jpg [R]
+
+
+#
+# Permissions
+#
+Order allow,deny
+
+<FilesMatch "^$">
+    Allow from all
+    Header set Cache-Control no-store
+</FilesMatch>
+
+<FilesMatch "\.(gif|png|jpg|css|js|ico)$">
+    Allow from all
+    Header set Cache-Control max-age=1440,must-revalidate
+</FilesMatch>
+
+<FilesMatch "\.(php|txt|html)$">
+    Allow from all
+    Header set Cache-Control no-store
+</FilesMatch>
+

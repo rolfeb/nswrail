@@ -1,0 +1,12 @@
+<map name="imap">
+<area shape="rect" coords="207, 294, 308, 308" href="/locations/show.php?name=NSW:West Tamworth" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="96, 508, 123, 522" href="/locations/show.php?name=NSW:Duri" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="145, 30, 198, 45" href="/locations/show.php?name=NSW:Appleby" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="219, 251, 284, 266" href="/locations/show.php?name=NSW:Tamworth" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="176, 402, 220, 417" href="/locations/show.php?name=NSW:Warral" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="456, 206, 517, 221" href="/locations/show.php?name=NSW:Kootingal" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="466, 266, 527, 281" href="/locations/show.php?name=NSW:Tintinhull" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="129, 272, 189, 286" href="/locations/show.php?name=NSW:Westdale" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="405, 332, 470, 347" href="/locations/show.php?name=NSW:Nemingah" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="143, 113, 184, 127" href="/locations/show.php?name=NSW:Gidley" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

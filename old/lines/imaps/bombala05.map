@@ -1,0 +1,12 @@
+<map name="imap">
+<area shape="rect" coords="431, 73, 512, 88" href="/locations/show.php?name=NSW:Queanbeyan" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="166, 464, 249, 479" href="/locations/show.php?name=NSW:Williamsdale" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="360, 36, 513, 51" href="/locations/show.php?name=NSW:Pine Range No 2 Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="324, 72, 375, 86" href="/locations/show.php?name=NSW:Harman" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="295, 358, 343, 373" href="/locations/show.php?name=NSW:Royalla" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="303, 6, 397, 21" href="/locations/show.php?name=NSW:Jct (Canberra)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="276, 216, 362, 231" href="/locations/show.php?name=NSW:Tuggeranong" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="267, 49, 325, 64" href="/locations/show.php?name=NSW:Molonglo" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="289, 88, 361, 103" href="/locations/show.php?name=NSW:Letchworth" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="215, 17, 275, 31" href="/locations/show.php?name=NSW:Canberra" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

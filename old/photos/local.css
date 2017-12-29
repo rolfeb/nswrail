@@ -1,0 +1,52 @@
+TABLE.clean TD.location {
+    width: 25%;
+}
+
+TABLE.clean TD.caption {
+    width: 75%;
+}
+
+/*
+ * Styles for the 2-column contributer list
+ */
+DIV.column1 {
+    float: left;
+    margin-top: 0;
+    padding-top: 0;
+    width: 30%;
+}
+
+DIV.column2 {
+    float: left;
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: 10px;
+    width: 30%;
+}
+
+DIV.column3 {
+    float: left;
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: 10px;
+    width: 30%;
+}
+
+TD.name {
+    width: 90%;
+}
+
+TD.count {
+    width: 10%;
+    text-align: right;
+}
+
+
+/*
+ * Thumbnail styles
+ */
+td.thumb {
+    width: 170px;
+    height: 170px;
+    text-align: center;
+}

@@ -1,0 +1,3 @@
+<map name="imap">
+<area shape="rect" coords="209, 249, 263, 263" href="/locations/show.php?name=NSW:Ivanhoe" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

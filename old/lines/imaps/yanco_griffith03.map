@@ -1,0 +1,12 @@
+<map name="imap">
+<area shape="rect" coords="109, 175, 155, 190" href="/locations/show.php?name=NSW:Griffith" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="409, 309, 481, 324" href="/locations/show.php?name=NSW:Wumbulgal" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="275, 259, 327, 273" href="/locations/show.php?name=NSW:Widgelli" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="366, 97, 406, 112" href="/locations/show.php?name=NSW:Yenda" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="172, 201, 220, 216" href="/locations/show.php?name=NSW:Yoogali" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="8, 112, 86, 127" href="/locations/show.php?name=NSW:Tharbogang" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="361, 283, 430, 297" href="/locations/show.php?name=NSW:Colchester" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="221, 229, 301, 244" href="/locations/show.php?name=NSW:Yoogali East" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="208, 123, 290, 137" href="/locations/show.php?name=NSW:Beelbangera" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="58, 505, 128, 519" href="/locations/show.php?name=NSW:Willbriggie" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

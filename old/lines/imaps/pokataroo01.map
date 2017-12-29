@@ -1,0 +1,4 @@
+<map name="imap">
+<area shape="rect" coords="319, 453, 363, 468" href="/locations/show.php?name=NSW:Burren" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="236, 136, 305, 151" href="/locations/show.php?name=NSW:Old Burren" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

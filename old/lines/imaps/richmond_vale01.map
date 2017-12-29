@@ -1,0 +1,16 @@
+<map name="imap">
+<area shape="rect" coords="375, 478, 520, 492" href="/locations/show.php?name=NSW:Hanbury East Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="353, 424, 502, 438" href="/locations/show.php?name=NSW:Hanbury West Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="330, 52, 366, 66" href="/locations/show.php?name=NSW:Tarro" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="17, 344, 113, 359" href="/locations/show.php?name=NSW:Minmi Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="389, 365, 517, 380" href="/locations/show.php?name=NSW:Sandgate Cemetery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="461, 495, 533, 509" href="/locations/show.php?name=NSW:Warabrook" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="224, 201, 395, 216" href="/locations/show.php?name=NSW:Hexham Exchange Sidings" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="398, 388, 493, 402" href="/locations/show.php?name=NSW:Jct (Sandgate)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="406, 183, 459, 198" href="/locations/show.php?name=NSW:Hexham" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="379, 524, 512, 539" href="/locations/show.php?name=NSW:New Tunnel Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="440, 156, 536, 171" href="/locations/show.php?name=NSW:Hexham Wharf" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="265, 2, 331, 16" href="/locations/show.php?name=NSW:Beresfield" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="430, 403, 491, 418" href="/locations/show.php?name=NSW:Sandgate" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="29, 425, 129, 440" href="/locations/show.php?name=NSW:Minmi Open Cut" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

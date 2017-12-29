@@ -1,0 +1,250 @@
+#Add on for YaBB Forum
+#Called from within the main function of MCC after user is validated
+#Supports
+$YaBB_version="1.06";
+$yabb{'1'} = "YaBB Forum Add-on";
+$yabb{'2'} = "This version of the Yabb add-on works only in one way. Form MCC to YaBB.";
+$yabb{'3'} = "Default YaBB Groupname";
+$yabb{'4'} = "YaBB Member Directory";
+$yabb{'5'} = "YaBB URL";
+$yabb{'6'} = "In Menu";
+$yabb{'7'} = "Forum";
+$yabb{'8'} = "I love MCC!";
+$yabb{'9'} = "at";
+$yabb{'10'} = "All active members to YaBB";
+$yabb{'11'} = "Flexprofile postion of YaBB group for member, empty when not used";
+$yabb{'12'} = "Include username and password in YaBB URL";
+#overrule pwseed make same as YaBB so password can be same
+
+sub YaBB_Main {
+	my ($action) = @_;
+	return if(!$action);
+	if ($action eq 'allmemberstoyabb') {
+		foreach my $member (get_member_keys()) {
+			YaBB_Members(1,$member);
+	  }
+	  &redirectexit("$cgi;action=admin");
+	}
+}
+
+#Add HTML to admin menu. Create table and add it to $subsmain
+#sub YaBB_AdminMenu{}
+
+sub YaBB_AdminLine{
+	 $subsmain .= qq~- <a href="$cgi;action=allmemberstoyabb">$yabb{'10'}</a><br>~;
+}
+
+sub YaBB_AdminPanel{
+	$subsmain .= qq~<table border="0" cellpadding="5" cellspacing="1" align="center" bgcolor="$color{'bordercolor'}" class="bordercolor" width="100%">
+					<tr>
+					<td class="catbg" bgcolor="$color{'catbg'}" colspan="2"><img src="$imagesdir/info.gif" alt="" border="0"> <font size="2"><B>$yabb{'1'}</B></font></td>
+					</tr><tr>
+						<td class="windowbg2" bgcolor="$color{'windowbg2'}" colspan="2">
+						<font size="1">$yabb{'2'}</font>
+						</td>
+					</tr>
+			</table><BR>~;
+}
+
+#Add items to the settings page, Create row and add it to $subsmain
+sub YaBB_SettingsPage{
+	if ($yabbmenu) { $yabbchecked = ' checked'; }
+	if ($yabbprotected) { $yabbprotectedchecked = ' checked'; }
+	$subsmain .= qq~<tr>
+			<td class="titlebg" bgcolor="$color{'titlebg'}" colspan=2>
+				<font size=2 class="text1" color="$color{'titletext'}"><b>$yabb{'1'}</b></font></td>
+		</tr><tr>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$yabb{'4'}</font></td>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=text name="yabbdir" size="45" value="$yabbdir"></td>
+		</tr><tr>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$yabb{'5'}</font></td>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=text name="yabburl" size="45" value="$yabburl"></td>
+		</tr><tr>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$yabb{'6'}</font></td>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=checkbox name="yabbmenu" $yabbchecked></td>
+		</tr><tr>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$yabb{'12'}</font></td>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=checkbox name="yabbprotected" $yabbprotectedchecked></td>
+		</tr><tr>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$yabb{'3'}</font></td>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=text name="yabbgroup" size="30" value="$yabbgroup"></td>
+		</tr><tr>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><font size="2">$yabb{'11'}</font></td>
+			<td class="windowbg2" bgcolor="$color{'windowbg2'}"><input type=text name="yabbflexpos" size="30" value="$yabbflexpos"></td>
+		</tr>~;
+}
+
+#Save items of settings page. Add settings stuff in $addonsettings
+sub YaBB_SettingsSave{
+	my @onoff = qw/yabbmenu yabbprotected/;
+	# Set as 0 or 1 if box was checked or not
+	my $fi;
+	map { $fi = lc $_; ${$_} = $FORM{$fi} eq 'on' ? 1 : 0; } @onoff;
+	$yabbdir = $FORM{'yabbdir'} || "../yabb/Members";
+	$yabburl = $FORM{'yabburl'};
+	$yabbflexpos = $FORM{'yabbflexpos'};
+	$yabbgroup = $FORM{'yabbgroup'};
+	$addonsettings .= qq~\$yabbdir = "$yabbdir"; #Location of the YaBB directory
+\$yabburl = "$yabburl"; #URL to YaBB
+\$yabbmenu = $yabbmenu; #1 show YaBB in menu
+\$yabbgroup = "$yabbgroup"; #Group for mcc members
+\$yabbflexpos = "$yabbflexpos"; #Postion in flexprofile containig of YabbGroup
+\$yabbprotected = $yabbprotected; #Postion in flexprofile containig of YabbGroup
+~;
+}
+
+#The functions are called when one of the items is changed
+#$action-> 1=add,2=modify,3=delete
+sub YaBB_Members {
+	my ($action,$member) = @_;
+
+	if ($action==3) {
+		info("Removing member $member")if ($logging);
+		fopen(FILE, "$yabbdir/memberlist.txt");
+		my @memberlist = <FILE>;
+		fclose(FILE);
+
+		fopen(FILE, ">$yabbdir/memberlist.txt", 1);
+		my $memberfound = 0;
+		my $lastvalidmember = '';
+		foreach my $curmem (@memberlist) {
+			chomp $curmem;
+			if($curmem ne $member) { print FILE "$curmem\n"; $lastvalidmember = $curmem; }
+			else { ++$memberfound; }
+		}
+		fclose(FILE);
+		my $membershiptotal = @memberlist - $memberfound;
+		fopen(FILE, "+>$memberdir/members.ttl");
+		print FILE qq~$membershiptotal|$lastvalidmember~;
+		fclose(FILE);
+
+		unlink("$yabbdir/$member.dat");
+		unlink("$yabbdir/$member.msg");
+		unlink("$yabbdir/$member.log");
+		unlink("$yabbdir/$member.outbox");
+		unlink("$yabbdir/$member.imconfig");
+
+	} elsif ($action==1 or $action==2) {
+		info("Updating/Adding member $member")if ($logging);
+    my ($date) = YaBB_GetDate();
+		my ($found,@record) = find_member($member);
+		if (!$found or !$record[3]) {return;} #Exit when not defined or not active
+
+		my (@memsettings) = ();
+		my ($newmem) = 1;
+		if (fopen(FILE, "$yabbdir/${member}.dat")) {
+		  @memsettings=<FILE>;
+     	$newmem = 0;
+     	for(my $i=0;$i<@memsettings;$i++){
+				chomp($memsettings[$i]);
+			}
+		}
+		fclose(FILE);
+
+		#Save member data
+		my ($line) = "$record[1]\n$record[0]\n$record[9]\n$memsettings[3]\n$memsettings[4]\n";
+		$line .= "$memsettings[5]\n";
+		$line .= $newmem ? "0\n" : "$memsettings[6]\n";
+		if ($yabbflexpos ne '') {
+			my $pos = 9 + $yabbflexpos;
+		 $line .= $newmem ? ($record[7]>0 ? "Administrator\n": "$record[$pos]\n"): "$record[$pos]\n";
+		} else {
+		 $line .= $newmem ? ($record[7]>0 ? "Administrator\n": "$yabbgroup\n"): "$memsettings[7]\n";
+	  }
+		$line .= "$memsettings[8]\n$memsettings[9]\n$memsettings[10]\n$memsettings[11]\n";
+		$line .= $newmem ? "$yabb{'8'}\n" : "$memsettings[12]\n";
+		$line .= $newmem ? "blank.gif\n" : "$memsettings[13]\n";
+		$line .= $newmem ? "$date\n" : "$memsettings[14]\n";
+		$line .= "$memsettings[15]\n$memsettings[16]\n$memsettings[17]\n$memsettings[18]\n";
+		$line .= $newmem ? "checked\n" : "$memsettings[19]\n";
+		for (my $i=20;$i<@memsettings;$i++){
+		    $line .= "$memsettings[$i]\n";
+    }
+		fopen(FILE, ">${yabbdir}/${member}.dat");
+ 		print FILE "$line";
+		fclose(FILE);
+
+    if ($newmem) {
+			#Load memberlist
+			fopen(FILE, "$yabbdir/memberlist.txt");
+			my @memberlist = <FILE>;
+	    fclose(FILE);
+	    for(my $i=0;$i<@memberlist;$i++){
+				chomp($memberlist[$i]);
+			}
+
+			#add to member list
+			fopen(FILE, ">$yabbdir/memberlist.txt", 1);
+			foreach my $curmem (@memberlist) { print FILE "$curmem\n"; }
+			print FILE "$member\n";
+			fclose(FILE);
+
+			my $membershiptotal = @memberlist + 1;
+			fopen(FILE, "+>$yabbdir/members.ttl");
+			print FILE qq~$membershiptotal|$member~;
+			fclose(FILE);
+		}
+	}
+}
+
+sub YaBB_GetDate {
+		my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time + (3600*$timeoffset));
+		$mon_num = $mon+1;
+		my $savehour = $hour;
+		$hour = "0$hour" if ($hour < 10);
+		$min = "0$min" if ($min < 10);
+		$sec = "0$sec" if ($sec < 10);
+		my $saveyear = ($year % 100);
+		$year = 1900 + $year;
+
+		my $mon_num = "0$mon_num" if ($mon_num < 10);
+		$mday = "0$mday" if ($mday < 10);
+		$saveyear = "0$saveyear" if ($saveyear < 10);
+		my $date = "$mon_num/$mday/$saveyear $yabb{'9'} $hour\:$min\:$sec";
+		return $date;
+}
+
+#sub YaBB_Groups { my ($action,$group) = @_; }
+#sub YaBB_Areas { my ($action,$area) = @_; }
+
+#Called after a member has succesfully login
+#sub YaBB_Login { my ($member) = @_; }
+
+#Add HTML to RegisterPage or Profile, Create table and add it to $subsmain
+#sub YaBB_RegisterPage{}
+sub YaBB_RegisterSave{
+	YaBB_ProfileSave();
+}
+#sub YaBB_ProfilePage{}
+sub YaBB_ProfileSave{
+	if ($yabbflexpos ne '') {
+		my $pos = $yabbflexpos+9;
+		$FORM{"flex$pos"}=$yabbgroup if (!$FORM{"flex$pos"});
+		info(qq~!!!!Setting flex YaBB $FORM{"flex$pos"}~)if ($logging);
+	}
+}
+
+#Add HTML to HomePage, $place 1=toolbar,2=before index,3=after index
+sub YaBB_HomePage{
+	my ($place) = @_;
+	my $target = '';
+	if ($smalltemplate) {
+		$target = qq~target="$smalltarget"~;
+	}
+	if ($place == 1 and $yabbmenu ) {
+		my $url = $yabburl;
+  	my ($prefix,$path) = split('://',$url);
+  	if ($path eq '') {
+  		$prefix="";
+  		$path=$url;
+  	} else {
+  		$prefix.= '://';
+  	}
+  	$url= $yabbprotected==1 ? "${prefix}$memberData[0]:$memberData[1]\@$path" : "${prefix}$path";
+		$subsmenu .= qq~$menusep<a href="$url" $target>
+		      <img src="$imagesdir/www.gif" alt="$yabb{'7'}" border="0">
+		     <font size="1" class="imgmenu">$yabb{'7'}</font></a>~;
+	}
+	#elsif ($place == 2 ){	$subsmain .= "Before<BR>"; } elsif ($place == 3 ){$subsmain .= "After<BR>";}
+}
+1;

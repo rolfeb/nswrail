@@ -1,0 +1,8 @@
+<map name="imap">
+<area shape="rect" coords="52, 0, 120, 15" href="/locations/show.php?name=NSW:Kurri Road" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="350, 511, 445, 526" href="/locations/show.php?name=NSW:West Wallsend" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="313, 494, 462, 509" href="/locations/show.php?name=NSW:West Wallsend Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="18, 62, 129, 77" href="/locations/show.php?name=NSW:Stanford Merthyr" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="376, 469, 482, 484" href="/locations/show.php?name=NSW:Seaham Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="43, 212, 196, 226" href="/locations/show.php?name=NSW:Richmond Vale Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

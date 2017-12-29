@@ -1,0 +1,3 @@
+<map name="imap">
+<area shape="rect" coords="143, 213, 223, 228" href="/locations/show.php?name=NSW:Sayers Lake" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

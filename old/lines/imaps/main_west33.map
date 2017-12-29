@@ -1,0 +1,3 @@
+<map name="imap">
+<area shape="rect" coords="158, 118, 204, 133" href="/locations/show.php?name=NSW:Bourke" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

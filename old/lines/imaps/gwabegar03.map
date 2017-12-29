@@ -1,0 +1,13 @@
+<map name="imap">
+<area shape="rect" coords="255, 448, 307, 463" href="/locations/show.php?name=NSW:Weenga" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="332, 107, 379, 122" href="/locations/show.php?name=NSW:Kandos" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="216, 432, 334, 446" href="/locations/show.php?name=NSW:Carlos Gap Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="273, 342, 368, 356" href="/locations/show.php?name=NSW:Brogans Creek" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="350, 442, 420, 456" href="/locations/show.php?name=NSW:Carlos Gap" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="353, 163, 461, 178" href="/locations/show.php?name=NSW:Charbon Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="311, 382, 354, 397" href="/locations/show.php?name=NSW:Vulcan" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="215, 189, 275, 203" href="/locations/show.php?name=NSW:Clandulla" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="324, 179, 490, 194" href="/locations/show.php?name=NSW:Charbon Colliery Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="329, 146, 383, 161" href="/locations/show.php?name=NSW:Charbon" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="267, 480, 327, 495" href="/locations/show.php?name=NSW:Excelsior" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

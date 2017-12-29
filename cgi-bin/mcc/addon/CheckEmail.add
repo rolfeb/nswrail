@@ -1,0 +1,43 @@
+$CheckEmail_version="1.06";
+$checkmail{'1'}="Enter list with blocked email addresses";
+$checkmail{'2'}=" email is not allowed";
+$checkmail{'3'}="Blocked email list";
+
+sub CheckEmail_RegisterSave{
+  isAllowedEmail($FORM{'email'});
+}
+sub CheckEmail_ProfileSave{
+  isAllowedEmail($FORM{'email'})
+}
+
+#Called from within the main function of MCC after user is validated
+sub CheckEmail_Main {
+  my ($action) = @_;
+  return if(!$action);
+  if ($action eq 'editcheckmailtemplate') {
+		require "$sourcedir/AdminEdit.pl";
+    Editor($checkmail{'1'},'',"$datadir/checkmail.txt",0);
+  }
+}
+
+sub CheckEmail_AdminLine{
+ $subsmain .= qq~- <a href="$cgi;action=editcheckmailtemplate">$checkmail{'3'}</a><br>~;
+}
+
+
+sub isAllowedEmail {
+  my ($email) = @_;
+  $email = lc($email);
+  my ($invalid) = 0;
+  fopen(FILE, "$datadir/checkmail.txt");
+  my ($line);
+  while(!$invalid and $line=<FILE>) {
+		chomp($line);
+		$line=lc($line);
+		$invalid = 1 if ($email =~ /$line/);
+	 }
+	fclose(FILE);
+  fatal_error("$email $checkmail{'2'}") if ($invalid);
+}
+
+1;

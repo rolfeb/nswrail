@@ -1,0 +1,11 @@
+<map name="imap">
+<area shape="rect" coords="430, 517, 523, 532" href="/locations/show.php?name=NSW:Jct (Thornton)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="159, 327, 246, 341" href="/locations/show.php?name=NSW:East Maitland" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="194, 350, 288, 365" href="/locations/show.php?name=NSW:Victoria Street" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="444, 534, 503, 549" href="/locations/show.php?name=NSW:Thornton" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="406, 219, 459, 233" href="/locations/show.php?name=NSW:Morpeth" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="39, 312, 112, 326" href="/locations/show.php?name=NSW:High Street" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="244, 207, 335, 222" href="/locations/show.php?name=NSW:Queens Wharf" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="286, 237, 339, 252" href="/locations/show.php?name=NSW:Raworth" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="326, 427, 376, 442" href="/locations/show.php?name=NSW:Metford" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

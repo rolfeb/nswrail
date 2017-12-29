@@ -1,0 +1,3 @@
+<map name="imap">
+<area shape="rect" coords="27, 223, 114, 238" href="/locations/show.php?name=NSW:Ulan Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

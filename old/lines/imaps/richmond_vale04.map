@@ -1,0 +1,20 @@
+<map name="imap">
+<area shape="rect" coords="18, 125, 115, 140" href="/locations/show.php?name=NSW:Jct (Abermain)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="198, 145, 280, 160" href="/locations/show.php?name=NSW:Jct (Weston)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="254, 242, 326, 256" href="/locations/show.php?name=NSW:Pelaw Main" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="388, 335, 541, 350" href="/locations/show.php?name=NSW:Richmond Vale Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="329, 35, 468, 50" href="/locations/show.php?name=NSW:Ayrfield No 2 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="45, 330, 187, 345" href="/locations/show.php?name=NSW:Hebburn No 2 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="54, 102, 178, 117" href="/locations/show.php?name=NSW:Greta Main Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="82, 386, 233, 400" href="/locations/show.php?name=NSW:Richmond Main Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="134, 144, 182, 159" href="/locations/show.php?name=NSW:Weston" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="397, 114, 465, 128" href="/locations/show.php?name=NSW:Kurri Road" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="32, 309, 149, 324" href="/locations/show.php?name=NSW:Elrington Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="254, 414, 372, 429" href="/locations/show.php?name=NSW:Richmond Main DE" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="59, 196, 249, 211" href="/locations/show.php?name=NSW:Hebburn No 2 Tunnel Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="251, 129, 359, 144" href="/locations/show.php?name=NSW:North Kurri Kurri" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="406, 74, 495, 89" href="/locations/show.php?name=NSW:Heddon Greta" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="363, 186, 474, 201" href="/locations/show.php?name=NSW:Stanford Merthyr" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="64, 177, 206, 191" href="/locations/show.php?name=NSW:Hebburn No 1 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="310, 67, 378, 82" href="/locations/show.php?name=NSW:Bee Siding" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

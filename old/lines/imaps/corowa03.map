@@ -1,0 +1,4 @@
+<map name="imap">
+<area shape="rect" coords="449, 247, 521, 262" href="/locations/show.php?name=NSW:Brocklesby" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="150, 301, 202, 316" href="/locations/show.php?name=NSW:Balldale" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

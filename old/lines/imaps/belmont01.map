@@ -1,0 +1,22 @@
+<map name="imap">
+<area shape="rect" coords="286, 19, 436, 34" href="/locations/show.php?name=NSW:Bullock Island Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="286, 107, 361, 122" href="/locations/show.php?name=NSW:Adamstown" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="454, 23, 538, 38" href="/locations/show.php?name=NSW:Albert Street" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="450, 3, 508, 18" href="/locations/show.php?name=NSW:Hamilton" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="256, 500, 366, 514" href="/locations/show.php?name=NSW:Lambton Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="78, 331, 227, 346" href="/locations/show.php?name=NSW:Burwood No 3 Platform" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="384, 107, 509, 122" href="/locations/show.php?name=NSW:Glebe Main Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="375, 42, 467, 57" href="/locations/show.php?name=NSW:Broadmeadow" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="269, 189, 373, 204" href="/locations/show.php?name=NSW:Redhead Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="287, 420, 386, 435" href="/locations/show.php?name=NSW:Dudley Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="273, 312, 376, 327" href="/locations/show.php?name=NSW:Dudley Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="146, 122, 189, 137" href="/locations/show.php?name=NSW:Kotara" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="201, 528, 376, 543" href="/locations/show.php?name=NSW:Burwood Extended Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="164, 491, 220, 506" href="/locations/show.php?name=NSW:Redhead" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="285, 244, 337, 259" href="/locations/show.php?name=NSW:Kahibah" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="477, 64, 536, 79" href="/locations/show.php?name=NSW:Wickham" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="38, 212, 159, 226" href="/locations/show.php?name=NSW:Raspberry Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="285, 3, 407, 18" href="/locations/show.php?name=NSW:Woodville Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="146, 347, 225, 361" href="/locations/show.php?name=NSW:Whitebridge" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="281, 207, 378, 222" href="/locations/show.php?name=NSW:Fernleigh Loop" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

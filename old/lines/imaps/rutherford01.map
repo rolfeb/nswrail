@@ -1,0 +1,12 @@
+<map name="imap">
+<area shape="rect" coords="366, 350, 486, 365" href="/locations/show.php?name=NSW:Maitland Junctions" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="276, 288, 404, 303" href="/locations/show.php?name=NSW:Rutherford Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="484, 383, 539, 398" href="/locations/show.php?name=NSW:Maitland" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="285, 204, 434, 219" href="/locations/show.php?name=NSW:Rutherford Racecourse" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="376, 307, 418, 322" href="/locations/show.php?name=NSW:Farley" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="393, 488, 548, 503" href="/locations/show.php?name=NSW:East Greta No 2 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="395, 468, 463, 483" href="/locations/show.php?name=NSW:East Greta" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="224, 468, 379, 483" href="/locations/show.php?name=NSW:East Greta No 1 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="319, 380, 445, 395" href="/locations/show.php?name=NSW:East Greta Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+<area shape="rect" coords="484, 289, 534, 304" href="/locations/show.php?name=NSW:Telarah" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
+</map>

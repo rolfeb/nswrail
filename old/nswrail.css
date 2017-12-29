@@ -1,0 +1,453 @@
+html, body {
+    /* eliminate page margins */
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    top: 1px;
+    left: 0px;
+
+    /* global defaults */
+    font-family: arial, verdana, sans-serif;
+    background: white;
+}
+
+/*
+ * Link styles
+ */
+A:link, A:visited {
+    color: #804040;
+}
+A:link:hover, A:visited:hover {
+    background-color: #d0d0d0;
+}
+
+DIV.mainbody {
+    padding: 5px;
+}
+
+/*
+ * H1 - Main page title
+ */
+H1 {
+    font-size: 30px;
+    font-family: bold;
+    font-weight: Georgia, Times New Roman, Times, serif;
+    font-style: italic;
+    text-align: right;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 100px;
+    color: #808080;
+}
+
+/*
+ * Menubar
+ */
+.menubar {
+    background-image: url(/images/menu-bg1.png);
+    background-repeat: repeat-x;
+}
+
+.menubar TABLE {
+    width: 100%;
+}
+
+.menubar TD {
+    width: 12%;
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 2px;
+}
+
+.menubar A {
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.menubar TD.selected A {
+    color: #c0c0c0;
+}
+
+.menubar A:link:hover, .menubar A:visited:hover {
+    color: #c0c0c0;
+}
+
+/*
+ * Clean Table
+ *  - 1 pixel border around cells
+ *  - cells padded on each side
+ *  - subelement classes:
+ *      - TH/TD.date - date field
+ *      - TH/TD.date-footnote - date field with footnote appended
+ *      - TH/TD.footnote - appended footnote field
+ */
+TABLE.clean {
+    border-collapse: collapse;
+    border: 1px solid #c0c0c0;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+TABLE.clean TH, TABLE.clean TD {
+    border: 1px solid #c0c0c0;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+TABLE.clean TH {
+    text-decoration: none;
+}
+TABLE.clean TH.date, TABLE.clean TD.date {
+    width:      12ex;
+    text-align: right;
+}
+TABLE.clean TH.date-footnote, TABLE.clean TD.date-footnote {
+    width:      12ex;
+    text-align: right;
+    border-right: none;
+    padding-right: 0px;
+}
+TABLE.clean TH.footnote, TABLE.clean TD.footnote {
+    border-left: none;
+    padding-left: 0px;
+}
+
+/*
+ * Random photos
+ */
+DIV#photos {
+    border: 2px solid #000000;
+    background-color: #e0e0e0;
+
+    margin: 5px;
+}
+
+#photos H1 {
+    font-size: 100%;
+    text-align: center;
+    color: #ffffff;
+
+    margin: 0px;
+    padding-top: 0px;
+    padding-bottom: 2px;
+    margin-bottom: 0px;
+    border-bottom: 0px;
+
+    background-image: url(/images/menu-bg1.png);
+    background-repeat: repeat-x;
+}
+
+#photos IMG {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+TD, UL, OL, LI, DL, DT, DD {
+	font-family: sans-serif;
+	// font-size: 11px;
+}
+
+BLOCKQUOTE {
+	font-style: italic;
+}
+
+P {
+	font-family: sans-serif;
+	// font-size: 11px;
+	margin-top: 0px;
+}
+
+/* inline image, put some space around it */
+P IMG {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+
+
+HR {
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	align: center;
+	background-color: #000000;
+}
+
+BR.flush {
+	clear: both;
+}
+
+DIV.boxed {
+	background-color: #ffe0e0;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: 1px solid #000000;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+DIV.announce {
+	padding-left: 5px;
+	padding-right: 5px;
+	border: 1px solid #008000;
+
+	font-weight: bold;
+	color: #008000;
+}
+
+DIV.menubox {
+	border: 1px solid #808080;
+	width: 10%;
+	float: left;
+	padding-left: 2px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+    margin-right: 5px;
+}
+
+/*
+ * Layout styles
+ */
+#page-3col-1 {
+	float: left;
+	width: 30%;
+	padding: 5px;
+	border: 0px;
+	margin: 5px;
+}
+
+/*
+ * Link styles
+ */
+// A:link, A:visited {
+//	font-weight: bold;
+//	text-decoration: none;
+//	color: #6060ee;
+//}
+//A:link:hover, A:visited:hover {
+//	background-color: #d0d0d0;
+//}
+
+A.line-open, A.line-open:link, A.line-open:visited {
+	color: #009900;
+}
+A.line-closed, A.line-closed:link, A.line-closed:visited {
+	color: #ff0000;
+}
+.line-nolink {
+	font-weight: bold;
+	color: #000000;
+}
+
+A.locn-open, A.locn-open:link, A.locn-open:visited {
+	color: #009900;
+}
+A.locn-closed, A.locn-closed:link, A.locn-closed:visited {
+	color: #ff0000;
+}
+A.locn-unopened, A.locn-unopened:link, A.locn-unopened:visited {
+	color: #333333;
+}
+A.locn-reused, A.locn-reused:link, A.locn-reused:visited {
+	color: #006699;
+}
+A.locn-notrace, A.locn-notrace:link, A.locn-notrace:visited {
+	color: #333333;
+}
+.locn-nolink {
+	font-weight: bold;
+	color: #000000;
+}
+
+/*
+ * Headings
+ */
+ /*
+
+H2 {
+	font-size: 1.1em;
+	text-align: left;
+
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	border-bottom: 0px;
+}
+
+H3 {
+	font-size: 11px;
+	text-align: left;
+
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	border-bottom: 0px;
+}
+*/
+
+/*
+ * Table layouts
+ */
+TH {
+	font-weight: bold;
+	text-decoration: underline;
+	// text-align: left;
+	vertical-align: bottom;
+}
+TABLE.fullsize {
+	width: 100%;
+	border: 0px;
+}
+TABLE.fullsize TR {
+	vertical-align: top;
+}
+TABLE.fullsize TH, TABLE.fullsize TD {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+TH.numeric, TD.numeric {
+	text-align: right;
+}
+TH.rowindent, TD.rowindent {
+	width: 10px;
+}
+TR.rowsep {
+	background: #f0f0f0;
+}
+
+TD.date {
+    width:      12ex;
+    text-align: right;
+}
+
+/*
+ * Lists
+ */
+UL {
+	margin-top: 0px;
+}
+
+UL.simple {
+	padding: 0px;
+	margin: 0px;
+
+	/* netscape 4 only: */
+	margin-left: -10em;
+	/*/*/
+	margin-left: 0;
+	/* */
+}
+UL.simple LI {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+/* ------------------------------------------------------------------------- */
+
+
+.notrace-line-link {
+	font-weight: bold;
+	color: #333333;
+}
+
+.unopened-line-link {
+	font-weight: bold;
+	color: #333333;
+}
+
+.reused-line-link {
+	font-weight: bold;
+	color: #006699;
+}
+
+.textinput {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 1.0em;
+}
+
+
+/*
+ * GLOBAL SETTINGS - HEADINGS
+ */
+
+/*
+ * If we have a bunch of links of a page, reduce their size
+ */
+.bulk-links A {
+	font-size: small;
+}
+
+.width80	{
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: medium;
+	width: 90%;
+	align: center
+}
+
+.italics	{
+	font-style: italic;
+}
+
+.menutitle	{
+	color: #000000;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: medium;
+}
+
+.menuitem	{
+	color: #a00000;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: small;
+	font-weight: bold;
+}
+
+.label	{
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: small;
+	font-weight: bold;
+}
+
+.inverse-label {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: medium;
+	font-weight: bold;
+	color: #000000;
+	background-color: #d0d0d0;
+	margin-top: 1em;
+}
+
+.navbar	{
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: small;
+	text-decoration: none;
+	color: #ffffff;
+}
+
+A.navbar	{
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: small;
+	color: #ffffff;
+}
+
+.nolink		{
+	color: #000000;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.link		{
+	color: #a00000;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-weight: bold;
+}
+
+
+/*
+ * Text blocks
+ */
+div.indent1 {
+	margin-left: 5%;
+}
+
