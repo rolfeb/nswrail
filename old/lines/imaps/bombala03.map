@@ -1,7 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="171, 401, 307, 416" href="/locations/show.php?name=NSW:Bungendore Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="386, 160, 463, 175" href="/locations/show.php?name=NSW:Mount Fairy" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="327, 244, 390, 258" href="/locations/show.php?name=NSW:Butmaroo" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="118, 440, 247, 454" href="/locations/show.php?name=NSW:Brooks Bank Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="113, 310, 191, 325" href="/locations/show.php?name=NSW:Bungendore" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

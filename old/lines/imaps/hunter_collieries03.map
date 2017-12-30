@@ -1,8 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="307, 409, 443, 424" href="/locations/show.php?name=NSW:Mount Owen Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="10, 198, 119, 213" href="/locations/show.php?name=NSW:Newdell Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="256, 105, 415, 120" href="/locations/show.php?name=NSW:Mount Owen Coal Loader" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="59, 317, 143, 332" href="/locations/show.php?name=NSW:Ravensworth" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="333, 425, 431, 440" href="/locations/show.php?name=NSW:Glennies Creek" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="436, 474, 485, 489" href="/locations/show.php?name=NSW:Nundah" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

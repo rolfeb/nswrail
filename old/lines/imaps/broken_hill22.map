@@ -1,3 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="249, 260, 310, 275" href="/locations/show.php?name=NSW:Beilpajah" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

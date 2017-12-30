@@ -1,9 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="43, 447, 203, 462" href="/locations/show.php?name=NSW:Jct (Werris Creek South)" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="46, 424, 131, 438" href="/locations/show.php?name=NSW:Werris Creek" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="444, 82, 488, 97" href="/locations/show.php?name=NSW:Warral" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="296, 274, 360, 288" href="/locations/show.php?name=NSW:Belgamba" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="364, 183, 391, 197" href="/locations/show.php?name=NSW:Duri" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="110, 266, 190, 281" href="/locations/show.php?name=NSW:Currabubula" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="97, 330, 169, 344" href="/locations/show.php?name=NSW:Warrigundi" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

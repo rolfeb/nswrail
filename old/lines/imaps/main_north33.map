@@ -1,6 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="192, 416, 236, 431" href="/locations/show.php?name=NSW:Bolivia" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="278, 171, 343, 186" href="/locations/show.php?name=NSW:Bluff Rock" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="285, 291, 354, 306" href="/locations/show.php?name=NSW:Sandy Flat" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="256, 88, 312, 103" href="/locations/show.php?name=NSW:Bungulla" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

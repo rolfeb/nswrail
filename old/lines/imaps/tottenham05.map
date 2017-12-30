@@ -1,9 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="280, 147, 368, 162" href="/locations/show.php?name=NSW:Caroline Mine" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="294, 265, 382, 280" href="/locations/show.php?name=NSW:Minemoorong" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="90, 234, 202, 249" href="/locations/show.php?name=NSW:Caroline Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="396, 396, 436, 411" href="/locations/show.php?name=NSW:Albert" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="216, 404, 315, 419" href="/locations/show.php?name=NSW:Iron Duke Mine" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="104, 174, 245, 188" href="/locations/show.php?name=NSW:Mount Royal Smelters" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="120, 192, 190, 207" href="/locations/show.php?name=NSW:Tottenham" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

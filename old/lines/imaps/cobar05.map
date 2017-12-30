@@ -1,3 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="303, 259, 355, 273" href="/locations/show.php?name=NSW:Meryula" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

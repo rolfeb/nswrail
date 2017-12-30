@@ -1,9 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="473, 291, 547, 306" href="/locations/show.php?name=NSW:Hazelbrook" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="39, 279, 104, 294" href="/locations/show.php?name=NSW:Katoomba" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="362, 307, 430, 322" href="/locations/show.php?name=NSW:Bullaburra" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="470, 339, 533, 354" href="/locations/show.php?name=NSW:Woodford" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="402, 274, 450, 289" href="/locations/show.php?name=NSW:Lawson" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="261, 253, 366, 268" href="/locations/show.php?name=NSW:Wentworth Falls" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="126, 254, 163, 268" href="/locations/show.php?name=NSW:Leura" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

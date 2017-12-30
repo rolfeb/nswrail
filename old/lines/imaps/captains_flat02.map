@@ -1,4 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="294, 116, 376, 131" href="/locations/show.php?name=NSW:Hoskinstown" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="276, 432, 361, 446" href="/locations/show.php?name=NSW:Captains Flat" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

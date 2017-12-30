@@ -1,6 +1,0 @@
-<script type="text/javascript">
-$(function() {
-    $("#line-tabs").tabs();
-});
-</script>
-

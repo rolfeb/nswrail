@@ -1,6 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="272, 314, 396, 329" href="/locations/show.php?name=NSW:Dartbrook Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="312, 372, 370, 387" href="/locations/show.php?name=NSW:Koolbury" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="292, 214, 439, 229" href="/locations/show.php?name=NSW:Dartbrook Coal Loader" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="264, 103, 327, 118" href="/locations/show.php?name=NSW:Aberdeen" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

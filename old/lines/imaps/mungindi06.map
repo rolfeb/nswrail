@@ -1,8 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="99, 104, 253, 118" href="/locations/show.php?name=NSW:Narrabri South Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="127, 130, 193, 144" href="/locations/show.php?name=NSW:Tibberena" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="97, 84, 270, 99" href="/locations/show.php?name=NSW:Narrabri Junction Platform" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="150, 46, 205, 61" href="/locations/show.php?name=NSW:Narrabri" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="320, 287, 382, 302" href="/locations/show.php?name=NSW:Turrawan" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="38, 65, 129, 79" href="/locations/show.php?name=NSW:Narrabri West" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

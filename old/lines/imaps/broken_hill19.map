@@ -1,3 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="481, 290, 533, 305" href="/locations/show.php?name=NSW:Conoble" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

@@ -1,7 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="252, 106, 388, 121" href="/locations/show.php?name=NSW:Bungendore Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="194, 10, 272, 25" href="/locations/show.php?name=NSW:Bungendore" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="48, 154, 102, 168" href="/locations/show.php?name=NSW:Burbong" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="57, 134, 186, 148" href="/locations/show.php?name=NSW:Brooks Bank Tunnel" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="293, 311, 375, 326" href="/locations/show.php?name=NSW:Hoskinstown" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

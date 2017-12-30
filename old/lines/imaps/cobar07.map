@@ -1,3 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="189, 101, 257, 116" href="/locations/show.php?name=NSW:Elura Mine" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

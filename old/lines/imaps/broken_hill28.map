@@ -1,3 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="303, 273, 365, 287" href="/locations/show.php?name=NSW:Menindee" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

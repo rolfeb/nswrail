@@ -1,9 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="425, 462, 538, 476" href="/locations/show.php?name=NSW:Wallsend Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="120, 404, 269, 419" href="/locations/show.php?name=NSW:West Wallsend Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="211, 213, 381, 227" href="/locations/show.php?name=NSW:Stockrington No 2 Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="140, 369, 246, 384" href="/locations/show.php?name=NSW:Seaham Colliery" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="207, 266, 307, 280" href="/locations/show.php?name=NSW:Minmi Open Cut" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="102, 422, 197, 436" href="/locations/show.php?name=NSW:West Wallsend" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-<area shape="rect" coords="311, 185, 407, 199" href="/locations/show.php?name=NSW:Minmi Junction" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>

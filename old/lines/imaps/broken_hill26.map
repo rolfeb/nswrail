@@ -1,3 +1,0 @@
-<map name="imap">
-<area shape="rect" coords="466, 376, 531, 391" href="/locations/show.php?name=NSW:Kaleentha" onMouseOver="return overlib('Click to view details', HAUTO, WRAP);" onMouseOut="return nd();"/>
-</map>
