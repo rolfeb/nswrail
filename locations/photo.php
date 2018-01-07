@@ -62,8 +62,6 @@ while ($stmt->fetch())
     if ($owner == "")
         $owner = "Rolfe Bozier";
 
-    $owner_url = get_user_url($owner);
-
     $back_url = "show.php?"
         . urlenc("name=$state:$location");
     if ($line)
@@ -78,8 +76,6 @@ while ($stmt->fetch())
     $t->setVariable("IMG-ALT-TEXT", htmlentities($caption));
     $t->setVariable("DATE", $date);
     $t->setVariable("OWNER", $owner);
-    if ($owner_url)
-        $t->setVariable("OWNER-URL", $owner_url);
     $t->setVariable("LOCATION-URL", $back_url);
     $t->setVariable("LOCATION-TEXT", locn_fulltitle($location, $type));
 
@@ -165,33 +161,6 @@ function get_available_photos($state, $location)
     $stmt->close();
 
     return $arr_seqno;
-}
-
-function get_user_url($owner)
-{
-    global $dbi;
-
-    $stmt = $dbi->stmt_init();
-    $stmt->prepare("
-        select
-            U.url
-        from
-            r_user U
-        where
-            U.fullname = ?
-    ")
-        or dbi_error_trace("prepare failed");
-
-    $stmt->bind_param("s", $owner);
-    $stmt->execute();
-    $stmt->bind_result($url);
-
-    if (!$stmt->fetch())
-        $url = '';
-
-    $stmt->close();
-
-    return $url;
 }
 
 ?>

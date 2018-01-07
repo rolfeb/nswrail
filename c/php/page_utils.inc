@@ -3,7 +3,7 @@
 /*
  * Return the HTML for the header bar (logo + login)
  */
-function get_headerbar_html($nologin = false)
+function get_headerbar_html($user, $nologin = false)
 {
     global $BASE_PATH;
 
@@ -15,10 +15,10 @@ function get_headerbar_html($nologin = false)
         return "<!-- ERROR: couldn't open $template_dir/headerbar.tpl -->\n";
     }
 
-    if (auth_loggedin())
+    if (!$user->is_guest())
     {
         $t->setCurrentBlock("AUTHENTICATED-USER");
-        $t->setVariable("USERNAME", auth_username());
+        $t->setVariable("USERNAME", $user->fullname);
         $t->parseCurrentBlock();
     }
     else
@@ -92,6 +92,7 @@ function get_menubar_html()
 function display_page($title, $content, $args = null)
 {
     global $BASE_PATH;
+    global $user;
 
     $p = new HTML_Template_ITX("$BASE_PATH/c/tpl");
     $p->loadTemplateFile("page-template.tpl");
@@ -130,7 +131,7 @@ function display_page($title, $content, $args = null)
     $p->setVariable("PAGE-TITLE", $title);
     if (!$basic_page)
     {
-        $p->setVariable("PAGE-HEADER", get_headerbar_html());
+        $p->setVariable("PAGE-HEADER", get_headerbar_html($user));
         $p->setVariable("PAGE-MENU", get_menubar_html());
     }
     $p->setVariable("PAGE-CONTENT", $content);

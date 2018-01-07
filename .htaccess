@@ -5,7 +5,8 @@
 #   - common PHP utility files
 #   - PEAR files
 #
-php_value include_path ".:/work/dev/nswrail-dev/public_html/l/php:/work/dev/nswrail-dev/public_html/c/php:/work/pear/PEAR"
+php_value include_path ".:/work/dev/nswrail-dev/public_html/l/php:/work/dev/nswrail-dev/public_html/c/php:/work/pear/PEAR:/work/dev/nswrail-dev"
+php_value date.timezone "Australia/NSW"
 
 #
 # Configuration parameters

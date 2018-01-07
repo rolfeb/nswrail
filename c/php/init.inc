@@ -1,6 +1,7 @@
 <?php
 
 require_once "error.inc";
+require_once "user.php";
 
 /*
  * Perform host-specific stuff
@@ -40,6 +41,8 @@ header("Content-type: text/html; charset=utf-8");
  * Manage user session
  */
 session_start();
+
+$user = new User($dbi);
 
 if (website_under_maintenance())
     exit;

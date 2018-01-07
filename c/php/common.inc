@@ -15,4 +15,14 @@ require_once "r_person.php";
 require_once "r_location.php";
 require_once "page_header.inc";
 require_once "dbutil.inc";
+
+# third party packages
+if (version_compare(PHP_VERSION, "5.6") == -1) {
+    require "thirdparty/password_compat/lib/password.php";
+}
+
+require 'thirdparty/PHPMailer/src/Exception.php';
+require 'thirdparty/PHPMailer/src/PHPMailer.php';
+require 'thirdparty/PHPMailer/src/SMTP.php';
+
 ?>

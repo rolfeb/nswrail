@@ -11,6 +11,10 @@ $BASE_PATH          = "/work/dev/nswrail-dev/public_html";
 $AUSRAIL_STATE      = "nsw";
 $AUSRAIL_PHOTO_DIR  = "/work/dev/nswrail-dev/public_html/locations/photos";
 
+$ADMIN_EMAIL        = 'admin@nswrail.net';
+$NOREPLY_EMAIL      = 'noreply@nswrail.net';
+
+
 require_once "local.inc";
 require_once "common.inc";
 ?>

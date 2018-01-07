@@ -22,11 +22,7 @@
 <div>
 {TEXT} ({DATE})
 <br/>
-[Copyright: {OWNER}
-<!-- BEGIN OWNER-URL-BLOCK -->
-(<a href="{OWNER-URL}">link</a>)
-<!-- END OWNER-URL-BLOCK -->
-]
+[Copyright: {OWNER}]
 </div>
 
 <br/>

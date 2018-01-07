@@ -12,24 +12,22 @@
 <!-- BEGIN UNAUTHENTICATED-USER -->
 <div>
 <a id="login" href="#">login</a> |
-<a id="register" href="#">register</a>
+<a href="/c/php/register.php">register</a>
 </div>
-<div id="login-form" title="Login">
+<!-- login dialog -->
+<div id="login-form" class="dialog" title="Login">
 <form action="/c/php/auth/login.php" method="post">
 <table class="simple">
 <tr>
 <td><label for="id_username">Email:</label></td>
-<td><input type="text" size="20" name="username" id="id_username" /></td>
+<td><input type="text" size="20" name="username" id="login_username" /></td>
 </tr>
 <tr>
 <td><label for="id_password">Password:</label></td>
-<td><input type="password" size="12" name="password" id="id_password" /></td>
+<td><input type="password" size="20" name="password" id="login_password" /></td>
 </tr>
 </table>
 </form>
-</div>
-<div id="register-form" title="Register">
-<p>Sorry, user registration is not yet available!</p>
 </div>
 <!-- END UNAUTHENTICATED-USER -->
 </div><!-- auth -->

@@ -358,7 +358,7 @@ div#login_form {
     display: none;
 }
 
-input#id_username, input#id_password {
+input#id_usernamex, input#id_password {
     border: 1px solid #888;
     font-size: 11px;
 }
@@ -503,4 +503,11 @@ td.pl_thumbnail img {
 @media print {
     DIV#menu { display: none; }
     DIV.search { display: none; }
+}
+
+/*
+ * Properties for dialogs
+ */
+.dialog p.errormsg {
+    color: #f00;
 }
