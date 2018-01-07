@@ -7,55 +7,38 @@ use PHPMailer\PHPMailer\Exception;
 
 function display_registration_form()
 {
-    // XXX: config()
-    global $BASE_PATH;
-    global $WEBSITE;
-    global $ADMIN_EMAIL;
-
-    $t = new HTML_Template_ITX("$BASE_PATH/c/tpl");
+    $t = new HTML_Template_ITX(".");
     $t->loadTemplateFile("register.tpl", true, true);
     $t->setCurrentBlock('CONTENT');
-    $t->setVariable('ADMIN-EMAIL', $ADMIN_EMAIL);
+    $t->setVariable('ADMIN-EMAIL', get_config('email-admin'));
     if (isset($_SERVER['HTTP_REFERER']))
         $t->setVariable('REFERRER', $_SERVER["HTTP_REFERER"]);
     else
-        $t->setVariable('REFERRER', "http://$WEBSITE/");
+        $t->setVariable('REFERRER', get_config('website-url'));
     $t->parseCurrentBlock();
     display_page("Registration", $t->get("CONTENT"),
         array(
-            'HEAD-EXTRA' => '<script type="text/javascript" src="/c/js/register.js"></script>'
+            'HEAD-EXTRA' => '<script type="text/javascript" src="/c/register/register.js"></script>'
         )
     );
 }
 
-function process_registration_form()
+function process_registration_form($emailaddr, $fullname, $password1, $password2, $referrer)
 {
-    // XXX: config()
-    global $BASE_PATH;
-    global $WEBSITE;
     global $dbi;
-
-    // XXX: move to caller
-    $emailaddr = $_POST['username'];
-    $fullname = $_POST['fullname'];
-    $password1 = $_POST['password1'];
-    $password2 = $_POST['password2'];
-    $referrer = $_POST['referrer'];
 
     // repeat the browser-side checking
     if (strlen($emailaddr) < 5
-        || strpos($emailaddr, "@") == false
-        || strlen($fullname) < 5
-        || strlen($password1) < 6
-        || strlen($password2) < 6) {
-            // XXX: combine with post-registration page
-            error_page("Malformed registration request", $referrer);
+            || strpos($emailaddr, "@") == false
+            || strlen($fullname) < 5
+            || strlen($password1) < 6
+            || strlen($password2) < 6) {
+        return 'Malformed registration request';
     }
 
     // check for an existing entry
     if (User::email_address_in_use($dbi, $emailaddr)) {
-        // XXX: combine with post-registration page
-        error_page("Email address is already in use", $referrer);
+        return 'Email address is already in use';
     }
 
     // generate a unique activation ID
@@ -64,16 +47,16 @@ function process_registration_form()
     // add/update a pending registration record in the user table
     $enc_password = password_hash($password1, PASSWORD_DEFAULT);
     if (!User::register_new_user($dbi, $emailaddr, $fullname, $enc_password, $activate_id, $_SERVER['REMOTE_ADDR'])) {
-        // XXX: combine with post-registration page
-        error_page("Failed to add user", $referrer);
+        return 'Failed to add user';
     }
 
     // send an email to the username
-    $confirm_url = "http://$WEBSITE/c/php/register.php?id=$activate_id";
+    $confirm_url = get_config('website-url') . "/c/register/register.php?id=$activate_id";
+    $website = get_config('website');
 
     $email_content_html = <<<EOD
 <p>
-This email has been sent in response to an account registration at $WEBSITE.
+This email has been sent in response to an account registration at $website.
 <br/>
 If you are the person that registered the account, then please click on the
 following link to activate your account:
@@ -84,20 +67,20 @@ or, paste the following URL into your browser:
 <br/>
 $confirm_url
 <br/>
-If you did NOT register an account at $WEBSITE, then you can just ignore this
+If you did NOT register an account at $website, then you can just ignore this
 email; the account will be deleted. Maybe someone mis-typed their address.
 </p>
 EOD;
 
     $email_content_plaintext = <<<EOD
-This email has been sent in response to an account registration at $WEBSITE.
+This email has been sent in response to an account registration at $website.
 
 If you are the person that registered the account, then please paste the
 following URL into your browser:
 
 $confirm_url
 
-If you did NOT register an account at $WEBSITE, then you can just ignore this
+If you did NOT register an account at $website, then you can just ignore this
 email; the account will be deleted. Maybe someone mis-typed their address.
 EOD;
     
@@ -106,33 +89,33 @@ EOD;
     try {
         # $mail->SMTPDebug = 2;
         $mail->isSMTP();
-        // XXX: move to config
-        $mail->Host = 'mail-hub.bigpond.net.au';
-        # $mail->SMTPAuth = true;
-        # $mail->Username = 'user@example.com';
-        # $mail->Password = 'secret';
-        # $mail->SMTPSecure = 'tls';
-        # $mail->Port = 587;
 
-        // XXX: move to config
-        $mail->setFrom('admin@nswrail.net', "$WEBSITE admin");
+        $mail->Host = get_config('smtp-server');
+        if (get_config('smtp-issecure')) {
+            $mail->SMTPAuth = true;
+            $mail->Username = get_config('smtp-username');
+            $mail->Password = get_config('smtp-password');
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+        }
+
+        $mail->setFrom(get_config('email-admin'), "$website admin");
         $mail->addAddress($emailaddr, $fullname);
-        $mail->addReplyTo('noreply@nswrail.net', 'Do not reply');
+        $mail->addReplyTo(get_config('email-noreply'), 'Do not reply');
 
         $mail->isHTML(true);
-        $mail->Subject = "Please confirm account registration: $WEBSITE";
+        $mail->Subject = "Please confirm account registration: $website";
         $mail->Body    = $email_content_html;
         $mail->AltBody = $email_content_plaintext;
 
         $mail->send();
     } catch (Exception $e) {
-        // XXX: combine with post-registration page
-        error_page("Error: could not send email - $mail->ErrorInfo");
+        return "Error: could not send email - $mail->ErrorInfo";
     }
 
     // redirect to post-registration page
-    $t = new HTML_Template_ITX("$BASE_PATH/c/tpl");
-    $t->loadTemplateFile("register2.tpl", true, true);
+    $t = new HTML_Template_ITX(".");
+    $t->loadTemplateFile("post-register.tpl", true, true);
     $t->setCurrentBlock('CONTENT');
     $t->setVariable('EMAIL-ADDR', $emailaddr);
     $t->setVariable('REFERRER', $referrer);
@@ -143,7 +126,6 @@ EOD;
 function activate_new_account($activate_code)
 {
     global $dbi;
-    global $WEBSITE;
 
     // try activating the account
     $err = User::activate_user_via_code($dbi, $activate_code);
@@ -152,21 +134,34 @@ function activate_new_account($activate_code)
     }
 
     // display success message
-    $website_url = "http://$WEBSITE/";
 
     $t = new HTML_Template_ITX(".");
-    $t->loadTemplateFile("activate.tpl", true, true);
+    $t->loadTemplateFile("post-activate.tpl", true, true);
     $t->setCurrentBlock('CONTENT');
-    $t->setVariable('WEBSITE-URL', $website_url);
-    $t->setVariable('WEBSITE', $WEBSITE);
+    $t->setVariable('WEBSITE-URL', get_config('website-url'));
+    $t->setVariable('WEBSITE', get_config('website'));
     $t->parseCurrentBlock();
     display_page("Account activation", $t->get("CONTENT"));
 }
 
 if (isset($_POST['username'])) {
-    process_registration_form();
+    if (!isset($_POST['fullname']) || !isset($_POST['password1']) || !isset($_POST['password2'])) {
+        error_page('Error - parameter error');
+    }
+    $emailaddr = $_POST['username'];
+    $fullname = $_POST['fullname'];
+    $password1 = $_POST['password1'];
+    $password2 = $_POST['password2'];
+    $referrer = $_POST['referrer'];
+
+    $err = process_registration_form($emailaddr, $fullname, $password1, $password2, $referrer);
+    if ($err) {
+        error_page("Error - registration failed: $err");
+    }
+
 } else if (isset($_GET['id'])) {
     $activate_code = $_GET['id'];
+
     $err = activate_new_account($activate_code);
     if ($err) {
         error_page("Error - activation failed: $err");

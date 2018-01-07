@@ -4,6 +4,8 @@ global $BASE_PHP_PATH;
 require_once "HTML/Template/ITX.php";
 require_once "HTML/BBCodeParser.php";
 
+require_once "config.inc";
+
 require_once "error.inc";
 require_once "util.inc";
 require_once "auth.inc";

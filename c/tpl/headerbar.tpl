@@ -12,7 +12,7 @@
 <!-- BEGIN UNAUTHENTICATED-USER -->
 <div>
 <a id="login" href="#">login</a> |
-<a href="/c/php/register.php">register</a>
+<a href="/c/register/register.php">register</a>
 </div>
 <!-- login dialog -->
 <div id="login-form" class="dialog" title="Login">

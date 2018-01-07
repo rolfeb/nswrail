@@ -19,7 +19,7 @@ If you really need to be anonymous in some way (for example, if you work in
 the rail industry), then <a href="mailto:{ADMIN-EMAIL}">email me</a>
 after you have registered and I will set your account up be anonymised.
 </p>
-<form action="/c/php/register.php" method="post" onSubmit="return validate_register_form();">
+<form action="/c/register/register.php" method="post" onSubmit="return validate_register_form();">
 <table class="simple">
 <tr>
 <td><label for="id_username">Email:</label></td>
