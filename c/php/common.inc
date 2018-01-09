@@ -10,6 +10,7 @@ require_once "error.inc";
 require_once "util.inc";
 require_once "auth.inc";
 require_once "page_utils.inc";
+require_once "audit.inc";
 
 require_once "init.inc";
 

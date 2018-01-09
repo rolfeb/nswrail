@@ -6,6 +6,11 @@ function get_config($key)
         'website'       => 'nswrail.net',
         'website-url'   => 'http://nswrail.net/',
 
+        // database settings
+        'db-name'       => 'nswrail-dev',
+        'db-user'       => 'rolfe',
+        'db-password'   => '',
+
         // email settings
         'email-admin'   => 'admin@nswrail.net',
         'email-noreply' => 'noreply@nswrail.net',

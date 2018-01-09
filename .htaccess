@@ -23,6 +23,11 @@ DirectoryIndex index.php
 #
 RewriteEngine on
 
+RewriteBase /
+
+RewriteCond %{HTTPS} !=on
+RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+
 ###RewriteCond %{REMOTE_ADDR}      !^144\.136\.115\.
 ###RewriteCond %{REMOTE_ADDR}      !^192\.168\.13\.100$
 ###RewriteRule !^offline.php$      /offline.php [L]

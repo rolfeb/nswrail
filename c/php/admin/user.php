@@ -62,14 +62,14 @@ exit();
 
 function show_user_listing($t)
 {
-    global $dbi;
+    global $db;
 
     if (!$t->loadTemplateFile("admin-user-listing.tpl", true, true))
         return "<!-- ERROR: couldn't open admin-user-listing.tpl -->\n";
 
     $title = 'User Listing';
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             *
@@ -106,7 +106,7 @@ function show_user_listing($t)
 
 function show_user_modify_screen($t)
 {
-    global $dbi;
+    global $db;
 
     if (!$t->loadTemplateFile("admin-user-modify.tpl", true, true))
         return "<!-- ERROR: couldn't open admin-user-modify.tpl -->\n";
@@ -115,7 +115,7 @@ function show_user_modify_screen($t)
 
     $uid = quote_external($_GET['uid']);
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             *
@@ -192,8 +192,6 @@ function show_user_modify_screen($t)
 
 function show_user_add_screen($t)
 {
-    global $dbi;
-
     if (!$t->loadTemplateFile("admin-user-add.tpl", true, true))
         return "<!-- ERROR: couldn't open admin-user-add.tpl -->\n";
 
@@ -240,7 +238,7 @@ function show_user_add_screen($t)
 
 function update_user_details()
 {
-    global $dbi;
+    global $db;
 
     $uid = quote_external($_POST['uid']);
     $email = quote_external($_POST['email']);
@@ -260,7 +258,7 @@ function update_user_details()
     else
         $extra = "";
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         update
             r_person
@@ -290,20 +288,20 @@ function update_user_details()
 
     if (!$stmt->execute())
     {
-        $err = $dbi->error;
+        $err = $db->error;
         $stmt->close();
-        $dbi->rollback();
+        $db->rollback();
         error_page("Update failed: " . $err);
     }
     $stmt->close();
-    $dbi->commit();
+    $db->commit();
 
     header("Location: user.php");
 }
 
 function create_user_details()
 {
-    global $dbi;
+    global $db;
 
     $email = quote_external($_POST['email']);
     $fullname = quote_external($_POST['fullname']);
@@ -315,7 +313,7 @@ function create_user_details()
     $salt = auth_generate_salt();
     $enc_password = auth_encrypt_password($password, $salt);
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         insert into
             r_person
@@ -343,13 +341,13 @@ function create_user_details()
 
     if (!$stmt->execute())
     {
-        $err = $dbi->error;
+        $err = $db->error;
         $stmt->close();
-        $dbi->rollback();
+        $db->rollback();
         error_page("Insert failed: " . $err);
     }
     $stmt->close();
-    $dbi->commit();
+    $db->commit();
 
     header("Location: user.php");
 }

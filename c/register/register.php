@@ -25,8 +25,6 @@ function display_registration_form()
 
 function process_registration_form($emailaddr, $fullname, $password1, $password2, $referrer)
 {
-    global $dbi;
-
     // repeat the browser-side checking
     if (strlen($emailaddr) < 5
             || strpos($emailaddr, "@") == false
@@ -37,7 +35,7 @@ function process_registration_form($emailaddr, $fullname, $password1, $password2
     }
 
     // check for an existing entry
-    if (User::email_address_in_use($dbi, $emailaddr)) {
+    if (User::email_address_in_use($emailaddr)) {
         return 'Email address is already in use';
     }
 
@@ -46,9 +44,10 @@ function process_registration_form($emailaddr, $fullname, $password1, $password2
 
     // add/update a pending registration record in the user table
     $enc_password = password_hash($password1, PASSWORD_DEFAULT);
-    if (!User::register_new_user($dbi, $emailaddr, $fullname, $enc_password, $activate_id, $_SERVER['REMOTE_ADDR'])) {
+    if (!User::register_new_user($emailaddr, $fullname, $enc_password, $activate_id, $_SERVER['REMOTE_ADDR'])) {
         return 'Failed to add user';
     }
+    Audit.addentry(Audit::A_REGISTER, $emailaddr);
 
     // send an email to the username
     $confirm_url = get_config('website-url') . "/c/register/register.php?id=$activate_id";
@@ -125,13 +124,12 @@ EOD;
 
 function activate_new_account($activate_code)
 {
-    global $dbi;
-
     // try activating the account
-    $err = User::activate_user_via_code($dbi, $activate_code);
+    $err = User::activate_user_via_code($activate_code);
     if ($err) {
         return $err;
     }
+    Audit.addentry(Audit::A_ACTIVATE, $activate_code);
 
     // display success message
 

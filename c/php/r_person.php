@@ -4,9 +4,9 @@ require_once 'dbutil.inc';
 
 function get_person_by_email($email)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             *
@@ -15,7 +15,7 @@ function get_person_by_email($email)
         where
             email = ?
     ")
-        or die("prepare failed: " . $dbi->error . "\n");
+        or die("prepare failed: " . $db->error . "\n");
 
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -35,9 +35,9 @@ function get_person_by_username($email)
 
 function get_person_by_uid($uid)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             *
@@ -46,7 +46,7 @@ function get_person_by_uid($uid)
         where
             uid = ?
     ")
-        or die("prepare failed: " . $dbi->error . "\n");
+        or die("prepare failed: " . $db->error . "\n");
 
     $stmt->bind_param("d", $uid);
     $stmt->execute();

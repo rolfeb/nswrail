@@ -1,5 +1,6 @@
 <?php
 
+require_once "config.inc";
 require_once "error.inc";
 require_once "user.php";
 
@@ -10,9 +11,12 @@ require_once "user.php";
 /*
  * Connect to the database
  */
-$dbi = @new mysqli('localhost', $DB_USER, $DB_PASSWORD, $DB_NAME);
-if ($dbi->connect_errno)
-    die("failed to connect to database $DB_NAME: " . $dbi->connect_errno . "\n");
+$name = get_config('db-name');
+$user = get_config('db-user');
+$password = get_config('db-password');
+$db = @new mysqli('localhost', $user, $password, $name);
+if ($db->connect_errno)
+    die("failed to connect to database $name: " . $db->connect_errno . "\n");
 
 /*
  * Manage browser caching
@@ -42,7 +46,7 @@ header("Content-type: text/html; charset=utf-8");
  */
 session_start();
 
-$user = new User($dbi);
+$user = new User($db);
 
 if (website_under_maintenance())
     exit;
@@ -152,9 +156,9 @@ function gmapkey($location)
 
 function get_database_timestamp()
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             DB.last_update

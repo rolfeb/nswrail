@@ -6,7 +6,7 @@
 <div id="logged_in_ctrl">
 {USERNAME} |
 <a href="/c/php/auth/settings.php">settings</a> |
-<a href="/c/php/auth/logout.php">logout</a>
+<a href="/c/login/logout.php">logout</a>
 </div>
 <!-- END AUTHENTICATED-USER -->
 <!-- BEGIN UNAUTHENTICATED-USER -->
@@ -16,7 +16,7 @@
 </div>
 <!-- login dialog -->
 <div id="login-form" class="dialog" title="Login">
-<form action="/c/php/auth/login.php" method="post">
+<form action="/c/login/login.php" method="post">
 <table class="simple">
 <tr>
 <td><label for="id_username">Email:</label></td>

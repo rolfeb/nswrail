@@ -13,7 +13,8 @@ class User
     public $username;
     public $fullname;
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->_db = $db;
 
         if (isset($_SESSION['uid']) && $_SESSION['uid'] >= 0) {
@@ -24,7 +25,8 @@ class User
     }
 
     // XXX: login() should return error, not redirect to error_page
-	public function login($username, $password_in) {
+    public function login($username, $password_in)
+    {
         # XXX: parameter validation?
 
         # check password and status
@@ -67,17 +69,21 @@ class User
         return true;
 	}
 
-	public function logout() {
+	public function logout()
+    {
 		session_destroy();
+
         $this->load_guest_user();
 	}
 
-    public function is_guest() {
+    public function is_guest()
+    {
         return $this->uid == -1;
     }
 
     # get user details from database, given uid or username
-    private function load_user_from_db($uid, $username) {
+    private function load_user_from_db($uid, $username)
+    {
         $stmt = $this->_db->stmt_init();
 
         if (!is_null($uid)) {
@@ -122,13 +128,17 @@ class User
         $stmt->close();
     }
 
-    private function load_guest_user() {
+    private function load_guest_user()
+    {
         $this->uid = -1;
         $this->username = "guest";
         $this->fullname = "guest";
     }
 
-    public static function email_address_in_use($db, $addr) {
+    public static function email_address_in_use($addr)
+    {
+        global $db;
+
         $stmt = $db->stmt_init();
 
         $stmt->prepare("
@@ -149,7 +159,10 @@ class User
         return $exists;
     }
 
-    public static function register_new_user($db, $addr, $fullname, $enc_password, $activate_id, $register_addr) {
+    public static function register_new_user($addr, $fullname, $enc_password, $activate_id, $register_addr)
+    {
+        global $db;
+
         $stmt = $db->stmt_init();
 
         $stmt->prepare("
@@ -177,8 +190,10 @@ class User
         return $status;
     }
 
-    public static function activate_user_via_code($db, $activate_code)
+    public static function activate_user_via_code($activate_code)
     {
+        global $db;
+
         $stmt = $db->stmt_init();
 
         $flag = User::S_UNCONFIRMED;

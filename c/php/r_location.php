@@ -4,9 +4,9 @@ require_once 'dbutil.inc';
 
 function is_valid_location($state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             1
@@ -17,7 +17,7 @@ function is_valid_location($state, $location)
             and
             location_name = ?
     ")
-        or die("prepare failed: " . $dbi->error . "\n");
+        or die("prepare failed: " . $db->error . "\n");
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
@@ -32,9 +32,9 @@ function is_valid_location($state, $location)
 
 function get_location_event_date_str($state, $location, $type, $first)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             day,
@@ -52,7 +52,7 @@ function get_location_event_date_str($state, $location, $type, $first)
         order by 
             seqno
     ")
-        or die("prepare failed: " . $dbi->error . "\n");
+        or die("prepare failed: " . $db->error . "\n");
 
     $stmt->bind_param("sss", $state, $location, $type);
     $stmt->execute();

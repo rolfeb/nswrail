@@ -37,7 +37,7 @@ exit();
 #
 function validate_params($state, $location, $date, &$date_error, &$day, &$month, &$year, $description, $image, $username, &$uid)
 {
-    global $dbi;
+    global $db;
 
     #
     # Check the location
@@ -276,9 +276,9 @@ function save_file($image, $basename, $filename)
 
 function update_database($state, $location, $day, $month, $year, $date_error, $description, $filename, $width, $height, $submit_dt, $uid)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         insert into r_location_photo
             select
@@ -316,13 +316,13 @@ function update_database($state, $location, $day, $month, $year, $date_error, $d
 
     if (!$stmt->execute())
     {
-        $err = $dbi->error;
+        $err = $db->error;
         $stmt->close();
-        $dbi->rollback();
+        $db->rollback();
         return "ERROR: update failed: $err";
     }
     $stmt->close();
-    $dbi->commit();
+    $db->commit();
 
     return 0;
 }

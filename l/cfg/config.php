@@ -3,8 +3,8 @@
 function get_config($key)
 {
     $config = array(
-        'website'       => 'nswrail-dev',
-        'website-url'   => 'http://nswrail-dev/',
+        'website'       => 'nswrail-dev.local',
+        'website-url'   => 'http://nswrail-dev.local/',
 
         // email settings
         'email-admin'   => 'admin@nswrail.net',

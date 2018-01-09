@@ -5,9 +5,9 @@
  */
 function db_random_pics($count)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             state,
@@ -42,9 +42,9 @@ function db_random_pics($count)
  */
 function db_count_locations()
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select count(*) from r_location
     ")
@@ -66,9 +66,9 @@ function db_count_locations()
  */
 function db_count_photographs()
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select count(*) from r_location_photo
         where
@@ -95,9 +95,9 @@ function db_count_photographs()
  */
 function db_count_recent_photographs()
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             DATEDIFF(SYSDATE(), submit_date)    age_in_days,

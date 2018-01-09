@@ -83,9 +83,9 @@ function auth_encrypt_password($plaintext, $salt)
 
 function auth_check_password($username, $password)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             *

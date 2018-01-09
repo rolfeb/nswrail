@@ -5,9 +5,9 @@
  */
 function dbline_get_details($state, $line)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             R.description,
@@ -40,7 +40,7 @@ function dbline_get_details($state, $line)
 
     $stmt->close();
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             RT.text
@@ -77,9 +77,9 @@ function dbline_get_details($state, $line)
  */
 function get_line_status_class($state, $line)
 {
-    global $dbi;
+    global $db;
 
-    $stmt1 = $dbi->stmt_init();
+    $stmt1 = $db->stmt_init();
     $stmt1->prepare("
         select distinct
             SEV.segment,
@@ -102,7 +102,7 @@ function get_line_status_class($state, $line)
     $stmt1->bind_result($segment, $start_state, $start_name, $end_state,
         $end_name);
 
-    $stmt2 = $dbi->stmt_init();
+    $stmt2 = $db->stmt_init();
     $stmt2->prepare("
         select
             SEV.type
@@ -185,9 +185,9 @@ function get_line_status_class($state, $line)
 
 function get_linemap_count($state, $line)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             count(*)
@@ -223,9 +223,9 @@ function get_linemap_count($state, $line)
  */
 function dbline_get_length($state, $line)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             abs(L1.distance - L2.distance)
@@ -319,9 +319,9 @@ function dbline_get_length($state, $line)
  */
 function dbline_get_station_count($state, $line)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select distinct
             RL.location_state,

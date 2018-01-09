@@ -171,12 +171,12 @@ function post_only($varname, $defval = NULL)
 
 function quote_external($text)
 {
-    global $dbi;
+    global $db;
 
     if (get_magic_quotes_gpc())
         $text = stripslashes($text);
 
-    return $dbi->real_escape_string($text);
+    return $db->real_escape_string($text);
 }
 
 function make_canonical_name($name)
@@ -271,7 +271,7 @@ function changelog($file)
 
 function dbi_error_trace($text)
 {
-    global $dbi;
+    global $db;
 
     ob_start();
     debug_print_backtrace();
@@ -280,7 +280,7 @@ function dbi_error_trace($text)
 
     $trace = implode(explode('\n', $trace), '<br>\n');
 
-    die("$text [" . $dbi->error . "]<br><pre>" . $trace . "</pre>");
+    die("$text [" . $db->error . "]<br><pre>" . $trace . "</pre>");
 }
 
 function url_location($state, $location, $line='')

@@ -16,7 +16,7 @@ if (!$t->loadTemplateFile("myuploads.tpl", true, true))
 
 $title = "Pending Submissions";
 
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         RP.location_state,
