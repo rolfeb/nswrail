@@ -2,10 +2,10 @@
 
 class Audit
 {
-    const A_REGISTER    = 1;
-    const A_ACTIVATE    = 2;
-    const A_LOGIN       = 3;
-    const A_LOGOUT      = 4;
+    const A_REGISTER    = 'register';
+    const A_ACTIVATE    = 'activate';
+    const A_LOGIN       = 'login';
+    const A_LOGOUT      = 'logout';
 
     public function __construct() { }
 

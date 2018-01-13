@@ -2,11 +2,11 @@
 
 require_once 'site.inc';
 
-function try_login($username, $password)
+function try_login($username, $password, $remote_ip)
 {
     global $user;
 
-    if (!$user->login($username, $password))
+    if (!$user->login($username, $password, $remote_ip))
         return "Login failed $username / $password";
 
     Audit::addentry(Audit::A_LOGIN);
@@ -21,7 +21,7 @@ $referer = quote_external($_SERVER["HTTP_REFERER"]);
 
 header("Cache-control: private");
 
-$errormsg = try_login($username, $password);
+$errormsg = try_login($username, $password, $_SERVER['REMOTE_ADDR']);
 if ($errormsg) {
     error_page($errormsg, $referer);
 }

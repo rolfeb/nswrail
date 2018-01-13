@@ -3,8 +3,11 @@
 function get_config($key)
 {
     $config = array(
-        'website'       => 'nswrail.net',
-        'website-url'   => 'http://nswrail.net/',
+        # 'website'       => 'nswrail.net',
+        # 'website-url'   => 'http://nswrail.net',
+
+        'website'       => 'nswrail-dev',
+        'website-url'   => 'https://nswrail-dev.local',
 
         // database settings
         'db-name'       => 'nswrail-dev',

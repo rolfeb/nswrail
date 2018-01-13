@@ -25,7 +25,7 @@ class User
     }
 
     // XXX: login() should return error, not redirect to error_page
-    public function login($username, $password_in)
+    public function login($username, $password_in, $ip_addr)
     {
         # XXX: parameter validation?
 
@@ -34,6 +34,7 @@ class User
 
         $stmt->prepare("
             select
+                U.uid,
                 U.password,
                 U.status
             from
@@ -45,7 +46,7 @@ class User
 
         $stmt->bind_param("s", $username);
         $stmt->execute();
-        $stmt->bind_result($enc_password, $status);
+        $stmt->bind_result($uid, $enc_password, $status);
         $user_exists = $stmt->fetch();
         $stmt->close();
 
@@ -63,6 +64,26 @@ class User
             }
         }
 
+        # Update last-login details
+        $stmt = $this->_db->stmt_init();
+
+        $stmt->prepare("
+            update r_user
+            set
+                last_login_addr = ?,
+                last_login_time = ?
+            where
+                uid = ?
+        ")
+            or dbi_error_trace("prepare failed");
+
+        $now_dt = date("Y-m-d H:i:s");
+        $stmt->bind_param("ssi", $ip_addr, $now_dt, $uid);
+
+        $stmt->execute();
+        $stmt->close();
+
+        # Load this user and set their session
         $this->load_user_from_db(NULL, $username);
         $_SESSION['uid'] = $this->uid;
 

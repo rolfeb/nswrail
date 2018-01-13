@@ -23,6 +23,17 @@ function display_registration_form()
     );
 }
 
+function fill_in_email_template($template, $website, $url)
+{
+    $t = new HTML_Template_ITX(".");
+    $t->loadTemplateFile($template, true, true);
+    $t->setCurrentBlock('CONTENT');
+    $t->setVariable('WEBSITE', $website);
+    $t->setVariable('URL', $url);
+    $t->parseCurrentBlock();
+    return $t->get("CONTENT");
+}
+
 function process_registration_form($emailaddr, $fullname, $password1, $password2, $referrer)
 {
     // repeat the browser-side checking
@@ -47,42 +58,12 @@ function process_registration_form($emailaddr, $fullname, $password1, $password2
     if (!User::register_new_user($emailaddr, $fullname, $enc_password, $activate_id, $_SERVER['REMOTE_ADDR'])) {
         return 'Failed to add user';
     }
-    Audit.addentry(Audit::A_REGISTER, $emailaddr);
+    Audit::addentry(Audit::A_REGISTER, $emailaddr);
 
     // send an email to the username
     $confirm_url = get_config('website-url') . "/c/register/register.php?id=$activate_id";
     $website = get_config('website');
 
-    $email_content_html = <<<EOD
-<p>
-This email has been sent in response to an account registration at $website.
-<br/>
-If you are the person that registered the account, then please click on the
-following link to activate your account:
-<br/>
-<a href="$confirm_url">Confirm my registration</a>
-<br/>
-or, paste the following URL into your browser:
-<br/>
-$confirm_url
-<br/>
-If you did NOT register an account at $website, then you can just ignore this
-email; the account will be deleted. Maybe someone mis-typed their address.
-</p>
-EOD;
-
-    $email_content_plaintext = <<<EOD
-This email has been sent in response to an account registration at $website.
-
-If you are the person that registered the account, then please paste the
-following URL into your browser:
-
-$confirm_url
-
-If you did NOT register an account at $website, then you can just ignore this
-email; the account will be deleted. Maybe someone mis-typed their address.
-EOD;
-    
     $mail = new PHPMailer(true);
 
     try {
@@ -104,8 +85,8 @@ EOD;
 
         $mail->isHTML(true);
         $mail->Subject = "Please confirm account registration: $website";
-        $mail->Body    = $email_content_html;
-        $mail->AltBody = $email_content_plaintext;
+        $mail->Body    = fill_in_email_template("email-html.tpl", $website, $confirm_url);
+        $mail->AltBody = fill_in_email_template("email-plain.tpl", $website, $confirm_url);
 
         $mail->send();
     } catch (Exception $e) {
@@ -129,7 +110,7 @@ function activate_new_account($activate_code)
     if ($err) {
         return $err;
     }
-    Audit.addentry(Audit::A_ACTIVATE, $activate_code);
+    Audit::addentry(Audit::A_ACTIVATE, $activate_code);
 
     // display success message
 
