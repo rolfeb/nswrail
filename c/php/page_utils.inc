@@ -44,6 +44,8 @@ function get_menubar_html()
         return "<!-- ERROR: couldn't open $template_dir/menu.tpl -->\n";
     }
 
+    $menus = array();
+
     if ($fp = fopen($config_file, "r"))
     {
         while ($buf = fgets($fp))
@@ -54,11 +56,12 @@ function get_menubar_html()
             {
                 if ($arr[0] == 0)
                 {
-                    $t->parse("TAB");
-                    if ($arr[0] == "0L")
-                        $t->setVariable("TAB-ID", "last");
-                    $t->setVariable("TAB-NAME", $arr[1]);
-                    $t->setVariable("TAB-URL", $arr[2]);
+                    $m = [
+                        'text' => $arr[1],
+                        'url' => $arr[2],
+                        'dropdown' => array(),
+                    ];
+                    array_push($menus, $m);
                 }
                 elseif
                 (
@@ -67,17 +70,34 @@ function get_menubar_html()
                     $arr[0] == 2 && auth_priv_admin()
                 )
                 {
-                    $prefix = $arr[0] == 2 ? '*' : '';
-                    $t->setVariable("ITEM-NAME", "$prefix$arr[1]");
-                    $t->setVariable("ITEM-URL", $arr[2]);
-                    $t->parse("ITEM");
+                    $e = [
+                        'text' => $arr[1],
+                        'url' => $arr[2],
+                    ];
+                    $n = count($menus);
+                    array_push($menus[$n-1]['dropdown'], $e);
                 }
-
             }
         }
         fclose($fp);
 
-        $t->parse("TAB");
+        foreach ($menus as $m) {
+            if (count($m['dropdown']) == 0) {
+                $t->setVariable('ITEM-URL', $m['url']);
+                $t->setVariable('ITEM-NAME', $m['text']);
+                $t->parse("ITEM");
+            } else {
+                $t->setVariable('DROPDOWN-NAME', $m['text']);
+                foreach ($m['dropdown'] as $e) {
+                    $t->setVariable('ITEM-URL', $e['url']);
+                    $t->setVariable('ITEM-NAME', $e['text']);
+                    $t->parse("DROPDOWN-ITEM");
+                }
+                $t->parse("DROPDOWN");
+            }
+            $t->parse("ITEM-OR-DROPDOWN");
+        }
+
         return $t->get();
     }
     else

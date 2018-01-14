@@ -1,14 +1,21 @@
-<div class="menubar menucfg">
-<ul>
-    <!-- BEGIN TAB -->
-    <li id="{TAB-ID}">
-        <a class="menucfg" href="{TAB-URL}">{TAB-NAME}</a>
-        <ul class="menucfg">
-            <!-- BEGIN ITEM -->
-            <li><a class="menucfg" href="{ITEM-URL}">{ITEM-NAME}</a></li>
-            <!-- END ITEM -->
-        </ul>
+<nav class="navbar navbar-expand-sm">
+<ul class="navbar-nav">
+    <!-- BEGIN ITEM-OR-DROPDOWN -->
+    <!-- BEGIN ITEM -->
+    <li class="nav-item">
+      <a class="nav-link" href="{ITEM-URL}">{ITEM-NAME}</a>
     </li>
-    <!-- END TAB -->
+    <!-- END ITEM -->
+    <!-- BEGIN DROPDOWN -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">{DROPDOWN-NAME}</a>
+      <div class="dropdown-menu">
+         <!-- BEGIN DROPDOWN-ITEM -->
+         <a class="dropdown-item" href="{ITEM-URL}">{ITEM-NAME}</a>
+         <!-- END DROPDOWN-ITEM -->
+      </div>
+    </li>
+    <!-- END DROPDOWN -->
+    <!-- END ITEM-OR-DROPDOWN -->
 </ul>
-</div>
+</nav>
