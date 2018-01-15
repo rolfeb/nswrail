@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm">
+<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
 <ul class="navbar-nav">
     <!-- BEGIN ITEM-OR-DROPDOWN -->
     <!-- BEGIN ITEM -->

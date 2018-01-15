@@ -4,7 +4,7 @@ require_once "site.inc";
 
 function display_photos($theme, $themeextra, $title, $intro)
 {
-    global $dbi;
+    global $db;
 
     #
     # Setup the page template
@@ -75,7 +75,7 @@ function display_photos($theme, $themeextra, $title, $intro)
         break;
     }
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare($sql)
         or dbi_error_trace("prepare failed");
 
@@ -84,7 +84,7 @@ function display_photos($theme, $themeextra, $title, $intro)
     $nrows = $stmt->num_rows;
     $stmt->close();
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("$sql limit $select_limits")
         or dbi_error_trace("prepare failed");
 

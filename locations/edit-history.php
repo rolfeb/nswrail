@@ -154,7 +154,7 @@ function run_edit_mode($state, $location, $line)
  */
 function run_submit_mode($state, $location, $line)
 {
-    global $dbi;
+    global $db;
 
     $action = quote_external(get_post("action", ""));
     $return_url = quote_external(get_post("return-url"));
@@ -177,7 +177,7 @@ function run_submit_mode($state, $location, $line)
         /*
          * Delete and re-add the events
          */
-        $stmt1 = $dbi->stmt_init();
+        $stmt1 = $db->stmt_init();
         $stmt1->prepare("
             delete from
                 r_location_event
@@ -190,7 +190,7 @@ function run_submit_mode($state, $location, $line)
 
         $stmt1->bind_param("ss", $state, $location);
 
-        $stmt2 = $dbi->stmt_init();
+        $stmt2 = $db->stmt_init();
         $stmt2->prepare("
             insert into
                 r_location_event
@@ -217,7 +217,7 @@ function run_submit_mode($state, $location, $line)
 
                 if (!$stmt2->execute())
                 {
-                    $dbi->rollback();
+                    $db->rollback();
                     error_page("Update failed: record locked by someone else",
                         $return_url);
                 }

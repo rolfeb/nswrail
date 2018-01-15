@@ -5,14 +5,14 @@
  */
 function get_location_details($state, $location)
 {
-    global $dbi;
+    global $db;
 
     $result = null;
 
     /*
      * Get the location details
      */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             RL.line_state,
@@ -77,7 +77,7 @@ function get_location_details($state, $location)
     }
     $stmt->close();
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LAT.distance,
@@ -110,9 +110,9 @@ function get_location_details($state, $location)
  */
 function get_location_history($state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LEV.type,
@@ -160,9 +160,9 @@ function get_location_history($state, $location)
 
 function get_location_text($state, $location, $type)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LT.text
@@ -194,9 +194,9 @@ function get_location_text($state, $location, $type)
 
 function get_location_nphotos($state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             count(*)
@@ -225,9 +225,9 @@ function get_location_nphotos($state, $location)
 
 function get_location_ndiagrams($state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             count(*)
@@ -257,9 +257,9 @@ function get_location_ndiagrams($state, $location)
  */
 function get_location_turntables($state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LTT.type,

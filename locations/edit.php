@@ -101,7 +101,7 @@ function run_edit_mode($state, $location, $line)
  */
 function run_submit_mode($state, $location, $line)
 {
-    global $dbi;
+    global $db;
 
     $action = quote_external(get_post("action", ""));
     $return_url = quote_external(get_post("return-url"));
@@ -134,7 +134,7 @@ function run_submit_mode($state, $location, $line)
         if ($type != $otype or $status != $ostatus or $distance != $odistance
             or $geox != $ogeox or $geoy != $ogeoy)
         {
-            $stmt = $dbi->stmt_init();
+            $stmt = $db->stmt_init();
             $stmt->prepare("
                 update
                     r_location
@@ -159,9 +159,9 @@ function run_submit_mode($state, $location, $line)
 
             if (!$stmt->execute())
             {
-                $dbi->rollback();
+                $db->rollback();
                 error_page("Update failed: record locked by someone else ["
-                    . $dbi->error . "]",
+                    . $db->error . "]",
                     $return_url);
             }
             $stmt->close();
@@ -177,7 +177,7 @@ function run_submit_mode($state, $location, $line)
     {
         $userid = auth_userid();
 
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             select
                 max(LT.seqno)
@@ -197,14 +197,14 @@ function run_submit_mode($state, $location, $line)
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
-            die("update failed: " . $dbi->error . "\n");
+            $db->rollback();
+            die("update failed: " . $db->error . "\n");
         }
         $stmt->close();
 
         $seqno++;
 
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             insert into
                 r_location_text
@@ -216,7 +216,7 @@ function run_submit_mode($state, $location, $line)
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
+            $db->rollback();
             error_page("Update failed: record locked by someone else",
                 $return_url);
         }
@@ -228,7 +228,7 @@ function run_submit_mode($state, $location, $line)
     {
         $userid = auth_userid();
 
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             select
                 max(LT.seqno)
@@ -248,14 +248,14 @@ function run_submit_mode($state, $location, $line)
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
-            die("update failed: " . $dbi->error . "\n");
+            $db->rollback();
+            die("update failed: " . $db->error . "\n");
         }
         $stmt->close();
 
         $seqno++;
 
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             insert into
                 r_location_text
@@ -267,13 +267,13 @@ function run_submit_mode($state, $location, $line)
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
+            $db->rollback();
             error_page("Update failed: record locked by someone else",
                 $return_url);
         }
     }
 
-    $dbi->commit();
+    $db->commit();
 
     header("Location: $return_url");
     return;

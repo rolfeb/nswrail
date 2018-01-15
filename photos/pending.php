@@ -9,7 +9,7 @@ $RECENT_DAYS = 28;
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("pending.tpl");
 
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         LP.owner,

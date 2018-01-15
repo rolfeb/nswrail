@@ -11,9 +11,7 @@ $t->loadTemplateFile("short_lived_sections.tpl");
 
 $STATE = "NSW";
 
-global $dbi;
-
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         R.description,

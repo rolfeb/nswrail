@@ -2,9 +2,9 @@
 
 function count_photos($state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
 
     $stmt->prepare("
         select

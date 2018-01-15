@@ -32,7 +32,7 @@ else
 
 function run_multitab_page($state, $line)
 {
-    global $dbi, $t;
+    global $db, $t;
 
     list($fullname, $region, $traffic, $maxsegment, $desc, $version) = 
         dbline_get_details($state, $line);
@@ -97,7 +97,7 @@ function run_multitab_page($state, $line)
     /*
      * Retrieve the text associated with any segments
      */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             RS.segment,
@@ -127,7 +127,7 @@ function run_multitab_page($state, $line)
     /*
      * Now retrieve the section/events for this line
      */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             SEV.segment,
@@ -351,10 +351,10 @@ function run_default_mode($state, $line, $data)
 
 function add_urls($state, $line)
 {
-    global $dbi;
+    global $db;
     global $t;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LU.text,
@@ -386,7 +386,7 @@ function add_urls($state, $line)
 
 function add_locations($state, $line, $maxsegment)
 {
-    global $dbi;
+    global $db;
     global $t;
 
     /*
@@ -419,7 +419,7 @@ function add_locations($state, $line, $maxsegment)
     /*
      * Display the location information
      */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             L.location_state,
@@ -540,14 +540,14 @@ function add_locations($state, $line, $maxsegment)
 
 function read_line_locations($line_state, $line_name)
 {
-    global $dbi;
+    global $db;
 
     /*
      * Construct an array of segments, each element being the list of locations
      * in that segment.
      */
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             RL.segment,
@@ -655,9 +655,9 @@ function read_line_locations($line_state, $line_name)
 
 function read_location_icons($state, $line)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             RLI.location_state,
@@ -696,9 +696,9 @@ function read_location_icons($state, $line)
 
 function read_line_segment_depth($state, $line)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             R.segment_depth
@@ -737,9 +737,9 @@ function index_of(&$location_list, $location)
 
 function read_line_segments($state, $line)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             max(RL.seqno),
@@ -778,9 +778,9 @@ function read_line_segments($state, $line)
 
 function get_location_open_date($state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LE.day,
@@ -817,9 +817,9 @@ function get_location_open_date($state, $location)
 
 function get_location_close_date($state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             day,
@@ -855,7 +855,7 @@ function get_location_close_date($state, $location)
 
 function run_history_mode($state, $line, $data)
 {
-    global $dbi;
+    global $db;
     global $t;
 
     list($fullname, $region, $traffic, $maxsegment, $desc, $version) = 
@@ -864,7 +864,7 @@ function run_history_mode($state, $line, $data)
     /*
      * Retrieve the text associated with any segments
      */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             RS.segment,
@@ -894,7 +894,7 @@ function run_history_mode($state, $line, $data)
     /*
      * Now retrieve the section/events for this line
      */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             SEV.segment,
@@ -1101,9 +1101,9 @@ function run_maps_mode($state, $line, $data)
 
 function get_location_nphotos($state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             count(*)
@@ -1132,9 +1132,9 @@ function get_location_nphotos($state, $location)
 
 function    get_location_ndiagrams($state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             count(*)
@@ -1161,9 +1161,9 @@ function    get_location_ndiagrams($state, $location)
 
 function get_location_nurls($state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             count(*)

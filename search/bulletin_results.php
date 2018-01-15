@@ -18,8 +18,6 @@ $year = quote_external(get_post("year"));
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("bulletin_results.tpl");
 
-global $dbi;
-
 $months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
     "Sep", "Oct", "Nov", "Dec");
 
@@ -130,7 +128,7 @@ if ($year)
 if ($where_clause)
     $where_clause = "where $where_clause";
 
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 
 $stmt->prepare("
     select

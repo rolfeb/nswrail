@@ -16,9 +16,7 @@ $location = make_canonical_name($location);
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("gphoto.tpl", true, true);
 
-global $dbi;
-
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         L.type,

@@ -222,9 +222,9 @@ function get_location_icon($line_state, $line, $segment, $location_state,
 
 function get_target_up_status($line_state, $line, $segment, $location_state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         -- target line, up status
         select
@@ -285,7 +285,7 @@ function get_target_up_status($line_state, $line, $segment, $location_state, $lo
         limit
             1
     ")
-        or die("prepare failed: " . $dbi->error . "\n");
+        or die("prepare failed: " . $db->error . "\n");
 
     $stmt->bind_param("ssiss", $line_state, $line, $segment, $location_state,
         $location);
@@ -302,9 +302,9 @@ function get_target_up_status($line_state, $line, $segment, $location_state, $lo
 
 function get_target_down_status($line_state, $line, $segment, $location_state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         -- target line, down status
         select
@@ -365,7 +365,7 @@ function get_target_down_status($line_state, $line, $segment, $location_state, $
         limit
             1
     ")
-        or die("prepare failed: " . $dbi->error . "\n");
+        or die("prepare failed: " . $db->error . "\n");
 
     $stmt->bind_param("ssiss", $line_state, $line, $segment, $location_state,
         $location);
@@ -382,9 +382,9 @@ function get_target_down_status($line_state, $line, $segment, $location_state, $
 
 function get_other_up_status($line_state, $line, $segment, $location_state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         -- target line, up status
         select
@@ -447,7 +447,7 @@ function get_other_up_status($line_state, $line, $segment, $location_state, $loc
         limit
             1
     ")
-        or die("prepare failed: " . $dbi->error . "\n");
+        or die("prepare failed: " . $db->error . "\n");
 
     $stmt->bind_param("ssiss", $line_state, $line, $segment, $location_state,
         $location);
@@ -464,9 +464,9 @@ function get_other_up_status($line_state, $line, $segment, $location_state, $loc
 
 function get_other_down_status($line_state, $line, $segment, $location_state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         -- target line, down status
         select
@@ -529,7 +529,7 @@ function get_other_down_status($line_state, $line, $segment, $location_state, $l
         limit
             1
     ")
-        or die("prepare failed: " . $dbi->error . "\n");
+        or die("prepare failed: " . $db->error . "\n");
 
     $stmt->bind_param("ssiss", $line_state, $line, $segment, $location_state,
         $location);

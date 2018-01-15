@@ -4,9 +4,7 @@
  */
 require_once "site.inc";
 
-global $dbi;
-
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         L.location_state,

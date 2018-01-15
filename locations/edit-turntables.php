@@ -183,7 +183,7 @@ function run_edit_mode($state, $location, $line)
  */
 function run_submit_mode($state, $location, $line)
 {
-    global $dbi;
+    global $db;
 
     $action = quote_external(get_post("action", ""));
     $return_url = quote_external(get_post("return-url"));
@@ -206,7 +206,7 @@ function run_submit_mode($state, $location, $line)
         /*
          * Delete and re-add the turntables
          */
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             delete from
                 r_location_turntable
@@ -221,8 +221,8 @@ function run_submit_mode($state, $location, $line)
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
-            error_page("Delete failed: " . $dbi->error, $return_url);
+            $db->rollback();
+            error_page("Delete failed: " . $db->error, $return_url);
         }
 
         $stmt->prepare("
@@ -255,7 +255,7 @@ function run_submit_mode($state, $location, $line)
 
                 if (!$stmt2->execute())
                 {
-                    $dbi->rollback();
+                    $db->rollback();
                     error_page("Update failed: record locked by someone else",
                         $return_url);
                 }
@@ -264,7 +264,7 @@ function run_submit_mode($state, $location, $line)
         $stmt2->close();
         $stmt1->close();
 
-        $dbi->commit();
+        $db->commit();
     }
 
     header("Location: $return_url");

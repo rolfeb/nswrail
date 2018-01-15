@@ -57,7 +57,7 @@ if (auth_priv_admin())
 
     if ($type != "undef" and $status != "undef")
     {
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             update
                 r_location
@@ -79,7 +79,7 @@ if (auth_priv_admin())
     else
     if ($geo_x != "undef" and $geo_y != "undef" and $geo_exact != "undef")
     {
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             update
                 r_location
@@ -102,7 +102,7 @@ if (auth_priv_admin())
     else
     if ($distance != "undef")
     {
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             update
                 r_location
@@ -125,11 +125,11 @@ if (auth_priv_admin())
     {
         if (!$stmt->execute())
         {
-            $dbi->rollback();
+            $db->rollback();
             reply(3, "Update failed: record locked by someone else");
             return;
         }
-        $dbi->commit();
+        $db->commit();
         $stmt->close();
         reply(0, 'OK');
         return;
@@ -141,7 +141,7 @@ if (auth_priv_admin())
         /*
          * Delete and re-add the events
          */
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             delete from
                 r_location_event
@@ -156,13 +156,13 @@ if (auth_priv_admin())
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
+            $db->rollback();
             reply(4, "History delete failed: " . mysql_error());
             return;
         }
         $stmt->close();
 
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             insert into
                 r_location_event
@@ -186,7 +186,7 @@ if (auth_priv_admin())
 
                 if (!$stmt->execute())
                 {
-                    $dbi->rollback();
+                    $db->rollback();
                     reply(3, "Update failed: record locked by someone else");
                     return;
                 }
@@ -203,7 +203,7 @@ if (auth_priv_editor())
     {
         if ($err = add_location_text($state, $location, $version, 'DESC', $desc))
         {
-            $dbi->rollback();
+            $db->rollback();
             reply(3, $err);
             return;
         }
@@ -214,14 +214,14 @@ if (auth_priv_editor())
     {
         if (add_location_text($state, $location, $version, 'CURR', $curr) != 0)
         {
-            $dbi->rollback();
+            $db->rollback();
             reply(3, $err);
             return;
         }
     }
 }
 
-$dbi->commit();
+$db->commit();
 reply(0, 'OK');
 
 return;
@@ -233,13 +233,13 @@ function reply($value, $text)
 
 function add_location_text($state, $location, $version, $type, $text)
 {
-    global $dbi;
+    global $db;
     $userid = auth_userid();
 
     /*
      * Get the seqno and text from the latest text entry for this location
      */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LT.seqno,
@@ -282,7 +282,7 @@ function add_location_text($state, $location, $version, $type, $text)
     {
         $seqno++;
 
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             insert into
                 r_location_text

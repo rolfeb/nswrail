@@ -57,7 +57,6 @@ $t->parseCurrentBlock();
 
 display_page("NSWrail.net", $t->get("CONTENT"),
     array(
-        "BANNER"        => '<div id="banner"></div>',
         'HEAD-EXTRA'    => '<link rel="stylesheet" type="text/css" href="/c/css/main.css" />',
     )
 );

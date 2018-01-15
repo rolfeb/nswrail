@@ -50,9 +50,9 @@ else
  */
 function run_edit_mode($state, $location, $line, $redirect)
 {
-    global $dbi, $t;
+    global $db, $t;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LP.seqno,
@@ -171,7 +171,7 @@ function run_edit_mode($state, $location, $line, $redirect)
  */
 function set_status($state, $location, $seqno, $line)
 {
-    global $dbi;
+    global $db;
 
     $redirect = "edit-photos.php?" . urlenc("name=$state:$location");
     if ($line)
@@ -185,7 +185,7 @@ function set_status($state, $location, $seqno, $line)
         $new_status = "N";
 
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         update
             r_location_photo
@@ -204,10 +204,10 @@ function set_status($state, $location, $seqno, $line)
 
     if (!$stmt->execute())
     {
-        $dbi->rollback();
+        $db->rollback();
         error_page("Update failed: record locked by someone else", $redirect);
     }
-    $dbi->commit();
+    $db->commit();
 
     header("Location: $redirect");
     return;
@@ -218,7 +218,7 @@ function set_status($state, $location, $seqno, $line)
  */
 function set_seqno($state, $location, $seqno, $line)
 {
-    global $dbi;
+    global $db;
 
     $redirect = "edit-photos.php?"
         . urlenc("name=$state:$location");
@@ -237,7 +237,7 @@ function set_seqno($state, $location, $seqno, $line)
         $total = $seqno + $new_seqno;
 
         /* swap the two seqnos around */
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             update
                 r_location_photo
@@ -261,15 +261,15 @@ function set_seqno($state, $location, $seqno, $line)
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
-            error_page("Update failed [1]: " . $dbi->error, $redirect);
+            $db->rollback();
+            error_page("Update failed [1]: " . $db->error, $redirect);
         }
         $stmt->close();
     }
     else
     if ($action == "move_up")
     {
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             update
                 r_location_photo
@@ -290,12 +290,12 @@ function set_seqno($state, $location, $seqno, $line)
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
-            error_page("Update failed [2]: " . $dbi->error, $redirect);
+            $db->rollback();
+            error_page("Update failed [2]: " . $db->error, $redirect);
         }
         $stmt->close();
 
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             update
                 r_location_photo
@@ -314,14 +314,14 @@ function set_seqno($state, $location, $seqno, $line)
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
-            error_page("Update failed [3]: " . $dbi->error, $redirect);
+            $db->rollback();
+            error_page("Update failed [3]: " . $db->error, $redirect);
         }
         $stmt->close();
     }
     else
     {
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             update
                 r_location_photo
@@ -342,12 +342,12 @@ function set_seqno($state, $location, $seqno, $line)
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
-            error_page("Update failed [4]: " . $dbi->error, $redirect);
+            $db->rollback();
+            error_page("Update failed [4]: " . $db->error, $redirect);
         }
         $stmt->close();
 
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             update
                 r_location_photo
@@ -366,14 +366,14 @@ function set_seqno($state, $location, $seqno, $line)
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
-            error_page("Update failed [5]: " . $dbi->error, $redirect);
+            $db->rollback();
+            error_page("Update failed [5]: " . $db->error, $redirect);
         }
         $stmt->close();
     }
 
     /* restore negative seqnos */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         update
             r_location_photo
@@ -392,12 +392,12 @@ function set_seqno($state, $location, $seqno, $line)
 
     if (!$stmt->execute())
     {
-        $dbi->rollback();
-        error_page("Update failed [6]: " . $dbi->error, $redirect);
+        $db->rollback();
+        error_page("Update failed [6]: " . $db->error, $redirect);
     }
     $stmt->close();
 
-    $dbi->commit();
+    $db->commit();
 
     header("Location: $redirect");
     return;

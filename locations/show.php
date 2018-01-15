@@ -396,10 +396,10 @@ function add_location_history($state, $location)
  */
 function add_location_lines($state, $location)
 {
-    global $dbi, $t;
+    global $db, $t;
 
     /* XXX: move to dbutil.php */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select distinct
             RL.line_state,
@@ -517,10 +517,10 @@ function add_infra_details($state, $location)
 
 function add_link_details($state, $location)
 {
-    global $dbi, $t;
+    global $db, $t;
 
     /* XXX: move to dbutil.php */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LU.text,
@@ -555,13 +555,13 @@ function add_link_details($state, $location)
  */
 function add_photo_details($state, $location)
 {
-    global $dbi, $t;
+    global $db, $t;
 
     /*
      * Build a list of the years for which we have photos for this location
      */
     /* XXX: move to dbutil.php */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select distinct
             LP.year,
@@ -607,9 +607,9 @@ function add_photo_details($state, $location)
  */
 function add_photo_thumbnails($state, $location, $line_state, $line, $segment)
 {
-    global $dbi, $t;
+    global $db, $t;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LP.seqno,
@@ -699,9 +699,9 @@ function add_photo_thumbnails($state, $location, $line_state, $line, $segment)
  */
 function add_diagram_images($state, $location)
 {
-    global $dbi, $t;
+    global $db, $t;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LD.seqno,
@@ -744,7 +744,7 @@ function add_diagram_images($state, $location)
 
 function add_prev_next_links($state, $location, $line_state, $line, $segment)
 {
-    global $dbi, $t;
+    global $db, $t;
 
     $prev_state = null;
     $prev_location = null;
@@ -776,7 +776,7 @@ function add_prev_next_links($state, $location, $line_state, $line, $segment)
             RL.segment = RLn.segment
     ";
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         $sql_base
         and
@@ -791,7 +791,7 @@ function add_prev_next_links($state, $location, $line_state, $line, $segment)
     $stmt->fetch();
     $stmt->close();
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         $sql_base
         and
@@ -843,9 +843,9 @@ function add_prev_next_links($state, $location, $line_state, $line, $segment)
  */
 function add_map_sheet_link($state, $location, $l)
 {
-    global $dbi, $t;
+    global $db, $t;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             RM.line_state,

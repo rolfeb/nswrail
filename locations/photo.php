@@ -18,9 +18,7 @@ $t->loadTemplateFile("photo.tpl", true, true);
 
 $seqno_list = get_available_photos($state, $location);
 
-global $dbi;
-
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         L.type,
@@ -130,9 +128,9 @@ exit();
 
 function get_available_photos($state, $location)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LP.seqno

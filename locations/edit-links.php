@@ -68,10 +68,10 @@ function run_edit_mode($state, $location, $line)
  */
 function add_urls($state, $location)
 {
-    global $dbi;
+    global $db;
     global $t;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LU.text,
@@ -115,7 +115,7 @@ function add_urls($state, $location)
  */
 function run_submit_mode($state, $location, $line)
 {
-    global $dbi;
+    global $db;
 
     $action = quote_external(get_post("action", ""));
     $return_url = quote_external(get_post("return-url"));
@@ -136,7 +136,7 @@ function run_submit_mode($state, $location, $line)
         /*
          * Delete and re-add the URLs
          */
-        $stmt1 = $dbi->stmt_init();
+        $stmt1 = $db->stmt_init();
         $stmt1->prepare("
             delete from
                 r_location_url
@@ -149,7 +149,7 @@ function run_submit_mode($state, $location, $line)
 
         $stmt1->bind_param("ss", $state, $location);
 
-        $stmt2 = $dbi->stmt_init();
+        $stmt2 = $db->stmt_init();
         $stmt2->prepare("
             insert into
                 r_location_url
@@ -181,7 +181,7 @@ function run_submit_mode($state, $location, $line)
         $stmt1->close();
     }
 
-    $dbi->commit();
+    $db->commit();
 
     header("Location: $return_url");
     return;

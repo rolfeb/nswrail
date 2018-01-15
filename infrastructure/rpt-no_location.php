@@ -9,9 +9,7 @@ $t->loadTemplateFile("rpt-no_location.tpl");
 
 $STATE = "NSW";
 
-global $dbi;
-
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select distinct
         RL.line_state,

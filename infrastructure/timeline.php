@@ -7,9 +7,7 @@ $title = "Timeline of Events";
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("timeline.tpl");
 
-global $dbi;
-
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         R.line_state,

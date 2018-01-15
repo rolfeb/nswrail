@@ -22,9 +22,9 @@ exit;
 
 function print_region($column, $state, $traffic, $title)
 {
-    global $dbi, $t;
+    global $db, $t;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             R.line_name,

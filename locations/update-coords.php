@@ -15,12 +15,12 @@ update_location($state, $location, $wx, $wy);
 
 function update_location($state, $location, $wx, $wy)
 {
-    global $dbi;
+    global $db;
 
     $wx = sprintf("%.6f", $wx);
     $wy = sprintf("%.6f", $wy);
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         update
             r_location
@@ -39,13 +39,13 @@ function update_location($state, $location, $wx, $wy)
 
     if (!$stmt->execute())
     {
-        $dbi->rollback();
-        $error = $dbi->error || "unknown error";
+        $db->rollback();
+        $error = $db->error || "unknown error";
         echo("<update status=\"1\" message=\"$error\" />");
         return;
     }
 
-    $dbi->commit();
+    $db->commit();
     echo("<update status=\"0\" message=\"\" />");
     return;
 }

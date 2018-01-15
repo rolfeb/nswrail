@@ -14,12 +14,10 @@ $value .= "%";  /* prefix matching */
 $results = array();
 $locations_seen = array();
 
-global $dbi;
-
 /*
  * Select current location names from r_location
  */
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         RL.line_state,
@@ -59,7 +57,7 @@ $stmt->close();
 /*
  * Select historic location names from r_location_event
  */
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         RL.line_state,

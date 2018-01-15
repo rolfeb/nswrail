@@ -26,7 +26,7 @@ return;
 
 function perform_search(&$t)
 {
-    global $dbi;
+    global $db;
 
     $keywords = quote_external(get_post("keywords"));
     $keyword_join = quote_external(get_post("keywordjoin"));
@@ -45,7 +45,7 @@ function perform_search(&$t)
             #
             # Look through r_location.location_name
             #
-            $stmt = $dbi->stmt_init();
+            $stmt = $db->stmt_init();
 
             $list = $keyword_list;
             for ($i = 0; $i < count($list); $i++)
@@ -85,7 +85,7 @@ function perform_search(&$t)
             #
             # Look through r_location_text.text
             #
-            $stmt = $dbi->stmt_init();
+            $stmt = $db->stmt_init();
 
             $list = $keyword_list;
             for ($i = 0; $i < count($list); $i++)
@@ -136,7 +136,7 @@ function perform_search(&$t)
             #
             # Look through r_location_photo.caption
             #
-            $stmt = $dbi->stmt_init();
+            $stmt = $db->stmt_init();
 
             $list = $keyword_list;
             for ($i = 0; $i < count($list); $i++)

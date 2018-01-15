@@ -10,9 +10,7 @@ $t->loadTemplateFile("incoming.tpl");
 if (!auth_priv_admin())
     error($t, $title, "Error: you do not have \"admin\" privilege");
 
-global $dbi;
-
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select distinct
         R.description,

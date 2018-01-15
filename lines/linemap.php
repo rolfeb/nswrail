@@ -71,9 +71,9 @@ $t->show();
 
 function get_available_maps($state, $line)
 {
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             RM.seqno

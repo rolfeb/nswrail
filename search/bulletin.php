@@ -7,9 +7,7 @@ $title = "ARHS Bulletin Index Search";
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("bulletin.tpl");
 
-global $dbi;
-
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         max(month),

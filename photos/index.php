@@ -7,7 +7,7 @@ $title = "NSW Railway Photo Contributors";
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("index.tpl");
 
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         IFNULL(owner, 'Rolfe Bozier'),

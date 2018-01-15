@@ -96,9 +96,9 @@ function run_edit_mode($state, $line)
 function add_urls($state, $line)
 {
     global $t;
-    global $dbi;
+    global $db;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LU.text,
@@ -142,7 +142,7 @@ function add_urls($state, $line)
  */
 function run_submit_mode($state, $line)
 {
-    global $dbi;
+    global $db;
 
     $action = quote_external(get_post("action", ""));
     $return_url = quote_external(get_post("return-url"));
@@ -167,7 +167,7 @@ function run_submit_mode($state, $line)
         /*
          * Update core details
          */
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             update
                 r_line
@@ -190,7 +190,7 @@ function run_submit_mode($state, $line)
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
+            $db->rollback();
             error_page(
                 "Update failed: record locked by someone else",
                 "show.php?" . urlenc("name=$state:$line")
@@ -201,7 +201,7 @@ function run_submit_mode($state, $line)
         /*
          * Delete and re-add the URLs
          */
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             delete from
                 r_line_url
@@ -216,15 +216,15 @@ function run_submit_mode($state, $line)
 
         if (!$stmt->execute())
         {
-            $dbi->rollback();
+            $db->rollback();
             error_page(
-                "Delete failed: " . $dbi->error,
+                "Delete failed: " . $db->error,
                 "show.php?" . urlenc("name=$state:$line")
             );
         }
         $stmt->close();
 
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             insert into
                 r_line_url
@@ -243,7 +243,7 @@ function run_submit_mode($state, $line)
             {
                 if (!$stmt->execute())
                 {
-                    $dbi->rollback();
+                    $db->rollback();
                     error_page(
                         "Update failed: record locked by someone else",
                         "show.php?" . urlenc("name=$state;$line")
@@ -263,7 +263,7 @@ function run_submit_mode($state, $line)
     {
         $userid = auth_userid();
 
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             select
                 max(seqno)
@@ -286,7 +286,7 @@ function run_submit_mode($state, $line)
 
         $seqno++;
 
-        $stmt = $dbi->stmt_init();
+        $stmt = $db->stmt_init();
         $stmt->prepare("
             insert into
                 r_line_text
@@ -307,7 +307,7 @@ function run_submit_mode($state, $line)
         $stmt->close();
     }
 
-    $dbi->commit();
+    $db->commit();
 
     header("Location: $return_url");
     return;

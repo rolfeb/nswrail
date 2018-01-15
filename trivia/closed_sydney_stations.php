@@ -7,9 +7,9 @@ $title = "Closed Sydney Railway Stations";
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("closed_sydney_stations.tpl");
 
-global $dbi;
+global $db;
 
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         R.line_state,

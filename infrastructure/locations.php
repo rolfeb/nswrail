@@ -10,9 +10,7 @@ $t->loadTemplateFile("locations.tpl");
 
 $STATE = "NSW";
 
-global $dbi;
-
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         R.line_state,

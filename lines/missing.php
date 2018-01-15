@@ -26,10 +26,10 @@ run_default_mode($state, $line);
 
 function run_default_mode($line_state, $line)
 {
-    global $dbi;
+    global $db;
     global $t;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select distinct
             RL.location_state,
@@ -145,7 +145,7 @@ function run_default_mode($line_state, $line)
 
 function get_location_details($state, $location)
 {
-    global $dbi;
+    global $db;
 
     $n_desc = 0;
     $n_curr = 0;
@@ -156,7 +156,7 @@ function get_location_details($state, $location)
     $got_close = "";
 
     /* look for location text */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LT.type,
@@ -187,7 +187,7 @@ function get_location_details($state, $location)
     $stmt->close();
 
     /* look for location photos */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             count(*)
@@ -211,7 +211,7 @@ function get_location_details($state, $location)
     $stmt->close();
 
     /* look for location diagrams */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             count(*)
@@ -235,7 +235,7 @@ function get_location_details($state, $location)
     $stmt->close();
 
     /* look for location URLs */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             count(*)
@@ -257,7 +257,7 @@ function get_location_details($state, $location)
     $stmt->close();
 
     /* look for location events */
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LEV.type,

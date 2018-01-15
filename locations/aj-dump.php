@@ -4,9 +4,7 @@
  */
 require_once "site.inc";
 
-global $dbi;
-
-$stmt = $dbi->stmt_init();
+$stmt = $db->stmt_init();
 $stmt->prepare("
     select
         L.location_state,
@@ -36,7 +34,7 @@ $stmt->prepare("
 ")
     or dbi_error_trace("prepare failed");
 
-$stmt2 = $dbi->stmt_init();
+$stmt2 = $db->stmt_init();
 $stmt2->prepare("
     select
         LEV.type,
@@ -60,7 +58,7 @@ $stmt2->prepare("
 ")
     or dbi_error_trace("prepare failed");
 
-$stmt3 = $dbi->stmt_init();
+$stmt3 = $db->stmt_init();
 $stmt3->prepare("
     select
         LP.file

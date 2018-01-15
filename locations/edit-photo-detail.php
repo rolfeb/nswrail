@@ -43,9 +43,9 @@ else
  */
 function run_edit_mode($state, $location, $seqno, $line, $redirect)
 {
-    global $dbi, $t;
+    global $db, $t;
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         select
             LP.file,
@@ -125,7 +125,7 @@ function run_edit_mode($state, $location, $seqno, $line, $redirect)
  */
 function save_changes($state, $location, $seqno, $redirect)
 {
-    global $dbi;
+    global $db;
 
     $caption = quote_external(get_post("caption"));
     $theme_box = quote_external(get_post("theme_box"));
@@ -148,7 +148,7 @@ function save_changes($state, $location, $seqno, $redirect)
         $themes .= "turntable,";
     $themes = preg_replace("/,$/", "", $themes);
 
-    $stmt = $dbi->stmt_init();
+    $stmt = $db->stmt_init();
     $stmt->prepare("
         update
             r_location_photo
@@ -168,11 +168,11 @@ function save_changes($state, $location, $seqno, $redirect)
 
     if (!$stmt->execute())
     {
-        $dbi->rollback();
+        $db->rollback();
         $stmt->close();
         error_page("Update failed: record locked by someone else", $redirect);
     }
-    $dbi->commit();
+    $db->commit();
     $stmt->close();
 
     header("Location: $redirect");
