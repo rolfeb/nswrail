@@ -8,7 +8,7 @@ function error_page($message, $url=NULL)
     global $WEBSITE;
 
     if (!isset($url)) {
-        $url = "http://$WEBSITE/";
+        $url = get_config('website-url');
     }
 
     $template_dir   = "$BASE_PATH/c/tpl";
