@@ -10,12 +10,15 @@ function logout()
 
     $user->logout();
 }
+try {
+    header("Cache-control: private");
 
-header("Cache-control: private");
+    logout();
 
-logout();
-
-$referer = $_SERVER["HTTP_REFERER"];
-header("Location: $referer");
+    $referer = $_SERVER["HTTP_REFERER"];
+    header("Location: $referer");
+} catch (Exception $e) {
+    report_error($e);
+}
 
 ?>

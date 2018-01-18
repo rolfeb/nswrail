@@ -44,4 +44,21 @@ function noperm_page()
     exit();
 }
 
+class UserError extends Exception { }
+class InternalError extends Exception { }
+
+function report_error($e)
+{
+    if ($e instanceOf UserError) {
+        $msg = 'Error: ' . $e->getMessage();
+    } else if ($e instanceOf InternalError) {
+        $msg = 'Internal Error: ' . $e->getMessage() . "\n";
+        # $msg .= $e->getTraceAsString();
+    } else {
+        $msg = 'Unknown Error: ' . $e->getMessage() . "\n";
+        # $msg .= $e->getTraceAsString();
+    }
+    error_page($msg);
+}
+
 ?>

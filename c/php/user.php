@@ -24,7 +24,6 @@ class User
         }
     }
 
-    // XXX: login() should return error, not redirect to error_page
     public function login($username, $password_in, $ip_addr)
     {
         # XXX: parameter validation?
@@ -32,7 +31,7 @@ class User
         # check password and status
         $stmt = $this->_db->stmt_init();
 
-        $stmt->prepare("
+        if (!$stmt->prepare('
             select
                 U.uid,
                 U.password,
@@ -41,44 +40,46 @@ class User
                 r_user U
             where
                 U.username = ?
-        ")
-            or dbi_error_trace("prepare failed");
+        ')) {
+            throw new InternalError('prepare failed: ' . $stmt->error);
+        }
 
-        $stmt->bind_param("s", $username);
+        $stmt->bind_param('s', $username);
         $stmt->execute();
         $stmt->bind_result($uid, $enc_password, $status);
         $user_exists = $stmt->fetch();
         $stmt->close();
 
         if (!$user_exists || !password_verify($password_in, $enc_password)) {
-            error_page("Incorrect username or password");
+            throw new UserError('Incorrect username or password');
         }
 
         if ($status != 0) {
             if (($status & User::S_UNCONFIRMED) != 0) {
-                error_page('Account registration has not been confirmed; check your email.');
+                throw new UserError('Account registration has not been confirmed; check your email.');
             } else if (($status & User::S_SUSPENDED) != 0) {
-                error_page('Account has been suspended.');
+                throw new UserError('Account has been suspended.');
             } else {
-                error_page("Login denied: $status");
+                throw new UserError('Login denied: ' . $status);
             }
         }
 
         # Update last-login details
         $stmt = $this->_db->stmt_init();
 
-        $stmt->prepare("
+        if (!$stmt->prepare('
             update r_user
             set
                 last_login_addr = ?,
                 last_login_time = ?
             where
                 uid = ?
-        ")
-            or dbi_error_trace("prepare failed");
+        ')) {
+            throw new InternalError('prepare failed: ' . $stmt->error);
+        }
 
-        $now_dt = date("Y-m-d H:i:s");
-        $stmt->bind_param("ssi", $ip_addr, $now_dt, $uid);
+        $now_dt = date('Y-m-d H:i:s');
+        $stmt->bind_param('ssi', $ip_addr, $now_dt, $uid);
 
         $stmt->execute();
         $stmt->close();
@@ -86,8 +87,6 @@ class User
         # Load this user and set their session
         $this->load_user_from_db(NULL, $username);
         $_SESSION['uid'] = $this->uid;
-
-        return true;
 	}
 
 	public function logout()
@@ -108,7 +107,7 @@ class User
         $stmt = $this->_db->stmt_init();
 
         if (!is_null($uid)) {
-            $stmt->prepare("
+            if (!$stmt->prepare('
                 select
                     U.uid,
                     U.username,
@@ -117,13 +116,14 @@ class User
                     r_user U
                 where
                     U.uid = ?
-            ")
-                or dbi_error_trace("prepare failed");
+            ')) {
+                throw new InternalError('prepare failed: ' . $stmt->error);
+            }
 
-            $stmt->bind_param("s", $uid);
+            $stmt->bind_param('s', $uid);
         }
         else {
-            $stmt->prepare("
+            if (!$stmt->prepare('
                 select
                     U.uid,
                     U.username,
@@ -132,10 +132,11 @@ class User
                     r_user U
                 where
                     U.username = ?
-            ")
-                or dbi_error_trace("prepare failed");
+            ')) {
+                throw new InternalError('prepare failed: ' . $stmt->error);
+            }
 
-            $stmt->bind_param("s", $username);
+            $stmt->bind_param('s', $username);
         }
 
         $stmt->execute();
@@ -152,8 +153,8 @@ class User
     private function load_guest_user()
     {
         $this->uid = -1;
-        $this->username = "guest";
-        $this->fullname = "guest";
+        $this->username = 'guest';
+        $this->fullname = 'guest';
     }
 
     public static function email_address_in_use($addr)
@@ -162,17 +163,18 @@ class User
 
         $stmt = $db->stmt_init();
 
-        $stmt->prepare("
+        if (!$stmt->prepare('
             select
                 1
             from
                 r_user U
             where
                 U.username = ?
-        ")
-            or dbi_error_trace("prepare failed");
+        ')) {
+            throw new InternalError('prepare failed: ' . $stmt->error);
+        }
 
-        $stmt->bind_param("s", $addr);
+        $stmt->bind_param('s', $addr);
         $stmt->execute();
         $exists = $stmt->fetch();
         $stmt->close();
@@ -186,7 +188,7 @@ class User
 
         $stmt = $db->stmt_init();
 
-        $stmt->prepare("
+        if (!$stmt->prepare('
             insert into
             r_user (
                 username,
@@ -198,17 +200,19 @@ class User
                 status
             )
             values (?, ?, ?, ?, ?, ?, ?)
-        ")
-            or dbi_error_trace("prepare failed");
+        ')) {
+            throw new InternalError('prepare failed: ' . $stmt->error);
+        }
 
         $status = User::S_UNCONFIRMED;
-        $now_dt = date("Y-m-d H:i:s");
-        $stmt->bind_param("ssssssi", $addr, $fullname, $enc_password, $register_addr, $now_dt, $activate_id, $status);
+        $now_dt = date('Y-m-d H:i:s');
+        $stmt->bind_param('ssssssi', $addr, $fullname, $enc_password, $register_addr, $now_dt, $activate_id, $status);
 
-        $status = $stmt->execute();
+        if (!$stmt->execute()) {
+            throw new InternalError('execute failed: ' . $stmt->error);
+        }
+
         $stmt->close();
-
-        return $status;
     }
 
     public static function activate_user_via_code($activate_code)
@@ -219,7 +223,7 @@ class User
 
         $flag = User::S_UNCONFIRMED;
 
-        $stmt->prepare("
+        if (!$stmt->prepare('
             update r_user
             set
                 status = (status & ~($flag)),
@@ -228,16 +232,15 @@ class User
                 activate_code = ?
                 and
                 (status & ($flag)) != 0
-        ")
-            or dbi_error_trace("prepare failed");
-
-        $stmt->bind_param("s", $activate_code);
-        $update_ok = $stmt->execute();
-        $stmt->close();
-
-        if (!$update_ok) {
-            return 'Cannot activate account';
+        ')) {
+            throw new InternalError('prepare failed: ' . $stmt->error);
         }
+
+        $stmt->bind_param('s', $activate_code);
+        if (!$stmt->execute()) {
+            throw new InternalError('Account activation failed: ' . $stmt->error);
+        }
+        $stmt->close();
     }
 }
 

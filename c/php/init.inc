@@ -15,8 +15,9 @@ $name = get_config('db-name');
 $user = get_config('db-user');
 $password = get_config('db-password');
 $db = @new mysqli('localhost', $user, $password, $name);
-if ($db->connect_errno)
-    die("failed to connect to database $name: " . $db->connect_errno . "\n");
+if ($db->connect_errno) {
+    throw new InternalError('failed to connect to database: ' . $db->connect_errno);
+}
 
 /*
  * Manage browser caching
