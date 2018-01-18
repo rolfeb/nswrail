@@ -1,0 +1,5 @@
+- all code must be compatible with PHP 5.4 (to match production)
+- use "#" for comments
+- .inc files contain functions / classes only
+- .php files contain code executed as part of a request (and maybe also functions)
+- prefer ' over " for strings, unless variable interpolation is needed

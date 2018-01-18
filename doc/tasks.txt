@@ -1,0 +1,44 @@
+Phase 1
+-------
+
+[x] move passwords etc out of public_html
+[ ] error page -> bootstrap dialog
+[ ] script: view/update accounts
+    y list accounts
+    y list accounts - select by enabled/disabled
+    y list accounts - select by role
+    y display account details
+    y update account: set/clr status
+    y update account: set/clr role
+    - update account: set password?
+    - create new account
+[x] login via bootstrap dialog (or new page)
+[x] add role to r_user
+[ ] show menu entries based on authorisation
+[ ] doco: code standard
+[ ] make sure code meets standards
+[ ] move php code to lib; make functions only
+[ ] registration form -> bootstrap button; add cancel
+[ ] move git repo up 1 level
+
+[ ] allow users to reset their password in settings
+[ ] implement "forgot password" functionality
+[ ] script: delete old unconfirmed accounts
+[ ] design new style using bootstrap
+
+[ ] admin screen: same functionality as view/update accounts script
+[ ] admin screen: show audit records
+    - restrict by type, date, user etc
+
+[ ] implement authorisation mechanism
+[ ] split config into dev/prod
+[ ] photo upload: multi-photo front end
+[ ] implement photo storage and database update
+[ ] design photo publishing screen
+[ ] implement photo publishing screen
+[ ] make style consistent on all pages
+[ ] switch backup direction
+[ ] public test system 
+[ ] https on production system
+[ ] mechanism to push changes to test and production
+[ ] release to public
