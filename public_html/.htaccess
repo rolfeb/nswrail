@@ -5,7 +5,7 @@
 #   - common PHP utility files
 #   - PEAR files
 #
-php_value include_path ".:/work/dev/nswrail-dev/public_html/l/php:/work/dev/nswrail-dev/public_html/c/php:/work/pear/PEAR:/work/dev/nswrail-dev"
+php_value include_path ".:/work/dev/nswrail-dev/public_html/c:/work/dev/nswrail-dev/public_html/c/lib:/work/pear/PEAR:/work/dev/nswrail-dev"
 php_value date.timezone "Australia/NSW"
 
 #
@@ -14,6 +14,8 @@ php_value date.timezone "Australia/NSW"
 SetEnv AUSRAIL_BASE_DIR     "/work/dev/nswrail-dev/public_html"
 SetEnv AUSRAIL_STATE        "nsw"
 Setenv AUSRAIL_PHOTO_DIR    "/work/dev/nswrail-dev/public_html/locations/photos/"
+
+SetEnv NSWRAIL_CONFIG_FILE   "/work/dev/nswrail-dev/config/nswrail-dev.json"
 
 ### Options FollowSymLinks MultiViews
 DirectoryIndex index.php

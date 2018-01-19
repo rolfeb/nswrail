@@ -1,44 +1,69 @@
 Phase 1
 -------
 
-[x] move passwords etc out of public_html
-[ ] error page -> bootstrap dialog
-[ ] script: view/update accounts
+[y] move passwords etc out of public_html
+[y] script: view/update accounts (muser.py)
     y list accounts
     y list accounts - select by enabled/disabled
     y list accounts - select by role
     y display account details
     y update account: set/clr status
     y update account: set/clr role
-    - update account: set password?
-    - create new account
-[x] login via bootstrap dialog (or new page)
-[x] add role to r_user
-[ ] show menu entries based on authorisation
+[y] login via bootstrap dialog (or new page)
+[y] add role to r_user
+[y] move git repo up 1 level
+[y] rollback on error
+[n] error page -> bootstrap dialog?
+[n] registration form -> bootstrap button; add cancel
+[y] split config into dev/prod
+[y] move initialisation code to a function
+[n] move secure config to $HOME
+[y] get rid of l/* tree
+
 [ ] doco: code standard
 [ ] make sure code meets standards
 [ ] move php code to lib; make functions only
-[ ] registration form -> bootstrap button; add cancel
-[ ] move git repo up 1 level
+[ ] update information/faq page
+[ ] send information/faq email on registration
+[ ] implement authorisation mechanism
+[ ] show menu entries based on authorisation
+[ ] muser.py: update account: set password?
+[ ] muser.py: create new account
 
-[ ] allow users to reset their password in settings
-[ ] implement "forgot password" functionality
-[ ] script: delete old unconfirmed accounts
 [ ] design new style using bootstrap
+[ ] re-design landing page
+[ ] add user settings page
+[ ] allow users to change their password in settings (with old password)
+[ ] implement "forgot password" functionality (via email link)
+[ ] allow users to change their email address (via old email link?)
+[ ] script: delete old unconfirmed accounts
+[ ] check page functionality for whole site
+[ ] text search page should use GET so you can go back to it
+[ ] move menu config into database?
 
+[ ] log internal error stack traces to a log file
 [ ] admin screen: same functionality as view/update accounts script
 [ ] admin screen: show audit records
     - restrict by type, date, user etc
+[ ] add free text field to audit record
+[ ] email weekly audit trail to me
+[ ] landing page text should be in the database
 
-[ ] implement authorisation mechanism
-[ ] split config into dev/prod
 [ ] photo upload: multi-photo front end
+[ ] design photo storage and database update
 [ ] implement photo storage and database update
 [ ] design photo publishing screen
 [ ] implement photo publishing screen
+[ ] add moderation facility
+[ ] add facility to edit photo metadata
+[ ] add facility to contact copyright owners
+
 [ ] make style consistent on all pages
+[ ] local bootstrap + sass build
+[ ] check mobile functionality
 [ ] switch backup direction
+[ ] thing about migrating existing photo suppliers to users
 [ ] public test system 
 [ ] https on production system
-[ ] mechanism to push changes to test and production
+[ ] mechanism to push changes to test and production via github
 [ ] release to public

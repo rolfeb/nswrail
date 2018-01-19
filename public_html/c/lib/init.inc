@@ -4,6 +4,8 @@ function init_request()
 {
     global $db, $user;
 
+    load_config();
+
     /*
      * Connect to the database
      */

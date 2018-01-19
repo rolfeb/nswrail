@@ -12,13 +12,14 @@ require 'thirdparty/PHPMailer/src/Exception.php';
 require 'thirdparty/PHPMailer/src/PHPMailer.php';
 require 'thirdparty/PHPMailer/src/SMTP.php';
 
+
 # classes
 require "user.php";
 require "audit.inc";
 
 # other functions
 require "auth.inc";
-require "db_line.inc";
+require "config.inc";
 require "dbutil.inc";
 require "dbutil_line.inc";
 require "error.inc";

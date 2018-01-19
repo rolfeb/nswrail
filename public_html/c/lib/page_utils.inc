@@ -36,7 +36,7 @@ function get_menubar_html()
     global $BASE_PATH;
 
     $template_dir   = "$BASE_PATH/c/tpl";
-    $config_file    = "$BASE_PATH/l/cfg/menu.cfg";
+    $config_file    = "$BASE_PATH/c/menu.cfg";
 
     $t = new HTML_Template_ITX($template_dir);
     if (!$t->loadTemplateFile("menu.tpl", true, true))
