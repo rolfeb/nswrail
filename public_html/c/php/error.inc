@@ -1,11 +1,8 @@
 <?php
 
-require_once "site.inc";
-
 function error_page($message, $url=NULL)
 {
     global $BASE_PATH;
-    global $WEBSITE;
 
     if (!isset($url)) {
         $url = get_config('website-url');

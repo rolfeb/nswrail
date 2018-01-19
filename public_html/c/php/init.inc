@@ -1,62 +1,53 @@
 <?php
 
-require_once "config.inc";
-require_once "error.inc";
-require_once "user.php";
-
-/*
- * Perform host-specific stuff
- */
-
-/*
- * Connect to the database
- */
-$name = get_config('db-name');
-$user = get_config('db-user');
-$password = get_config('db-password');
-$db = @new mysqli('localhost', $user, $password, $name);
-if ($db->connect_errno) {
-    throw new InternalError('failed to connect to database: ' . $db->connect_errno);
-}
-
-/*
- * Manage browser caching
- */
-$server_timestamp = get_database_timestamp();
-$server_date = gmdate('D, d M Y H:i:s', $server_timestamp) . ' GMT';
-
-if (isset($_SERVER["HTTP_IF_MODIFIED_SINCE"]))
+function init_request()
 {
-    $cached_date = preg_replace('/;.*$/', '',
-        $_SERVER["HTTP_IF_MODIFIED_SINCE"]);
+    global $db, $user;
 
-    if ($cached_date == $server_date)
-    {
-        header("HTTP/1.0 304 Not Modified");
-        exit;
+    /*
+     * Connect to the database
+     */
+    $name = get_config('db-name');
+    $user = get_config('db-user');
+    $password = get_config('db-password');
+    $db = @new mysqli('localhost', $user, $password, $name);
+    if ($db->connect_errno) {
+        error_page('failed to connect to database: ' . $db->connect_errno);
     }
+
+    /*
+     * Manage browser caching
+     */
+    $server_timestamp = get_database_timestamp();
+    $server_date = gmdate('D, d M Y H:i:s', $server_timestamp) . ' GMT';
+
+    if (isset($_SERVER["HTTP_IF_MODIFIED_SINCE"]))
+    {
+        $cached_date = preg_replace('/;.*$/', '',
+            $_SERVER["HTTP_IF_MODIFIED_SINCE"]);
+
+        if ($cached_date == $server_date)
+        {
+            header("HTTP/1.0 304 Not Modified");
+            exit;
+        }
+    }
+
+    if (! server_is_devel())
+        header("Last-Modified: $server_date");
+
+    header("Content-type: text/html; charset=utf-8");
+
+    /*
+     * Manage user session
+     */
+    session_start();
+
+    $user = new User($db);
+
+    if (website_under_maintenance())
+        exit;
 }
-
-if (! server_is_devel())
-    header("Last-Modified: $server_date");
-
-header("Content-type: text/html; charset=utf-8");
-
-/*
- * Manage user session
- */
-session_start();
-
-$user = new User($db);
-
-if (website_under_maintenance())
-    exit;
-
-/*
- * Finished initialisation
- */
-
-/* DONE INITIALIZATION */
 
 function website_under_maintenance()
 {

@@ -88,6 +88,7 @@ function process_registration_form($emailaddr, $fullname, $password1, $password2
 
         $mail->send();
     } catch (Exception $e) {
+        rollback();
         throw new InternalError("could not send email - $mail->ErrorInfo");
     }
 

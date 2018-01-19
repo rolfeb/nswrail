@@ -1,7 +1,5 @@
 <?php
 
-require_once "dbutil_line.inc";
-
 function commit()
 {
     global $db;
