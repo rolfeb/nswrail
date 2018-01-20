@@ -2,10 +2,14 @@
 
 class User
 {
-    const S_UNCONFIRMED = 1;    // registration has not yet been confirmed
-    const S_SUSPENDED   = 2;    // account has been suspended
-    const S_PWDEXPIRED  = 4;
-    const S_PWDLOCKED   = 8;
+    const R_EDITOR      = 0x01;
+    const R_MODERATOR   = 0x02;
+    const R_SUPERUSER   = 0x04;
+
+    const S_UNCONFIRMED = 0x01; // registration has not yet been confirmed
+    const S_SUSPENDED   = 0x02; // account has been suspended
+    const S_PWDEXPIRED  = 0x04;
+    const S_PWDLOCKED   = 0x08;
 
     private $_db;
 
@@ -101,6 +105,21 @@ class User
         return $this->uid == -1;
     }
 
+    public function is_editor()
+    {
+        return !$this->is_guest() && ($this->role & (User::R_EDITOR|User::R_SUPERUSER)) != 0;
+    }
+
+    public function is_moderator()
+    {
+        return !$this->is_guest() && ($this->role & (User::R_MODERATOR|User::R_SUPERUSER)) != 0;
+    }
+
+    public function is_superuser()
+    {
+        return !$this->is_guest() && ($this->role & User::R_SUPERUSER) != 0;
+    }
+
     # get user details from database, given uid or username
     private function load_user_from_db($uid, $username)
     {
@@ -109,13 +128,14 @@ class User
         if (!is_null($uid)) {
             if (!$stmt->prepare('
                 select
-                    U.uid,
-                    U.username,
-                    U.fullname
+                    uid,
+                    username,
+                    fullname,
+                    role
                 from
-                    r_user U
+                    r_user
                 where
-                    U.uid = ?
+                    uid = ?
             ')) {
                 throw new InternalError('prepare failed: ' . $stmt->error);
             }
@@ -125,13 +145,14 @@ class User
         else {
             if (!$stmt->prepare('
                 select
-                    U.uid,
-                    U.username,
-                    U.fullname
+                    uid,
+                    username,
+                    fullname,
+                    role
                 from
-                    r_user U
+                    r_user
                 where
-                    U.username = ?
+                    username = ?
             ')) {
                 throw new InternalError('prepare failed: ' . $stmt->error);
             }
@@ -140,12 +161,13 @@ class User
         }
 
         $stmt->execute();
-        $stmt->bind_result($uid, $username, $fullname);
+        $stmt->bind_result($uid, $username, $fullname, $role);
         $stmt->fetch();
 
         $this->uid = $uid;
         $this->username = $username;
         $this->fullname = $fullname;
+        $this->role = $role;
 
         $stmt->close();
     }
@@ -155,7 +177,12 @@ class User
         $this->uid = -1;
         $this->username = 'guest';
         $this->fullname = 'guest';
+        $this->role = 0;
     }
+
+    #
+    # Class/static functions
+    #
 
     public static function email_address_in_use($addr)
     {

@@ -1,7 +1,6 @@
 <?php
 
 require_once "site.inc";
-require_once "page_utils_main.inc";
 
 $current_year = date("Y");
 

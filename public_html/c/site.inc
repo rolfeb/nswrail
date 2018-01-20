@@ -10,7 +10,7 @@
 $BASE_PATH          = "/work/dev/nswrail-dev/public_html";
 $AUSRAIL_PHOTO_DIR  = "/work/dev/nswrail-dev/public_html/locations/photos";
 
-require_once "lib.inc";
+require_once "lib/lib.inc";
 
 init_request();
 

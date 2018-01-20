@@ -33,46 +33,48 @@ function get_headerbar_html($user, $nologin = false)
  */
 function get_menubar_html()
 {
-    global $BASE_PATH;
+    global $BASE_PATH, $user;
 
     $template_dir   = "$BASE_PATH/c/tpl";
     $config_file    = "$BASE_PATH/c/menu.cfg";
 
     $t = new HTML_Template_ITX($template_dir);
-    if (!$t->loadTemplateFile("menu.tpl", true, true))
-    {
+    if (!$t->loadTemplateFile("menu.tpl", true, true)) {
         return "<!-- ERROR: couldn't open $template_dir/menu.tpl -->\n";
     }
 
     $menus = array();
 
-    if ($fp = fopen($config_file, "r"))
-    {
-        while ($buf = fgets($fp))
-        {
-            $buf = chop($buf);
-            $arr = explode('|', $buf);
-            if (count($arr) == 3)
-            {
-                if ($arr[0] == 0)
-                {
+    $re = '{^(\d+)([EMS]?)\|([^\|]*)\|([^\|]*)}';
+
+    $has_role = [
+        NULL  => True,
+        'E' => $user->is_editor(),
+        'M' => $user->is_moderator(),
+        'S' => $user->is_editor(),
+    ];
+
+    if ($fp = fopen($config_file, "r")) {
+        while ($line = fgets($fp)) {
+            $line = trim($line);
+            if (preg_match($re, $line, $matches)) {
+                list($dummy, $type, $role, $text, $url) = $matches;
+
+                if ($type == 0) {
+                    # this is a new menu item or drop-down
                     $m = [
-                        'text' => $arr[1],
-                        'url' => $arr[2],
+                        'text' => $text,
+                        'url' => $url,
+                        'role' => $role,
                         'dropdown' => array(),
                     ];
                     array_push($menus, $m);
-                }
-                elseif
-                (
-                    $arr[0] == 1
-                    ||
-                    $arr[0] == 2 && auth_priv_admin()
-                )
-                {
+                } elseif ($type == 1) {
+                    # add to current drop-down
                     $e = [
-                        'text' => $arr[1],
-                        'url' => $arr[2],
+                        'text' => $text,
+                        'url' => $url,
+                        'role' => $role,
                     ];
                     $n = count($menus);
                     array_push($menus[$n-1]['dropdown'], $e);
@@ -82,6 +84,10 @@ function get_menubar_html()
         fclose($fp);
 
         foreach ($menus as $m) {
+            if (!$has_role[$m['role']]) {
+                continue;
+            }
+
             if (count($m['dropdown']) == 0) {
                 $t->setVariable('ITEM-URL', $m['url']);
                 $t->setVariable('ITEM-NAME', $m['text']);
@@ -89,6 +95,9 @@ function get_menubar_html()
             } else {
                 $t->setVariable('DROPDOWN-NAME', $m['text']);
                 foreach ($m['dropdown'] as $e) {
+                    if (!$has_role[$e['role']]) {
+                        continue;
+                    }
                     $t->setVariable('ITEM-URL', $e['url']);
                     $t->setVariable('ITEM-NAME', $e['text']);
                     $t->parse("DROPDOWN-ITEM");
@@ -100,8 +109,7 @@ function get_menubar_html()
 
         return $t->get();
     }
-    else
-    {
+    else {
         return "<!-- ERROR: couldn't open $config_file -->\n";
     }
 }

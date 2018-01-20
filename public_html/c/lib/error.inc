@@ -44,7 +44,7 @@ function noperm_page()
 class UserError extends Exception { }
 class InternalError extends Exception { }
 
-function report_error($e)
+function report_error($e, $url=NULL)
 {
     if ($e instanceOf UserError) {
         $msg = 'Error: ' . $e->getMessage();
@@ -55,7 +55,7 @@ function report_error($e)
         $msg = 'Unknown Error: ' . $e->getMessage() . "\n";
         # $msg .= $e->getTraceAsString();
     }
-    error_page($msg);
+    error_page($msg, $url);
 }
 
 ?>
