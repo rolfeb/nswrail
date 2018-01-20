@@ -11,24 +11,25 @@ function date_cpts2text($day, $month, $year, $year_error = 0)
 
     $month += 0;
 
-    if ($day)
+    if ($day) {
         $date = "$day-$months[$month]-$year";
-    elseif ($month)
+    } elseif ($month) {
         $date = "$months[$month]-$year";
-    elseif ($year)
-    {
-        if ($year_error == 2)
+    } elseif ($year) {
+        if ($year_error == 2) {
             $date = sprintf("%d0s", $year / 10);
-        else
+        } else {
             $date = $year;
+        }
     }
 
-    if ($year_error == -1)
+    if ($year_error == -1) {
         $date = "before $date";
-    elseif ($year_error == -2)
+    } elseif ($year_error == -2) {
         $date = "after $date";
-    elseif ($year_error == 1)
+    } elseif ($year_error == 1) {
         $date = "circa $date";
+    }
 
     return $date;
 }
@@ -96,20 +97,18 @@ function date_errorlist()
 
 function locn_fulltitle($location, $type)
 {
-    if ($type == "station" or $type == "halt")
+    if ($type == "station" or $type == "halt") {
         return "$location Station";
-    else
-    if ($type == "loop" and !preg_match("/Loop/", $location))
+    } elseif ($type == "loop" and !preg_match("/Loop/", $location)) {
         return "$location Loop";
-    else
-    if ($type == "siding" and !preg_match("/Siding/", $location))
+    } elseif ($type == "siding" and !preg_match("/Siding/", $location)) {
         return "$location Siding";
-    else
-    if ($type == "platform" and !preg_match("/Platform/", $location)
-        and !preg_match("/Siding/", $location))
+    } elseif ($type == "platform" and !preg_match("/Platform/", $location)
+        and !preg_match("/Siding/", $location)) {
             return "$location Platform";
-    else
+    } else {
         return $location;
+    }
 }
 
 function tunnel_type2text($type)
@@ -125,8 +124,7 @@ function tunnel_type2text($type)
 
 function tunnel_lengths2text($lengths)
 {
-    if ($lengths != "")
-    {
+    if ($lengths != "") {
         $lengths = preg_replace("/,/", "m,", $lengths);
         $lengths = preg_replace("/$/", "m", $lengths);
     }
@@ -139,8 +137,9 @@ function tunnel_lengths2text($lengths)
  */
 function html_markup_textblock($text)
 {
-    if ($text == "")
+    if ($text == "") {
         return "";
+    }
 
     $text = preg_replace("/(\r?\n){2,}/", "</p>\n<p>", $text);
     $text = preg_replace("/\r?\n/", " ", $text);
@@ -150,21 +149,23 @@ function html_markup_textblock($text)
 
 function get_post($varname, $defval = NULL)
 {
-    if (array_key_exists($varname, $_POST))
+    if (array_key_exists($varname, $_POST)) {
         $v = $_POST[$varname];
-    elseif (array_key_exists($varname, $_GET))
+    } elseif (array_key_exists($varname, $_GET)) {
         $v = $_GET[$varname];
-    else
+    } else {
         $v = $defval;
+    }
     return urldecode($v);
 }
 
 function post_only($varname, $defval = NULL)
 {
-    if (array_key_exists($varname, $_POST))
+    if (array_key_exists($varname, $_POST)) {
         $v = $_POST[$varname];
-    else
+    } else {
         $v = $defval;
+    }
     return urldecode($v);
 }
 
@@ -173,8 +174,9 @@ function quote_external($text)
 {
     global $db;
 
-    if (get_magic_quotes_gpc())
+    if (get_magic_quotes_gpc()) {
         $text = stripslashes($text);
+    }
 
     return $db->real_escape_string($text);
 }
@@ -223,36 +225,31 @@ function changelog($file)
 
     $log = array();
 
-    foreach (file($file) as $v)
-    {
-        if (preg_match("/^#/", $v) or preg_match("/^[ \t]*$/", $v))
+    foreach (file($file) as $v) {
+        if (preg_match("/^#/", $v) or preg_match("/^[ \t]*$/", $v)) {
             continue;
+        }
 
-        if (!preg_match("/^[ \t]/", $v))
-        {
+        if (!preg_match("/^[ \t]/", $v)) {
             #
             # $v is a date
             #
-            if ($text != "")
-            {
+            if ($text != "") {
                 # save current entry
                 array_push($log, array("date" => $date, "text" => $text));
                 $text = "";
             }
 
             $date_cpts = explode("/", $v);
-            if (count($date_cpts) == 2)
-            {
+            if (count($date_cpts) == 2) {
                 $d = 0;
                 list($m, $y) = $date_cpts;
-            }
-            else
+            } else {
                 list($d, $m, $y) = $date_cpts;
+            }
 
             $date = date_cpts2text($d, $m, $y);
-        }
-        else
-        {
+        } else {
             #
             # $v is a line of text
             #
@@ -260,8 +257,7 @@ function changelog($file)
             $text = $text . "$v ";
         }
     }
-    if ($text != "")
-    {
+    if ($text != "") {
         # save current entry
         array_push($log, array("date" => $date, "text" => $text));
     }
@@ -286,9 +282,10 @@ function dbi_error_trace($text)
 function url_location($state, $location, $line='')
 {
     $url = "/locations/show.php?" . urlenc("name=$state:$location");
-
-    if ($line)
+ 
+    if ($line) {
         $url .= "&" . urlenc("line=$line");
+    }
 
     return $url;
 }

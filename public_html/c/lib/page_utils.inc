@@ -128,37 +128,37 @@ function display_page($title, $content, $args = null)
     $set_dtd = 1;
     $basic_page = 0;
 
-    if (is_array($args))
-    {
-        if (array_key_exists("HEAD-EXTRA", $args))
+    if (is_array($args)) {
+        if (array_key_exists("HEAD-EXTRA", $args)) {
             $p->setVariable("HEAD-EXTRA", $args["HEAD-EXTRA"]);
+        }
 
-        if (array_key_exists("BODY-EXTRA", $args))
+        if (array_key_exists("BODY-EXTRA", $args)) {
             $p->setVariable("BODY-EXTRA", $args["BODY-EXTRA"]);
+        }
 
-        if (array_key_exists("BANNER", $args))
+        if (array_key_exists("BANNER", $args)) {
             $p->setVariable("PAGE-BANNER", $args["BANNER"]);
+        }
 
-        if (array_key_exists("BASIC-PAGE", $args))
+        if (array_key_exists("BASIC-PAGE", $args)) {
             $basic_page = 1;
+        }
 
-        if (array_key_exists("TRANSITIONAL-DTD", $args))
-        {
+        if (array_key_exists("TRANSITIONAL-DTD", $args)) {
             $p->setVariable("DTD-TYPE", 'Transitional');
             $p->setVariable("DTD-FILE", 'xhtml1-transitional.dtd');
             $set_dtd = 0;
         }
     }
 
-    if ($set_dtd)
-    {
+    if ($set_dtd) {
         $p->setVariable("DTD-TYPE", 'Strict');
         $p->setVariable("DTD-FILE", 'xhtml1-strict.dtd');
     }
 
     $p->setVariable("PAGE-TITLE", $title);
-    if (!$basic_page)
-    {
+    if (!$basic_page) {
         $p->setVariable("PAGE-HEADER", get_headerbar_html($user));
         $p->setVariable("PAGE-MENU", get_menubar_html());
     }

@@ -16,29 +16,6 @@ function page_header($nologin = false)
 </div>
 ';
 
-    if (!$nologin)
-    {
-/*
-        $html .= "<div id=\"login\">";
-
-        $url = $_SERVER["REQUEST_URI"];
-
-        if (auth_loggedin())
-        {
-            $user = auth_username();
-            $html .= "Hello, $user!&nbsp;&nbsp;&nbsp;";
-            $html .= "<a href=\"/logout.php?redirect=$url\">logout</a>\n";
-        }
-        else
-        {
-            $html .= "Hello, guest!&nbsp;&nbsp;&nbsp;";
-            $html .= "<a href=\"/login.php?redirect=$url\">login</a>\n";
-        }
-
-        $html .= "</div>";
-*/
-    }
-
     $html .= '
 </td>
 </tr>

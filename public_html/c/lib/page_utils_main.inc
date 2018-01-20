@@ -27,8 +27,7 @@ function db_random_pics($count)
     $stmt->bind_result($state, $name, $seqno, $file);
 
     $photos = array();
-    while ($stmt->fetch())
-    {
+    while ($stmt->fetch()) {
         $photos[] = array($state, $name, $seqno, $file);
     }
 
@@ -53,8 +52,9 @@ function db_count_locations()
     $stmt->execute();
     $stmt->bind_result($count);
 
-    if (!$stmt->fetch())
+    if (!$stmt->fetch()) {
         $count = 0;
+    }
 
     $stmt->close();
 
@@ -81,8 +81,9 @@ function db_count_photographs()
     $stmt->execute();
     $stmt->bind_result($count);
 
-    if (!$stmt->fetch())
+    if (!$stmt->fetch()) {
         $count = 0;
+    }
 
     $stmt->close();
 
@@ -122,8 +123,7 @@ function db_count_recent_photographs()
     $stmt->execute();
     $stmt->bind_result($age, $count);
 
-    if (!$stmt->fetch())
-    {
+    if (!$stmt->fetch()) {
         $count = 0;
         $age = 0;
     }
@@ -131,27 +131,6 @@ function db_count_recent_photographs()
     $stmt->close();
 
     return array($count, $age);
-}
-
-/*
- * Count the number of visitors in the counter file
- */
-function count_visitors()
-{
-    $file = "visitors.dat";
-
-    if (!file_exists($file) or !($fp = fopen($file, "r+")))
-        return "???";
-
-    $line = fgets($fp, 256);
-    list ($date, $count) = explode(",", $line);
-    $count += 1;
-    rewind($fp);
-    $str = sprintf("%s,%d\n", $date, $count);
-    fputs($fp, $str);
-    fclose($fp);
-
-    return $count;
 }
 
 ?>

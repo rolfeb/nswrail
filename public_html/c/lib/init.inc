@@ -35,8 +35,9 @@ function init_request()
         }
     }
 
-    if (! server_is_devel())
+    if (! server_is_devel()) {
         header("Last-Modified: $server_date");
+    }
 
     header("Content-type: text/html; charset=utf-8");
 
@@ -47,8 +48,9 @@ function init_request()
 
     $user = new User($db);
 
-    if (website_under_maintenance())
+    if (website_under_maintenance()) {
         exit;
+    }
 }
 
 function website_under_maintenance()
@@ -57,13 +59,13 @@ function website_under_maintenance()
 
     $file = $BASE_PATH . "/maintenance.dat";
 
-    if (!file_exists($file))
+    if (!file_exists($file)) {
         return 0;
+    }
 
     $message = implode('<br>', file($file));
 
-    if (!$message)
-    {
+    if (!$message) {
         $message = "
 Sorry!  This website is temporarily unavailable, due to maintenance.
 <p>
@@ -108,41 +110,21 @@ function gmapkey($location)
 {
     if (server_is_devel())
     {
-        if ($location == "maps")
-        {
-            // return "ABQIAAAAIIiL9HmMMMPPocEuM_uMFxSk-ve8lUVhz_jfoFqu7H39RrMPLBTntoaXUBhvI89eew6OXwDCy7BKXQ";
+        if ($location == "maps") {
             return "ABQIAAAAIIiL9HmMMMPPocEuM_uMFxS0BZHEMAfXVUcYUNN9_uC_Ei-I6xSc0Xqbi9aEhg-JXpzWWJY-OwLg0A";
-        }
-        else
-        if ($location == "locations")
-        {
-            // return "ABQIAAAAIIiL9HmMMMPPocEuM_uMFxQPbPKoKEYtUyCM8xthwZKEKzT_sxT6DO-hvVCUJ6yo6vanoPf0EQXPmQ";
+        } else if ($location == "locations") {
             return "ABQIAAAAIIiL9HmMMMPPocEuM_uMFxRJYI67ThsExT-oAfFgYUx8p7sE5xT-oWVNdffL51p0duxAbk_cwGjvdg";
         }
-    }
-    else
-    if (server_is_stage())
-    {
-        if ($location == "maps")
-        {
+    } elseif (server_is_stage()) {
+        if ($location == "maps") {
             return "ABQIAAAAIIiL9HmMMMPPocEuM_uMFxSZ-oZ6oywsDBg_sy7PqfzXPwC0VBRzx_UD8hueNJk95UxeeO9jSQex9A";
-        }
-        else
-        if ($location == "locations")
-        {
+        } elseif ($location == "locations") {
             return "ABQIAAAAIIiL9HmMMMPPocEuM_uMFxRersMDMga1cOoMrVkx50FIisu9zBSozVm4mz11I3v4ih1D4OnJ5fogAQ";
         }
-    }
-    else
-    if (server_is_production())
-    {
-        if ($location == "maps")
-        {
+    } elseif (server_is_production()) {
+        if ($location == "maps") {
             return "ABQIAAAAIIiL9HmMMMPPocEuM_uMFxSU2o1OzxMh1LriO7Z1oON-AG6IWxStXzYffV1YeZuIMlYGZCJ9YbAQQQ";
-        }
-        else
-        if ($location == "locations")
-        {
+        } elseif ($location == "locations") {
             return "ABQIAAAAIIiL9HmMMMPPocEuM_uMFxTTgtNCIP5w8vsOjyJhD2lQ5TsBvxRHonriHmfxlaLuIuU_xs_xgGVZ-g";
         }
     }
@@ -164,8 +146,9 @@ function get_database_timestamp()
     $stmt->execute();
     $stmt->bind_result($timestamp);
 
-    if (!$stmt->fetch())
+    if (!$stmt->fetch()) {
         $timestamp = 0;
+    }
 
     $stmt->close();
 
