@@ -2,6 +2,10 @@
 
 require_once "site.inc";
 
+if (!$user->is_editor()) {
+    noperm_page();
+}
+
 $name = quote_external(get_post("name"));           /* mandatory */
 $state = quote_external(get_post("state"));         /* obsolete */
 $location = quote_external(get_post("location"));   /* obsolete */
@@ -15,9 +19,6 @@ if ($name)
 
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("edit-photo-detail.tpl", true, true);
-
-if (!auth_priv_admin())
-    error_page("Error: you do not have access to this operation\n", $redirect);
 
 $redirect = "edit-photos.php?name=$state:$location";
 if ($line)

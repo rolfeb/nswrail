@@ -2,6 +2,10 @@
 
 require_once "site.inc";
 
+if (!$user->is_editor()) {
+    noperm_page();
+}
+
 $name = quote_external(get_post("name"));           /* mandatory */
 $state = quote_external(get_post("state"));         /* obsolete */
 $location = quote_external(get_post("location"));   /* obsolete */
@@ -28,9 +32,6 @@ if (!$redirect)
     if ($line)
         $redirect = $redirect . urlenc("&line=$line");
 }
-
-if (!auth_priv_admin())
-    error_page("Error: you do not have access to this operation\n", $redirect);
 
 if ($action == "")
     run_edit_mode($state, $location, $line, $redirect);

@@ -2,42 +2,17 @@
 
 require_once "site.inc";
 
-$name = quote_external(get_post("name"));       /* mandatory */
-$state = quote_external(get_post("state"));     /* obsolete */
-$line = quote_external(get_post("line"));       /* obsolete */
-$mode = quote_external(get_post("mode", ""));   /* optional */
-
-if ($name)
-    list($state, $line) = explode(":", $name);
-
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("edit.tpl", true, true);
-
-if (auth_priv_none())
-{
-    error_page(
-        "Error: you do not have access to this operation\n",
-        "show.php?" . urlenc("name=$state:$line")
-    );
-}
-
-if ($mode == "submit")
-    run_submit_mode($state, $line);
-else
-    run_edit_mode($state, $line);
-
 /*
  * Display the edit page, allowing the user to edit details
  */
 function run_edit_mode($state, $line)
 {
-    global $t;
+    global $t, $user;
 
     list($fullname, $region, $traffic, $maxsegment, $desc, $version) = 
         dbline_get_details($state, $line);
 
-    if (auth_priv_admin())
-    {
+    if ($user->is_editor()) {
         $t->setCurrentBlock("ADMIN-BLOCK1");
         $t->setVariable("NAME", "$fullname");
         $t->setVariable("REGION", "$region");
@@ -141,7 +116,7 @@ function add_urls($state, $line)
  */
 function run_submit_mode($state, $line)
 {
-    global $db;
+    global $db, $user;
 
     $action = quote_external(get_post("action", ""));
     $return_url = quote_external(get_post("return-url"));
@@ -157,8 +132,7 @@ function run_submit_mode($state, $line)
     /*
      * Save admin-level changes
      */
-    if (auth_priv_admin())
-    {
+    if ($user->is_editor()) {
         $fullname = quote_external(get_post("fullname"));
         $region = quote_external(get_post("region"));
         $traffic = quote_external(get_post("traffic"));
@@ -311,5 +285,25 @@ function run_submit_mode($state, $line)
     header("Location: $return_url");
     return;
 }
+
+if (!$user->is_editor()) {
+    noperm_page();
+}
+
+$name = quote_external(get_post("name"));       /* mandatory */
+$state = quote_external(get_post("state"));     /* obsolete */
+$line = quote_external(get_post("line"));       /* obsolete */
+$mode = quote_external(get_post("mode", ""));   /* optional */
+
+if ($name)
+    list($state, $line) = explode(":", $name);
+
+$t = new HTML_Template_ITX(".");
+$t->loadTemplateFile("edit.tpl", true, true);
+
+if ($mode == "submit")
+    run_submit_mode($state, $line);
+else
+    run_edit_mode($state, $line);
 
 ?>

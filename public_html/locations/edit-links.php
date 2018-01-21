@@ -2,6 +2,10 @@
 
 require_once "site.inc";
 
+if (!$user->is_editor()) {
+    noperm_page();
+}
+
 $name = quote_external(get_post("name"));           /* mandatory */
 $state = quote_external(get_post("state"));         /* obsolete */
 $location = quote_external(get_post("location"));   /* obsolete */
@@ -13,15 +17,6 @@ if ($name)
 
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("edit-links.tpl", true, true);
-
-if (!auth_priv_admin())
-{
-    $url = "show.php?" . urlenc("name=$state:$location");
-    if ($line)
-        $url = $url . "&line=$line";
-
-    error_page("Error: you do not have access to this operation\n", $url);
-}
 
 if ($mode == "submit")
     run_submit_mode($state, $location, $line);
@@ -114,7 +109,7 @@ function add_urls($state, $location)
  */
 function run_submit_mode($state, $location, $line)
 {
-    global $db;
+    global $db, $user;
 
     $action = quote_external(get_post("action", ""));
     $return_url = quote_external(get_post("return-url"));
@@ -130,7 +125,7 @@ function run_submit_mode($state, $location, $line)
     /*
      * Save admin-level changes
      */
-    if (auth_priv_admin())
+    if ($user->is_editor())
     {
         /*
          * Delete and re-add the URLs

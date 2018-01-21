@@ -3,6 +3,10 @@
 require_once "site.inc";
 require_once "icon.inc";    /* for get_location_icon() */
 
+if (!$user->is_editor()) {
+    noperm_page();
+}
+
 $name = quote_external(get_post("name"));           /* mandatory */
 $state = quote_external(get_post("state"));         /* obsolete */
 $line = quote_external(get_post("line"));           /* obsolete */
@@ -12,14 +16,6 @@ if ($name)
 
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("missing.tpl", true, true);
-
-if (auth_priv_none())
-{
-    error_page(
-        "Error: you do not have access to this operation\n",
-        ""
-    );
-}
 
 run_default_mode($state, $line);
 

@@ -4,7 +4,7 @@ require_once "site.inc";
 
 header("Content-Type: text/xml");
 
-if (auth_priv_none())
+if (!$user->is_editor())
 {
     reply(1, 'You do not have access to this operation');
     return;
@@ -43,7 +43,7 @@ $version = quote_external(post_only('version'));
  *  desc [editor]
  *  curr [editor]
  */
-if (auth_priv_admin())
+if ($user->is_editor())
 {
     $type = quote_external(post_only("type", "undef"));
     $status = quote_external(post_only("status", "undef"));
@@ -195,7 +195,7 @@ if (auth_priv_admin())
     }
 }
 
-if (auth_priv_editor())
+if ($user->is_editor())
 {
     $desc = quote_external(post_only("desc", "undef"));
     if ($desc != "undef")

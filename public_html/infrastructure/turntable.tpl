@@ -7,7 +7,7 @@ of steam locomotives turntables have little use, and hence most of the
 following have been removed or are no longer functional.
 </p>
 The "status" values listed have the following meanings:
-<table class="clean">
+<table class="table table-sm table-responsive-md table-bordered" style="width: auto !important">
 <tr>
     <td>In use</td>
     <td>Sees occasional use, for example when turning heritage steam
@@ -40,70 +40,59 @@ The "status" values listed have the following meanings:
 <table class="simple" width="100%">
 <tr valign="top">
 <td>
-
 The "type" values have the following meanings:
-<table class="clean">
-<tr>
-    <td align="center">M</td>
-    <td>=</td>
-    <td>Turntable is/was manually operated</td>
-</tr>
-<tr>
-    <td>E</td>
-    <td>=</td>
-    <td>Turntable is/was electrically-driven</td>
-</tr>
-</table>
-
+<ul>
+<li>M = Turntable is/was manually operated</li>
+<li>E = Turntable is/was electrically-driven</li>
+</ul>
 </td>
 <td>
-
 For the metrically minded, equivalent sizes are:
-<table class="clean">
-<tr> <td align="right">50'</td> <td>=</td><td>15 metres</td> </tr>
-<tr> <td align="right">60'</td> <td>=</td><td>18 metres</td> </tr>
-<tr> <td align="right">75'</td> <td>=</td><td>23 metres</td> </tr>
-<tr> <td align="right">90'</td> <td>=</td><td>27 metres</td> </tr>
-<tr> <td align="right">105'</td> <td>=</td><td>32 metres</td> </tr>
-</table>
-
+<ul>
+<li> 50' = 15 metres</li>
+<li> 60' = 18 metres</li>
+<li> 75' = 23 metres</li>
+<li> 90' = 27 metres</li>
+<li> 105' = 32 metres</li>
+</ul>
 </td>
 </tr>
 </table>
 
-<table class="clean">
-<!-- BEGIN TABLE-ROW -->
-<!-- BEGIN REGION -->
+<!-- BEGIN TABLE-CHUNK -->
+<!-- BEGIN REGION1 -->
+<h2>{REGION}</h2>
+<table class="table table-sm table-responsive-md">
+<thead class="thead-dark">
 <tr>
-  <td class="heading" colspan="6"><h2>{REGION}</h2></td>
+  <th colspan="2">Location</th>
+  <th align="right">Size</th>
+  <th align="right">Type</th>
+  <th>Status</th>
+  <th>Notes</th>
+  <th align="center">Photos</th>
 </tr>
-<tr class="property">
-  <td>Location</td>
-  <td align="right">Size</td>
-  <td align="right">Type</td>
-  <td>Status</td>
-  <td>Notes</td>
-  <td><img src="/c/images/camera-icon.gif" alt="" /></td>
-</tr>
-<!-- END REGION -->
-
+</thead>
+<!-- END REGION1 -->
 <!-- BEGIN LINE -->
-<tr>
-  <td colspan="6"><a href="{LINE-URL}">{LINE-TEXT}</a></td>
+<tr class="table-info">
+  <td colspan="7">{LINE-TEXT}</td>
 </tr>
 <!-- END LINE -->
-
 <!-- BEGIN LOCATION -->
 <tr>
-  <td class="indented"><a href="{LOCATION-URL}">{LOCATION-TEXT}</a></td>
+  <td></td>
+  <td><a href="{LOCATION-URL}">{LOCATION-TEXT}</a></td>
   <td align="right">{SIZE}</td>
   <td align="center">{TYPE}</td>
   <td>{STATUS}</td>
   <td>{NOTES}</td>
-  <td align="right">{PHOTOS}</td>
+  <td align="center">{PHOTOS}</td>
 </tr>
 <!-- END LOCATION -->
-<!-- END TABLE-ROW -->
+<!-- BEGIN REGION2 -->
 </table>
+<!-- END REGION2 -->
+<!-- END TABLE-CHUNK -->
 
 <!-- END CONTENT -->

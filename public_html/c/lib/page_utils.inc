@@ -45,10 +45,11 @@ function get_menubar_html()
 
     $menus = array();
 
-    $re = '{^(\d+)([EMS]?)\|([^\|]*)\|([^\|]*)}';
+    $re = '{^(\d+)([LEMS]?)\|([^\|]*)\|([^\|]*)}';
 
     $has_role = [
         NULL  => True,
+        'L' => $user->is_loggedin(),
         'E' => $user->is_editor(),
         'M' => $user->is_moderator(),
         'S' => $user->is_editor(),

@@ -105,6 +105,11 @@ class User
         return $this->uid == -1;
     }
 
+    public function is_loggedin()
+    {
+        return $this->uid != -1;
+    }
+
     public function is_editor()
     {
         return !$this->is_guest() && ($this->role & (User::R_EDITOR|User::R_SUPERUSER)) != 0;

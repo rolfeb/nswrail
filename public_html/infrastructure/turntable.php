@@ -109,10 +109,15 @@ while ($stmt->fetch())
 {
     if ($curr_region != $region)
     {
-        $t->setCurrentBlock("REGION");
+        if ($curr_region != "") {
+            $t->touchBlock("REGION2");
+            $t->parse("TABLE-CHUNK");
+        }
+
+        $t->setCurrentBlock("REGION1");
         $t->setVariable("REGION", "$region Region");
         $t->parseCurrentBlock();
-        $t->parse("TABLE-ROW");
+        $t->parse("TABLE-CHUNK");
         $curr_region = $region;
     }
     if ($curr_line_name != $line_name)
@@ -123,7 +128,7 @@ while ($stmt->fetch())
         $t->setVariable("LINE-URL", $url);
         $t->setVariable("LINE-TEXT", htmlentities($description));
         $t->parseCurrentBlock();
-        $t->parse("TABLE-ROW");
+        $t->parse("TABLE-CHUNK");
         $curr_line_name = $line_name;
     }
 
@@ -152,9 +157,12 @@ while ($stmt->fetch())
     $t->setVariable("NOTES", htmlentities($notes));
     $t->setVariable("PHOTOS", $photos);
     $t->parseCurrentBlock();
-    $t->parse("TABLE-ROW");
+    $t->parse("TABLE-CHUNK");
 }
 $stmt->close();
+
+$t->touchBlock("REGION2");
+$t->parse("TABLE-CHUNK");
 
 $t->setCurrentBlock("CONTENT");
 $t->setVariable("TITLE", $title);

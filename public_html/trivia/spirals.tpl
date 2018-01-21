@@ -8,11 +8,13 @@ ease the grade where topography requires a line to be too steep.
 The normal solution is to take a more indirect route, but in two locations
 a spiral was laid.
 
-<table class="clean">
-<tr class="property">
-  <td>Line</td>
-  <td>Between</td>
+<table class="table table-sm table-responsive-md" style="width: auto !important">
+<thead class="thead-dark">
+<tr>
+  <th>Line</th>
+  <th>Between</th>
 </tr>
+</thead>
 <!-- BEGIN SPIRAL -->
 <tr>
   <td><a href="{URL}">{TEXT}</a></td>
