@@ -1,7 +1,6 @@
 <?php
 
 require_once "site.inc";
-require_once "dbutil.inc";
 
 $name = quote_external(get_post("name"));           /* mandatory */
 

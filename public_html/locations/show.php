@@ -1,6 +1,5 @@
 <?php
 require_once "site.inc";
-require_once "dbutil.inc";
 
 $name = quote_external(get_post("name"));           /* mandatory */
 $state = quote_external(get_post("state"));         /* obsolete */
@@ -27,7 +26,7 @@ exit;
 
 function run_default_mode($state, $location, $line_state, $line, $segment)
 {
-    global $t;
+    global $t, $user;
 
     $t->loadTemplateFile("show.tpl");
 
@@ -91,7 +90,7 @@ function run_default_mode($state, $location, $line_state, $line, $segment)
          *  add_map_sheet_link($state, $location, $l);
          */
 
-        if (auth_priv_admin())
+        if ($user->is_editor())
         {
             $params = urlenc("name=$state:$location");
             if ($line)
@@ -222,7 +221,7 @@ function run_default_mode($state, $location, $line_state, $line, $segment)
             instantiate_edit_block("HISTORY", $state, $location, $version);
         }
 
-        if (auth_priv_editor())
+        if ($user->is_editor())
         {
             $t->setCurrentBlock("EDIT-DESC-DATA");
             $t->setVariable("DESC", $l["desc"]);
@@ -607,7 +606,7 @@ function add_photo_details($state, $location)
  */
 function add_photo_thumbnails($state, $location, $line_state, $line, $segment)
 {
-    global $db, $t;
+    global $db, $t, $user;
 
     $stmt = $db->stmt_init();
     $stmt->prepare("
@@ -677,7 +676,7 @@ function add_photo_thumbnails($state, $location, $line_state, $line, $segment)
 
     if ($nphotos > 0)
     {
-        if (auth_priv_admin())
+        if ($user->is_editor())
         {
             $url = "edit-photos.php?"
                 . urlenc("name=$state:$location");

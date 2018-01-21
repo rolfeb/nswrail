@@ -2,7 +2,6 @@
 
 require_once "site.inc";
 require_once "icon.inc";    /* for get_location_icon() */
-require_once "dbutil.inc";
 
 $name = quote_external(get_post("name"));           /* mandatory */
 $state = quote_external(get_post("state"));         /* obsolete */

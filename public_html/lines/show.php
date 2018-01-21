@@ -2,7 +2,6 @@
 
 require_once "site.inc";
 require_once "icon.inc";    /* for get_location_icon() */
-require_once "dbutil.inc";
 
 $name = quote_external(get_post("name"));           /* mandatory */
 $state = quote_external(get_post("state"));         /* obsolete */
@@ -32,7 +31,7 @@ else
 
 function run_multitab_page($state, $line)
 {
-    global $db, $t;
+    global $db, $t, $user;
 
     list($fullname, $region, $traffic, $maxsegment, $desc, $version) = 
         dbline_get_details($state, $line);
@@ -83,7 +82,7 @@ function run_multitab_page($state, $line)
     add_urls($state, $line);
     add_locations($state, $line, $maxsegment);
 
-    if (auth_priv_editor())
+    if ($user->is_editor())
     {
         $t->setCurrentBlock("CONTENT");
         $t->setVariable("EDIT-URL", "edit.php?"
@@ -310,7 +309,7 @@ function run_multitab_page($state, $line)
 
 function run_default_mode($state, $line, $data)
 {
-    global $t;
+    global $t, $user;
 
     list($fullname, $region, $traffic, $maxsegment, $desc, $version) = 
         dbline_get_details($state, $line);
@@ -335,7 +334,7 @@ function run_default_mode($state, $line, $data)
     $t->setVariable("LINE-STN-OPEN", $data['active_stations']);
     $t->setVariable("LINE-STN-COUNT", $data['total_stations']);
 
-    if (auth_priv_editor())
+    if ($user->is_editor())
     {
         $t->setVariable("EDIT-URL", "edit.php?"
             . urlenc("name=$state:$line"));

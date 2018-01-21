@@ -18,7 +18,6 @@ require "user.php";
 require "audit.inc";
 
 # other functions
-require "auth.inc";
 require "config.inc";
 require "dbutil.inc";
 require "dbutil_line.inc";
