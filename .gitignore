@@ -1,4 +1,6 @@
-PEAR/
-database/
-config/
-thirdparty/
+/PEAR/
+/database/
+/config/
+/thirdparty/
+/stage/
+/upload/
