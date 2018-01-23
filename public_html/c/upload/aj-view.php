@@ -25,7 +25,7 @@ $image = $_REQUEST['image'];
 try {
     display_thumbnail_image($image);
 } catch (Exception $e) {
-    
+    print($e->getMessage());
 }
 
 ?>
