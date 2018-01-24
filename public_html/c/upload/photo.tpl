@@ -18,13 +18,8 @@ Blah blah blah
 <p/>
 Photo queue:
 <ul id="photo-queue">
-<!--
-<li><a href="#">4b5tb.jpg</a></li>
-<li><a href="#">1938_a173.jpeg</a></li>
--->
+{PHOTO-QUEUE}
 </ul>
-
-
 
 </div>
 <!-- END CONTENT -->

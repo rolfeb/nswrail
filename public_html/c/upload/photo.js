@@ -10,11 +10,11 @@ $(document).ready(function() {
         var form = data.form, files = data.files, extra = data.extra,
             response = data.response, reader = data.reader;
 
-        key = response.initialPreviewConfig[0].key;
+        element = response.queueElement;
 
         ul = document.getElementById('photo-queue');
         li = document.createElement('li');
-        li.innerHTML = key;
+        li.innerHTML = element;
         ul.append(li);
     });
 

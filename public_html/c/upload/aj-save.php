@@ -49,6 +49,15 @@ if ($user->is_guest()) {
 
 try {
     $thumbnail = save_upload_in_staging_area();
+
+    $t = new HTML_Template_ITX('.');
+    $t->loadTemplateFile('photo-queue.tpl', true, true);
+    $t->setCurrentBlock('ITEM');
+    $t->setVariable('NAME', $thumbnail);
+    $t->parseCurrentBlock();
+    $t->parse('CONTENT');
+    $queue_element = $t->get('CONTENT');
+
     $reply = [
         'initialPreview' => [
             "<img src='/c/upload/aj-view.php?image=$thumbnail' class='file-preview-image' title='Preview'>"
@@ -59,7 +68,8 @@ try {
                 'url'       => '/c/upload/aj-delete.php',
                 'key'       => $thumbnail
             ]
-        ]
+        ],
+        'queueElement' => $queue_element
     ];
 } catch (Exception $e) {
     $reply = [ 'error' => $e->getMessage() ];
