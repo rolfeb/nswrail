@@ -57,21 +57,18 @@ function run_multitab_page($state, $line)
     else
         $length_str = "$length km";
 
-    foreach (array(1, 2) as $n)
-    {
-        $t->setCurrentBlock("SUMMARY$n");
-        $t->setVariable("LINE", $line);
+    $t->setCurrentBlock("SUMMARY");
+    $t->setVariable("LINE", $line);
 
-        if ($state == 'NSW')
-            $t->setVariable("OVMAP", $line);
-        else
-            $t->setVariable("OVMAP", $line . '_' . strtolower($state));
+    if ($state == 'NSW')
+        $t->setVariable("OVMAP", $line);
+    else
+        $t->setVariable("OVMAP", $line . '_' . strtolower($state));
 
-        $t->setVariable("LINE-LENGTH", $length_str);
-        $t->setVariable("LINE-STN-OPEN", $active_stations);
-        $t->setVariable("LINE-STN-COUNT", $total_stations);
-        $t->parseCurrentBlock();
-    }
+    $t->setVariable("LINE-LENGTH", $length_str);
+    $t->setVariable("LINE-STN-OPEN", $active_stations);
+    $t->setVariable("LINE-STN-COUNT", $total_stations);
+    $t->parseCurrentBlock();
 
     /*
      * Display the Description tab details

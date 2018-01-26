@@ -251,9 +251,10 @@ function update_user_details()
     if (strlen($username) < 5
             || strpos($username, "@") == false
             || strlen($fullname) < 5
-            || strlen($password1) < 6
-            || strlen($password2) < 6
-            || $password1 != $password2) {
+            || ($password1 != '' && strlen($password1) < 6)
+            || ($password2 != '' && strlen($password2) < 6)
+            || $password1 != $password2)
+            {
         throw new InternalError('Malformed user creation request');
     }
 
@@ -293,7 +294,7 @@ function update_user_details()
         throw new InternalError('prepare failed: ' . $stmt->error);
     }
 
-    if ($password != '') {
+    if ($password1 != '') {
         $stmt->bind_param("sssiii", $username, $fullname, $enc_password, $role, $status, $uid);
     } else {
         $stmt->bind_param("ssiii", $username, $fullname, $role, $status, $uid);

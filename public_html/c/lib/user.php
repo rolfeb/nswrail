@@ -255,7 +255,7 @@ class User
 
         $flag = User::S_UNCONFIRMED;
 
-        if (!$stmt->prepare('
+        if (!$stmt->prepare("
             update r_user
             set
                 status = (status & ~($flag)),
@@ -264,7 +264,7 @@ class User
                 activate_code = ?
                 and
                 (status & ($flag)) != 0
-        ')) {
+        ")) {
             throw new InternalError('prepare failed: ' . $stmt->error);
         }
 
