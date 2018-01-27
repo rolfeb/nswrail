@@ -1,6 +1,10 @@
 <?php
-
+#
+# AJAX callback handler
+#   aj-save.php: upload and save an image in the staging area
+#
 require 'site.inc';
+require 'photo-util.php';
 
 function save_upload_in_staging_area()
 {
@@ -48,16 +52,13 @@ if ($user->is_guest()) {
 }
 
 try {
+    # save the image and create a thumbname
     $thumbnail = save_upload_in_staging_area();
 
-    $t = new HTML_Template_ITX('.');
-    $t->loadTemplateFile('photo-queue.tpl', true, true);
-    $t->setCurrentBlock('ITEM');
-    $t->setVariable('NAME', $thumbnail);
-    $t->parseCurrentBlock();
-    $t->parse('CONTENT');
-    $queue_element = $t->get('CONTENT');
+    # XXX: construct the HTML for the new queue entry on the client
+    $queue_item_html = get_photo_queue_item_html($thumbnail);
 
+    # tell the bootstrap fileinput component how we went
     $reply = [
         'initialPreview' => [
             "<img src='/c/upload/aj-view.php?image=$thumbnail' class='file-preview-image' title='Preview'>"
@@ -69,7 +70,7 @@ try {
                 'key'       => $thumbnail
             ]
         ],
-        'queueElement' => $queue_element
+        'queueEntry' => $queue_item_html
     ];
 } catch (Exception $e) {
     $reply = [ 'error' => $e->getMessage() ];

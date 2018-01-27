@@ -1,5 +1,8 @@
 <?php
-
+#
+# AJAX callback handler
+#   aj-delete.php: delete a staged image on the server
+#
 require 'site.inc';
 
 function delete_uploaded_image($image)

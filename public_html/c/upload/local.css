@@ -1,0 +1,42 @@
+/* layout */
+
+div.row {
+    border: 1px solid #888;
+    overflow: auto; /* ensure our border encloses the child divs */
+}
+
+div.photo-holder {
+    float: left;
+    padding: 10px;
+    width: 170px;
+}
+div.photo-holder > img {
+    border: 1px solid #ccc;
+}
+
+div.detail-holder {
+    float: left;
+    padding: 5px;
+}
+
+div.button-holder {
+    float: right;
+    padding: 5px;
+}
+
+/* form appearance */
+
+input[type="checkbox"],
+input[type="text"] {
+    border: 1px solid #ccc;
+    padding: 1px;
+}
+
+select {
+    border: 1px solid #ccc;
+    padding: 2px;
+}
+
+span.error {
+    color: red;
+}

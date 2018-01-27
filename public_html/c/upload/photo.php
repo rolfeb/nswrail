@@ -1,23 +1,23 @@
 <?php
 
 require 'site.inc';
+require 'photo-util.php';
 
 function get_photo_queue_html()
 {
     global $user;
 
     $thumb_dir = get_config('stage-dir') . '/' . $user->uid . '/small';
-    $files = array_diff(scandir($thumb_dir), array('.', '..'));
 
-    $t = new HTML_Template_ITX('.');
-    $t->loadTemplateFile('photo-queue.tpl', true, true);
-    foreach ($files as $file) {
-        $t->setCurrentBlock('ITEM');
-        $t->setVariable('NAME', $file);
-        $t->parseCurrentBlock();
+    $html = '';
+    if (file_exists($thumb_dir)) {
+        $files = array_diff(scandir($thumb_dir), array('.', '..'));
+        foreach ($files as $file) {
+            $html .= get_photo_queue_item_html($file);
+        }
     }
-    $t->parse('CONTENT');
-    return $t->get('CONTENT');
+    
+    return $html;
 }
 
 function show_upload_form()
@@ -32,6 +32,7 @@ function show_upload_form()
     $head = file_get_contents("photo-style.html");
     $head .= "\n";
     $head .= '<script type="text/javascript" src="/c/upload/photo.js"></script>';
+    $head .= '<script type="text/javascript" src="/c/upload/photo-queue.js"></script>';
     $head .= "\n";
 
     display_page("Photograph Upload", $t->get("CONTENT"),

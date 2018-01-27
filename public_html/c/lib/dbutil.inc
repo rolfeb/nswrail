@@ -1,5 +1,65 @@
 <?php
 
+function get_available_photo_tags()
+{
+    global $db;
+
+    $tag_list = [];
+    $stmt = $db->stmt_init();
+
+    if (!$stmt->prepare('
+        select
+            name, text, description
+        from
+            r_tag
+        order by
+            text
+    ')) {
+        throw new InternalError('prepare failed: ' . $stmt->error);
+    }
+
+    $stmt->execute();
+    $stmt->bind_result($name, $text, $description);
+    while ($stmt->fetch()) {
+        $tag_list[] = [
+            'name' => $name,
+            'text' => $text,
+            'description' => $description,
+        ];
+    }
+    $stmt->close();
+
+    return $tag_list;
+}
+
+function get_locations()
+{
+    global $db;
+
+    $location_list = [];
+    $stmt = $db->stmt_init();
+
+    if (!$stmt->prepare('
+        select
+            location_name
+        from
+            r_location
+        order by
+            location_name
+    ')) {
+        throw new InternalError('prepare failed: ' . $stmt->error);
+    }
+
+    $stmt->execute();
+    $stmt->bind_result($location);
+    while ($stmt->fetch()) {
+        $location_list[] = $location;
+    }
+    $stmt->close();
+
+    return $location_list;
+}
+
 function commit()
 {
     global $db;
