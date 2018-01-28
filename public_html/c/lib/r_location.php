@@ -21,13 +21,9 @@ function is_valid_location($state, $location)
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
-
-    $ok = True;
-    if (!$stmt->fetch())
-        $ok = False;
-
+    $ok = $stmt->fetch();
     $stmt->close();
-    return $ok;
+    return !!$ok;
 }
 
 function get_location_event_date_str($state, $location, $type, $first)

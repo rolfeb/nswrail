@@ -68,6 +68,7 @@ function do_publish_photo(elt)
         f_month = rowdiv.getElementsByClassName('month')[0].value;
         f_year = rowdiv.getElementsByClassName('year')[0].value;
         f_caption = rowdiv.getElementsByClassName('caption')[0].value;
+        f_image = rowdiv.getElementsByClassName('image')[0].value;
         f_tagnames = rowdiv.getElementsByClassName('tagnames')[0].value;
     }
     catch (e) {
@@ -134,7 +135,7 @@ function do_publish_photo(elt)
         }
     }
     if (future_date) {
-        e_error.innerHTML = 'Error: cannot specify a future date without a working time machine!';
+        e_error.innerHTML = 'Error: cannot specify a future date';
         return false;
     }
 
@@ -143,12 +144,51 @@ function do_publish_photo(elt)
         return false;
     }
 
+    // look up the checked tags; f_tagnames contains all possible tags, so
+    // we use this to look up each tag checkbox in turn.
+    checked_tags = [];
+    alltags = f_tagnames.split(',');
+    for (let i = 0; i < alltags.length; i++) {
+        tag_field = 'tag-' + alltags[i];
+        if (rowdiv.getElementsByClassName(tag_field)[0].checked) {
+            checked_tags.push(alltags[i]);
+        }
+    }
+    f_tags = checked_tags.join(',');
+
     e_error.innerHTML = '';
 
-    // XXX: add the entry to the database
+    form_data = {
+        'state': f_state,
+        'location': f_location,
+        'file': f_image,
+        'daterange': f_daterange,
+        'day': f_day,
+        'month': f_month,
+        'year': f_year,
+        'caption': f_caption,
+        'tags': f_tags,
+    };
 
-    // remove the row from the queue
-    rowdiv.parentNode.removeChild(rowdiv);
+    // add the entry to the database
+    $.ajax({
+        'url': '/c/upload/aj-publish.php',
+        'data': form_data,
+        'dataType': 'json',
+        'success': function(data, text, jqXHR) {
+            reply = JSON.parse(jqXHR.responseText);
+            if ('error' in reply) {
+                e_error.innerHTML = 'Publish failed: ' + reply['error'];
+            } else {
+                // remove the row from the queue
+                rowdiv.parentNode.removeChild(rowdiv);
+            }
+        },
+        'error': function(jqXHR, status, error) {
+            // some network error occurred
+            e_error.innerHTML = 'Publish failed: ' + jqXHR.statusText;
+        },
+    });
 
     return false;
 

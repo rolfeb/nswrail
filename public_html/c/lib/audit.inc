@@ -8,6 +8,7 @@ class Audit
     const A_LOGOUT      = 'logout';
     const A_UPLOAD      = 'upload';
     const A_PUBLISH     = 'publish';
+    const A_SECURITY    = 'security';
 
     public function __construct() { }
 

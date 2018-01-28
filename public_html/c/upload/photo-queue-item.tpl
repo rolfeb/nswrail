@@ -32,11 +32,11 @@
       <th>Date:</th>
       <td>
         <select class="daterange" name="daterange">
-          <option selected/>exact</option>
-          <option>circa</option>
-          <option>before</option>
-          <option>after</option>
-          <option>decade</option>
+          <option value="0" selected/>exact</option>
+          <option value="1" >circa</option>
+          <option value="-1" >before</option>
+          <option value="-2" >after</option>
+          <option value="2" >decade</option>
         </select>
         <input type="text" size="2" class="day" name="day" value="">
         -
