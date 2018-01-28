@@ -1,7 +1,7 @@
 <?php
 #
-# AJAX callback handler
-#   aj-save.php: upload and save an image in the staging area
+# aj-upload.php
+#   AJAX callback handler: upload and save an image in the staging area
 #
 require 'site.inc';
 require 'photo-util.php';
@@ -38,6 +38,9 @@ function save_upload_in_staging_area()
         throw new InternalError("Error: failed to save image [$r_tmpfile,$staged_file]");
     }
 
+    # add an audit entry
+    Audit::addentry(Audit::A_UPLOAD, $r_filename);
+
     # create a thumbnail
     $staged_thumbnail = "$stage_dir/small/$r_filename";
     $im = new Imagick($staged_file);
@@ -55,7 +58,7 @@ try {
     # save the image and create a thumbname
     $thumbnail = save_upload_in_staging_area();
 
-    # XXX: construct the HTML for the new queue entry on the client
+    # construct the HTML for the new queue entry on the client
     $queue_item_html = get_photo_queue_item_html($thumbnail);
 
     # tell the bootstrap fileinput component how we went
@@ -65,7 +68,7 @@ try {
         ],
         'initialPreviewConfig' => [
             [
-                'caption'   => $thumbnail,
+                'caption'   => 'uploaded successfully!',
                 'url'       => '/c/upload/aj-delete.php',
                 'key'       => $thumbnail
             ]

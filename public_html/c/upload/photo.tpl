@@ -1,7 +1,12 @@
 <!-- BEGIN CONTENT -->
+<datalist id="all-locations">
+  <!-- BEGIN LOCATION --><option value="{LOCATION-NAME}">
+  <!-- END LOCATION -->
+</datalist>
 <div class="container">
 
 <h1>Photograph Upload</h1>
+Use this screen to upload, annotate and publish photographs.
 
 <h2>1. Upload Photos</h2>
 <div class="file-loading">

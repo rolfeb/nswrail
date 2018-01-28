@@ -24,15 +24,24 @@ function show_upload_form()
 {
     $t = new HTML_Template_ITX('.');
     $t->loadTemplateFile('photo.tpl', true, true);
+
+    # populate the location name <datalist>
+    foreach (get_locations() as $location) {
+        $t->setCurrentBlock('LOCATION');
+        $t->setVariable('LOCATION-NAME', $location);
+        $t->parseCurrentBlock();
+    }
+
     $t->setCurrentBlock('CONTENT');
+
+    # populate the photo queue
     $t->setVariable('PHOTO-QUEUE', get_photo_queue_html());
-    $t->touchBlock('CONTENT');
+
     $t->parseCurrentBlock();
 
     $head = file_get_contents("photo-style.html");
     $head .= "\n";
     $head .= '<script type="text/javascript" src="/c/upload/photo.js"></script>';
-    $head .= '<script type="text/javascript" src="/c/upload/photo-queue.js"></script>';
     $head .= "\n";
 
     display_page("Photograph Upload", $t->get("CONTENT"),

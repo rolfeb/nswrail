@@ -26,10 +26,6 @@
           <option>SA</option>
         </select>
         <input type="text" class="location" name="location" list="all-locations">
-        <datalist id="all-locations">
-          <!-- BEGIN LOCATION --><option value="{LOCATION-NAME}">
-          <!-- END LOCATION -->
-        </datalist>
       </td>
     </tr>
     <tr>
