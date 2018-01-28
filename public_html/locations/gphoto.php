@@ -21,15 +21,15 @@ $stmt->prepare("
     select
         L.type,
         LP.file,
-        LP.owner,
+        IFNULL(U.fullname, LP.legacy_owner),
         LP.day,
         LP.month,
         LP.year,
-        LP.year_error,
+        LP.daterange,
         LP.caption
     from
         r_location L,
-        r_location_photo LP
+        r_location_photo LP left join r_user U on LP.owner_uid = U.uid
     where
         L.location_state = ?
         and
@@ -41,7 +41,7 @@ $stmt->prepare("
         and
         LP.seqno = ?
         and
-        LP.status = 'Y'
+        LP.hold is null
 ")
     or dbi_error_trace("prepare failed");
 
@@ -59,7 +59,7 @@ while ($stmt->fetch())
         $owner = "Rolfe Bozier";
 
     $t->setCurrentBlock("CONTENT");
-    $t->setVariable("IMAGE", "/locations/photos/$file");
+    $t->setVariable("IMAGE", "/media/photos/$file");
     $t->setVariable("TEXT", $caption);
     $t->setVariable("IMG-ALT-TEXT", htmlentities($caption));
     $t->setVariable("DATE", $date);

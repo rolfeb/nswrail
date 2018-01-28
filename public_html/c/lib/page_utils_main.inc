@@ -72,9 +72,7 @@ function db_count_photographs()
     $stmt->prepare("
         select count(*) from r_location_photo
         where
-            status = 'Y'
-            and
-            released = 'Y'
+            hold is null
     ")
         or dbi_error_trace("prepare failed");
 
@@ -108,9 +106,7 @@ function db_count_recent_photographs()
         where
             DATEDIFF(SYSDATE(), submit_date) < 28
             and
-            status = 'Y'
-            and
-            released = 'Y'
+            hold is null
         group by
             age_in_days
         order by

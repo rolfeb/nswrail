@@ -136,7 +136,7 @@ function display_photos($theme, $themeextra, $title, $intro)
             #
             # Thumbnail mode
             #
-            $thumb = "/locations/photos/small/$file";
+            $thumb = "/media/photos/thumbnails/$file";
 
             $href = "/locations/gphoto.php?"
                 . urlenc("name=$location_state:$location:$seqno");
@@ -297,11 +297,11 @@ function sql_theme($theme, $sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            RP.owner,
+            IFNULL(U.fullname, RP.legacy_owner),
             RP.caption
         from
             r_line_location RL,
-            r_location_photo RP
+            r_location_photo RP left join r_user U on RP.owner_uid = U.uid
         where
             RL.location_state = RP.location_state
             and
@@ -309,9 +309,9 @@ function sql_theme($theme, $sorting)
             and
             RL.mainline = 'Y'
             and
-            RP.status = 'Y'
+            RP.hold is null
             and
-            FIND_IN_SET('$theme', RP.themes)
+            FIND_IN_SET('$theme', RP.tags) > 0
         order by
             $sort
     ";
@@ -340,11 +340,11 @@ function sql_historic($sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            RP.owner,
+            IFNULL(U.fullname, RP.legacy_owner),
             RP.caption
         from
             r_line_location RL,
-            r_location_photo RP
+            r_location_photo RP left join r_user U on RP.owner_uid = U.uid
         where
             RL.location_state = RP.location_state
             and
@@ -352,7 +352,7 @@ function sql_historic($sorting)
             and
             RL.mainline = 'Y'
             and
-            RP.status = 'Y'
+            RP.hold is null
             and
             RP.year < YEAR(CURDATE()) - $HISTORIC_YEARS
             and
@@ -387,11 +387,11 @@ function sql_recent($sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            RP.owner,
+            IFNULL(U.fullname, RP.legacy_owner),
             RP.caption
         from
             r_line_location RL,
-            r_location_photo RP
+            r_location_photo RP left join r_user U on RP.owner_uid = U.uid
         where
             RL.location_state = RP.location_state
             and
@@ -399,7 +399,7 @@ function sql_recent($sorting)
             and
             RL.mainline = 'Y'
             and
-            RP.status = 'Y'
+            RP.hold is null
             and
             RP.submit_date > DATE_SUB(sysdate(), INTERVAL $RECENT_DAYS DAY)
         order by
@@ -428,12 +428,12 @@ function sql_tunnel($sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            RP.owner,
+            IFNULL(U.fullname, RP.legacy_owner),
             RP.caption
         from
             r_line_location RL,
             r_location L,
-            r_location_photo RP
+            r_location_photo RP left join r_user U on RP.owner_uid = U.uid
         where
             RL.location_state = RP.location_state
             and
@@ -445,7 +445,7 @@ function sql_tunnel($sorting)
             and
             L.location_name = RP.location_name
             and
-            RP.status = 'Y'
+            RP.hold is null
             and
             L.type = 'tunnel'
         order by
@@ -479,12 +479,12 @@ function sql_owner($sorting, $owner)
             RP.file,
             RP.seqno,
             RP.year,
-            RP.owner,
+            IFNULL(U.fullname, RP.legacy_owner),
             RP.caption
         from
             r_line_location RL,
             r_location L,
-            r_location_photo RP
+            r_location_photo RP left join r_user U on RP.owner_uid = U.uid
         where
             RL.location_state = RP.location_state
             and
@@ -496,9 +496,9 @@ function sql_owner($sorting, $owner)
             and
             L.location_name = RP.location_name
             and
-            RP.status = 'Y'
+            RP.hold is null
             and
-            (RP.owner = '$owner' $extra)
+            (owner = '$owner' $extra)
         order by
             $sort
     ";

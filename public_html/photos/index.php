@@ -10,16 +10,16 @@ $t->loadTemplateFile("index.tpl");
 $stmt = $db->stmt_init();
 $stmt->prepare("
     select
-        IFNULL(owner, 'Rolfe Bozier'),
+        IF(U.fullname is not null,U.fullname,IFNULL(RP.legacy_owner, 'Rolfe Bozier')) owner,
         count(*)
     from
-        r_location_photo
+        r_location_photo RP left join r_user U on RP.owner_uid = U.uid
     where
-        status = 'Y'
+        RP.hold is null
     group by
-        IFNULL(owner, 'Rolfe Bozier')
+        owner
     order by
-        IFNULL(owner, 'Rolfe Bozier')
+        owner
 ")
     or dbi_error_trace("prepare failed");
 
