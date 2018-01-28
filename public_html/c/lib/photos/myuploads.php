@@ -27,7 +27,7 @@ $stmt->prepare("
         RP.month,
         RP.year,
         RP.year_error,
-        RP.submit_date,
+        RP.publish_date,
         RP.owner,
         RP.width,
         RP.height,
@@ -45,7 +45,7 @@ $stmt->prepare("
         and
         P.email = ?
     order by
-        RP.submit_date
+        RP.publish_date
 ")
     or dbi_error_trace("prepare failed");
 
@@ -53,7 +53,7 @@ $stmt->prepare("
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $stmt->bind_result($state, $location, $file, $seqno, $day, $month, $year,
-    $year_error, $submit_date, $owner, $width, $height, $description, $status);
+    $year_error, $publish_date, $owner, $width, $height, $description, $status);
 
 while ($stmt->fetch())
 {
@@ -64,7 +64,7 @@ while ($stmt->fetch())
     $t->setVariable("LOCATION", $location);
     $t->setVariable("DATE", $date_str);
     $t->setVariable("SIZE", "$width x $height");
-    $t->setVariable("UPLOADED", $submit_date);
+    $t->setVariable("UPLOADED", $publish_date);
     $t->setVariable("STATUS", $status);
     $t->setVariable("DESCRIPTION", $description);
     $t->parseCurrentBlock();

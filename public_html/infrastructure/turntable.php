@@ -36,7 +36,7 @@ $stmt->prepare("
         LTT.size_ft,
         LTT.status,
         LTT.text,
-        count(LP.status)
+        count(LP.caption)
     from
         r_line_location RL,
         r_line R,
@@ -47,9 +47,9 @@ $stmt->prepare("
                 and
                 LP.location_name = LTT.location_name
                 and
-                LP.status = 'Y'
+                LP.hold is null
                 and
-                FIND_IN_SET('turntable', LP.themes)
+                FIND_IN_SET('turntable', LP.tags)
     where
         LTT.location_state = ?
         and

@@ -64,7 +64,7 @@ function run_edit_mode($state, $location, $line, $redirect)
             LP.year_error,
             LP.caption,
             LP.themes,
-            LP.submit_date,
+            LP.publish_date,
             LP.submit_by,
             LP.status
         from
@@ -81,7 +81,7 @@ function run_edit_mode($state, $location, $line, $redirect)
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
     $stmt->bind_result($seqno, $file, $owner, $day, $month, $year, $year_error,
-        $caption, $themes, $submit_date, $submit_by, $status);
+        $caption, $themes, $publish_date, $submit_by, $status);
 
     $stmt->store_result();  /* for num rows */
 

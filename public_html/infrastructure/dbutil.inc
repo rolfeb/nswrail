@@ -16,7 +16,7 @@ function count_photos($state, $location)
             and
             LP.location_name = ?
             and
-            LP.status != 'N'
+            LP.hold is null
     ")
         or dbi_error_trace("prepare failed");
 

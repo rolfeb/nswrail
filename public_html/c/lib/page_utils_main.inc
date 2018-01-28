@@ -99,12 +99,12 @@ function db_count_recent_photographs()
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
-            DATEDIFF(SYSDATE(), submit_date)    age_in_days,
+            DATEDIFF(SYSDATE(), publish_date)    age_in_days,
             count(*)
         from
             r_location_photo
         where
-            DATEDIFF(SYSDATE(), submit_date) < 28
+            DATEDIFF(SYSDATE(), publish_date) < 28
             and
             hold is null
         group by

@@ -376,7 +376,7 @@ function sql_recent($sorting)
     if ($sorting == "year")
         $sort = "RP.year, RL.location_name, RP.seqno";
     else
-        $sort = "DATE(RP.submit_date) desc, RL.location_name, RP.seqno";
+        $sort = "DATE(RP.publish_date) desc, RL.location_name, RP.seqno";
 
     $sql = "
         select
@@ -401,7 +401,7 @@ function sql_recent($sorting)
             and
             RP.hold is null
             and
-            RP.submit_date > DATE_SUB(sysdate(), INTERVAL $RECENT_DAYS DAY)
+            RP.publish_date > DATE_SUB(sysdate(), INTERVAL $RECENT_DAYS DAY)
         order by
             $sort
     ";

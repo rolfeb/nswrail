@@ -58,6 +58,9 @@ function get_menubar_html()
     if ($fp = fopen($config_file, "r")) {
         while ($line = fgets($fp)) {
             $line = trim($line);
+            if ($line == '' or $line[0] == '#') {
+                continue;
+            }
             if (preg_match($re, $line, $matches)) {
                 list($dummy, $type, $role, $text, $url) = $matches;
 
