@@ -564,7 +564,7 @@ function add_photo_details($state, $location)
     $stmt->prepare("
         select distinct
             LP.year,
-            LP.year_error
+            LP.daterange
         from
             r_location_photo LP
         where
@@ -572,7 +572,7 @@ function add_photo_details($state, $location)
             and
             LP.location_name = ?
             and
-            LP.status = 'Y'
+            LP.hold is null
         order by
             LP.year
     ")
@@ -613,7 +613,7 @@ function add_photo_thumbnails($state, $location, $line_state, $line, $segment)
         select
             LP.seqno,
             LP.file,
-            LP.status,
+            LP.hold,
             LP.year
         from
             r_location_photo LP
@@ -631,14 +631,14 @@ function add_photo_thumbnails($state, $location, $line_state, $line, $segment)
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
-    $stmt->bind_result($seqno, $file, $status, $year);
+    $stmt->bind_result($seqno, $file, $hold, $year);
 
     $nphotos = 0;
     $curr_decade = '';
 
     while ($stmt->fetch())
     {
-        if ($status == "Y")
+        if ($hold == '')
         {
             $base = preg_replace("/.jpg$/", "", $file);
 
@@ -664,7 +664,7 @@ function add_photo_thumbnails($state, $location, $line_state, $line, $segment)
 
             $t->setCurrentBlock("PHOTO");
             $t->setVariable("PHOTO-URL", $url);
-            $t->setVariable("PHOTO-THUMB", "/locations/photos/small/$base.jpg");
+            $t->setVariable("PHOTO-THUMB", "/media/photos/thumbnails/$base.jpg");
             $t->parseCurrentBlock();
 
             $t->parse("PHOTO-LIST");

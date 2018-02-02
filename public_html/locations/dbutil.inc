@@ -207,7 +207,7 @@ function get_location_nphotos($state, $location)
             and
             LP.location_name = ?
             and
-            LP.status = 'Y'
+            LP.hold is null
     ")
         or dbi_error_trace("prepare failed");
 

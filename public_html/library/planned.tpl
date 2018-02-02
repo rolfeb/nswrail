@@ -1,6 +1,7 @@
 <!-- BEGIN CONTENT -->
 <h1>{TITLE}</h1>
 
+<div class="text">
 <p>
 There were a large number of lines which were planned for NSW, but never
 built.  Some never made it past the survey stage, some were authorised
@@ -8,24 +9,20 @@ for construction but never built, and some were abandoned during
 construction.
 </p>
 <p>
-The following lines were authorised by an Act of legislation, but never
+The following lines were authorised by an Act of Legislation, but never
 completed:
 </p>
 
 <!-- BEGIN LINE -->
-<h2>{NAME}</h2>
+<h2>{ACT}:</h2>
 
-<blockquote>
-<h3>{ACT}:</h3>
-<p>
+<div class="blockquote">
 {TEXT}
-</p>
+</div>
 <!-- BEGIN COST-SECTION -->
-<p>
-Estimated cost: {COST}
-</p>
+<p>Estimated cost: {COST} </p>
 <!-- END COST-SECTION -->
-</blockquote>
+</p>
 
 <!-- BEGIN NOTE-SECTION -->
 <p>
@@ -34,4 +31,5 @@ Estimated cost: {COST}
 <!-- END NOTE-SECTION -->
 <!-- END LINE -->
 
+</div>
 <!-- END CONTENT -->

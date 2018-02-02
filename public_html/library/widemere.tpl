@@ -1,16 +1,17 @@
 <!-- BEGIN CONTENT -->
 <h1>{TITLE}</h1>
 
-<div class="boxed">
+<div class="alert alert-info">
 This article was written by <b>Karina Hall</b>.  It was available at one point
-on the Net, although this is no longer the case.  It is provided here
+on the net, although this is no longer the case.  It is provided here
 with her kind permission.
 </div>
 
-<br />
-
+<div class="text2col">
 <p>
-<img class="lalign" src="images/wq-01-sm.jpg" alt="photograph" />
+<div class="float-right m-2">
+  <img src="images/wq-01-sm.jpg">
+</div>
 The Widemere line was one of the
 State's many privately owned quarry lines. Located at Prospect Hill the Widemere
 Quarry was one of a number blasted out of the igneous mass. Blue metal has been quarried
@@ -20,8 +21,6 @@ the Widemere Quarry was opened in 1924 by the Sydney and Suburban Blue Medal Co 
 Southern side of Prospect Hill it was decided to link this new quarry with the Southern
 Line at Fairfield, some eight kilometres distant.
 </p>
-
-<br class="flush" />
 
 <p>
 A major portion of the selected route was along public streets with only a comparatively
@@ -37,10 +36,10 @@ by means of a timber-framed trestle viaduct. Another bridge crossed the main Syd
 supply's pipes near the entrance to the quarry.
 </p>
 
-<br class="flush" />
-
 <p>
-<a href="images/wq-10-lg.jpg"><img class="ralign" src="images/wq-10-sm.jpg" alt="photograph" /></a>
+<div class="float-right m-2">
+  <a href="images/wq-10-lg.jpg"><img class="img-thumbnail" src="images/wq-10-sm.jpg"></a>
+</div>
 The Widemere line was one of the State's many privately owned quarry
 lines. Located at Prospect Hill the Widemere Quarry was one of a number blasted out of the
 igneous mass. Blue metal has been quarried at Prospect for over a hundred years and in
@@ -51,9 +50,10 @@ decided to link this new quarry with the Southern Line at Fairfield, some eight 
 distant.
 </p>
 
-
 <p>
-<a href="images/wq-14-lg.jpg"><img class="lalign" src="images/wq-14-sm.jpg" alt="photograph" /></a>
+<div class="float-right m-2">
+  <a href="images/wq-14-lg.jpg"><img class="img-thumbnail" src="images/wq-14-sm.jpg"></a>
+</div>
 The line terminated in the quarry on two loop
 sidings and a crossover. There was another narrow gauge (.690 m) line within the quarry,
 where wagons were filled with blue metal and gravitated to the crusher. It was then put
@@ -61,10 +61,10 @@ onto a conveyor belt which took the metal to the bins where it was loaded onto w
 taken to Fairfield.
 </p>
 
-<div style="clear: both;" />
-
 <p>
-<a href="images/wq-08-lg.jpg"><img class="lalign" src="images/wq-08-sm.jpg" alt="photograph" /></a>
+<div class="float-right m-2">
+  <a href="images/wq-08-lg.jpg"><img class="img-thumbnail" src="images/wq-08-sm.jpg"></a>
+</div>
 The line, constructed under the supervision of Mr Johnson, posed few engineering problems
 except for a steep rise on Horsley Drive between Smithfield Road and Dublin Street. The
 grade was 1 in 50 going up the hill from Smithfield Road and 1 in 55 when ascending the
@@ -76,15 +76,16 @@ sharper than normal and some were restricted to a 160.9 metres radius (8 chains}
 had to proceed very slowly around curves or there was a danger of derailment.
 </p>
 
-<br class="flush" />
-
 <p>
-<a href="images/wq-04-lg-light.jpg"><img class="ralign" src="images/wq-04-sm.jpg" alt="photograph" /></a>
+<div class="float-right m-2">
+  <a href="images/wq-04-lg-light.jpg"><img class="img-thumbnail" src="images/wq-04-sm.jpg"></a>
+</div>
 When the line opened, the company did not own an engine and the New South Wales Government
 Railways maintained a service. In 1927, the NSWGR loaned the company a 4-6-4 tank engine
 (No 3) and later in the same year an engine was purchased from the South Maitland Railway
 Company.
 </p>
+
 <p>
 This was and old Avonside 0-6-0 saddle tank, built in 1902. It was scrapped in 1934 in a
 typical quarry style by a few well-placed explosive charges. Another locomotive was
@@ -98,8 +99,7 @@ The trains running down the town's main street became a feature of Smithfield's 
 and anecdotes flow freely when older residents recall earlier days:
 </p>
 
-<blockquote>
-<p>
+<div class="blockquote">
 ... Often, the engine driver would have to come into the Victoria Hotel and ask
 customers to move their sulkies and carts off the line ... Not only would the trains scare
 the hores and cows in the paddocks but would also frighten the wits out of visitors who
@@ -108,13 +108,12 @@ sides as a daredevil feat.&nbsp; Adults often did the same thing to get a ride i
 Fairfield ...When I heard the train coming I would rush out and bring in my washing as the
 smoke, stem and dust would soil the cloths ... You always made sure a hose was handy as
 the sparks from the engine often stated grass fires ...
-</p>
-</blockquote>
-
-<br class="flush" />
+</div>
 
 <p>
-<a href="images/wq-09-lg.jpg"><img class="lalign" src="images/wq-09-sm.jpg" alt="photograph" /></a>
+<div class="float-right m-2">
+  <a href="images/wq-09-lg.jpg"><img class="img-thumbnail" src="images/wq-09-sm.jpg"></a>
+</div>
 The line was closed on 2 June 1945, mainly due to the shortage of rolling
 stock but fortunately motor vehicles large enough for the cartage of blue metal had been
 developed. The railway line was sold and most of the rails and sleepers were soon removed.
@@ -125,10 +124,10 @@ land reclamation have removed all traces of the Fairfield to Prospect Widemere Q
 branch line.
 </p>
 
-<br class="flush" />
-
 <p>
-<a href="images/wq-05-lg-light.jpg"><img class="ralign" src="images/wq-05-sm.jpg" alt="photograph" /></a>
+<div class="float-right m-2">
+  <a href="images/wq-05-lg-light.jpg"><img class="img-thumbnail" src="images/wq-05-sm.jpg"></a>
+</div>
 In 1924 a quarry was opened on the Southern side of Prospect Hill almost immediately
 behind the Prospect Quarry. The stone, after being quarried was loaded into small side
 tipping trucks on 2ft gauge tracks and gravitated to the jaw crusher just beyond the
@@ -137,10 +136,10 @@ loaded into Government wagons. The side-tippers were taken back to the quarry by
 This was later superseded by motor lorries.
 </p>
 
-<br class="flush" />
-
 <p>
-<a href="images/wq-03-lg.jpg"><img class="lalign" src="images/wq-03-sm.jpg" alt="photograph" /></a>
+<div class="float-right m-2">
+  <a href="images/wq-03-lg.jpg"><img class="img-thumbnail" src="images/wq-03-sm.jpg"></a>
+</div>
 A private railway was constructed under
 the supervision of Mr. Johnson and connected the quarry with the main southern railway
 line at Fairfield a distance of some 5 miles. After leaving the bins, which was served by
@@ -154,10 +153,10 @@ the distance into Fairfield where it cut across The Crescent and entered the rai
 adjacent to the station.
 </p>
 
-<br class="flush" />
-
 <p>
-<a href="images/wq-02-lg.jpg"><img class="ralign" src="images/wq-02-sm.jpg" alt="photograph" /></a>
+<div class="float-right m-2">
+  <a href="images/wq-02-lg.jpg"><img class="img-thumbnail" src="images/wq-02-sm.jpg"></a>
+</div>
 This line was opened in October, 1925, but as the Company did not have its own engine at
 that time the traffic was worked by Government engines, mostly standard 2-8-0 goods
 engines and one cannot help but speculate on the anxious moments when traversing some of
@@ -166,8 +165,9 @@ on loan to the Company and how much more so must the curves have suffered at its
 However, in 1927 an engine was purchased from the South Maitland Railway CO. It was their
 No. 3, 0-6-0 saddle tank engine built by Avonside Engine Co. (No. 1436) in 1902. This
 engine worked the line until a second was
-
-<a href="images/wq-07-lg.jpg"><img class="lalign" src="images/wq-07-sm.jpg" alt="photograph" /></a>
+<div class="float-right m-2">
+  <a href="images/wq-07-lg.jpg"><img class="img-thumbnail" src="images/wq-07-sm.jpg"></a>
+</div>
 purchased from the Government in 1933. This was a
 2-6-4 tank engine No, 2013 and was originally built by Beyer, Peacock (No. 2067) as an
 0-6-0 tender engine with 4ft. diameter driving wheels and 18in. x 24in. inside cylinders.
@@ -179,7 +179,5 @@ numbered 26. The line was sold and the rails removed and so another railway pers
 has passed, never again to rattle down Smithfield Street with a couple of urchins clinging
 to the rear truck.
 </p>
-
-<br class="flush" />
-
+</div>
 <!-- END CONTENT -->

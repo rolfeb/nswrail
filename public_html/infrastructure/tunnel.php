@@ -1,7 +1,6 @@
 <?php
 
-require_once "site.inc";
-require_once "dbutil.inc";
+require "site.inc";
 
 $title = "NSW Railway Tunnels";
 

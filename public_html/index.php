@@ -14,6 +14,7 @@ $text = $log[$last]['text'];
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("index.tpl");
 
+/*
 foreach (db_random_pics(3) as $i => $row)
 {
     list($state, $name, $seqno, $file) = $row;
@@ -26,7 +27,9 @@ foreach (db_random_pics(3) as $i => $row)
     $t->setVariable("IMG", $img);
     $t->parseCurrentBlock();
 }
+*/
 
+/*
 $t->setCurrentBlock("CONTENT");
 $t->setVariable("COUNT-LOCATIONS", db_count_locations());
 $t->setVariable("COUNT-PHOTOS", db_count_photographs());
@@ -44,13 +47,15 @@ if ($count > 0)
     $t->parseCurrentBlock();
 }
 
-/*
 $t->setVariable("COUNT-VISITORS", count_visitors());
 */
 $t->setCurrentBlock("CONTENT");
+$t->touchBlock("CONTENT");
+/*
 $t->setVariable("COPYRIGHT-YEAR", $current_year);
 $t->setVariable("LAST-CHANGE_DATE", $date);
 $t->setVariable("LAST-CHANGE-LOG", $text);
+*/
 $t->parseCurrentBlock();
 
 

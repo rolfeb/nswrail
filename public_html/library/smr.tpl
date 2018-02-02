@@ -1,7 +1,10 @@
 <!-- BEGIN CONTENT -->
 <h1>{TITLE}</h1>
 
-<a href="images/smr-map.gif"><img class="ralign" src="images/smr-map-small.gif" alt="SMR map" /></a>
+<div class="text2col">
+<div class="float-right">
+<a href="images/smr-map.gif"><img class="img-thumbnail" src="images/smr-map-small.gif" alt="SMR map" /></a>
+</div>
 The South Maitland Railway (SMR) was a network of privately-owned branches
 extending south-west of Maitland, serving a large number of collieries.
 The first tracks were laid in 1893, and although most of the network
@@ -144,15 +147,15 @@ The track was lifted in the early 1970s.</p>
 
 <h2>The Hetton-Bellbird and Pelton Railways</h2>
 
-<p>XXX</p>
+<p>TBD</p>
 
 <h2>The Cessnock No 2 and Kalingo Railways</h2>
 
-<p>XXX</p>
+<p>TBD</p>
 
 <h2>The Stanford Merthyr No 2, Millfield Greta and Greta Main Railways</h2>
 
-<p>XXX</p>
+<p>TBD</p>
 
 <h2>Today</h2>
 
@@ -163,91 +166,88 @@ for coal from the nearby Ellalong Colliery.  This was recently re-opened
 and renamed Southland Colliery, and is the sole traffic over the network.
 When this closes for the final time, the SMR will almost certainly see no
 more rail traffic.</p>
+</div>
 
+<div class="text mt-5">
 <h2>Collieries</h2>
 
 <p>John Delaney, who worked on with the SMR mines, has written a comprehensive
-account of the collieries of the region.  The following table contains a
-summary of the mines which were served by rail, and includes a link to
-the relevant pages in John's work.</p>
+account of the collieries of the region, 
+<a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/frames.html">"History of the Greta Coal Measures"</a>.
+</P>
+<p>
+The following table contains a summary of the mines which were served by rail,
+and includes a link to the relevant pages in John's work.</p>
+</div>
 
-<table class="clean">
-<tr class="property">
-  <td>Location</td>
-  <td>Colliery</td>
-  <td>Opened</td>
-  <td>Closed</td>
-  <td>Article</td>
+<table class="table table-sm">
+<thead class="thead-dark">
+<tr>
+  <th>Location</th>
+  <th>Colliery</th>
+  <th style="text-align: right;">Opened</th>
+  <th style="text-align: right;">Closed</th>
 </tr>
+</thead>
 <tr>
   <td>East Greta Railway</td>
-  <td>East Greta No 2</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/egr2.html">East Greta No 2</a></td>
   <td align="right">Jul 1896</td>
   <td align="right">Sep 1929</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/egr2.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>East Greta No 1</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/egr1.html">East Greta No 1</a></td>
   <td align="right">Aug 1888</td>
   <td align="right">Sep 1929</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/egr1.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Glen Greta</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/ggr.html">Glen Greta</a></td>
   <td align="right">1930</td>
   <td align="right">1931</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/ggr.html">link</a></td>
 </tr>
 <tr>
   <td>Stanford Merthyr Railway</td>
-  <td>Glen Ayr</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/gay.html">Glen Ayr</a></td>
   <td align="right">Jun 1914</td>
   <td align="right">1930</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/gay.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Ayrfield No 1</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/ayfl1.html">Ayrfield No 1</a></td>
   <td align="right">1918</td>
   <td align="right">Apr 1933</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/ayfl1.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Ayrfield No 2</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/ayfl2.html">Ayrfield No 2</a></td>
   <td align="right">1924</td>
   <td align="right">Oct 1928</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/ayfl2.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Heddon Greta</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/hgr.html">Heddon Greta</a></td>
   <td align="right">1901</td>
   <td align="right">1911</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/hgr.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Stanford Merthyr</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/stme.html">Stanford Merthyr</a></td>
   <td align="right">1901</td>
   <td align="right">1955</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/stme.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Pelaw Main</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/pelaw.html">Pelaw Main</a></td>
   <td align="right">Apr 1901</td>
   <td align="right">1955</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/pelaw.html">link</a></td>
 </tr>
 <tr>
   <td>Hebburn Railway</td>
-  <td>Hebburn No 1</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/he1.html">Hebburn No 1</a></td>
   <td align="right">Oct 1901</td>
   <td align="right">1958</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/he1.html">link</a></td>
 </tr>
 <tr>
   <td></td>
@@ -258,129 +258,111 @@ the relevant pages in John's work.</p>
 </tr>
 <tr>
   <td></td>
-  <td>Hebburn No 2</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/he2.html">Hebburn No 2</a></td>
   <td align="right">1918</td>
   <td align="right">Jun 1972</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/he2.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Elrington</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/elr.html">Elrington</a></td>
   <td align="right">1924</td>
   <td align="right">1962</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/elr.html">link</a></td>
 </tr>
 <tr>
   <td>Abermain Colliery Railway</td>
-  <td>Abermain No 1</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/abm1.html">Abermain No 1</a></td>
   <td align="right">Jan 1903</td>
   <td align="right">Sep 1960</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/abm1.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Abermain No 3</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/abm3sh.html">Abermain No 3</a></td>
   <td align="right">1923</td>
   <td align="right">Sep 1960</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/abm3sh.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Abermain No 2</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/abm2.html">Abermain No 2</a></td>
   <td align="right">1912</td>
   <td align="right">May 1964</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/abm2.html">link</a></td>
 </tr>
 <tr>
   <td>Aberdare Railway</td>
-  <td>Greta Main</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.nepandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net.html">Greta Main</a></td>
   <td align="right">1930</td>
   <td align="right">1931</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/grm.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Neath</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/neath.html">Neath</a></td>
   <td align="right">May 1906</td>
   <td align="right">Apr 1961</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/neath.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Aberdare</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/abdsh.html">Aberdare</a></td>
   <td align="right">Aug 1905</td>
   <td align="right">Nov 1960</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/abdsh.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Aberdare Extended</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/abdex.html">Aberdare Extended</a></td>
   <td align="right">Jun 1906</td>
   <td align="right">Mar 1963</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/abdex.html">link</a></td>
 </tr>
 <tr>
   <td>Aberdare South Colliery Railway</td>
-  <td>Aberdare South</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/abds.html">Aberdare South</a></td>
   <td align="right">Jun 1913</td>
   <td align="right">Dec 1927</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/abds.html">link</a></td>
 </tr>
 <tr>
   <td>Aberdare Central Colliery Railway</td>
-  <td>Aberdare Central</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/abdc.html">Aberdare Central</a></td>
   <td align="right">1914</td>
   <td align="right">Mar 1961</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/abdc.html">link</a></td>
 </tr>
 <tr>
   <td>Cessnock No 2 Railway</td>
-  <td>Cessnock No 2</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/cs2.html">Cessnock No 2</a></td>
   <td align="right">Jan 1917</td>
   <td align="right">1955</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/cs2.html">link</a></td>
 </tr>
 <tr>
   <td>Kalingo Railway</td>
-  <td>Cessnock No 1</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/cs1.html">Cessnock No 1</a></td>
   <td align="right">1922</td>
   <td align="right">1964</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/cs1.html">link</a></td>
 </tr>
 <tr>
   <td>Stanford Merthyr No 2 Railway</td>
-  <td>Stanford Main No 2</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/stm2.html">Stanford Main No 2</a></td>
   <td align="right">Feb 1922</td>
   <td align="right">Jul 1961</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/stm2.html">link</a></td>
 </tr>
 <tr>
   <td>Greta Main and Millfield Greta Railway</td>
-  <td>Maitland Main</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/mam.html">Maitland Main</a></td>
   <td align="right">1921</td>
   <td align="right">1972</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/mam.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Millfield Greta</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/mfgr.html">Millfield Greta</a></td>
   <td align="right">1924</td>
   <td align="right">Nov 1955</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/mfgr.html">link</a></td>
 </tr>
 <tr>
   <td>Hetton-Bellbird and Pelton Railway</td>
-  <td>Bellbird</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/bellbird.html">Bellbird</a></td>
   <td align="right">1911</td>
   <td align="right">May 1976</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/bellbird.html">link</a></td>
 </tr>
 <tr>
   <td></td>
-  <td>Pelton</td>
+  <td><a href="http://pandora.nla.gov.au/pan/100781/20090610-1630/hosting.collectionsaustralia.net/newcastle/greta/pelton.html">Pelton</a></td>
   <td align="right">Apr 1916</td>
   <td align="right">1986</td>
-  <td><a href="http://archive.amol.org.au/newcastle/greta/pelton.html">link</a></td>
 </tr>
 </table>
 

@@ -51,7 +51,7 @@ Order allow,deny
     Header set Cache-Control no-store
 </FilesMatch>
 
-<FilesMatch "\.(gif|png|jpg|css|js|ico)$">
+<FilesMatch "\.(gif|png|jpg|css|map|js|ico)$">
     Allow from all
     Header set Cache-Control max-age=1440,must-revalidate
 </FilesMatch>

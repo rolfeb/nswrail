@@ -1,14 +1,14 @@
 <!-- BEGIN CONTENT -->
 <h1>{TITLE}</h1>
 
-<div class="boxed">
-NOTE: The contents of this page were kindly supplied by
-<b>Patrick James</b>.
+<div class="alert alert-info">
+This is a copy of the paper "Names of Railway Stations in New South Wales.  With their Meaning and Origin.  by C. A. IRISH."
+
+<br/>
+The contents of this page were kindly supplied by <b>Patrick James</b>.
 </div>
 
-<h2> Names of Railway Stations in New South Wales.  With their Meaning and Origin.  by C. A. IRISH. </h2>
-
-<h3>Preface</h3>
+<h2>Preface</h2>
 
 <p> This paper by C. A. Irish, written in 1926/1927, has been copied from the
 published article.  Some 1125 station names are given.  In accord with the
@@ -34,7 +34,7 @@ Library indexes</p>
 <p>Patrick James.<br/>
 21 March 1999.</p>
 
-<h3>The Text</h3>
+<h2>The Text</h2>
 
 <p>
 <i>
