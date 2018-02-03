@@ -1,7 +1,7 @@
 <!-- BEGIN CONTENT -->
 <h1>{TITLE}</h1>
 
-<div class="text2col">
+<div class="text text-2column">
 <div class="float-right">
 <a href="images/smr-map.gif"><img class="img-thumbnail" src="images/smr-map-small.gif" alt="SMR map" /></a>
 </div>

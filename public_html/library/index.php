@@ -34,21 +34,9 @@ $cards = [
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("index.tpl");
 
-$ncards = sizeof($cards);
-$l_cards = floor(($ncards + 1) / 2);
-
-for ($i = 0; $i < $l_cards; $i++) {
+for ($i = 0; $i < sizeof($cards); $i++) {
     list($url, $title, $text) = $cards[$i];
-    $t->setCurrentBlock("L-CARD");
-    $t->setVariable("URL", $url);
-    $t->setVariable("TITLE", $title);
-    $t->setVariable("TEXT", $text);
-    $t->parseCurrentBlock();
-}
-
-for ($i = $l_cards; $i < $ncards; $i++) {
-    list($url, $title, $text) = $cards[$i];
-    $t->setCurrentBlock("R-CARD");
+    $t->setCurrentBlock("CARD");
     $t->setVariable("URL", $url);
     $t->setVariable("TITLE", $title);
     $t->setVariable("TEXT", $text);

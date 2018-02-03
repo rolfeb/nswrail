@@ -2,13 +2,13 @@
 
 require_once "site.inc";
 
-$title = "NSW Map";
+$title = "Sydney Map";
 
 $t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("map.tpl", true, true);
+$t->loadTemplateFile("indexmap.tpl", true, true);
 $t->setCurrentBlock("CONTENT");
 $t->setVariable("TITLE", $title);
-$t->setVariable("IMAGE", "images/nsw-index.gif");
+$t->setVariable("IMAGE", "/media/maps/sydney-indexmap.gif");
 $t->setVariable("IMAGEMAP", image_map());
 $t->parseCurrentBlock();
 
@@ -23,7 +23,7 @@ exit;
 function image_map()
 {
     # XXX: hard-coded version
-    return implode("\n", file("nsw.map"));
+    return implode("\n", file("sydney.map"));
 }
 
 ?>

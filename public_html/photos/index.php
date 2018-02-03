@@ -1,70 +1,77 @@
 <?php
 
-require_once "site.inc";
+require "site.inc";
 
-$title = "NSW Railway Photo Contributors";
+$cards = [
+    [
+        '/photos/recent.php',
+        'Newly Added',
+        'All photos that have been added in the last month.',
+        ''
+    ],
+    [
+        '/photos/historic.php',
+        'Historic',
+        'All photos that were taken more than 30 years ago.',
+        '/media/photos/thumbnails/trewilga/trewilga02.jpg'
+    ],
+    [
+        '/photos/signal_box.php',
+        'Signal Boxes',
+        'Photos showing the exterior or interior of signal boxes.',
+        '/media/photos/thumbnails/springwood/springwood03.jpg'
+    ],
+    [
+        '/photos/safeworking.php',
+        'Safeworking',
+        'Photos showing safeworking equipment or processes.',
+        '/media/photos/thumbnails/medway_junction/medway_junction08.jpg'
+    ],
+    [
+        '/photos/diagram.php',
+        'Diagrams',
+        'Photos of track diagrams, usually inside signal boxes.',
+        '/media/photos/thumbnails/binalong/binalong18.jpg'
+    ],
+    [
+        '/photos/turntable.php',
+        'Turntables',
+        'Photos of turntables in various states of repair.',
+        '/media/photos/thumbnails/valley_heights/valley_heights03.jpg'
+    ],
+    [
+        '/photos/tunnel.php',
+        'Tunnels',
+        'Photos of tunnels.',
+        '/media/photos/thumbnails/ardglen_tunnel/ardglen_tunnel05.jpg'
+    ],
+    [
+        '/photos/night.php',
+        'Night',
+        'Photos taken at night.',
+        '/media/photos/thumbnails/valley_heights/valley_heights08.jpg'
+    ],
+];
+
 
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("index.tpl");
 
-$stmt = $db->stmt_init();
-$stmt->prepare("
-    select
-        IF(U.fullname is not null,U.fullname,IFNULL(RP.legacy_owner, 'Rolfe Bozier')) owner,
-        count(*)
-    from
-        r_location_photo RP left join r_user U on RP.owner_uid = U.uid
-    where
-        RP.hold is null
-    group by
-        owner
-    order by
-        owner
-")
-    or dbi_error_trace("prepare failed");
-
-$stmt->bind_result($owner, $count);
-$stmt->execute();
-
-$n = 0;
-$rows = array();
-while ($stmt->fetch())
-    $rows[$n++] = array($owner, $count);
-
-$stmt->close();
-
-$nrows = floor(($n + 2) / 3);
-
-for ($i = 0; $i < $nrows; $i++)
-{
-    $t->setCurrentBlock("COL1");
-    $t->setVariable("NAME1", $rows[$i][0]);
-    $t->setVariable("COUNT1", $rows[$i][1]);
-    $t->setVariable("PHOTOS-URL1",
-        urlenc("/photos/owner.php?owner=" . $rows[$i][0]));
+for ($i = 0; $i < sizeof($cards); $i++) {
+    list($url, $title, $text, $thumbnail) = $cards[$i];
+    if ($thumbnail) {
+        $t->setCurrentBlock("THUMBNAIL");
+        $t->setVariable("THUMBNAIL-URL", $thumbnail);
+        $t->parseCurrentBlock();
+    }
+    $t->setCurrentBlock("CARD");
+    $t->setVariable("URL", $url);
+    $t->setVariable("TITLE", $title);
+    $t->setVariable("TEXT", $text);
     $t->parseCurrentBlock();
-
-    if ($i + $nrows < $n)
-    {
-        $t->setCurrentBlock("COL2");
-        $t->setVariable("NAME2", $rows[$i + $nrows][0]);
-        $t->setVariable("COUNT2", $rows[$i + $nrows][1]);
-        $t->setVariable("PHOTOS-URL2",
-            urlenc("/photos/owner.php?owner=" . $rows[$i + $nrows][0]));
-        $t->parseCurrentBlock();
-    }
-
-    if ($i + $nrows*2 < $n)
-    {
-        $t->setCurrentBlock("COL3");
-        $t->setVariable("NAME3", $rows[$i + $nrows*2][0]);
-        $t->setVariable("COUNT3", $rows[$i + $nrows*2][1]);
-        $t->setVariable("PHOTOS-URL3",
-            urlenc("/photos/owner.php?owner=" . $rows[$i + $nrows*2][0]));
-        $t->parseCurrentBlock();
-    }
 }
 
+$title = "Photographs";
 $t->setCurrentBlock("CONTENT");
 $t->setVariable("TITLE", $title);
 $t->parseCurrentBlock();

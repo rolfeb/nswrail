@@ -165,7 +165,7 @@ function get_line_status_class($state, $line)
     #
     if ($ON == 0 && $CX == 0 && $OT == 0)
     {
-        return $NO == 0 ? 'lifted' : 'not-opened';
+        return $NO == 0 ? 'lifted' : 'notopened';
     }
     else
     if ($OT > 0 && $ON == 0)

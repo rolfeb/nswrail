@@ -2,34 +2,34 @@
 <h1>{TITLE}</h1>
 
 <!-- BEGIN SUMMARY -->
-<div class="lineinfo">
-<div class="card" style="width:150px">
-  <img class="card-img-top" src="/maps/images/ovmaps/{OVMAP}.png">
-  <div class="card-body">
-    <h2>Summary</h2>
-    <table class="simple">
-    <tr> <td><b>Track:</b></td> <td>{LINE-LENGTH}</td> </tr>
-    <tr> <td><b>Stations:</b></td> <td><i>{LINE-STN-OPEN} / {LINE-STN-COUNT} in use</i></td> </tr>
-    </table>
+<div class="float-right d-none d-lg-block">
+  <div class="card" style="width:180px">
+    <img class="card-img-top" src="/maps/images/ovmaps/{OVMAP}.png">
+    <div class="card-body">
+      <h3>Summary</h3>
+      <table class="simple">
+      <tr> <th>Track:</th> <td>{LINE-LENGTH}</td> </tr>
+      <tr> <th>Stations:</th> <td><i>{LINE-STN-OPEN} / {LINE-STN-COUNT} in use</i></td> </tr>
+      </table>
+    </div>
   </div>
-</div>
 </div>
 <!-- END SUMMARY -->
 
-<div style="float: both">
+<div class="float-both">
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a data-toggle="tab" class="nav-link active" href="#tab-desc">Description</a>
+    <a class="nav-link active" data-toggle="tab" href="#tab-desc">Description</a>
   </li>
   <li class="nav-item">
-    <a data-toggle="tab" class="nav-link" href="#tab-hist">History</a>
+    <a class="nav-link" data-toggle="tab" href="#tab-hist">History</a>
   </li>
 </ul>
 
 <div class="tab-content">
 <div class="tab-pane active container" id="tab-desc">
   <!-- BEGIN DESCRIPTION-MODE -->
-  <div>
+  <div class="text">
   {DESCRIPTION}
   <!-- BEGIN EDIT-BLOCK -->
   Edit:
@@ -45,38 +45,39 @@
   </ul>
   <!-- END EXT-LINK-BLOCK -->
   </div>
-  <table class="clean" id="locations">
-  <tr class="property">
-  <!-- BEGIN ICON-HEADING -->
-  <td class="icon"></td>
-  <!-- END ICON-HEADING -->
-  <td class="name">Name</td>
-  <td class="facility">Facility</td>
-  <td class="status">Status</td>
-  <td class="opened">Opened</td>
-  <td class="closed">Closed</td>
-  <td class="distance">km</td>
-  <td class="photos"><img src="/c/images/camera-icon.gif" alt="Photos" /></td>
-  <td class="links">Links</td>
+
+  <table class="clean" id="locations" width="100%">
+  <thead>
+  <tr>
+    <!-- BEGIN ICON-HEADING -->
+    <th class="icon" style="width: 22px"></td>
+    <!-- END ICON-HEADING -->
+    <th class="name">Name</th>
+    <th class="facility">Facility</th>
+    <th class="status">Status</th>
+    <th style="text-align: right">Opened</th>
+    <th style="text-align: right">Closed</th>
+    <th style="text-align: right">km</th>
+    <th style="text-align: right"><img src="/c/images/camera-icon.gif" alt="Photos"></th>
   </tr>
+  </thead>
   <!-- BEGIN TABLE-ENTRY -->
   <!-- BEGIN LOCATION -->
-  <tr class="value">
-  <!-- BEGIN ICON-DATA -->
-  <td class="icon">
-  <!-- BEGIN ICON-DATA-FILLED -->
-  <img src="{ICON}" alt="icon"></img>
-  <!-- END ICON-DATA-FILLED -->
-  </td>
-  <!-- END ICON-DATA -->
-  <td class="name"><span><a href="{URL}">{NAME}</a></span></td>
-  <td class="facility"><span>{FACILITY}</span></td>
-  <td class="status"><span>{STATUS}</span></td>
-  <td class="opened"><span>{OPENED}</span></td>
-  <td class="closed"><span>{CLOSED}</span></td>
-  <td class="distance"><span>{LOCATION}</span></td>
-  <td class="photos"><span>{PHOTOS}</span></td>
-  <td class="links"><span>{LINKS}</span></td>
+  <tr style="margin:0; line-height: 1.4;">
+    <!-- BEGIN ICON-DATA -->
+    <td style="padding:0; width: 22px;">
+    <!-- BEGIN ICON-DATA-FILLED -->
+      <img src="{ICON}" alt="icon"></img>
+    <!-- END ICON-DATA-FILLED -->
+    </td>
+    <!-- END ICON-DATA -->
+    <td class="name"><span><a href="{URL}">{NAME}</a></span></td>
+    <td class="facility"><span>{FACILITY}</span></td>
+    <td class="status"><span>{STATUS}</span></td>
+    <td class="text-right"><span>{OPENED}</span></td>
+    <td class="text-right"><span>{CLOSED}</span></td>
+    <td class="text-right"><span>{LOCATION}</span></td>
+    <td class="text-right"><span>{PHOTOS}</span></td>
   </tr>
   <!-- END LOCATION -->
   <!-- BEGIN SEGMENT -->

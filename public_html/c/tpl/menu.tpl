@@ -24,4 +24,12 @@
       <!-- END ITEM-OR-DROPDOWN -->
     </ul>
   </div>
+  <!--
+  <div class="float-right">
+    <form class="form-inline" action="/search/search.php" method="get">
+    <input class="form-control" type="text" size="16" placeholder="Search">
+    <span class="input-group-addon"><i class="material-icons">search</i></span>
+    </form>
+  </div>
+  -->
 </nav>

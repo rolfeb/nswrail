@@ -7,7 +7,7 @@
 265,362,
 260,360,
 259,359
-" href="show.php?name=NSW:woronora_cemetery" alt="Woronora Cemetery Line" onmouseover="return overlib('Woronora Cemetery Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:woronora_cemetery" alt="Woronora Cemetery Line" onmouseover="return overlib('Woronora Cemetery Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 86,378,
 89,378,
@@ -19,7 +19,7 @@
 89,388,
 85,378,
 86,378
-" href="show.php?name=NSW:glenlee" alt="Glenlee Colliery Branch" onmouseover="return overlib('Glenlee Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:glenlee" alt="Glenlee Colliery Branch" onmouseover="return overlib('Glenlee Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 193,286,
 192,279,
@@ -31,7 +31,7 @@
 199,291,
 197,289,
 193,286
-" href="show.php?name=NSW:warwick_farm_racecourse" alt="Warwick Farm Racecourse Branch" onmouseover="return overlib('Warwick Farm Racecourse Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:warwick_farm_racecourse" alt="Warwick Farm Racecourse Branch" onmouseover="return overlib('Warwick Farm Racecourse Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 258,364,
 262,358,
@@ -43,7 +43,7 @@
 259,370,
 258,369,
 258,364
-" href="show.php?name=NSW:royal_national_park" alt="The Royal National Park Branch" onmouseover="return overlib('The Royal National Park Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:royal_national_park" alt="The Royal National Park Branch" onmouseover="return overlib('The Royal National Park Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 345,244,
 355,240,
@@ -58,7 +58,7 @@
 349,250,
 346,247,
 345,244
-" href="show.php?name=NSW:north_sydney_car_sidings" alt="North Sydney Car Sidings" onmouseover="return overlib('North Sydney Car Sidings', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:north_sydney_car_sidings" alt="North Sydney Car Sidings" onmouseover="return overlib('North Sydney Car Sidings', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 252,236,
 250,236,
@@ -74,7 +74,7 @@
 258,225,
 262,235,
 252,236
-" href="show.php?name=NSW:sandown" alt="Sandown Line" onmouseover="return overlib('Sandown Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:sandown" alt="Sandown Line" onmouseover="return overlib('Sandown Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 274,256,
 267,256,
@@ -91,7 +91,7 @@
 278,253,
 276,254,
 274,256
-" href="show.php?name=NSW:olympic_park" alt="Olympic Park Line" onmouseover="return overlib('Olympic Park Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:olympic_park" alt="Olympic Park Line" onmouseover="return overlib('Olympic Park Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 256,261,
 256,259,
@@ -111,7 +111,7 @@
 258,267,
 257,265,
 256,261
-" href="show.php?name=NSW:rookwood_cemetery" alt="Rookwood Cemetery Line" onmouseover="return overlib('Rookwood Cemetery Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:rookwood_cemetery" alt="Rookwood Cemetery Line" onmouseover="return overlib('Rookwood Cemetery Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 246,276,
 244,275,
@@ -133,7 +133,7 @@
 258,274,
 248,276,
 246,276
-" href="show.php?name=NSW:chullora_sefton_park_south" alt="Chullora - Sefton Goods Line" onmouseover="return overlib('Chullora - Sefton Goods Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:chullora_sefton_park_south" alt="Chullora - Sefton Goods Line" onmouseover="return overlib('Chullora - Sefton Goods Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 184,233,
 183,230,
@@ -163,12 +163,12 @@
 195,230,
 186,234,
 184,233
-" href="show.php?name=NSW:prospect_quarry" alt="Prospect Quarry Branch" onmouseover="return overlib('Prospect Quarry Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:prospect_quarry" alt="Prospect Quarry Branch" onmouseover="return overlib('Prospect Quarry Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 0,430,
 2,440,
 0,441
-" href="show.php?name=NSW:picton_mittagong" alt="Picton Loop Line" onmouseover="return overlib('Picton Loop Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:picton_mittagong" alt="Picton Loop Line" onmouseover="return overlib('Picton Loop Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 359,266,
 358,265,
@@ -196,7 +196,7 @@
 364,269,
 362,268,
 359,266
-" href="show.php?name=NSW:eastern_suburbs" alt="Eastern Suburbs Line" onmouseover="return overlib('Eastern Suburbs Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:eastern_suburbs" alt="Eastern Suburbs Line" onmouseover="return overlib('Eastern Suburbs Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 362,264,
 361,267,
@@ -220,7 +220,7 @@
 364,259,
 362,262,
 362,264
-" href="show.php?name=NSW:city_circle" alt="City Circle" onmouseover="return overlib('City Circle', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:city_circle" alt="City Circle" onmouseover="return overlib('City Circle', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 253,232,
 253,233,
@@ -257,7 +257,7 @@
 257,225,
 255,228,
 253,232
-" href="show.php?name=NSW:carlingford" alt="Carlingford Line" onmouseover="return overlib('Carlingford Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:carlingford" alt="Carlingford Line" onmouseover="return overlib('Carlingford Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 214,260,
 210,266,
@@ -289,7 +289,7 @@
 213,257,
 214,258,
 214,260
-" href="show.php?name=NSW:widemere_quarry" alt="Widemere Quarry Line" onmouseover="return overlib('Widemere Quarry Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:widemere_quarry" alt="Widemere Quarry Line" onmouseover="return overlib('Widemere Quarry Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 263,243,
 265,242,
@@ -318,7 +318,7 @@
 265,252,
 262,244,
 263,243
-" href="show.php?name=NSW:abattoirs" alt="Abattoirs Branch" onmouseover="return overlib('Abattoirs Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:abattoirs" alt="Abattoirs Branch" onmouseover="return overlib('Abattoirs Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 336,291,
 337,291,
@@ -354,7 +354,7 @@
 328,289,
 332,293,
 336,291
-" href="show.php?name=NSW:airport" alt="Airport Line" onmouseover="return overlib('Airport Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:airport" alt="Airport Line" onmouseover="return overlib('Airport Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 110,180,
 109,182,
@@ -391,7 +391,7 @@
 111,175,
 110,178,
 110,180
-" href="show.php?name=NSW:ropes_creek" alt="Ropes Creek Line" onmouseover="return overlib('Ropes Creek Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:ropes_creek" alt="Ropes Creek Line" onmouseover="return overlib('Ropes Creek Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 260,356,
 269,352,
@@ -433,7 +433,7 @@
 263,362,
 260,357,
 260,356
-" href="show.php?name=NSW:cronulla" alt="Cronulla Line" onmouseover="return overlib('Cronulla Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:cronulla" alt="Cronulla Line" onmouseover="return overlib('Cronulla Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 237,188,
 235,190,
@@ -487,7 +487,7 @@
 240,184,
 238,185,
 237,188
-" href="show.php?name=NSW:rogans_hill" alt="Rogans Hill Branch" onmouseover="return overlib('Rogans Hill Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:rogans_hill" alt="Rogans Hill Branch" onmouseover="return overlib('Rogans Hill Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 186,293,
 188,287,
@@ -529,7 +529,7 @@
 189,298,
 187,296,
 186,293
-" href="show.php?name=NSW:holsworthy" alt="Holsworthy Line" onmouseover="return overlib('Holsworthy Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:holsworthy" alt="Holsworthy Line" onmouseover="return overlib('Holsworthy Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 212,274,
 212,274,
@@ -574,7 +574,7 @@
 224,272,
 219,272,
 212,274
-" href="show.php?name=NSW:lidcombe_cabramatta" alt="Lidcombe - Cabramatta Line" onmouseover="return overlib('Lidcombe - Cabramatta Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:lidcombe_cabramatta" alt="Lidcombe - Cabramatta Line" onmouseover="return overlib('Lidcombe - Cabramatta Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 263,251,
 265,251,
@@ -617,7 +617,7 @@
 264,262,
 262,252,
 263,251
-" href="show.php?name=NSW:campsie_flemington_west" alt="Campsie - Flemington Goods Line" onmouseover="return overlib('Campsie - Flemington Goods Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:campsie_flemington_west" alt="Campsie - Flemington Goods Line" onmouseover="return overlib('Campsie - Flemington Goods Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 122,370,
 127,375,
@@ -656,7 +656,7 @@
 114,370,
 116,370,
 122,370
-" href="show.php?name=NSW:camden" alt="Camden Branch" onmouseover="return overlib('Camden Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:camden" alt="Camden Branch" onmouseover="return overlib('Camden Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 330,295,
 329,294,
@@ -705,7 +705,7 @@
 336,297,
 333,296,
 330,295
-" href="show.php?name=NSW:botany" alt="Botany Goods Line" onmouseover="return overlib('Botany Goods Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:botany" alt="Botany Goods Line" onmouseover="return overlib('Botany Goods Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 328,281,
 336,283,
@@ -794,7 +794,7 @@
 326,281,
 328,281,
 328,281
-" href="show.php?name=NSW:bankstown" alt="Bankstown Line" onmouseover="return overlib('Bankstown Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:bankstown" alt="Bankstown Line" onmouseover="return overlib('Bankstown Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 343,269,
 342,269,
@@ -846,7 +846,7 @@
 347,269,
 345,270,
 343,269
-" href="show.php?name=NSW:wardell_road_central" alt="Rozelle - Darling Harbour Goods Line" onmouseover="return overlib('Rozelle - Darling Harbour Goods Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:wardell_road_central" alt="Rozelle - Darling Harbour Goods Line" onmouseover="return overlib('Rozelle - Darling Harbour Goods Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 337,201,
 337,201,
@@ -947,7 +947,7 @@
 329,190,
 333,195,
 337,201
-" href="show.php?name=NSW:north_shore" alt="North Shore Line" onmouseover="return overlib('North Shore Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:north_shore" alt="North Shore Line" onmouseover="return overlib('North Shore Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 314,290,
 314,290,
@@ -1032,7 +1032,7 @@
 307,291,
 311,291,
 314,290
-" href="show.php?name=NSW:east_hills" alt="East Hills Line" onmouseover="return overlib('East Hills Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:east_hills" alt="East Hills Line" onmouseover="return overlib('East Hills Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 32,456,
 31,448,
@@ -1056,7 +1056,7 @@
 34,460,
 32,456,
 32,456
-" href="show.php?name=NSW:dombarton_maldon" alt="Dombarton - Maldon Line" onmouseover="return overlib('Dombarton - Maldon Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:dombarton_maldon" alt="Dombarton - Maldon Line" onmouseover="return overlib('Dombarton - Maldon Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 151,129,
 151,132,
@@ -1169,7 +1169,7 @@
 149,126,
 149,127,
 151,129
-" href="show.php?name=NSW:richmond" alt="Richmond Line" onmouseover="return overlib('Richmond Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:richmond" alt="Richmond Line" onmouseover="return overlib('Richmond Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 0,168,
 1,168,
@@ -1321,7 +1321,7 @@
 0,190,
 1,188,
 0,187
-" href="show.php?name=NSW:main_west" alt="Main Western Line" onmouseover="return overlib('Main Western Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:main_west" alt="Main Western Line" onmouseover="return overlib('Main Western Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 237,374,
 238,372,
@@ -1531,7 +1531,7 @@
 235,381,
 235,379,
 237,374
-" href="show.php?name=NSW:south_coast" alt="South Coast Line" onmouseover="return overlib('South Coast Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:south_coast" alt="South Coast Line" onmouseover="return overlib('South Coast Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 438,0,
 437,3,
@@ -1800,7 +1800,7 @@
 421,4,
 419,1,
 420,0
-" href="show.php?name=NSW:main_north" alt="Main North Line" onmouseover="return overlib('Main North Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:main_north" alt="Main North Line" onmouseover="return overlib('Main North Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 0,429,
 4,429,
@@ -2134,4 +2134,4 @@
 1,463,
 0,464,
 0,465
-" href="show.php?name=NSW:main_south" alt="Main South Line" onmouseover="return overlib('Main South Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/show.php?name=NSW:main_south" alt="Main South Line" onmouseover="return overlib('Main South Line', HAUTO, WRAP);" onmouseout="return nd();"></area>

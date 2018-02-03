@@ -37,7 +37,6 @@ RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
 RewriteRule ^(.*).txt$          /c/txtpage.php?file=$1.txt [L]
 RewriteRule ^index.html$	/ [R]
 RewriteRule ^maps/browse.php 	/maps/google.php [R]
-RewriteRule ^maps/index.php 	/ [R]
 RewriteRule ^lines/main_north/photos/belford01\.jpg$	/locations/photos/belford01.jpg [R]
 
 

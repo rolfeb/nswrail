@@ -2,7 +2,9 @@
 <div class=container-fluid" id="main">
 <img class="img-fluid" src="/images/background01.jpg" width="100%"/>
 
-<div class="mt-lg-5 mx-lg-5 text" id="text">
+<div class="row mt-lg-5">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8 text">
 <p>
 These pages contain a variety of information about the NSW railway network,
 both historical and current. The data can be broken down into four
@@ -35,9 +37,14 @@ the success of these pages.
 </p>
 <p>
 <b>Rolfe Bozier</b>
-</p>
-</div>
+<a href="mailto:nswrail@pobox.com"><span class="material-icons" style="vertical-align: bottom;">email</span>
+</a>
 
+</p>
+
+  <div class="col-lg-2"></div>
+  </div>
+</div>
 </div>
 
 <!-- END CONTENT -->

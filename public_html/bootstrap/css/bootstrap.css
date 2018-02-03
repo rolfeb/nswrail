@@ -32,7 +32,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-sans-serif: Sarala;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -61,7 +61,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Sarala";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -381,11 +381,11 @@ h3, .h3 {
 }
 
 h4, .h4 {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
 }
 
 h5, .h5 {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 h6, .h6 {
@@ -5707,7 +5707,7 @@ button.close {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Sarala";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5820,7 +5820,7 @@ button.close {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Sarala";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -9207,43 +9207,54 @@ a.text-nsw:hover, a.text-nsw:focus {
 h1,
 .h1 {
   margin-top: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Sarala";
   text-align: center;
 }
 
+/*
 h2,
 .h2 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  border-bottom: 1px solid #000;
+  font-family: $font-family-sans-serif;
+  border-bottom: 1px solid $black;
 }
-
-#card-page .card:hover, #card-page .card:focus {
+*/
+.card-page .card:hover, .card-page .card:focus {
   border: 1px solid #17a2b8;
 }
 
-#card-page .card a {
+.card-page .card a {
   color: #212529;
   background-color: #d0f0e0;
 }
 
-#card-page .card a:hover, #card-page .card a:focus {
+.card-page .card a:hover, .card-page .card a:focus {
   color: #212529;
   text-decoration: none;
 }
 
+@media (min-width: 992px) {
+  .card-page {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 30px;
+    -moz-column-gap: 30px;
+    column-gap: 30px;
+  }
+}
+
 .text {
-  font-family: "PT Serif", "Georgia", "Times New Roman", "Times", serif;
+  font-family: "PT Serif";
   font-size: 1.25rem;
   font-size: 1.1rem;
 }
 
-.text2col {
-  font-family: "PT Serif", "Georgia", "Times New Roman", "Times", serif;
-  font-size: 1.1rem;
+.text .h2 {
+  border-bottom: 1px solid #000;
 }
 
 @media (min-width: 992px) {
-  .text2col {
+  .text-2column {
     -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2;
@@ -9255,5 +9266,29 @@ h2,
 
 .blockquote {
   font-style: italic;
+}
+
+ul .line-open {
+  list-style-image: url("/c/images/bullet_green.png");
+}
+
+ul .line-closed {
+  list-style-image: url("/c/images/bullet_red.png");
+}
+
+ul .line-lifted {
+  list-style-image: url("/c/images/bullet_grey.png");
+}
+
+ul .line-tourist {
+  list-style-image: url("/c/images/bullet_blue.png");
+}
+
+ul .line-notopened {
+  list-style-image: url("/c/images/bullet_grey.png");
+}
+
+ul .line-open-closed {
+  list-style-image: url("/c/images/bullet_green-red.png");
 }
 /*# sourceMappingURL=bootstrap.css.map */

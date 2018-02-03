@@ -7,7 +7,7 @@ on the net, although this is no longer the case.  It is provided here
 with her kind permission.
 </div>
 
-<div class="text2col">
+<div class="text text-2column">
 <p>
 <div class="float-right m-2">
   <img src="images/wq-01-sm.jpg">
