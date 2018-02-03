@@ -53,23 +53,49 @@ $cards = [
     ],
 ];
 
+$auth_cards = [
+    [
+        '/c/upload/photo.php',
+        $user->is_loggedin(),
+        'Upload photos',
+        'Upload and annotate your photos to the site.',
+        '/media/images/thumbnails/canon-dslr.jpg'
+    ],
+];
+
+function add_cards($t, $cards, $restricted_cards)
+{
+    for ($i = 0; $i < sizeof($cards); $i++) {
+        if ($restricted_cards) {
+            list($url, $auth, $title, $text, $thumbnail) = $cards[$i];
+        } else {
+            list($url, $title, $text, $thumbnail) = $cards[$i];
+            $auth = true;
+        }
+
+        if ($auth) {
+            if ($thumbnail) {
+                $t->setCurrentBlock("THUMBNAIL");
+                $t->setVariable("THUMBNAIL-URL", $thumbnail);
+                $t->parseCurrentBlock();
+            }
+            $t->setCurrentBlock("CARD");
+            $t->setVariable("URL", $url);
+            $t->setVariable("TITLE", $title);
+            $t->setVariable("TEXT", $text);
+            if ($restricted_cards) {
+                $t->setVariable("STYLE", 'auth-card');
+            }
+            $t->parseCurrentBlock();
+        }
+    }
+}
 
 $t = new HTML_Template_ITX(".");
 $t->loadTemplateFile("index.tpl");
 
-for ($i = 0; $i < sizeof($cards); $i++) {
-    list($url, $title, $text, $thumbnail) = $cards[$i];
-    if ($thumbnail) {
-        $t->setCurrentBlock("THUMBNAIL");
-        $t->setVariable("THUMBNAIL-URL", $thumbnail);
-        $t->parseCurrentBlock();
-    }
-    $t->setCurrentBlock("CARD");
-    $t->setVariable("URL", $url);
-    $t->setVariable("TITLE", $title);
-    $t->setVariable("TEXT", $text);
-    $t->parseCurrentBlock();
-}
+add_cards($t, $cards, false);
+add_cards($t, $auth_cards, true);
 
 $title = "Photographs";
 $t->setCurrentBlock("CONTENT");

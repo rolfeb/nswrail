@@ -5,7 +5,7 @@ require_once "site.inc";
 $title = "NSW Railway Photo Contributors";
 
 $t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("index.tpl");
+$t->loadTemplateFile("contributers.tpl");
 
 $stmt = $db->stmt_init();
 $stmt->prepare("
@@ -34,6 +34,15 @@ while ($stmt->fetch())
 $stmt->close();
 
 $nrows = floor(($n + 2) / 3);
+
+for ($i = 0; $i < sizeof($rows); $i++) {
+    $t->setCurrentBlock("COL");
+    $t->setVariable("NAME", $rows[$i][0]);
+    $t->setVariable("COUNT", $rows[$i][1]);
+    $t->setVariable("PHOTOS-URL",
+        urlenc("/photos/owner.php?owner=" . $rows[$i][0]));
+    $t->parseCurrentBlock();
+}
 
 for ($i = 0; $i < $nrows; $i++)
 {

@@ -3,7 +3,7 @@
 
 <div class="card-page">
   <!-- BEGIN CARD -->
-  <div class="card mb-2">
+  <div class="card {STYLE} mb-2">
     <a href="{URL}">
       <div class="card-body" style="overflow: auto">
         <!-- BEGIN THUMBNAIL -->

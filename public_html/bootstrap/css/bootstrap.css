@@ -9211,20 +9211,20 @@ h1,
   text-align: center;
 }
 
-/*
-h2,
-.h2 {
-  font-family: $font-family-sans-serif;
-  border-bottom: 1px solid $black;
+.card-page .card {
+  background-color: #d0f0e0;
 }
-*/
+
 .card-page .card:hover, .card-page .card:focus {
   border: 1px solid #17a2b8;
 }
 
+.card-page .auth-card {
+  background-color: #f0d0f0;
+}
+
 .card-page .card a {
   color: #212529;
-  background-color: #d0f0e0;
 }
 
 .card-page .card a:hover, .card-page .card a:focus {
@@ -9249,7 +9249,7 @@ h2,
   font-size: 1.1rem;
 }
 
-.text .h2 {
+.text h2 {
   border-bottom: 1px solid #000;
 }
 

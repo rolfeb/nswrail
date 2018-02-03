@@ -5,6 +5,13 @@
 
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
+      <!--
+      <li class="nav-item">
+        <a class="nav-link" href="/">
+          <img src="/media/images/rail_profile.svg" style="width: 22px; height: 22px;">
+        </a>
+      </li>
+      -->
       <!-- BEGIN ITEM-OR-DROPDOWN -->
       <!-- BEGIN ITEM -->
       <li class="nav-item">
