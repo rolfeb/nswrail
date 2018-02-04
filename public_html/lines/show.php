@@ -509,7 +509,7 @@ function add_locations($state, $line, $maxsegment)
                 if ($icons[$i])
                 {
                     $t->setVariable("ICON",
-                        "/c/icons/" . $icons[$i] . ".png");
+                        "/media/icons/" . $icons[$i] . ".png");
                 }
                 else
                     $t->touchBlock("ICON-DATA");

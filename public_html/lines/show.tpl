@@ -46,8 +46,8 @@
   <!-- END EXT-LINK-BLOCK -->
   </div>
 
-  <table class="clean" id="locations" width="100%">
-  <thead>
+  <table class="table table-sm table-hover" id="locations">
+  <thead class="thead-dark">
   <tr>
     <!-- BEGIN ICON-HEADING -->
     <th class="icon" style="width: 22px"></td>
@@ -58,18 +58,16 @@
     <th style="text-align: right">Opened</th>
     <th style="text-align: right">Closed</th>
     <th style="text-align: right">km</th>
-    <th style="text-align: right"><img src="/c/images/camera-icon.gif" alt="Photos"></th>
+    <th style="text-align: right;">
+      <span class="material-icons" style="vertical-align: bottom;">photo_camera</span>
+    </th>
   </tr>
   </thead>
   <!-- BEGIN TABLE-ENTRY -->
   <!-- BEGIN LOCATION -->
   <tr style="margin:0; line-height: 1.4;">
     <!-- BEGIN ICON-DATA -->
-    <td style="padding:0; width: 22px;">
-    <!-- BEGIN ICON-DATA-FILLED -->
-      <img src="{ICON}" alt="icon"></img>
-    <!-- END ICON-DATA-FILLED -->
-    </td>
+    <td style="background-image: url({ICON}); background-position: center center; background-repeat: no-repeat; min-width: 22px;"></td>
     <!-- END ICON-DATA -->
     <td class="name"><span><a href="{URL}">{NAME}</a></span></td>
     <td class="facility"><span>{FACILITY}</span></td>
