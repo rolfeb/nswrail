@@ -1,0 +1,12 @@
+;
+; Set the PHP environment where .htaccess doesn't work.
+;
+; This file is currently sourced by /var/www/interpreters/php-script in
+; production.
+;
+; include_path = ".:/work/dev/nswrail-dev/public_html/c:/work/pear/PEAR:/work/dev/nswrail-dev";
+
+; log_errors = 1;
+
+date.timezone = "Australia/NSW";
+

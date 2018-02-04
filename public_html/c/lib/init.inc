@@ -14,7 +14,8 @@ function init_request()
     $password = get_config('db-password');
     $db = @new mysqli('localhost', $user, $password, $name);
     if ($db->connect_errno) {
-        error_page('failed to connect to database: ' . $db->connect_errno);
+        print('failed to connect to database: ' . $db->connect_errno);
+        exit;
     }
 
     /*

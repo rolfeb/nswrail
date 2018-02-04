@@ -1,14 +1,14 @@
 #
 # PHP settings
 #
-php_value include_path ".:/work/dev/nswrail-dev/public_html/c:/work/pear/PEAR:/work/dev/nswrail-dev"
+php_value include_path ".:/home/rolfeb/public_html/test/c:/home/rolfeb/PEAR:/home/rolfeb:/home/rolfeb/pear/PEAR"
 php_value date.timezone "Australia/NSW"
 
 #
 # Configuration parameters
 #
-SetEnv BASE_PATH                "/work/dev/nswrail-dev/public_html"
-SetEnv NSWRAIL_CONFIG_FILE      "/work/dev/nswrail-dev/config/nswrail-dev.json"
+SetEnv BASE_PATH                "/home/rolfeb/public_html/test"
+SetEnv NSWRAIL_CONFIG_FILE      "/home/rolfeb/config/test.nswrail.net.json"
 
 #
 # URL rewriting
@@ -17,8 +17,8 @@ RewriteEngine on
 RewriteBase /
 
 # Uncomment for HTTPS
-RewriteCond %{HTTPS} !=on
-RewriteRule ^/?(.*)         https://%{SERVER_NAME}/$1 [R,L]
+## RewriteCond %{HTTPS} !=on
+## RewriteRule ^/?(.*)         https://%{SERVER_NAME}/$1 [R,L]
 
 # .txt files are passed through the BBCode parser
 RewriteRule ^(.*).txt$      /c/txtpage.php?file=$1.txt [L]
