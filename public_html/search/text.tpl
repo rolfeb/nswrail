@@ -14,7 +14,7 @@ text information within this site.
 <tr>
 <td style="white-space: nowrap;"><a href="{REF-URL}" {REF-REL}>{REF-TEXT}</a>
 <!-- BEGIN CAMERA-ICON -->
-<img src="/c/images/camera-icon.gif"/>
+<img src="/media/images/camera-icon.gif"/>
 <!-- END CAMERA-ICON -->
 </td>
 <td>{CONTEXT}</td>

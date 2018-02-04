@@ -150,9 +150,9 @@ while ($stmt->fetch())
     else
         $size = "$size'";
 
-    $t->setVariable("SIZE", $size);
+    $size_type = $size . '-' . $type_lookup[$type];
 
-    $t->setVariable("TYPE", $type_lookup[$type]);
+    $t->setVariable("SIZE-TYPE", $size_type);
     $t->setVariable("STATUS", $status_lookup[$status]);
     $t->setVariable("NOTES", htmlentities($notes));
     $t->setVariable("PHOTOS", $photos);

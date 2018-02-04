@@ -94,13 +94,15 @@ while ($stmt->fetch())
     if ($photos == 0)
         $photos = "";
 
+    $len_str = join('<br/>', explode(',', tunnel_lengths2text($lengths)));
+
     $t->setCurrentBlock("TUNNEL");
     $t->setVariable("TUNNEL-URL", "/locations/show.php?"
         . urlenc("name=$STATE:$location_name"));
     $t->setVariable("TUNNEL-TEXT", $location_name);
     $t->setVariable("TYPE", tunnel_type2text($type));
     $t->setVariable("STATUS", locn_status2text($status));
-    $t->setVariable("LENGTH", tunnel_lengths2text($lengths));
+    $t->setVariable("LENGTH", $len_str);
     $t->setVariable("PHOTOS", $photos);
     $t->setVariable("DISTANCE", $distance);
     $t->setVariable("BETWEEN", "$prev_location and $next_location");

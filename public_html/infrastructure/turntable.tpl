@@ -66,11 +66,12 @@ For the metrically minded, equivalent sizes are:
 <thead class="thead-dark">
 <tr>
   <th colspan="2">Location</th>
-  <th align="right">Size</th>
-  <th align="right">Type</th>
+  <th style="text-align: right;">Type</th>
   <th>Status</th>
   <th>Notes</th>
-  <th align="center">Photos</th>
+  <th style="text-align: right;">
+    <span class="material-icons" style="vertical-align: bottom;">photo_camera</span>
+  </th>
 </tr>
 </thead>
 <!-- END REGION1 -->
@@ -83,11 +84,10 @@ For the metrically minded, equivalent sizes are:
 <tr>
   <td></td>
   <td><a href="{LOCATION-URL}">{LOCATION-TEXT}</a></td>
-  <td align="right">{SIZE}</td>
-  <td align="center">{TYPE}</td>
+  <td align="right">{SIZE-TYPE}</td>
   <td>{STATUS}</td>
   <td>{NOTES}</td>
-  <td align="center">{PHOTOS}</td>
+  <td align="right">{PHOTOS}</td>
 </tr>
 <!-- END LOCATION -->
 <!-- BEGIN REGION2 -->

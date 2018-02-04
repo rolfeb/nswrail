@@ -8,7 +8,9 @@
     <th>Type</th>
     <th>Status</th>
     <th style="text-align: right;">Length</th>
-    <th class="d-none d-lg-table-cell" style="text-align: right;">Photos</th>
+    <th style="text-align: right;">
+      <span class="material-icons" style="vertical-align: bottom;">photo_camera</span>
+    </th>
     <th class="d-none d-lg-table-cell" style="text-align: right;">Distance</th>
     <th class="d-none d-lg-table-cell">Between</th>
 </tr>
@@ -26,7 +28,7 @@
     <td>{TYPE}</td>
     <td>{STATUS}</td>
     <td align="right">{LENGTH}</td>
-    <td class="d-none d-lg-table-cell" align="right">{PHOTOS}</td>
+    <td align="right">{PHOTOS}</td>
     <td class="d-none d-lg-table-cell" align="right">{DISTANCE}</td>
     <td class="d-none d-lg-table-cell">{BETWEEN}</td>
 </tr>
