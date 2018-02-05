@@ -1,11 +1,10 @@
-function google_init(lon, lat)
+function google_init(lon, lat, scale)
 {
     var latlong = new google.maps.LatLng(lat, lon);
 
     var options = {
-        zoom: 14,
+        zoom: scale,
         center: latlong,
-        mapTypeId: google.maps.MapTypeId.HYBRID
     }
 
     map_elt = document.getElementById("map");
@@ -21,11 +20,13 @@ function google_init(lon, lat)
     );
 
     // add marker for this location
-    var icon = new google.maps.Marker({
+    var marker = new google.maps.Marker({
         map: map,
         position: latlong,
         icon: icon,
     });
+
+    return map;
 }
 
 function editStart(name)

@@ -3,7 +3,7 @@
 /*
  * Convert date components into human-readable form
  */
-function date_cpts2text($day, $month, $year, $year_error = 0)
+function date_cpts2text($day, $month, $year, $year_error=0)
 {
     $months = array("?", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
         "Aug", "Sep", "Oct", "Nov", "Dec");
@@ -29,6 +29,37 @@ function date_cpts2text($day, $month, $year, $year_error = 0)
         $date = "after $date";
     } elseif ($year_error == 1) {
         $date = "circa $date";
+    }
+
+    return $date;
+}
+
+function date_cpts2html($day, $month, $year, $year_error=0)
+{
+    $months = array("?", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+        "Aug", "Sep", "Oct", "Nov", "Dec");
+    $date = "unknown";
+
+    $month += 0;
+
+    if ($day) {
+        $date = "$day&nbsp;$months[$month]<wbr>&nbsp;$year";
+    } elseif ($month) {
+        $date = "$months[$month]&nbsp;$year";
+    } elseif ($year) {
+        if ($year_error == 2) {
+            $date = sprintf("%d0s", $year / 10);
+        } else {
+            $date = $year;
+        }
+    }
+
+    if ($year_error == -1) {
+        $date = "before<wbr>&nbsp;$date";
+    } elseif ($year_error == -2) {
+        $date = "after<wbr>&nbsp;$date";
+    } elseif ($year_error == 1) {
+        $date = "circa<wbr>&nbsp;$date";
     }
 
     return $date;

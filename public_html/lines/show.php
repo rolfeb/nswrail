@@ -170,7 +170,7 @@ function run_multitab_page($state, $line)
     while ($stmt->fetch())
     {
         $section = "$segment: $start_name - $end_name";
-        $date = date_cpts2text($day, $month, $year, $year_error);
+        $date = date_cpts2html($day, $month, $year, $year_error);
 
         $n = 0;
         if (is_array($sections) and array_key_exists($section, $sections))
@@ -285,11 +285,12 @@ function run_multitab_page($state, $line)
      */
     foreach ($footnotes as $seq => $text)
     {
-        $t->setCurrentBlock("FOOTNOTES");
+        $t->setCurrentBlock("FOOTNOTE");
         $t->setVariable("XREF-SEQ", $seq);
         $t->setVariable("XREF-TEXT", $text);
         $t->parseCurrentBlock();
     }
+    $t->parse("FOOTNOTES");
 
     $t->setCurrentBlock("HISTORY-MODE");
     $t->parseCurrentBlock();
@@ -802,7 +803,7 @@ function get_location_open_date($state, $location)
     $stmt->bind_result($day, $month, $year, $year_error);
 
     if ($stmt->fetch())
-        $date = date_cpts2text($day, $month, $year, $year_error);
+        $date = date_cpts2html($day, $month, $year, $year_error);
     else
         $date = "unknown";
 
@@ -840,7 +841,7 @@ function get_location_close_date($state, $location)
     $stmt->bind_result($day, $month, $year, $year_error, $type);
 
     if ($stmt->fetch() and $type == "CN")
-        $date = date_cpts2text($day, $month, $year, $year_error);
+        $date = date_cpts2html($day, $month, $year, $year_error);
     else
         $date = "";
 
@@ -937,7 +938,7 @@ function run_history_mode($state, $line, $data)
     while ($stmt->fetch())
     {
         $section = "$segment: $start_name - $end_name";
-        $date = date_cpts2text($day, $month, $year, $year_error);
+        $date = date_cpts2html($day, $month, $year, $year_error);
 
         $n = 0;
         if (is_array($sections) and array_key_exists($section, $sections))
@@ -1052,11 +1053,12 @@ function run_history_mode($state, $line, $data)
      */
     foreach ($footnotes as $seq => $text)
     {
-        $t->setCurrentBlock("FOOTNOTES");
+        $t->setCurrentBlock("FOOTNOTE");
         $t->setVariable("XREF-SEQ", $seq);
         $t->setVariable("XREF-TEXT", $text);
         $t->parseCurrentBlock();
     }
+    $t->parse("FOOTNOTES");
 
     $t->setCurrentBlock("CONTENT");
     $t->setVariable("TITLE", $fullname);

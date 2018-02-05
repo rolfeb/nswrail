@@ -1,20 +1,6 @@
 <!-- BEGIN CONTENT -->
 <h1>{TITLE}</h1>
 
-<!-- BEGIN SUMMARY -->
-<div class="float-right d-none d-lg-block">
-  <div class="card" style="width:180px">
-    <img class="card-img-top" src="/maps/images/ovmaps/{OVMAP}.png">
-    <div class="card-body">
-      <h3>Summary</h3>
-      <table class="simple">
-      <tr> <th>Track:</th> <td>{LINE-LENGTH}</td> </tr>
-      <tr> <th>Stations:</th> <td><i>{LINE-STN-OPEN} / {LINE-STN-COUNT} in use</i></td> </tr>
-      </table>
-    </div>
-  </div>
-</div>
-<!-- END SUMMARY -->
 
 <div class="float-both">
 <ul class="nav nav-tabs">
@@ -28,6 +14,20 @@
 
 <div class="tab-content">
 <div class="tab-pane active container" id="tab-desc">
+  <!-- BEGIN SUMMARY -->
+  <div class="float-right d-none d-lg-block my-1">
+    <div class="card" style="width: 15rem">
+      <img class="card-img-top" src="/maps/images/ovmaps/{OVMAP}.png">
+      <div class="card-body">
+        <h3>Summary</h3>
+        <table class="simple">
+        <tr> <th>Track:</th> <td>{LINE-LENGTH}</td> </tr>
+        <tr> <th>Stations:</th> <td><i>{LINE-STN-OPEN} / {LINE-STN-COUNT} in use</i></td> </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- END SUMMARY -->
   <!-- BEGIN DESCRIPTION-MODE -->
   <div class="text">
   {DESCRIPTION}
@@ -90,35 +90,36 @@
 
 <div class="tab-pane container" id="tab-hist">
   <!-- BEGIN HISTORY-MODE -->
-  <table class="clean">
-  <tr class="property">
-  <td>Section</td>
-  <td class="date-footnote">Opened</td>
-  <td class="footnote"></td>
-  <td class="date-footnote">Closed</td>
-  <td class="footnote"></td>
-  <td>Usage</td>
+  <table class="table table-sm table-hover">
+  <thead class="thead-dark">
+  <tr>
+    <th colspan="2">Section</th>
+    <th style="text-align: right">Opened</th>
+    <th style="text-align: right">Closed</th>
+    <th>Usage</th>
   </tr>
   <!-- BEGIN SEGMENT2-OR-SECTION -->
   <!-- BEGIN SEGMENT2 -->
-  <tr class="value">
-  <td class="heading" colspan="6"><h2>{SEGMENT-TEXT}</h2></td>
+  <tr class="table-info">
+    <td colspan="5">{SEGMENT-TEXT}</td>
   </tr>
   <!-- END SEGMENT2 -->
   <!-- BEGIN SECTION -->
-  <tr class="value">
-  <td>{SECTION}</td>
-  <td class="date-footnote">{OPENED}</td>
-  <td class="footnote"><sup>&nbsp;{OPENFN}</sup></td>
-  <td class="date-footnote">{CLOSED}</td>
-  <td class="footnote"><sup>&nbsp;{CLOSEFN}</sup></td>
-  <td>{USAGE}</td>
+  <tr>
+    <td>&nbsp;</td>
+    <td>{SECTION}</td>
+    <td class="text-right">{OPENED}<sup>{OPENFN}</sup></td>
+    <td class="text-right">{CLOSED}<sup>{CLOSEFN}</sup></td>
+    <td>{USAGE}</td>
   </tr>
   <!-- END SECTION -->
   <!-- END SEGMENT2-OR-SECTION -->
   </table>
   <!-- BEGIN FOOTNOTES -->
+  <hr/>
+  <!-- BEGIN FOOTNOTE -->
   <sup>{XREF-SEQ}</sup> {XREF-TEXT}<br />
+  <!-- END FOOTNOTE -->
   <!-- END FOOTNOTES -->
   <!-- END HISTORY-MODE -->
 </div>

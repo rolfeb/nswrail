@@ -9291,4 +9291,12 @@ ul .line-notopened {
 ul .line-open-closed {
   list-style-image: url("/c/images/bullet_green-red.png");
 }
+
+.table-nonfluid {
+  width: auto;
+}
+
+.table-clean td {
+  border: none;
+}
 /*# sourceMappingURL=bootstrap.css.map */

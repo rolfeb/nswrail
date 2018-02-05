@@ -1,6 +1,24 @@
 <!-- BEGIN CONTENT -->
 <h1>{LOCATION}</h1>
 
+<div class="d-flex justify-content-center">
+  <!-- BEGIN NEXT-PREV-SECTION -->
+  <div style="flex: 9; display: flex; justify-content: center;">
+  <!-- BEGIN PREV-LOCATION -->
+  <span style="margin-left: auto;"><a href="{PREV-URL}">{PREV-TEXT}</a></span>
+  <!-- END PREV-LOCATION -->
+  </div>
+  <div style="flex: 1; display: flex; justify-content: center;">
+  <span><img src="/c/images/{PREV-NEXT-ICON}" alt=""></span>
+  </div>
+  <div style="flex: 9; display: flex; justify-content: center;">
+  <!-- BEGIN NEXT-LOCATION -->
+  <span style="margin-right: auto;"><a href="{NEXT-URL}">{NEXT-TEXT}</a></span>
+  <!-- END NEXT-LOCATION -->
+  </div>
+  <!-- END NEXT-PREV-SECTION -->
+</div>
+
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a data-toggle="tab" class="nav-link active" href="#tab-desc">Description</a>
@@ -19,66 +37,28 @@
 
 
 <div class="tab-content">
+<!-- Description tab -->
 <div class="tab-pane active container" id="tab-desc">
-  <table id="navlayout" class="simple" width="100%">
-  <tr>
-    <td id="location"></td>
-    <td id="nextprev">
-      <!-- BEGIN NEXT-PREV-SECTION -->
-      <!-- BEGIN PREV-LOCATION -->
-      <a href="{PREV-URL}">{PREV-TEXT}</a>
-      <!-- END PREV-LOCATION -->
-      <img src="/c/images/{PREV-NEXT-ICON}" alt=""></img>
-      <!-- BEGIN NEXT-LOCATION -->
-      <a href="{NEXT-URL}">{NEXT-TEXT}</a>
-      <!-- END NEXT-LOCATION -->
-      <!-- END NEXT-PREV-SECTION -->
-    </td>
-  </tr>
-  </table>
-  
-  <!-- BEGIN EDIT-BLOCK -->
-  Edit:
-  [<a href="{EDIT-TURNTABLES-URL}" target="_wedit">turntables</a>]
-  [<a href="{EDIT-LINKS-URL}" target="_wedit">links</a>]
-  <!-- END EDIT-BLOCK -->
-  
-  <div class="location-map">
+  <div class="location-map float-lg-right">
     <span id="message1">{MAP-MESSAGE-1}</span>
-    <div id="map">
+    <div style="width: 400px; height: 400px; border: 1px solid black;" id="googleMap">
     <div id="message2">{MAP-MESSAGE-2}</div>
     </div>
     <span id="message3">{MAP-MESSAGE-3}</span>
   </div>
   
-  <table class="clean">
+  <table class="table table-sm table-nonfluid mt-3">
+  <thead class="thead-light">
   <tr>
-      <td class="property">Main&nbsp;facility:</td>
-      <td class="value">
+      <th>Main&nbsp;facility:</th>
+      <td>
           <span id="v-facility-type">{FACILITY}</span> (<span id="v-facility-status">{STATUS}</span>)
-  
-          {EDIT-FACILITY-PRE}
-          <!-- BEGIN EDIT-FACILITY-DATA -->
-          <div>
-          <select class="edit" id="ev-facility-type">
-              <!-- BEGIN TYPE-OPTION -->
-              <option {SELECTED} value="{VALUE}">{LABEL}</option>
-              <!-- END TYPE-OPTION -->
-          </select>
-          <select class="edit" id="ev-facility-status">
-              <!-- BEGIN STATUS-OPTION -->
-              <option {SELECTED} value="{VALUE}">{LABEL}</option>
-              <!-- END STATUS-OPTION -->
-          </select>
-          </div>
-          <!-- END EDIT-FACILITY-DATA -->
-          {EDIT-FACILITY-POST}
       </td>
   </tr>
   <!-- BEGIN LINES -->
   <tr>
-      <td class="property">Lines:</td>
-      <td class="value">
+      <th>Lines:</th>
+      <td>
           <!-- BEGIN LINE-DETAILS -->
           <a href="{URL}">{TEXT}</a><br/>
           <!-- END LINE-DETAILS -->
@@ -86,148 +66,75 @@
   </tr>
   <!-- END LINES -->
   <tr>
-      <td class="property">Location:</td>
-      <td class="value">
+      <th>Location:</th>
+      <td>
           <span id="v-location-xy">{LATLONG}</span> [<span id="v-location-exact">{POSACCURACY}</span>] GDA94
-  
-          {EDIT-LOCATION-PRE}
-          <!-- BEGIN EDIT-LOCATION-DATA -->
-          <div>
-          <input class="edit" size="10" id="ev-location-x" value="{GEO_X}"/>
-          <input class="edit" size="10" id="ev-location-y" value="{GEO_Y}"/>
-          <input class="edit" size="1" id="ev-location-exact" value="{GEO_EXACT}"/>
-          </div>
-          <!-- END EDIT-LOCATION-DATA -->
-          {EDIT-LOCATION-POST}
       </td>
   </tr>
   <tr>
-      <td class="property">Distance:</td>
-      <td class="value">
+      <th>Distance:</th>
+      <td>
           <span id="v-distance">{DISTANCE}</span> km from {ORIGIN}<!-- BEGIN ALT-DIST --><br/>{DISTANCE2} km from {ORIGIN} (via {VIA-LOCATION})<!-- END ALT-DIST -->
-  
-          {EDIT-DISTANCE-PRE}
-          <!-- BEGIN EDIT-DISTANCE-DATA -->
-          <div>
-          <input class="edit" size="7" id="ev-distance" value="{E-DISTANCE}"/>
-          </div>
-          <!-- END EDIT-DISTANCE-DATA -->
-          {EDIT-DISTANCE-POST}
       </td>
   </tr>
   <!-- BEGIN HISTORY -->
   <tr>
-      <td class="property">History:</td>
-      <td class="value">
+      <th>History:</th>
+      <td>
           <!-- BEGIN HISTORY-DETAILS-SECTION -->
-          <table class="simple">
+          <table class="table-clean">
               <!-- BEGIN HISTORY-DETAILS -->
               <tr><td align="right">{DATE}</td> <td>{EVENT}</td></tr>
               <!-- END HISTORY-DETAILS -->
           </table>
           <!-- END HISTORY-DETAILS-SECTION -->
-  
-          {EDIT-HISTORY-PRE}
-          <!-- BEGIN EDIT-HISTORY-DATA -->
-          <table class="edit simple">
-              <tr>
-                  <td class="property">Type</td>
-                  <td class="property">DD</td>
-                  <td class="property">MM</td>
-                  <td class="property">YYYY</td>
-                  <td class="property">Error</td>
-                  <td class="property">New Name</td>
-              </tr>
-              <!-- BEGIN E-HISTORY-DETAILS -->
-              <tr>
-                  <td>
-                  <select class="edit" id="ev-type{SEQ}">
-                      <!-- BEGIN E-HIST-TYPE-OPTION -->
-                      <option {SELECTED}>{VALUE}</option>
-                      <!-- END E-HIST-TYPE-OPTION -->
-                  </select>
-                  </td>
-                  <td><input class="edit" size="2" id="ev-day{SEQ}" value="{DAY}"/></td>
-                  <td><input class="edit" size="2" id="ev-month{SEQ}" value="{MONTH}"/></td>
-                  <td><input class="edit" size="4" id="ev-year{SEQ}" value="{YEAR}"/></td>
-                  <td>
-                  <select class="edit" id="ev-error{SEQ}">
-                      <!-- BEGIN E-HIST-ERROR-OPTION -->
-                      <option {SELECTED} value="{VALUE}">{LABEL}</option>
-                      <!-- END E-HIST-ERROR-OPTION -->
-                  </select>
-                  </td>
-                  <td>
-                  <input class="edit" size="20" maxlength="128" id="ev-name{SEQ}" value="{NAME}" />
-                  </td>
-              </tr>
-              <!-- END E-HISTORY-DETAILS -->
-          </table>
-          <!-- END EDIT-HISTORY-DATA -->
-          {EDIT-HISTORY-POST}
       </td>
   </tr>
   <!-- END HISTORY -->
   
   <!-- BEGIN OPT-STATION-DETAILS -->
   <tr>
-      <td class="property">Station:</td>
-      <td class="value">{STATION-DETAILS}</td>
+      <th>Station:</th>
+      <td>{STATION-DETAILS}</td>
   </tr>
   <!-- END OPT-STATION-DETAILS -->
   <!-- BEGIN OPT-GOODS-DETAILS -->
   <tr>
-      <td class="property">Freight&nbsp;facilities:</td>
-      <td class="value">{GOODS-DETAILS}</td>
+      <th>Freight&nbsp;facilities:</th>
+      <td>{GOODS-DETAILS}</td>
   </tr>
   <!-- END OPT-GOODS-DETAILS -->
   <!-- BEGIN OPT-INFRA-DETAILS -->
   <tr>
-      <td class="property">Other&nbsp;facilities:</td>
-      <td class="value">{INFRA-DETAILS}</td>
+      <th>Other&nbsp;facilities:</th>
+      <td>{INFRA-DETAILS}</td>
   </tr>
   <!-- END OPT-INFRA-DETAILS -->
   <!-- BEGIN PHOTO-DETAILS -->
   <tr>
-      <td class="property">Photos:</td>
-      <td class="value">{PHOTO-YEARS}</td>
+      <th>Photos:</th>
+      <td>{PHOTO-YEARS}</td>
   </tr>
   <!-- END PHOTO-DETAILS -->
   <tr>
-      <td class="property">Description:</td>
-      <td class="value">
+      <th>Description:</th>
+      <td>
           <i><span id="v-desc">{DESC}</span></i>
-  
-          {EDIT-DESC-PRE}
-          <!-- BEGIN EDIT-DESC-DATA -->
-          <div>
-          <textarea class="edit" rows="6" cols="28" id="ev-desc">{DESC}</textarea>
-          </div>
-          <!-- END EDIT-DESC-DATA -->
-          {EDIT-DESC-POST}
       </td>
   </tr>
   <tr>
-      <td class="property">Current&nbsp;status:</td>
-      <td class="value">
+      <th>Current&nbsp;status:</th>
+      <td>
           <i><span id="v-curr">{CURR}</span></i>
-  
-          {EDIT-CURR-PRE}
-          <!-- BEGIN EDIT-CURR-DATA -->
-          <div>
-          <textarea class="edit" rows="6" cols="28" id="ev-curr">{CURR}</textarea>
-          </div>
-          <!-- END EDIT-CURR-DATA -->
-          {EDIT-CURR-POST}
       </td>
   </tr>
   <!-- BEGIN URLS -->
   <tr>
-      <td class="property">Links:</td>
-      <td class="value">
-  <!-- BEGIN URL-DETAILS -->
+      <th>Links:</th>
+      <td>
+          <!-- BEGIN URL-DETAILS -->
           <a href="{LINK-URL}">{LINK-TEXT}</a><br/>
-  <!-- END URL-DETAILS -->
+          <!-- END URL-DETAILS -->
       </td>
   </tr>
   <!-- END URLS -->
@@ -239,7 +146,9 @@
   No such location "{LOCATION}" in state "{STATE}".
   <!-- END ERROR -->
 </div>
-  <!-- BEGIN PHOTO-TAB2 -->
+
+<!-- BEGIN PHOTO-TAB2 -->
+<!-- Photographs tab -->
 <div class="tab-pane container" id="tab-photo">
   <!-- BEGIN PHOTO-LIST -->
   <!-- BEGIN EDIT-PHOTO-BLOCK -->
@@ -248,7 +157,7 @@
   <br/>
   <!-- END EDIT-PHOTO-BLOCK -->
   <!-- BEGIN PHOTO-DECADE -->
-  <h2>{DECADE}</h2>
+  <h3>{DECADE}</h3>
   <!-- END PHOTO-DECADE -->
   <!-- BEGIN PHOTO -->
   <a href="{PHOTO-URL}?iframe=true&width=800&height=600" rel="prettyPhoto[iframes]"><img class="thumbnail" src="{PHOTO-THUMB}" alt="photograph thumbnail"></img></a>
@@ -264,6 +173,7 @@
 <!-- END PHOTO-TAB2 -->
 
 <!-- BEGIN DIAGRAM-TAB2 -->
+<!-- Diagrams tab -->
 <div class="tab-pane container" id="tab-photo">
   <!-- BEGIN DIAGRAM-LIST -->
   <!-- BEGIN DIAGRAM -->
@@ -282,4 +192,32 @@
 </div>
 <!-- END DIAGRAM-TAB2 -->
 
+<script>
+var map;
+function initMapCB() {
+  var latlong = new google.maps.LatLng({MAP-GEOY}, {MAP-GEOX});
+
+  // instantiate the map
+  map = new google.maps.Map(document.getElementById('googleMap'), {
+    center: latlong,
+    zoom: {MAP-SCALE}
+  });
+
+  // custom icon for the location
+  var icon = new google.maps.MarkerImage(
+    'images/crosshair.png',
+    new google.maps.Size(63, 63),   // size
+    new google.maps.Point(0, 0),    // origin
+    new google.maps.Point(32, 32)   // anchor
+  );
+
+  // add marker for this location
+  var marker = new google.maps.Marker({
+    map: map,
+    position: latlong,
+    icon: icon,
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key={MAP-APIKEY}&callback=initMapCB" async defer></script>
 <!-- END CONTENT -->

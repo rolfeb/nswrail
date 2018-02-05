@@ -252,12 +252,18 @@ function run_default_mode($state, $location, $line_state, $line, $segment)
                 $t->setVariable("MAP-MESSAGE-1", "(Approximate location only)");
             }
 
+            /*
             $url = "/maps/google.php?pos=" . $l["geox"] . "," . $l["geoy"];
             $t->setVariable("MAP-MESSAGE-3",
                 "<a href=\"$url\">full screen</a>");
 
             $head_extra .= '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
             $body_extra = 'onload="google_init(' . $l["geox"] . ', ' . $l["geoy"] . ');"';
+            */
+            $t->setVariable("MAP-GEOX", $l["geox"]);
+            $t->setVariable("MAP-GEOY", $l["geoy"]);
+            $t->setVariable("MAP-SCALE", 14);
+            $t->setVariable("MAP-APIKEY", 'AIzaSyAcfRpOxo-uKn1nY7XbBChfPWZhkXPnEPs');
         }
         else
         {
@@ -351,7 +357,7 @@ function add_location_history($state, $location)
         $count++;
 
         $name = $h["name"];
-        $date = date_cpts2text($h["day"], $h["month"], $h["year"],
+        $date = date_cpts2html($h["day"], $h["month"], $h["year"],
             $h["year_error"]);
 
         switch ($h["type"])
