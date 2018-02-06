@@ -1,7 +1,7 @@
 <?php
 
 require_once "site.inc";
-require_once "display-photos.inc";
+require_once "gallery.inc";
 
-display_photos("turntable", "", "NSW Railway Turntable Photos", "");
+theme_gallery(PhotoThemes::Turntable, "", "NSW Railway Turntable Photos", "");
 ?>

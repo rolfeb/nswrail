@@ -1,6 +1,0 @@
-#Open a local lib directroy
-
-use lib "./lib";
-$LocalLib_version="1.06";
-
-1;

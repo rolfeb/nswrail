@@ -1,24 +1,17 @@
 <?php
 
-require_once "site.inc";
+require "site.inc";
 
 global $BASE_PATH;
 
 $template_dir = "$BASE_PATH/c/tpl";
 
 $t = new HTML_Template_ITX($template_dir);
-if (!$t->loadTemplateFile("txtpage.tpl", true, true))
-    return "<!-- ERROR: couldn't open txtpage.tpl -->\n";
+$t->loadTemplateFile("txtpage.tpl", true, true);
 
 $file = get_post('file', '');
 
-if
-(
-    $file
-    &&
-    $text = file_get_contents("$BASE_PATH/" .$file)
-)
-{
+if ($file && $text = file_get_contents("$BASE_PATH/" .$file)) {
     #
     # Extract the [h1] entry and use this for the page title
     #
@@ -35,9 +28,9 @@ if
     $parser->setText($text);
     $parser->parse();
     $text = $parser->getParsed();
+} else {
+    error_page("invalid txt file: $file");
 }
-else
-    die("invalid txt file: $file");
 
 
 $t->setCurrentBlock('CONTENT');

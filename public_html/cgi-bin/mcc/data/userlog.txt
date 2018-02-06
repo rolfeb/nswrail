@@ -1,1 +1,0 @@
-admin|0|127.0.0.1|http://nswrail-devel.nswrail.net/cgi-bin/mcc/mcc.pl|Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225|Sun May 15 12:11:13 2005|

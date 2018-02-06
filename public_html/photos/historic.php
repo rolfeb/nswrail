@@ -1,12 +1,14 @@
 <?php
 
 require_once "site.inc";
-require_once "display-photos.inc";
+require_once "gallery.inc";
+
+$age = get_setting('HISTORIC_PHOTO_YEARS');
 
 $intro = "
 This page contains photos of a historic nature, defined as those which
-were taken at least 20 years ago.
+were taken at least $age years ago.
 ";
 
-display_photos("historic", "", "Historic NSW Railway Photos", $intro);
+theme_gallery(PhotoThemes::Historic, "", "Historic NSW Railway Photos", $intro);
 ?>

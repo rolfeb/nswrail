@@ -615,14 +615,18 @@ function add_photo_thumbnails($state, $location, $line_state, $line, $segment)
     global $db, $t, $user;
 
     $stmt = $db->stmt_init();
+
     $stmt->prepare("
         select
             LP.seqno,
             LP.file,
             LP.hold,
-            LP.year
+            LP.year,
+            IFNULL(U.fullname, LP.legacy_owner) as fullname,
+            LP.owner_uid,
+            LP.caption
         from
-            r_location_photo LP
+            r_location_photo LP left join r_user U on LP.owner_uid = U.uid
         where
             LP.location_state = ?
             and
@@ -637,30 +641,23 @@ function add_photo_thumbnails($state, $location, $line_state, $line, $segment)
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
-    $stmt->bind_result($seqno, $file, $hold, $year);
+    $stmt->bind_result($seqno, $file, $hold, $year, $owner_fullname, $owner_uid,
+        $caption);
 
     $nphotos = 0;
     $curr_decade = '';
 
-    while ($stmt->fetch())
-    {
-        if ($hold == '')
-        {
+    while ($stmt->fetch()) {
+        if ($hold == '') {
             $base = preg_replace("/.jpg$/", "", $file);
 
-            $url = "/locations/gphoto.php?"
-                . urlenc("name=$state:$location:$seqno");
-
-            if ($line)
-                $url = $url . urlenc("&line=$line_state:$line:$segment");
-
-            if (!$year or $year < 1800)
+            if (!$year or $year < 1800) {
                 $decade = "Unknown";
-            else
+            } else {
                 $decade = sprintf("%d - %d", floor($year / 10) * 10, ceil($year / 10) * 10);
+            }
 
-            if ($decade != $curr_decade)
-            {
+            if ($decade != $curr_decade) {
                 $t->setCurrentBlock("PHOTO-DECADE");
                 $t->setVariable("DECADE", $decade);
                 $t->parseCurrentBlock();
@@ -669,8 +666,13 @@ function add_photo_thumbnails($state, $location, $line_state, $line, $segment)
             }
 
             $t->setCurrentBlock("PHOTO");
-            $t->setVariable("PHOTO-URL", $url);
-            $t->setVariable("PHOTO-THUMB", "/media/photos/thumbnails/$base.jpg");
+            $t->setVariable("PHOTO-IMG", "/media/photos/$base.jpg");
+            $t->setVariable("THUMB-IMG", "/media/photos/thumbnails/$base.jpg");
+            $t->setVariable("LOCATION", $location);
+            $t->setVariable("DATE", $year == 0 ? 'unknown' : $year);
+            $t->setVariable("TEXT", htmlentities($caption));
+            $t->setVariable("UID", $owner_uid);
+            $t->setVariable("FULLNAME", htmlentities($owner_fullname));
             $t->parseCurrentBlock();
 
             $t->parse("PHOTO-LIST");

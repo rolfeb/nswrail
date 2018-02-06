@@ -1,9 +1,9 @@
 <?php
 
 require_once "site.inc";
-require_once "display-photos.inc";
+require_once "gallery.inc";
 
 $owner = quote_external(get_post("owner", ""));
 
-display_photos("owner", $owner, "NSW Railway Photos owned by $owner", "");
+theme_gallery(PhotoThemes::Owner, $owner, "NSW Railway Photos owned by $owner", "");
 ?>

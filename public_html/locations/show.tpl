@@ -160,7 +160,7 @@
   <h3>{DECADE}</h3>
   <!-- END PHOTO-DECADE -->
   <!-- BEGIN PHOTO -->
-  <a href="{PHOTO-URL}?iframe=true&width=800&height=600" rel="prettyPhoto[iframes]"><img class="thumbnail" src="{PHOTO-THUMB}" alt="photograph thumbnail"></img></a>
+  <a data-toggle="modal" data-target="#imageDisplay" data-photo="{PHOTO-IMG}" data-location="{LOCATION} ({DATE})" data-text="{TEXT}" data-id="{UID}" data-fullname="{FULLNAME}" href="#"><img class="img-thumbnail" src="{THUMB-IMG}"></a>
   &nbsp;
   <!-- END PHOTO -->
   <!-- BEGIN NO-PHOTOS -->
@@ -171,6 +171,45 @@
   <!-- END PHOTO-LIST -->
 </div>
 <!-- END PHOTO-TAB2 -->
+
+<!-- Modal -->
+<div class="modal fade" id="imageDisplay" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-location"></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow: auto">
+          <img id="modal-photo" style="display: block; margin: 0 auto;">
+      </div>
+      <div class="modal-footer justify-content-start">
+        <div>
+        <p class="text" id="modal-text"></p>
+        Copyright: <span id="modal-owner"></span>
+        <a id="modal-contact" data-toggle="tooltip" title="Please contact if you wish to use this photograph" href="/c/lib/mailer.php?uid=tbd"><span class="material-icons" style="vertical-align: bottom;">email</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$('#imageDisplay').on('show.bs.modal', function(e) {
+  var m_photo = e.relatedTarget.dataset.photo;
+  var m_location = e.relatedTarget.dataset.location;
+  var m_text = e.relatedTarget.dataset.text;
+  var m_uid = e.relatedTarget.dataset.uid;
+  var m_fullname = e.relatedTarget.dataset.fullname;
+  document.getElementById('modal-location').innerHTML = m_location;
+  document.getElementById('modal-photo').src = m_photo;
+  document.getElementById('modal-text').innerHTML = m_text;
+  document.getElementById('modal-owner').innerHTML = m_fullname;
+  document.getElementById('modal-contact').href = '/c/lib/mailer.php?uid=' + m_uid;
+});
+</script>
+
 
 <!-- BEGIN DIAGRAM-TAB2 -->
 <!-- Diagrams tab -->

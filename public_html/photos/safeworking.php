@@ -1,7 +1,7 @@
 <?php
 
 require_once "site.inc";
-require_once "display-photos.inc";
+require_once "gallery.inc";
 
-display_photos("safeworking", "", "NSW Railway Safeworking Photos", "");
+theme_gallery(PhotoThemes::Safeworking, "", "NSW Railway Safeworking Photos", "");
 ?>

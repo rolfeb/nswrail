@@ -1,6 +1,6 @@
 <?php
 
-require_once "site.inc";
+require "site.inc";
 
 $current_year = date("Y");
 

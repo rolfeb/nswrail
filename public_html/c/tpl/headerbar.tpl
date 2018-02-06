@@ -1,5 +1,5 @@
 <table class="simple" width="100%" id="top"><tr>
-<td align="left"><img src="/images/logo-medium.png" alt=""></img></td>
+<td align="left"><img src="/media/images/logo-medium.png" alt=""></td>
 <td align="right">
 <div id="auth">
 <!-- BEGIN AUTHENTICATED-USER -->

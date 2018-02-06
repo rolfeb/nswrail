@@ -1,7 +1,7 @@
 <?php
 
 require_once "site.inc";
-require_once "display-photos.inc";
+require_once "gallery.inc";
 
-display_photos("box", "", "NSW Signal Box Photos", "");
+theme_gallery(PhotoThemes::Signalbox, "", "NSW Signal Box Photos", "");
 ?>

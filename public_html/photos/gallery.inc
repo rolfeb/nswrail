@@ -2,36 +2,45 @@
 
 require_once "site.inc";
 
-function display_photos($theme, $themeextra, $title, $intro)
+abstract class PhotoThemes
+{
+    const Diagram       = 0;
+    const Historic      = 1;
+    const Night         = 2;
+    const Owner         = 3;
+    const Recent        = 4;
+    const Safeworking   = 5;
+    const Signalbox     = 6;
+    const Tunnel        = 7;
+    const Turntable     = 8;
+}
+
+function theme_gallery($theme, $themeextra, $title, $intro)
 {
     global $db;
 
-    #
-    # Setup the page template
-    #
     $t = new HTML_Template_ITX(".");
-    $t->loadTemplateFile("photo-list.tpl");
+    $t->loadTemplateFile("gallery.tpl");
 
     #
-    # Get display modes from the URL. Valid values:
-    #   order: location, year
-    #   mode: thumbnail, text
+    # Get current display state
     #
-    $order = quote_external(get_post("order", ""));
-    $mode = quote_external(get_post("mode", ""));
+    $order = quote_external(get_post("order", ""));     # location, year
+    $mode = quote_external(get_post("mode", ""));       # thumbnail, text
     $page = quote_external(get_post("page", "1"));
 
-    if ($order != "location" && $order != "year")
+    if ($order != "location" && $order != "year") {
         $order = "location";
-
-    if ($mode != "thumbnail" && $mode != "listing")
+    }
+    if ($mode != "thumbnail" && $mode != "listing") {
         $mode = "thumbnail";
-
-    if ($page < 1)
+    }
+    if ($page < 1) {
         $page = 1;
+    }
 
     #
-    # If we are running in thumbnail mode, manage the paging of results
+    # XXX: If we are running in thumbnail mode, manage the paging of results
     #
     $THUMBNAIL_COLUMNS = 4;
     $THUMBNAIL_PAGEROWS = 4;
@@ -41,8 +50,7 @@ function display_photos($theme, $themeextra, $title, $intro)
     # we are displaying paged output, calculate the rows to fetch.
     #
     $select_limits = "999999";
-    if ($mode == "thumbnail")
-    {
+    if ($mode == "thumbnail") {
         $first = ($page - 1) * $THUMBNAIL_COLUMNS * $THUMBNAIL_PAGEROWS;
         $count = $THUMBNAIL_COLUMNS * $THUMBNAIL_PAGEROWS;
         $select_limits = "$first,$count";
@@ -50,27 +58,27 @@ function display_photos($theme, $themeextra, $title, $intro)
 
     switch ($theme)
     {
-    case "diagram":
-    case "night":
-    case "safeworking":
-    case "box":
-    case "turntable":
-        $sql = sql_theme($theme, $order);
+    case PhotoThemes::Diagram:
+    case PhotoThemes::Night:
+    case PhotoThemes::Safeworking:
+    case PhotoThemes::Signalbox:
+    case PhotoThemes::Turntable:
+        $sql = sql_photo_tag($theme, $order);
         break;
 
-    case "historic":
+    case PhotoThemes::Historic:
         $sql = sql_historic($order);
         break;
 
-    case "recent":
+    case PhotoThemes::Recent:
         $sql = sql_recent($order);
         break;
 
-    case "tunnel":
+    case PhotoThemes::Tunnel:
         $sql = sql_tunnel($order);
         break;
 
-    case "owner":
+    case PhotoThemes::Owner:
         $sql = sql_owner($order, $themeextra);
         break;
     }
@@ -90,17 +98,18 @@ function display_photos($theme, $themeextra, $title, $intro)
 
     $stmt->execute();
     $stmt->bind_result($state, $line, $location_state, $location, $file,
-        $seqno, $year, $owner, $caption);
+        $seqno, $year, $owner_fullname, $owner_uid, $caption);
 
     $npages = 1;
-    if ($mode == "thumbnail")
-    {
+    if ($mode == "thumbnail") {
         $npages = ceil($nrows / ($THUMBNAIL_COLUMNS * $THUMBNAIL_PAGEROWS));
 
-        if ($page > 1)
+        if ($page > 1) {
             $prev_page_link = $page - 1;
-        if ($page < $npages)
+        }
+        if ($page < $npages) {
             $next_page_link = $page + 1;
+        }
 
         $first = ($page - 1) * $THUMBNAIL_COLUMNS * $THUMBNAIL_PAGEROWS;
         $last = $page * $THUMBNAIL_COLUMNS * $THUMBNAIL_PAGEROWS - 1;
@@ -111,58 +120,52 @@ function display_photos($theme, $themeextra, $title, $intro)
     # Display the photos
     #
     $n = 0;
-    while ($stmt->fetch())
-    {
+    while ($stmt->fetch()) {
+        $photo = "/media/photos/$file";
+        $thumb = "/media/photos/thumbnails/$file";
 
-        if ($mode == "listing")
-        {
+        if ($mode == "listing") {
             #
             # Listing mode
             #
-            empty($owner) && $owner = "Rolfe Bozier";
-
-            $href = "/locations/photo.php?"
-                . urlenc("name=$location_state:$location:$seqno");
-
-            $t->setCurrentBlock("LISTING");
-            $t->setVariable("HREF", $href);
-            $t->setVariable("NAME", $location);
+            $t->setCurrentBlock("LISTING-ROW");
+            $t->setVariable("PHOTO-IMG", $photo);
+            $t->setVariable("LOCATION", $location);
             $t->setVariable("DATE", $year == 0 ? 'unknown' : $year);
-            $t->setVariable("TEXT", $caption);
+            $t->setVariable("TEXT", htmlentities($caption));
+            $t->setVariable("UID", $owner_uid);
+            $t->setVariable("FULLNAME", htmlentities($owner_fullname));
             $t->parseCurrentBlock();
-        }
-        else
-        {
+        } else {
             #
             # Thumbnail mode
             #
-            $thumb = "/media/photos/thumbnails/$file";
-
-            $href = "/locations/gphoto.php?"
-                . urlenc("name=$location_state:$location:$seqno");
-
             $t->setCurrentBlock("CELL");
+            $t->setVariable("PHOTO-IMG", $photo);
             $t->setVariable("THUMB-IMG", $thumb);
-            $t->setVariable("PHOTO-URL", $href);
             $t->setVariable("LOCATION", $location);
             $t->setVariable("DATE", $year == 0 ? 'unknown' : $year);
+            $t->setVariable("TEXT", htmlentities($caption));
+            $t->setVariable("UID", $owner_uid);
+            $t->setVariable("FULLNAME", htmlentities($owner_fullname));
             $t->parseCurrentBlock();
 
             $col = $n % $THUMBNAIL_COLUMNS;
-            if ($col == $THUMBNAIL_COLUMNS - 1)
-            {
-                $t->setCurrentBlock("THUMBNAIL-ROW");
-                $t->parseCurrentBlock();
+            if ($col == $THUMBNAIL_COLUMNS - 1) {
+                $t->parse("ROW");
             }
         }
 
         $n++;
     }
+    if ($mode == "listing") {
+        $t->parse("LISTING");
+    } else {
+        $t->parse("GALLERY");
+    }
     $stmt->close();
 
-    #
-    # Display the navigation links
-    #
+    # display the navigation links
     show_navigation($t, $page, $npages, $order, $mode);
 
     $t->setCurrentBlock("CONTENT");
@@ -172,7 +175,7 @@ function display_photos($theme, $themeextra, $title, $intro)
 
     display_page($title, $t->get("CONTENT"),
         array(
-            'HEAD-EXTRA'    => implode(file('photo-list.hdr'), ""),
+            'HEAD-EXTRA'    => implode(file('gallery.hdr'), ""),
         )
     );
 }
@@ -204,16 +207,13 @@ function show_navigation(&$t, $page, $npages, $order, $mode)
     $t->setCurrentBlock("CONTENT");
     $m_argv = $argv;
 
-    if ($mode == "thumbnail")
-    {
+    if ($mode == "thumbnail") {
         $m_argv["mode"] = "listing";
         unset($m_argv["order"]);
         unset($m_argv["page"]);
         $t->setVariable("ALT-DISPLAY", "Listing");
         $t->setVariable("ALT-DISPLAY-URL", encode_argv_url($m_argv));
-    }
-    else
-    {
+    } else {
         unset($m_argv["mode"]);
         $m_argv["page"] = 1;
         $t->setVariable("ALT-DISPLAY", "Thumbnails");
@@ -221,53 +221,47 @@ function show_navigation(&$t, $page, $npages, $order, $mode)
     }
 
     $m_argv = $argv;
-    if ($order == "location")
-    {
+    if ($order == "location") {
         $m_argv["order"] = "year";
         $m_argv["page"] = 1;
         $t->setVariable("ALT-ORDER", "Year");
         $t->setVariable("ALT-ORDER-URL", encode_argv_url($m_argv));
-    }
-    else
-    {
+    } else {
         unset($m_argv["order"]);
         $m_argv["page"] = 1;
         $t->setVariable("ALT-ORDER", "Location");
         $t->setVariable("ALT-ORDER-URL", encode_argv_url($m_argv));
     }
 
-    if ($npages <= 1)
+    if ($npages <= 1) {
         return;
+    }
 
-    if ($mode == "thumbnail")
-    {
+    if ($mode == "thumbnail") {
         #
         # Instantiate the page navigation templates for the top and bottom of
         # the page
         #
-        for ($x = 1; $x <= 2; $x++)
-        {
-            if ($page > 1)
-            {
+        for ($x = 1; $x <= 2; $x++) {
+            if ($page > 1) {
                 $t->setCurrentBlock("PAGE-PREV-ACTIVE$x");
                 $t->setVariable("FIRST-URL$x",
                     set_and_encode_argv_url($argv, "page", 1));
                 $t->setVariable("PREV-URL$x",
                     set_and_encode_argv_url($argv, "page", $page - 1));
-            }
-            else
+            } else {
                 $t->touchBlock("PAGE-PREV-INACTIVE$x");
+            }
 
-            if ($page < $npages)
-            {
+            if ($page < $npages) {
                 $t->setCurrentBlock("PAGE-NEXT-ACTIVE$x");
                 $t->setVariable("LAST-URL$x",
                     set_and_encode_argv_url($argv, "page", $npages));
                 $t->setVariable("NEXT-URL$x",
                     set_and_encode_argv_url($argv, "page", $page + 1));
-            }
-            else
+            } else {
                 $t->touchBlock("PAGE-NEXT-INACTIVE$x");
+            }
 
             $t->setCurrentBlock("PAGE-SELECT$x");
             $t->setVariable("PAGE$x", $page);
@@ -281,7 +275,7 @@ function show_navigation(&$t, $page, $npages, $order, $mode)
 # Construct a statement to retrieve photos matching the given theme
 # identifier (r_location_photo.themes).
 #
-function sql_theme($theme, $sorting)
+function sql_photo_tag($theme, $sorting)
 {
     if ($sorting == "year")
         $sort = "RP.year, RL.location_name, RP.seqno";
@@ -297,7 +291,8 @@ function sql_theme($theme, $sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, RP.legacy_owner),
+            IFNULL(U.fullname, RP.legacy_owner) as fullname,
+            RP.owner_uid,
             RP.caption
         from
             r_line_location RL,
@@ -324,7 +319,7 @@ function sql_theme($theme, $sorting)
 #
 function sql_historic($sorting)
 {
-    $HISTORIC_YEARS = 20;
+    $age = get_setting('HISTORIC_PHOTO_YEARS');
 
     if ($sorting == "year")
         $sort = "RP.year, RL.location_name, RP.seqno";
@@ -340,7 +335,8 @@ function sql_historic($sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, RP.legacy_owner),
+            IFNULL(U.fullname, RP.legacy_owner) as fullname,
+            RP.owner_uid,
             RP.caption
         from
             r_line_location RL,
@@ -354,7 +350,7 @@ function sql_historic($sorting)
             and
             RP.hold is null
             and
-            RP.year < YEAR(CURDATE()) - $HISTORIC_YEARS
+            RP.year < YEAR(CURDATE()) - $age
             and
             RP.year > 0
             and
@@ -371,7 +367,7 @@ function sql_historic($sorting)
 #
 function sql_recent($sorting)
 {
-    $RECENT_DAYS = 28;
+    $RECENT_DAYS = get_setting('RECENT_PHOTO_UPLOAD_WEEKS') * 4;
 
     if ($sorting == "year")
         $sort = "RP.year, RL.location_name, RP.seqno";
@@ -387,7 +383,8 @@ function sql_recent($sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, RP.legacy_owner),
+            IFNULL(U.fullname, RP.legacy_owner) as fullname,
+            RP.owner_uid,
             RP.caption
         from
             r_line_location RL,
@@ -428,7 +425,8 @@ function sql_tunnel($sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, RP.legacy_owner),
+            IFNULL(U.fullname, RP.legacy_owner) as fullname,
+            RP.owner_uid,
             RP.caption
         from
             r_line_location RL,
@@ -479,7 +477,8 @@ function sql_owner($sorting, $owner)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, RP.legacy_owner),
+            IFNULL(U.fullname, RP.legacy_owner) as fullname,
+            RP.owner_uid,
             RP.caption
         from
             r_line_location RL,

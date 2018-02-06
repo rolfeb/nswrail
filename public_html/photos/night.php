@@ -1,7 +1,7 @@
 <?php
 
 require_once "site.inc";
-require_once "display-photos.inc";
+require_once "gallery.inc";
 
-display_photos("night", "", "NSW Railway Station Night Photos", "");
+theme_gallery(PhotoThemes::Night, "", "NSW Railway Station Night Photos", "");
 ?>
