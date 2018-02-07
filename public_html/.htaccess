@@ -30,6 +30,7 @@ RewriteRule ^index.html$    / [R]
 # Other settings
 #
 DirectoryIndex index.php
+Header set X-Robots-Tag "noindex, nofollow"
 
 #
 # Permissions
