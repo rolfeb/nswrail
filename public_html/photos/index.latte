@@ -1,0 +1,33 @@
+{*
+    Display a card page.
+
+    Parameters:
+        $title
+
+        $cards[]:
+            'opt_style'
+            'url'
+            'opt_thumbnail_url'
+            'title'
+            'text'
+*}
+<h1>{$title}</h1>
+
+<div class="card-page">
+  {foreach $cards as $card}
+  <div class="card {ifset $card['opt_style']}$card['opt_style']{/ifset} mb-2">
+    <a href="{$card['url']}">
+      <div class="card-body" style="overflow: auto">
+        {ifset $card['opt_thumbnail_url']}
+          <img src="{$card['opt_thumbnail_url']}" class="float-right ml-2"/>
+        {/ifset}
+        <div class="float-both">
+        <h3 class="card-title">{$card['title']}</h3>
+        <p class="card-text">{$card['text']}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+  {/foreach}
+</div>
+

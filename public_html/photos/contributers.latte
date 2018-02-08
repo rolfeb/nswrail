@@ -1,0 +1,16 @@
+<h1>{$title}</h1>
+
+<p class="text">
+A number of generous people have contributed photographs. The current list is:
+</p>
+
+<div style="column-count: 3;">
+  <ul n:if="$people">
+    {foreach $people as $person}
+    <li>
+      <span><a href="{$person['photos-url']}">{$person['name']}</a></span>
+      <span>- {$person['count']} photos</span>
+    </li>
+    {/foreach}
+  </ul>
+</div>

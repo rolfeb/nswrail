@@ -1,0 +1,101 @@
+{*
+    Display an image gallery, either as a text listing or a table of thumbnails
+
+    Parameters:
+        $title
+        $introduction
+
+        $is_listing
+
+        $alt_display_url
+        $alt_display_label
+        $alt_order_url
+        $alt_order_label
+
+        # if !$is_listing:
+            $page
+            $npages
+            $nav_prev_page_url
+            $nav_first_page_url
+            $nav_next_page_url
+            $nav_last_page_url
+
+            $num_columns
+
+        $photos[]:
+            'photo_img'
+            'thumb_img'
+            'location'
+            'date'
+            'text'
+            'uid'
+            'fullname'
+*}
+<h1>{$title}</h1>
+
+<p class="text">{$introduction}</p>
+
+{* display type, order selector *}
+<div style="float: left">
+[Display as: <a href="{$alt_display_url|noescape}">{$alt_display_label}</a>
+Order by: <a href="{$alt_order_url|noescape}">{$alt_order_label}</a>]
+</div>
+
+{if !$is_listing}
+  {* page navigation *}
+  {block pagenav}
+  {if $npages > 1}
+    <div style="text-align: right;">
+      Page: 
+      {ifset $nav_prev_page_url}
+      <a href={$nav_first_page_url|noescape}><img src="/c/images/button-arrow-full-left.png" alt="first"></a>
+      <a href={$nav_prev_page_url|noescape}><img src="/c/images/button-arrow-left.png" alt="prev"></a>
+      {else}
+      <img src="/c/images/button-arrow-left-ghosted.png" alt="first">
+      <img src="/c/images/button-arrow-full-left-ghosted.png" alt="first">
+      {/ifset}
+      {$page} of {$npages}
+      {ifset $nav_next_page_url}
+      <a href={$nav_next_page_url|noescape}><img src="/c/images/button-arrow-right.png" alt="next"></a>
+      <a href={$nav_last_page_url|noescape}><img src="/c/images/button-arrow-full-right.png" alt="last"></a>
+      {else}
+      <img src="/c/images/button-arrow-right-ghosted.png" alt="next">
+      <img src="/c/images/button-arrow-full-right-ghosted.png" alt="last">
+      {/ifset}
+    </div>
+  {/if}
+  {/block}
+{/if}
+<br clear="all"/>
+
+{if $is_listing}
+  <table class="table table-lg">
+  {foreach $photos as $p}
+    <tr>
+      <td>
+        <a data-toggle="modal" data-target="#imageDisplay" data-photo="{$p['photo_img']}" data-location="{$p['location']} ({$p['date']})" data-text="{$p['text']}" data-id="{$p['uid']}" data-fullname="{$p['fullname']}" href="#">{$p['location']}</a>
+      </td>
+      <td>{$p['date']}</td>
+      <td class="text">{$p['text']}</td>
+    </tr>
+  {/foreach}
+  </table>
+{else} {* display as gallery *}
+  <table class="clean" width="100%">
+  {foreach $photos as $p}
+    {if ($iterator->counter-1) % $num_columns == 0}<tr>{/if}
+    <td class="pl_thumbnail">
+      <a data-toggle="modal" data-target="#imageDisplay" data-photo="{$p['photo_img']}" data-location="{$p['location']} ({$p['date']})" data-text="{$p['text']}" data-id="{$p['uid']}" data-fullname="{$p['fullname']}" href="#"><img class="img-thumbnail" src="{$p['thumb_img']}"></a>
+      <br/>{$p['location']} ({$p['date']})
+    </td>
+    {if ($iterator->counter-1) % $num_columns == 3}</tr>{/if}
+  {/foreach}
+  </table>
+{/if}
+
+{include '../c/tpl/photo-display-dialog.latte'}
+
+{if !$is_listing}
+  {* page navigation *}
+  {include pagenav}
+{/if}

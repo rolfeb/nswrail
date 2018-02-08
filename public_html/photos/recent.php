@@ -1,7 +1,7 @@
 <?php
 
-require_once "site.inc";
-require_once "gallery.inc";
+require "site.inc";
+require "gallery.inc";
 
 $recent = get_setting('RECENT_PHOTO_UPLOAD_WEEKS');
 

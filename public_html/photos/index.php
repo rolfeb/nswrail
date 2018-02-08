@@ -63,7 +63,7 @@ $auth_cards = [
     ],
 ];
 
-function add_cards($t, $cards, $restricted_cards)
+function add_cards($tp, $cards, $restricted_cards)
 {
     for ($i = 0; $i < sizeof($cards); $i++) {
         if ($restricted_cards) {
@@ -74,34 +74,35 @@ function add_cards($t, $cards, $restricted_cards)
         }
 
         if ($auth) {
+            $card = [
+                'url' => $url,
+                'title' => $title,
+                'text' => $text,
+            ];
             if ($thumbnail) {
-                $t->setCurrentBlock("THUMBNAIL");
-                $t->setVariable("THUMBNAIL-URL", $thumbnail);
-                $t->parseCurrentBlock();
+                $card['opt_thumbnail_url'] = $thumbnail;
             }
-            $t->setCurrentBlock("CARD");
-            $t->setVariable("URL", $url);
-            $t->setVariable("TITLE", $title);
-            $t->setVariable("TEXT", $text);
             if ($restricted_cards) {
-                $t->setVariable("STYLE", 'auth-card');
+                $card['opt_style'] = 'auth-card';
             }
-            $t->parseCurrentBlock();
+
+            $tp['cards'][] = $card;
         }
     }
+
+    return $tp;
 }
 
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("index.tpl");
-
-add_cards($t, $cards, false);
-add_cards($t, $auth_cards, true);
-
 $title = "Photographs";
-$t->setCurrentBlock("CONTENT");
-$t->setVariable("TITLE", $title);
-$t->parseCurrentBlock();
 
-display_page($title, $t->get("CONTENT"));
+$tp = [
+    'title' => $title,
+];
+
+$tp = add_cards($tp, $cards, false);
+$tp = add_cards($tp, $auth_cards, true);
+
+$latte = new Latte\Engine;
+display_page($title, $latte->renderToString('index.latte', $tp));
 
 ?>

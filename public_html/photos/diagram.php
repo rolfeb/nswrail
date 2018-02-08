@@ -1,7 +1,7 @@
 <?php
 
-require_once "site.inc";
-require_once "gallery.inc";
+require "site.inc";
+require "gallery.inc";
 
-display_photos("diagram", "", "NSW Railway Signal Diagram Photos", "");
+theme_gallery(PhotoThemes::Diagram, "", "NSW Railway Signal Diagram Photos", "");
 ?>

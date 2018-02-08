@@ -12,6 +12,8 @@ require 'thirdparty/PHPMailer/src/Exception.php';
 require 'thirdparty/PHPMailer/src/PHPMailer.php';
 require 'thirdparty/PHPMailer/src/SMTP.php';
 
+require 'thirdparty/latte/src/latte.php';
+
 
 # classes
 require "user.php";

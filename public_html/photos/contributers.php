@@ -1,16 +1,18 @@
 <?php
 
-require_once "site.inc";
+require "site.inc";
 
 $title = "NSW Railway Photo Contributors";
 
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("contributers.tpl");
+$tp = [
+    'title' => $title,
+    'people' => [],
+];
 
 $stmt = $db->stmt_init();
-$stmt->prepare("
+if (!$stmt->prepare("
     select
-        IF(U.fullname is not null,U.fullname,IFNULL(RP.legacy_owner, 'Rolfe Bozier')) owner,
+        IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) owner,
         count(*)
     from
         r_location_photo RP left join r_user U on RP.owner_uid = U.uid
@@ -20,64 +22,22 @@ $stmt->prepare("
         owner
     order by
         owner
-")
-    or dbi_error_trace("prepare failed");
-
+")) {
+    throw new InternalError('prepare failed: ' . $stmt->error);
+}
 $stmt->bind_result($owner, $count);
 $stmt->execute();
 
-$n = 0;
-$rows = array();
-while ($stmt->fetch())
-    $rows[$n++] = array($owner, $count);
-
+while ($stmt->fetch()) {
+    $tp['people'][] = [
+        'name' => $owner,
+        'count' => $count,
+        'photos-url' => urlenc("/photos/owner.php?owner=" . $owner),
+    ];
+}
 $stmt->close();
 
-$nrows = floor(($n + 2) / 3);
-
-for ($i = 0; $i < sizeof($rows); $i++) {
-    $t->setCurrentBlock("COL");
-    $t->setVariable("NAME", $rows[$i][0]);
-    $t->setVariable("COUNT", $rows[$i][1]);
-    $t->setVariable("PHOTOS-URL",
-        urlenc("/photos/owner.php?owner=" . $rows[$i][0]));
-    $t->parseCurrentBlock();
-}
-
-for ($i = 0; $i < $nrows; $i++)
-{
-    $t->setCurrentBlock("COL1");
-    $t->setVariable("NAME1", $rows[$i][0]);
-    $t->setVariable("COUNT1", $rows[$i][1]);
-    $t->setVariable("PHOTOS-URL1",
-        urlenc("/photos/owner.php?owner=" . $rows[$i][0]));
-    $t->parseCurrentBlock();
-
-    if ($i + $nrows < $n)
-    {
-        $t->setCurrentBlock("COL2");
-        $t->setVariable("NAME2", $rows[$i + $nrows][0]);
-        $t->setVariable("COUNT2", $rows[$i + $nrows][1]);
-        $t->setVariable("PHOTOS-URL2",
-            urlenc("/photos/owner.php?owner=" . $rows[$i + $nrows][0]));
-        $t->parseCurrentBlock();
-    }
-
-    if ($i + $nrows*2 < $n)
-    {
-        $t->setCurrentBlock("COL3");
-        $t->setVariable("NAME3", $rows[$i + $nrows*2][0]);
-        $t->setVariable("COUNT3", $rows[$i + $nrows*2][1]);
-        $t->setVariable("PHOTOS-URL3",
-            urlenc("/photos/owner.php?owner=" . $rows[$i + $nrows*2][0]));
-        $t->parseCurrentBlock();
-    }
-}
-
-$t->setCurrentBlock("CONTENT");
-$t->setVariable("TITLE", $title);
-$t->parseCurrentBlock();
-
-display_page($title, $t->get("CONTENT"));
+$latte = new Latte\Engine;
+display_page($title, $latte->renderToString('contributers.latte', $tp));
 
 ?>

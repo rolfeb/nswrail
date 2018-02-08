@@ -1,7 +1,7 @@
 <?php
 
-require_once "site.inc";
-require_once "gallery.inc";
+require "site.inc";
+require "gallery.inc";
 
 $age = get_setting('HISTORIC_PHOTO_YEARS');
 

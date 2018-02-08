@@ -1,26 +1,25 @@
 <?php
 
-require_once "site.inc";
+require "site.inc";
 
 abstract class PhotoThemes
 {
-    const Diagram       = 0;
-    const Historic      = 1;
-    const Night         = 2;
-    const Owner         = 3;
-    const Recent        = 4;
-    const Safeworking   = 5;
-    const Signalbox     = 6;
-    const Tunnel        = 7;
-    const Turntable     = 8;
+    # the following must match values in r_location_photo.tags:
+    const Diagram       = 'diagram';
+    const Night         = 'night';
+    const Safeworking   = 'safeworking';
+    const Signalbox     = 'box';
+    const Turntable     = 'turntable';
+    # other themes:
+    const Historic      = 'historic';
+    const Owner         = 'owner';
+    const Recent        = 'recent';
+    const Tunnel        = 'tunnel';
 }
 
 function theme_gallery($theme, $themeextra, $title, $intro)
 {
     global $db;
-
-    $t = new HTML_Template_ITX(".");
-    $t->loadTemplateFile("gallery.tpl");
 
     #
     # Get current display state
@@ -40,7 +39,7 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     }
 
     #
-    # XXX: If we are running in thumbnail mode, manage the paging of results
+    # If we are running in thumbnail mode, manage the paging of results
     #
     $THUMBNAIL_COLUMNS = 4;
     $THUMBNAIL_PAGEROWS = 4;
@@ -55,6 +54,15 @@ function theme_gallery($theme, $themeextra, $title, $intro)
         $count = $THUMBNAIL_COLUMNS * $THUMBNAIL_PAGEROWS;
         $select_limits = "$first,$count";
     }
+
+    $tp = [
+        'title' => $title,
+        'introduction' => $intro,
+
+        'is_listing' => ($mode == "listing" ? 1 : 0),
+
+        'photos' => [],
+    ];
 
     switch ($theme)
     {
@@ -100,90 +108,45 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     $stmt->bind_result($state, $line, $location_state, $location, $file,
         $seqno, $year, $owner_fullname, $owner_uid, $caption);
 
-    $npages = 1;
     if ($mode == "thumbnail") {
         $npages = ceil($nrows / ($THUMBNAIL_COLUMNS * $THUMBNAIL_PAGEROWS));
-
-        if ($page > 1) {
-            $prev_page_link = $page - 1;
-        }
-        if ($page < $npages) {
-            $next_page_link = $page + 1;
-        }
 
         $first = ($page - 1) * $THUMBNAIL_COLUMNS * $THUMBNAIL_PAGEROWS;
         $last = $page * $THUMBNAIL_COLUMNS * $THUMBNAIL_PAGEROWS - 1;
         $select_limits = "$first,$last";
-    }
 
-    #
-    # Display the photos
-    #
-    $n = 0;
-    while ($stmt->fetch()) {
-        $photo = "/media/photos/$file";
-        $thumb = "/media/photos/thumbnails/$file";
-
-        if ($mode == "listing") {
-            #
-            # Listing mode
-            #
-            $t->setCurrentBlock("LISTING-ROW");
-            $t->setVariable("PHOTO-IMG", $photo);
-            $t->setVariable("LOCATION", $location);
-            $t->setVariable("DATE", $year == 0 ? 'unknown' : $year);
-            $t->setVariable("TEXT", htmlentities($caption));
-            $t->setVariable("UID", $owner_uid);
-            $t->setVariable("FULLNAME", htmlentities($owner_fullname));
-            $t->parseCurrentBlock();
-        } else {
-            #
-            # Thumbnail mode
-            #
-            $t->setCurrentBlock("CELL");
-            $t->setVariable("PHOTO-IMG", $photo);
-            $t->setVariable("THUMB-IMG", $thumb);
-            $t->setVariable("LOCATION", $location);
-            $t->setVariable("DATE", $year == 0 ? 'unknown' : $year);
-            $t->setVariable("TEXT", htmlentities($caption));
-            $t->setVariable("UID", $owner_uid);
-            $t->setVariable("FULLNAME", htmlentities($owner_fullname));
-            $t->parseCurrentBlock();
-
-            $col = $n % $THUMBNAIL_COLUMNS;
-            if ($col == $THUMBNAIL_COLUMNS - 1) {
-                $t->parse("ROW");
-            }
-        }
-
-        $n++;
-    }
-    if ($mode == "listing") {
-        $t->parse("LISTING");
+        $tp['page'] = $page;
+        $tp['npages'] = $npages;
+        $tp['num_columns'] = $THUMBNAIL_COLUMNS;
     } else {
-        $t->parse("GALLERY");
+        $npages = 1;
+    }
+
+    $tp = add_navigation($tp, $page, $npages, $order, $mode);
+
+    while ($stmt->fetch()) {
+        $tp['photos'][] = [
+            'photo_img' => "/media/photos/$file",
+            'thumb_img' => "/media/photos/thumbnails/$file",
+            'location' => $location,
+            'date' => $year == 0 ? 'unknown' : $year,
+            'text' => $caption,
+            'uid' => $owner_uid,
+            'fullname' => $owner_fullname,
+        ];
     }
     $stmt->close();
 
-    # display the navigation links
-    show_navigation($t, $page, $npages, $order, $mode);
+    # TODO: add dummy entries to pad out a full row if there is only a single partial row
 
-    $t->setCurrentBlock("CONTENT");
-    $t->setVariable("TITLE", $title);
-    $t->setVariable("INTRODUCTION", $intro);
-    $t->parseCurrentBlock();
-
-    display_page($title, $t->get("CONTENT"),
-        array(
-            'HEAD-EXTRA'    => implode(file('gallery.hdr'), ""),
-        )
-    );
+    $latte = new Latte\Engine;
+    display_page($title, $latte->renderToString('gallery.latte', $tp));
 }
 
 #
 # Display the results page selector
 #
-function show_navigation(&$t, $page, $npages, $order, $mode)
+function add_navigation($tp, $page, $npages, $order, $mode)
 {
     #
     # Convert the URL query parameters into an associative array
@@ -204,37 +167,34 @@ function show_navigation(&$t, $page, $npages, $order, $mode)
     #
     # Display navigation to change mode or ordering
     #
-    $t->setCurrentBlock("CONTENT");
     $m_argv = $argv;
 
     if ($mode == "thumbnail") {
         $m_argv["mode"] = "listing";
         unset($m_argv["order"]);
         unset($m_argv["page"]);
-        $t->setVariable("ALT-DISPLAY", "Listing");
-        $t->setVariable("ALT-DISPLAY-URL", encode_argv_url($m_argv));
+        $tp['alt_display_label'] = 'Listing';
     } else {
         unset($m_argv["mode"]);
         $m_argv["page"] = 1;
-        $t->setVariable("ALT-DISPLAY", "Thumbnails");
-        $t->setVariable("ALT-DISPLAY-URL", encode_argv_url($m_argv));
+        $tp['alt_display_label'] = 'Thumbnails';
     }
+    $tp['alt_display_url'] = encode_argv_url($m_argv);
 
     $m_argv = $argv;
     if ($order == "location") {
         $m_argv["order"] = "year";
         $m_argv["page"] = 1;
-        $t->setVariable("ALT-ORDER", "Year");
-        $t->setVariable("ALT-ORDER-URL", encode_argv_url($m_argv));
+        $tp['alt_order_label'] = 'Year';
     } else {
         unset($m_argv["order"]);
         $m_argv["page"] = 1;
-        $t->setVariable("ALT-ORDER", "Location");
-        $t->setVariable("ALT-ORDER-URL", encode_argv_url($m_argv));
+        $tp['alt_order_label'] = 'Location';
     }
+    $tp['alt_order_url'] = encode_argv_url($m_argv);
 
     if ($npages <= 1) {
-        return;
+        return $tp;
     }
 
     if ($mode == "thumbnail") {
@@ -242,33 +202,25 @@ function show_navigation(&$t, $page, $npages, $order, $mode)
         # Instantiate the page navigation templates for the top and bottom of
         # the page
         #
-        for ($x = 1; $x <= 2; $x++) {
-            if ($page > 1) {
-                $t->setCurrentBlock("PAGE-PREV-ACTIVE$x");
-                $t->setVariable("FIRST-URL$x",
-                    set_and_encode_argv_url($argv, "page", 1));
-                $t->setVariable("PREV-URL$x",
-                    set_and_encode_argv_url($argv, "page", $page - 1));
-            } else {
-                $t->touchBlock("PAGE-PREV-INACTIVE$x");
-            }
+        $tp['page'] = $page;
+        $tp['npages'] = $npages;
 
-            if ($page < $npages) {
-                $t->setCurrentBlock("PAGE-NEXT-ACTIVE$x");
-                $t->setVariable("LAST-URL$x",
-                    set_and_encode_argv_url($argv, "page", $npages));
-                $t->setVariable("NEXT-URL$x",
-                    set_and_encode_argv_url($argv, "page", $page + 1));
-            } else {
-                $t->touchBlock("PAGE-NEXT-INACTIVE$x");
-            }
+        if ($page > 1) {
+            $tp['nav_first_page_url'] =
+                set_and_encode_argv_url($argv, "page", 1);
+            $tp['nav_prev_page_url'] =
+                set_and_encode_argv_url($argv, "page", $page - 1);
+        }
 
-            $t->setCurrentBlock("PAGE-SELECT$x");
-            $t->setVariable("PAGE$x", $page);
-            $t->setVariable("NPAGES$x", $npages);
-            $t->parseCurrentBlock();
+        if ($page < $npages) {
+            $tp['nav_next_page_url'] = 
+                set_and_encode_argv_url($argv, "page", $page + 1);
+            $tp['nav_last_page_url'] = 
+                set_and_encode_argv_url($argv, "page", $npages);
         }
     }
+
+    return $tp;
 }
 
 #
@@ -458,15 +410,17 @@ function sql_tunnel($sorting)
 #
 function sql_owner($sorting, $owner)
 {
-    if ($sorting == "year")
-        $sort = "RP.year, RL.location_name, RP.seqno";
-    else
-        $sort = "RL.location_name, RP.seqno";
+    if ($sorting == 'year') {
+        $sort = 'RP.year, RL.location_name, RP.seqno';
+    } else {
+        $sort = 'RL.location_name, RP.seqno';
+    }
 
-    if ($owner == "Rolfe Bozier")
-        $extra = "or RP.owner is null";
-    else
-        $extra = "";
+    if ($owner == 'Rolfe Bozier') {
+        $extra = 'or RP.owner is null';
+    } else {
+        $extra = '';
+    }
 
     $sql = "
         select
@@ -497,7 +451,11 @@ function sql_owner($sorting, $owner)
             and
             RP.hold is null
             and
-            (owner = '$owner' $extra)
+            (
+                RP.legacy_owner = '$owner'
+                or
+                U.fullname = '$owner' $extra
+            )
         order by
             $sort
     ";
