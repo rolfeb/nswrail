@@ -56,6 +56,8 @@ function run_default_mode($line_state, $line)
     $stmt->bind_result($state, $location, $type, $status, $distance, $geo_x,
         $geo_y);
 
+    $stmt->store_result();
+
     while ($stmt->fetch())
     {
         if ($type == "")
@@ -193,7 +195,7 @@ function get_location_details($state, $location)
             and
             LP.location_name = ?
             and
-            LP.status != 'N'
+            LP.hold is NULL
     ")
         or dbi_error_trace("prepare failed");
 

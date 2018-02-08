@@ -4,17 +4,17 @@
 <table class="clean">
 <tr class="property" valign="bottom">
 <td>Name</td>
-<td align="center"><img src="images/vl_typeq.png" alt="Type?"/></td>
-<td align="center"><img src="images/vl_statusq.png" alt="Status?"/></td>
-<td align="center"><img src="images/vl_distanceq.png" alt="Distance?"/></td>
-<td align="center"><img src="images/vl_geoxyq.png" alt="GeoXY?"/></td>
-<td align="center"><img src="images/vl_descq.png" alt="Desc?"/></td>
-<td align="center"><img src="images/vl_currq.png" alt="Curr?"/></td>
-<td align="center"><img src="images/vl_openq.png" alt="Open?"/></td>
-<td align="center"><img src="images/vl_closeq.png" alt="Close?"/></td>
-<td align="center"><img src="images/vl_nphotos.png" alt="#Photos"/></td>
-<td align="center"><img src="images/vl_ndiagrams.png" alt="#Diagrams"/></td>
-<td align="center"><img src="images/vl_nurls.png" alt="#URLs"/></td>
+<td align="center"><img src="/c/images/vl_typeq.png" alt="Type?"/></td>
+<td align="center"><img src="/c/images/vl_statusq.png" alt="Status?"/></td>
+<td align="center"><img src="/c/images/vl_distanceq.png" alt="Distance?"/></td>
+<td align="center"><img src="/c/images/vl_geoxyq.png" alt="GeoXY?"/></td>
+<td align="center"><img src="/c/images/vl_descq.png" alt="Desc?"/></td>
+<td align="center"><img src="/c/images/vl_currq.png" alt="Curr?"/></td>
+<td align="center"><img src="/c/images/vl_openq.png" alt="Open?"/></td>
+<td align="center"><img src="/c/images/vl_closeq.png" alt="Close?"/></td>
+<td align="center"><img src="/c/images/vl_nphotos.png" alt="#Photos"/></td>
+<td align="center"><img src="/c/images/vl_ndiagrams.png" alt="#Diagrams"/></td>
+<td align="center"><img src="/c/images/vl_nurls.png" alt="#URLs"/></td>
 </tr>
 <!-- BEGIN LOCATION -->
 <tr class="value">

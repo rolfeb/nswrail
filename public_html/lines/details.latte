@@ -1,0 +1,149 @@
+{*
+    Parameters:
+        title
+        ovmap_url
+        length
+        nstations_open
+        nstations_total
+
+        ne_description
+        links[]
+            text
+            url
+
+        max_icons
+        locations[]
+            icons[]
+            url
+            name
+            facility
+            status
+            ne_opened
+            ne_closed
+            distance
+            nphotos
+
+        hist_rows[]
+            u_section
+                name
+                ne_opened
+                opened_fn_ids
+                ne_closed
+                closed_fn_ids
+                usage
+            u_segment
+                text
+
+        hist_footnotes[]
+            id
+            ne_text
+*}
+<h1>{$title}</h1>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#tab-desc">Description</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#tab-hist">History</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+<div class="tab-pane active container" id="tab-desc">
+  <div class="float-right d-none d-lg-block my-1">
+    <div class="card" style="width: 15rem">
+      <img class="card-img-top" src="{$ovmap_url}">
+      <div class="card-body">
+        <h3>Summary</h3>
+        <table class="simple">
+        <tr> <th>Track:</th> <td>{$length}</td> </tr>
+        <tr> <th>Stations:</th> <td><i>{$nstations_open} / {$nstations_total} in use</i></td> </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="text">
+    {$ne_description|noescape}
+  
+    {foreach $links as $link}
+      {if $iterator->first}<h2>Links</h2><ul>{/if}
+
+      <li><a class="offhost" href="{$link['url']}">{$link['text']}</a></li>
+
+      {if $iterator->last}</ul>{/if}
+    {/foreach}
+  </div>
+
+  <table class="table table-sm table-hover" id="locations">
+  <thead class="thead-dark">
+  <tr>
+    {for $i = 0; $i < $max_icons; $i++}
+      <th class="icon" style="width: 22px"></td>
+    {/for}
+    <th class="name">Name</th>
+    <th class="facility">Facility</th>
+    <th class="status">Status</th>
+    <th style="text-align: right">Opened</th>
+    <th style="text-align: right">Closed</th>
+    <th style="text-align: right">km</th>
+    <th style="text-align: right;">
+      <span class="material-icons" style="vertical-align: bottom;">photo_camera</span>
+    </th>
+  </tr>
+  </thead>
+  {foreach $locations as $loc}
+    <tr style="margin:0; line-height: 1.4;">
+      {foreach $loc['icons'] as $icon}
+        <td style="background-image: url({$icon}); background-position: center center; background-repeat: no-repeat; min-width: 22px;"></td>
+      {/foreach}
+
+      <td class="name"><span><a href="{$loc['url']}">{$loc['name']}</a></span></td>
+      <td class="facility"><span>{$loc['facility']}</span></td>
+      <td class="status"><span>{$loc['status']}</span></td>
+      <td class="text-right"><span>{$loc['ne_opened']|noescape}</span></td>
+      <td class="text-right"><span>{$loc['ne_closed']|noescape}</span></td>
+      <td class="text-right"><span>{$loc['distance']}</span></td>
+      <td class="text-right"><span>{$loc['nphotos']}</span></td>
+    </tr>
+  {/foreach}
+  </table>
+</div>
+
+<div class="tab-pane container" id="tab-hist">
+  <!-- BEGIN HISTORY-MODE -->
+  <table class="table table-sm table-hover">
+  <thead class="thead-dark">
+  <tr>
+    <th colspan="2">Section</th>
+    <th style="text-align: right">Opened</th>
+    <th style="text-align: right">Closed</th>
+    <th>Usage</th>
+  </tr>
+  {foreach $hist_rows as $row}
+    {ifset $row['u_section']}
+      {var $sec = $row['u_section']}
+
+      <tr>
+        <td>&nbsp;</td>
+        <td>{$sec['name']}</td>
+        <td class="text-right">{$sec['ne_opened']|noescape}<sup>{$sec['opened_fn_ids']}</sup></td>
+        <td class="text-right">{$sec['ne_closed']|noescape}<sup>{$sec['closed_fn_ids']}</sup></td>
+        <td>{$sec['usage']}</td>
+      </tr>
+    {else} {* must be a segment *}
+      {var $seg = $row['u_segment']}
+
+      <tr class="table-info">
+        <td colspan="5">{$seg['text']}</td>
+      </tr>
+    {/ifset}
+  {/foreach}
+  </table>
+
+  {foreach $hist_footnotes as $fn}
+    {if $iterator->first}<hr/>{/if}
+    <sup>{$fn['id']}</sup> {$fn['ne_text']|noescape}<br />
+  {/foreach}
+</div>
+</div>
