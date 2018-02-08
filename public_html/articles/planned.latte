@@ -1,0 +1,39 @@
+{*
+    Parameters:
+        $title
+
+        $lines[]:
+            $line
+            $act
+            $text
+            $opt_cost
+            $opt_footnote
+ *}
+<h1>{$title}</h1>
+
+<div class="text">
+<p>There were a large number of lines which were planned for NSW, but never
+built.  Some never made it past the survey stage, some were authorised
+for construction but never built, and some were abandoned during
+construction.</p>
+
+<p>The following lines were authorised by an Act of Legislation, but never
+completed.</p>
+
+{foreach $lines as $line}
+  <h2>{$line['act']}:</h2>
+
+  <div class="blockquote">
+  {$line['text']}
+  </div>
+
+  {ifset $line['opt_cost']}
+    <p>Estimated cost: {$line['opt_cost']|noescape}</p>
+  {/ifset}
+  
+  <!-- BEGIN NOTE-SECTION -->
+  {ifset $line['opt_footnote']}
+    <p><b>Note:</b> {$line['opt_footnote']}</p>
+  {/ifset}
+{/foreach}
+</div>

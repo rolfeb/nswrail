@@ -63,46 +63,6 @@ $auth_cards = [
     ],
 ];
 
-function add_cards($tp, $cards, $restricted_cards)
-{
-    for ($i = 0; $i < sizeof($cards); $i++) {
-        if ($restricted_cards) {
-            list($url, $auth, $title, $text, $thumbnail) = $cards[$i];
-        } else {
-            list($url, $title, $text, $thumbnail) = $cards[$i];
-            $auth = true;
-        }
-
-        if ($auth) {
-            $card = [
-                'url' => $url,
-                'title' => $title,
-                'text' => $text,
-            ];
-            if ($thumbnail) {
-                $card['opt_thumbnail_url'] = $thumbnail;
-            }
-            if ($restricted_cards) {
-                $card['opt_style'] = 'auth-card';
-            }
-
-            $tp['cards'][] = $card;
-        }
-    }
-
-    return $tp;
-}
-
-$title = "Photographs";
-
-$tp = [
-    'title' => $title,
-];
-
-$tp = add_cards($tp, $cards, false);
-$tp = add_cards($tp, $auth_cards, true);
-
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('index.latte', $tp));
+display_card_page("Photographs", "", $cards, []);
 
 ?>

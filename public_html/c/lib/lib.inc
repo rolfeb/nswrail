@@ -30,5 +30,6 @@ require "page_utils.inc";
 require "page_utils_main.inc";
 require "util.inc";
 require "r_location.php";
+require "card_page.inc";
 
 ?>
