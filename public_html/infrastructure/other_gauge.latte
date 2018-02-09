@@ -1,0 +1,36 @@
+{*
+    Parameters:
+        title
+        lines[]
+            nc_url
+            text
+            gauge
+            notes
+*}
+<h1>{$title}</h1>
+
+<p class="text">The following are railway lines with NSW which are other than
+standard gauge (1435mm or 4ft 8&frac12;in).</p>
+
+<table class="table table-sm table-responsive-md">
+<thead class="thead-dark">
+<tr>
+  <th>Line</th>
+  <th>Gauge</th>
+  <th>Notes</th>
+</tr>
+</thead>
+{foreach $lines as $line}
+  <tr>
+    <td>
+      {if $line['nc_url']}
+        <a href="{$line['nc_url']|nocheck}">{$line['text']}</a>
+      {else}
+        {$line['text']}
+      {/if}
+    </td>
+    <td>{$line['gauge']}</td>
+    <td>{$line['notes']}</td>
+  </tr>
+{/foreach}
+</table>

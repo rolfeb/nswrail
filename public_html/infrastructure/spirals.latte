@@ -1,0 +1,34 @@
+{*
+    Parameters:
+        title
+        spirals[]
+            nc_url
+            text
+            location1
+            location2
+*}
+<h1>{$title}</h1>
+
+<div class="text">
+<p>The following table lists railway spirals in NSW.  These are places where a
+line loops around and crosses over itself.  They are normally used to
+ease the grade where topography requires a line to be too steep.</p>
+
+<p>The normal solution is to take a more indirect route, but in two locations
+a spiral was laid.</p>
+</div>
+
+<table class="table table-sm table-responsive-md" style="width: auto !important">
+<thead class="thead-dark">
+<tr>
+  <th>Line</th>
+  <th>Between</th>
+</tr>
+</thead>
+{foreach $spirals as $spiral}
+  <tr>
+    <td><a href="{$spiral['nc_url']|nocheck}">{$spiral['text']}</a></td>
+    <td>{$spiral['location1']} and {$spiral['location2']}</td>
+  </tr>
+{/foreach}
+</table>

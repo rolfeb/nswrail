@@ -1,0 +1,35 @@
+{*
+    Parameters:
+        title
+        lines[]
+            nc_url
+            text
+            closed
+            no_act_url
+            act
+*}
+<h1>{$title}</h1>
+
+<div class="text">
+<p>In NSW, closing a line requires an Act of Parliament, hence most lines which
+see no traffic are technically "out of use" (even the lifted ones).</p>
+
+<p>The following lines are the only ones which have been formally closed.</p>
+</div>
+
+<table class="table table-sm">
+<thead class="thead-dark">
+<tr>
+  <th>Line</th>
+  <th>Date Closed</th>
+  <th>Act</th>
+</tr>
+</thead>
+{foreach $lines as $line}
+  <tr>
+    <td><a href="{$line['nc_url']|nocheck}">{$line['text']}</a></td>
+    <td align="right">{$line['closed']}</td>
+    <td><a href="{$line['no_act_url']|nocheck}">{$line['act']}</a></td>
+  </tr>
+{/foreach}
+</table>

@@ -108,7 +108,7 @@ function add_locations($tp, $state, $line, $maxsegment)
         $stmt->store_result();
 
         if ($stmt->fetch()) {
-            $url = "/locations/show.php?"
+            $url = "/locations/details.php?"
                 . urlenc("name=$location_state:$location&line=$state:$line:$main_segment");
 
             if ($distance == NULL) {
@@ -158,7 +158,7 @@ function add_locations($tp, $state, $line, $maxsegment)
 
             $tp['locations'][] = [
                 'icons' => $icon_urls,
-                'url' => $url,
+                'nc_url' => $url,
                 'name' => $location,
                 'facility' => locn_type2text($type),
                 'status' => locn_status2text($status),

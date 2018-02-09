@@ -3,11 +3,12 @@
 require "site.inc";
 
 $MAX = 30;
-
 $title = "NSW Railway $MAX Shortest Lived Sections";
 
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("short_lived_sections.tpl");
+$tp = [
+    'title' => $title,
+    'sections' => [],
+];
 
 $STATE = "NSW";
 
@@ -93,34 +94,31 @@ $stmt->bind_result($line_desc, $line, $start_state, $start_name, $end_state,
     $end_name, $ts1, $day1, $month1, $year1, $year_error1, $ts2, $day2,
     $month2, $year2, $year_error2, $tdiff, $length);
 
-while ($stmt->fetch())
-{
+while ($stmt->fetch()) {
     $opened = date_cpts2text($day1, $month1, $year1, $year_error1);
     $closed = date_cpts2text($day2, $month2, $year2, $year_error2);
 
-    if ($length)
+    if ($length) {
         $length = sprintf("%.1f", $length);
-    else
+    } else {
         $length = "?";
+    }
 
-    $t->setCurrentBlock("SECTION");
-    $t->setVariable("URL", "/lines/show.php?"
-        . urlenc("name=$STATE:$line"));
-    $t->setVariable("TEXT", $line_desc);
-    $t->setVariable("START", $start_name);
-    $t->setVariable("END", $end_name);
-    $t->setVariable("OPENED", $opened);
-    $t->setVariable("CLOSED", $closed);
-    $t->setVariable("YEARS", floor($tdiff / 12));
-    $t->setVariable("MONTHS", $tdiff % 12);
-    $t->setVariable("LENGTH", $length);
-    $t->parseCurrentBlock();
+    $tp['sections'][] = [
+        'nc_url' => '/lines/details.php?' . urlenc("name=$STATE:$line"),
+        'text' => $line_desc,
+        'start' => $start_name,
+        'end' => $end_name,
+        'ne_opened' => $opened,
+        'ne_closed' => $closed,
+        'years' => floor($tdiff / 12),
+        'months' => $tdiff % 12,
+        'length' => $length
+    ];
 }
 $stmt->close();
 
-$t->setCurrentBlock("CONTENT");
-$t->setVariable("TITLE", $title);
-$t->parseCurrentBlock();
-display_page($title, $t->get("CONTENT"));
+$latte = new Latte\Engine;
+display_page($title, $latte->renderToString('short_lived_sections.latte', $tp));
 
 ?>

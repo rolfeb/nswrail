@@ -1,0 +1,43 @@
+{*
+    Parameters:
+        title
+        sections[]
+            nc_url
+            text
+            start
+            end
+            ne_opened
+            ne_closed
+            years
+            months
+            length
+*}
+<h1>{$title}</h1>
+
+<div class="text">
+<p>The following table lists the shortest-lived sections of line in
+NSW. Note that it doesn't include some major deviations.</p>
+</div>
+
+<table class="table table-sm">
+<thead class="thead-dark">
+<tr>
+  <th>Line</th>
+  <th>Section</th>
+  <th>Opened</th>
+  <th>Closed</th>
+  <th style="text-align: right">Lifetime</th>
+  <th style="text-align: right">length</th>
+</tr>
+</thead>
+{foreach $sections as $s}
+  <tr>
+    <td><a href="{$s['nc_url']|nocheck}">{$s['text']}</a></td>
+    <td>{$s['start']} to {$s['end']}</td>
+    <td align="right">{$s['ne_opened']|noescape}</td>
+    <td align="right">{$s['ne_closed']|noescape}</td>
+    <td align="right">{$s['years']}y&nbsp;{$s['months']}m</td>
+    <td align="right">{$s['length']}&nbsp;km</td>
+  </tr>
+{/foreach}
+</table>

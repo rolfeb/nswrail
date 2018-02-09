@@ -1,0 +1,297 @@
+{*
+    Parameters:
+        title
+
+        ne_line_prev_url
+        line_prev_name
+        prev_next_icon
+        ne_line_next_url
+        line_next_name
+
+        map_message1
+        map_message2
+        map_message3
+
+        location
+        facility
+        status
+        lines[]
+            nc_url
+            text
+        ne_latlong
+        posaccuracy
+        distance
+        origin
+        opt_alt_distance
+        opt_alt_origin
+        opt_alt_via
+
+        history[]
+            ne_date
+            event
+
+        station_details
+        goods_details
+        other_details
+        opt_photo_years
+        desc_text
+        curr_text
+        links[]
+            nc_url
+            text
+
+        decades[]
+            decade
+            photos[]
+                photo_img
+                date
+                text
+                uid
+                fullname
+                thumb_img
+
+        diagrams[]
+            year
+            img
+
+        google_map_apikey
+        map_geox
+        map_geoy
+        map_scale
+*}
+<h1>{$title}</h1>
+
+<div class="d-flex justify-content-center">
+  <div style="flex: 9; display: flex; justify-content: center;">
+    {ifset $ne_line_prev_url}
+      <span style="margin-left: auto;"><a href="{$ne_line_prev_url|noescape}">{$line_prev_name}</a></span>
+    {/ifset}
+  </div>
+  <div style="flex: 1; display: flex; justify-content: center;">
+    <span><img src="{$prev_next_icon}" alt=""></span>
+  </div>
+  <div style="flex: 9; display: flex; justify-content: center;">
+    {ifset $ne_line_next_url}
+      <span style="margin-right: auto;"><a href="{$ne_line_next_url|noescape}">{$line_next_name}</a></span>
+    {/ifset}
+  </div>
+</div>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a data-toggle="tab" class="nav-link active" href="#tab-desc">Description</a>
+  </li>
+  {if sizeof($decades) > 0}
+    <li class="nav-item">
+      <a data-toggle="tab" class="nav-link" href="#tab-photo">Photographs</a>
+    </li>
+  {/if}
+  {if sizeof($diagrams) > 0}
+    <li class="nav-item">
+      <a data-toggle="tab" class="nav-link" href="#tab-diag">Diagrams</a>
+    </li>
+  {/if}
+</ul>
+
+
+<div class="tab-content">
+{* Description tab *}
+<div class="tab-pane active container" id="tab-desc">
+
+  <span id="message1">{$map_message1}</span>
+  <div class="location-map float-lg-right" style="border: 1px solid black;">
+    {ifset $map_geox}
+      <div id="googleMap" style="width: 400px; height: 400px;"></div>
+    {else}
+      <div class="text-center mt-5" id="message2" style="width: 400px; height: 400px;">
+        <h3 class="text-muted">{$map_message2}</h3>
+      </div>
+    {/ifset}
+  </div>
+  <span id="message3">{$map_message3}</span>
+  
+  <table class="table table-sm table-nonfluid mt-3">
+  <thead class="thead-light">
+  <tr>
+      <th>Main&nbsp;facility:</th>
+      <td>
+          <span id="v-facility-type">{$facility}</span> (<span id="v-facility-status">{$status}</span>)
+      </td>
+  </tr>
+  <tr>
+      <th>Lines:</th>
+      <td>
+          {foreach $lines as $line}
+            <a href="{$line['nc_url']|nocheck}">{$line['text']}</a><br/>
+          {/foreach}
+      </td>
+  </tr>
+  <tr>
+      <th>Location:</th>
+      <td>
+          <span id="v-location-xy">{$ne_latlong|noescape}</span> [<span id="v-location-exact">{$posaccuracy}</span>] GDA94
+      </td>
+  </tr>
+  <tr>
+      <th>Distance:</th>
+      <td>
+          <span id="v-distance">{$distance}</span> km from {$origin}
+          {ifset $opt_alt_distance}
+            <br/>{$opt_alt_distance} km from {$opt_alt_origin} (via {$opt_alt_via})
+          {/ifset}
+      </td>
+  </tr>
+  <tr>
+    <th>History:</th>
+    <td>
+      <table class="table-clean">
+        {foreach $history as $h}
+          <tr><td align="right">{$h['ne_date']|noescape}</td> <td>{$h['event']}</td></tr>
+        {/foreach}
+      </table>
+    </td>
+  </tr>
+  
+  {ifset $station_details}
+    <tr>
+      <th>Station:</th>
+      <td>{$station_details}</td>
+    </tr>
+  {/ifset}
+  {ifset $goods_details}
+    <tr>
+      <th>Freight&nbsp;facilities:</th>
+      <td>{$goods_details}</td>
+    </tr>
+  {/ifset}
+  {ifset $other_details}
+    <tr>
+      <th>Other&nbsp;facilities:</th>
+      <td>{$other_details}</td>
+    </tr>
+  {/ifset}
+  {ifset $opt_photo_years}
+  <tr>
+      <th>Photos:</th>
+      <td>{$opt_photo_years}</td>
+  </tr>
+  {/ifset}
+  <tr>
+    <th>Description:</th>
+    <td>
+      <i><span id="v-desc">{$desc_text}</span></i>
+    </td>
+  </tr>
+  <tr>
+      <th>Current&nbsp;status:</th>
+      <td>
+          <i><span id="v-curr">{$curr_text}</span></i>
+      </td>
+  </tr>
+  {if sizeof($links) > 0}
+    <tr>
+      <th>Links:</th>
+      <td>
+        {foreach $links as $link}
+          <a href="{$link['nc_url']|nocheck}">{$link['text']}</a><br/>
+        {/foreach}
+      </td>
+    </tr>
+  {/if}
+  </table>
+</div>
+
+{if sizeof($decades) > 0}
+{* Photographs tab *}
+<div class="tab-pane container" id="tab-photo">
+  {foreach $decades as $dec}
+    <h3>{$dec['decade']}</h3>
+    {foreach $dec{'photos'} as $p}
+      <a data-toggle="modal" data-target="#imageDisplay" data-photo="{$p['photo_img']}" data-location="{$location} ({$p['date']})" data-text="{$p['text']}" data-id="{$p['uid']}" data-fullname="{$p['fullname']}" href="#"><img class="img-thumbnail" src="{$p['thumb_img']}"></a>
+      &nbsp;
+    {/foreach}
+  {/foreach}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="imageDisplay" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-location"></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow: auto">
+          <img id="modal-photo" style="display: block; margin: 0 auto;">
+      </div>
+      <div class="modal-footer justify-content-start">
+        <div>
+        <p class="text" id="modal-text"></p>
+        Copyright: <span id="modal-owner"></span>
+        <a id="modal-contact" data-toggle="tooltip" title="Please contact if you wish to use this photograph" href="/c/lib/mailer.php?uid=tbd"><span class="material-icons" style="vertical-align: bottom;">email</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$('#imageDisplay').on('show.bs.modal', function(e) {
+  var m_photo = e.relatedTarget.dataset.photo;
+  var m_location = e.relatedTarget.dataset.location;
+  var m_text = e.relatedTarget.dataset.text;
+  var m_uid = e.relatedTarget.dataset.uid;
+  var m_fullname = e.relatedTarget.dataset.fullname;
+  document.getElementById('modal-location').innerHTML = m_location;
+  document.getElementById('modal-photo').src = m_photo;
+  document.getElementById('modal-text').innerHTML = m_text;
+  document.getElementById('modal-owner').innerHTML = m_fullname;
+  document.getElementById('modal-contact').href = '/c/lib/mailer.php?uid=' + m_uid;
+});
+</script>
+{/if}
+
+{if sizeof($diagrams) > 0}
+{* Diagrams tab *}
+<div class="tab-pane container" id="tab-photo">
+  {foreach $diagrams as $d}
+    <div>
+      {$d['year']}:<br/>
+      <img src="{$d['img']}" border="1" alt="location diagram"></img>
+      &nbsp;
+    </div>
+  {/foreach}
+</div>
+{/if}
+
+{ifset $map_geox}
+  <script>
+  var map;
+  function initMapCB() {
+    var latlong = new google.maps.LatLng({$map_geoy}, {$map_geox});
+  
+    // instantiate the map
+    map = new google.maps.Map(document.getElementById('googleMap'), {
+      center: latlong,
+      zoom: {$map_scale}
+    });
+  
+    // custom icon for the location
+    var icon = new google.maps.MarkerImage(
+      'images/crosshair.png',
+      new google.maps.Size(63, 63),   // size
+      new google.maps.Point(0, 0),    // origin
+      new google.maps.Point(32, 32)   // anchor
+    );
+  
+    // add marker for this location
+    var marker = new google.maps.Marker({
+      map: map,
+      position: latlong,
+      icon: icon,
+    });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key={$google_map_apikey}&callback=initMapCB" async defer></script>
+{/ifset}

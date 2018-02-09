@@ -2,6 +2,7 @@
 
 require "site.inc";
 
+/*
 $current_year = date("Y");
 
 $log = changelog("changes.dat");
@@ -9,10 +10,8 @@ $last = count($log) - 1;
 
 $date = $log[$last]['date'];
 $text = $log[$last]['text'];
+*/
 
-
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("index.tpl");
 
 /*
 foreach (db_random_pics(3) as $i => $row)
@@ -49,20 +48,16 @@ if ($count > 0)
 
 $t->setVariable("COUNT-VISITORS", count_visitors());
 */
-$t->setCurrentBlock("CONTENT");
-$t->touchBlock("CONTENT");
 /*
 $t->setVariable("COPYRIGHT-YEAR", $current_year);
 $t->setVariable("LAST-CHANGE_DATE", $date);
 $t->setVariable("LAST-CHANGE-LOG", $text);
 */
-$t->parseCurrentBlock();
 
+$title = "NSWrail.net";
+$tp = [];
 
-display_page("NSWrail.net", $t->get("CONTENT"),
-    array(
-        'HEAD-EXTRA'    => '<link rel="stylesheet" type="text/css" href="/c/css/main.css" />',
-    )
-);
+$latte = new Latte\Engine;
+display_page($title, $latte->renderToString('index.latte', $tp));
 
 ?>

@@ -4,12 +4,11 @@ require_once "site.inc";
 
 $title = "Sydney Network Map - 1974";
 
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("sydney-1974.tpl", true, true);
-$t->setCurrentBlock("CONTENT");
-$t->setVariable("TITLE", $title);
-$t->parseCurrentBlock();
+$tp = [
+    'title' => $title,
+];
 
-display_page($title, $t->get("CONTENT"));
+$latte = new Latte\Engine;
+display_page($title, $latte->renderToString('sydney-1974.latte', $tp));
 
 ?>

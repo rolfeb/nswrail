@@ -14,7 +14,7 @@
         max_icons
         locations[]
             icons[]
-            url
+            nc_url
             name
             facility
             status
@@ -98,7 +98,7 @@
         <td style="background-image: url({$icon}); background-position: center center; background-repeat: no-repeat; min-width: 22px;"></td>
       {/foreach}
 
-      <td class="name"><span><a href="{$loc['url']}">{$loc['name']}</a></span></td>
+      <td class="name"><span><a href="{$loc['nc_url']|noescape}">{$loc['name']}</a></span></td>
       <td class="facility"><span>{$loc['facility']}</span></td>
       <td class="status"><span>{$loc['status']}</span></td>
       <td class="text-right"><span>{$loc['ne_opened']|noescape}</span></td>

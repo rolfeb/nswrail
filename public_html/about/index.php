@@ -18,13 +18,13 @@ $cards = [
     [
         '/photos/contributers.php',
         'Photo contributers',
-        'TBD.',
+        'Here are all the people who contributed photos.',
         ''
     ],
     [
         '/about/credits.php',
-        'Credits',
-        'TBD.',
+        'Thanks',
+        'A large number of people have contributed to getting the site to where it is now.',
         ''
     ],
 ];

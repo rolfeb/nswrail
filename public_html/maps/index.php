@@ -22,6 +22,13 @@ $cards = [
         '/media/maps/thumbnails/newcastle-indexmap.png'
     ],
     [
+        '/maps/turning-facilities.php',
+        'Turning facilities map',
+        'A map showing places where locomotives could be turned around (triangles, turntables).',
+        '',
+    ],
+    /*
+    [
         '/maps/google.php',
         'Google Maps',
         'TBD',
@@ -45,6 +52,7 @@ $cards = [
         'TBD',
         ''
     ],
+    */
     [
         '/maps/nsw-1933.php',
         'NSW in 1933',
@@ -64,35 +72,14 @@ $cards = [
         '/media/maps/thumbnails/sydney-network-1974.png',
     ],
     [
-        '/maps/images/newcastle-network1950.png',
+        '/media/maps/newcastle-network-1950.png',
         'Newcastle in 1950',
         'A detailed map of the Newcastle network in 1950, including the Smouth Maitland and Richmond Vale Railways.',
         '/media/maps/thumbnails/newcastle-network-1950.png'
     ],
+
 ];
 
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("index.tpl");
-
-for ($i = 0; $i < sizeof($cards); $i++) {
-    list($url, $title, $text, $thumbnail) = $cards[$i];
-    if ($thumbnail) {
-        $t->setCurrentBlock("THUMBNAIL");
-        $t->setVariable("THUMBNAIL-URL", $thumbnail);
-        $t->parseCurrentBlock();
-    }
-    $t->setCurrentBlock("CARD");
-    $t->setVariable("URL", $url);
-    $t->setVariable("TITLE", $title);
-    $t->setVariable("TEXT", $text);
-    $t->parseCurrentBlock();
-}
-
-$title = "Maps";
-$t->setCurrentBlock("CONTENT");
-$t->setVariable("TITLE", $title);
-$t->parseCurrentBlock();
-
-display_page($title, $t->get("CONTENT"));
+display_card_page("Maps", "", $cards, []);
 
 ?>

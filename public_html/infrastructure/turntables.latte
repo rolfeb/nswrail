@@ -1,0 +1,111 @@
+{*
+    Parameters:
+        title
+
+        regions[]
+            text
+            rows[]
+                u_line
+                    text
+                u_turntable
+                    nc_url
+                    text
+                    size_type
+                    status
+                    notes
+                    nphotos
+*}
+<h1>{$title}</h1>
+
+<div class="text">
+<p>This page lists the turntables which have been used in NSW.  With the demise
+of steam locomotives turntables have little use, and hence most of the
+following have been removed or are no longer functional.</p>
+
+<p>The "status" values listed have the following meanings:</p>
+</div>
+
+<table class="table table-sm table-responsive-md table-bordered" style="width: auto !important">
+<tr>
+  <td>In use</td>
+  <td>Sees occasional use, for example when turning heritage steam
+      locos.</td>
+</tr>
+<tr>
+  <td>Out of use</td>
+  <td>Currently booked out of use.</td>
+</tr>
+<tr>
+  <td>Closed</td>
+  <td>No longer used, but still in a reasonably good condition.</td>
+</tr>
+<tr>
+  <td>Derelict</td>
+  <td>No longer capable of being used, with some damage or no longer
+      connected to the main line.</td>
+</tr>
+<tr>
+  <td>Ruins</td>
+  <td>Only the pit or foundations remain.</td>
+</tr>
+<tr>
+  <td>No trace</td>
+  <td>It is no longer possible to see where the turntable once resided.</td>
+</tr>
+</table>
+
+<div class="row">
+  <div class="col-6">
+    <p class="text">The "type" values have the following meanings:</p>
+    <ul>
+    <li>M = Turntable is/was manually operated</li>
+    <li>E = Turntable is/was electrically-driven</li>
+    </ul>
+  </div>
+  <div class="col-6">
+    <p class="text">For the metrically minded, equivalent sizes are:</p>
+    <ul>
+    <li> 50' = 15 metres</li>
+    <li> 60' = 18 metres</li>
+    <li> 75' = 23 metres</li>
+    <li> 90' = 27 metres</li>
+    <li> 105' = 32 metres</li>
+    </ul>
+  </div>
+</div>
+
+{foreach $regions as $region}
+  <h2>{$region['text']}</h2>
+
+  <table class="table table-sm table-responsive-md">
+  <thead class="thead-dark">
+    <tr>
+      <th colspan="2">Location</th>
+      <th style="text-align: right;">Type</th>
+      <th>Status</th>
+      <th>Notes</th>
+      <th style="text-align: right;">
+        <span class="material-icons" style="vertical-align: bottom;">photo_camera</span>
+      </th>
+    </tr>
+  </thead>
+  {foreach $region['rows'] as $row}
+    {ifset $row['u_line']}
+      {var $line = $row['u_line']}
+      <tr class="table-info">
+        <td colspan="7">{$line['text']}</td>
+      </tr>
+    {else}
+      {var $tt = $row['u_turntable']}
+      <tr>
+        <td></td>
+        <td><a href="{$tt['nc_url']|nocheck}">{$tt['text']}</a></td>
+        <td align="right">{$tt['size_type']}</td>
+        <td>{$tt['status']}</td>
+        <td>{$tt['notes']}</td>
+        <td align="right">{$tt['nphotos']}</td>
+      </tr>
+    {/ifset}
+  {/foreach}
+  </table>
+{/foreach}

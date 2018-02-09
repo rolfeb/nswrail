@@ -4,10 +4,10 @@ require "site.inc";
 
 $title = "Closed Sydney Railway Stations";
 
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("closed_sydney_stations.tpl");
-
-global $db;
+$tp = [
+    'title' => $title,
+    'rows' => [],
+];
 
 $stmt = $db->stmt_init();
 $stmt->prepare("
@@ -127,32 +127,31 @@ foreach ($rows as $row)
 
     if ($curr_line_name != $line_name)
     {
-        $t->setCurrentBlock("LINE");
-        $t->setVariable("LINE-URL", "/lines/show.php?"
-            . urlenc("name=$line_state:$line_name"));
-        $t->setVariable("LINE-TEXT", $description);
-        $t->setVariable("NUM-STATIONS", $stations["$line_state:$line_name"]);
-        $t->parseCurrentBlock();
+        $tp['rows'][] = [
+            'u_line' => [
+                    'text' => $description,
+                ],
+        ];
     }
-    $t->setCurrentBlock("STATION");
-    $t->setVariable("LOCATION-URL", "/locations/show.php?"
-        . urlenc("name=$location_state:$location_name"));
-    $t->setVariable("LOCATION-TEXT", $location_name);
-    $t->setVariable("TYPE", locn_type2text($type));
 
     if ($status == 'not opened')
-        $t->setVariable("CLOSURE", "Never opened");
+        $closure = "Never opened";
     else
-        $t->setVariable("CLOSURE", get_location_event_date_str($location_state, $location_name, 'CN', False));
-    $t->parseCurrentBlock();
+        $closure = get_location_event_date_str($location_state, $location_name, 'CN', False);
+
+    $tp['rows'][] = [
+        'u_location' => [
+                'nc_url' => '/locations/show.php?' . urlenc("name=$location_state:$location_name"),
+                'text' => $location_name,
+                'type' => locn_type2text($type),
+                'closure' => $closure,
+            ],
+    ];
 
     $curr_line_name = $line_name;
 }
 
-$t->setCurrentBlock("CONTENT");
-$t->setVariable("TITLE", $title);
-$t->parseCurrentBlock();
-
-display_page($title, $t->get("CONTENT"));
+$latte = new Latte\Engine;
+display_page($title, $latte->renderToString('closed_sydney_stations.latte', $tp));
 
 ?>

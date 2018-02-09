@@ -4,8 +4,10 @@ require_once "site.inc";
 
 $title = "Railway Turntables";
 
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("turntable.tpl");
+$tp = [
+    'title' => $title,
+    'regions' => [],
+];
 
 $STATE = 'NSW';
 
@@ -87,13 +89,13 @@ $stmt->execute();
 $stmt->bind_result($line_state, $line_name, $description, $region, $seqno,
     $location_state, $location_name, $type, $size, $status, $notes, $photos);
 
-$type_lookup = array(
+$type_lookup = [
     "electric"  => "E",
     "manual"    => "M",
     "unknown"   => "?",
-);
+];
 
-$status_lookup = array(
+$status_lookup = [
     "in use"        => "In use",
     "out of use"    => "Out of use",
     "closed"        => "Closed",
@@ -101,73 +103,59 @@ $status_lookup = array(
     "ruins"         => "Ruins",
     "no trace"      => "No trace",
     "unknown"       => "?",
-);
+];
 
+$nr = -1;
 $curr_region = "";
 $curr_line_name = "";
-while ($stmt->fetch())
-{
-    if ($curr_region != $region)
-    {
-        if ($curr_region != "") {
-            $t->touchBlock("REGION2");
-            $t->parse("TABLE-CHUNK");
-        }
-
-        $t->setCurrentBlock("REGION1");
-        $t->setVariable("REGION", "$region Region");
-        $t->parseCurrentBlock();
-        $t->parse("TABLE-CHUNK");
+while ($stmt->fetch()) {
+    if ($curr_region != $region) {
+        $tp['regions'][] = [
+            'text' => "$region Region",
+            'rows' => [],
+        ];
+        $nr++;
         $curr_region = $region;
     }
-    if ($curr_line_name != $line_name)
-    {
-        $url = "/lines/show.php"
-            . urlenc("?name=$line_state:$line_name");
-        $t->setCurrentBlock("LINE");
-        $t->setVariable("LINE-URL", $url);
-        $t->setVariable("LINE-TEXT", htmlentities($description));
-        $t->parseCurrentBlock();
-        $t->parse("TABLE-CHUNK");
+
+    if ($curr_line_name != $line_name) {
+        $tp['regions'][$nr]['rows'][] = [
+            'u_line' => [
+                    'text' => $description,
+                ],
+        ];
         $curr_line_name = $line_name;
     }
 
     $url = "/locations/show.php"
         . urlenc("?name=$location_state:$location_name");
 
-    $t->setCurrentBlock("LOCATION");
-    $t->setVariable("LOCATION-URL", $url);
-    $t->setVariable("LOCATION-TEXT", $location_name);
-
-    if (!$size)
+    if (!$size) {
         $size = "?";
-    else if (floor($size) != $size)
-    {
+    } else if (floor($size) != $size) {
         $size = sprintf("%d'%.0f\"",
             floor($size),
             ($size - floor($size)) * 12);
-    }
-    else
+    } else {
         $size = "$size'";
+    }
 
     $size_type = $size . '-' . $type_lookup[$type];
 
-    $t->setVariable("SIZE-TYPE", $size_type);
-    $t->setVariable("STATUS", $status_lookup[$status]);
-    $t->setVariable("NOTES", htmlentities($notes));
-    $t->setVariable("PHOTOS", $photos);
-    $t->parseCurrentBlock();
-    $t->parse("TABLE-CHUNK");
+    $tp['regions'][$nr]['rows'][] = [
+        'u_turntable' => [
+                'nc_url' => $url,
+                'text' => $location_name,
+                'size_type' => $size_type,
+                'status' => $status_lookup[$status],
+                'notes' => $notes,
+                'nphotos' => $photos,
+            ],
+    ];
 }
 $stmt->close();
 
-$t->touchBlock("REGION2");
-$t->parse("TABLE-CHUNK");
-
-$t->setCurrentBlock("CONTENT");
-$t->setVariable("TITLE", $title);
-$t->parseCurrentBlock();
-
-display_page($title, $t->get("CONTENT"));
+$latte = new Latte\Engine;
+display_page($title, $latte->renderToString('turntables.latte', $tp));
 
 ?>

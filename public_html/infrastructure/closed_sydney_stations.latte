@@ -1,0 +1,46 @@
+{*
+    Parameters:
+        title
+        rows[]
+            u_line
+                text
+            u_location
+                nc_url
+                text
+                type
+                closure
+
+*}
+<h1>{$title}</h1>
+
+<div class="text">
+<p>The following stations in the Sydney suburban network are closed or have
+been completely removed.</p>
+</div>
+
+<table class="table table-sm">
+<thead class="thead-dark">
+<tr>
+  <th></th>
+  <th>Location</th>
+  <th>Type</th>
+  <th>Closed</th>
+</tr>
+</thead>
+{foreach $rows as $row}
+  {ifset $row['u_line']}
+    {var $line = $row['u_line']}
+    <tr class="table-info">
+      <td colspan="4">{$line['text']}</td>
+    </tr>
+  {else}
+    {var $loc = $row['u_location']}
+    <tr>
+      <td></td>
+      <td><a href="{$loc['nc_url']|nocheck}">{$loc['text']}</a></td>
+      <td>{$loc['type']}</td>
+      <td>{$loc['closure']}</td>
+    </tr>
+  {/ifset}
+{/foreach}
+</table>

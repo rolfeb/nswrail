@@ -1,0 +1,31 @@
+{*
+    Parameters:
+        title
+        lines[]
+            nc_url
+            text
+            length
+*}
+<h1>{$title}</h1>
+
+<div class="text">
+<p>The following table lists lines within NSW for which construction commenced,
+but which were never completed.</p>
+
+<p> In most cases, some evidence (e.g. tunnels, bridges and formation) is still
+present today.</p>
+
+<table class="table table-nonfluid table-sm">
+<thead class="thead-dark">
+<tr>
+  <th>Line</th>
+  <th style="text-align: right">Estimated length</th>
+</tr>
+</thead>
+{foreach $lines as $line}
+  <tr>
+    <td><a href="{$line['nc_url']|nocheck}">{$line['text']}</a></td>
+    <td align="right">{$line['length']} km</td>
+  </tr>
+{/foreach}
+</table>

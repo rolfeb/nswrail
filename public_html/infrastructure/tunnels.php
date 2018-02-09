@@ -4,8 +4,10 @@ require "site.inc";
 
 $title = "NSW Railway Tunnels";
 
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("tunnel.tpl");
+$tp = [
+    'title' => $title,
+    'rows' => [],
+];
 
 $STATE = "NSW";
 
@@ -73,16 +75,14 @@ $stmt->bind_result($line_state, $line_name, $description, $location_name,
     $status, $distance, $lengths, $type, $prev_location, $next_location);
 
 $prev_line_name = "";
-while ($stmt->fetch())
-{
+while ($stmt->fetch()) {
     if ($line_name != $prev_line_name)
     {
-        $t->setCurrentBlock("LINE");
-        $t->setVariable("LINE-URL", "/lines/show.php?"
-            . urlenc("name=$line_state:$line_name"));
-        $t->setVariable("LINE-TEXT", $description);
-        $t->parseCurrentBlock();
-        $t->parse("LINE-OR-TUNNEL");
+        $tp['rows'][] = [
+            'u_line' => [
+                    'text' => $description,
+                ],
+        ];
     }
 
     if ($distance != "")
@@ -95,28 +95,26 @@ while ($stmt->fetch())
         $photos = "";
 
     $len_str = join('<br/>', explode(',', tunnel_lengths2text($lengths)));
+    $url = "/locations/show.php?" . urlenc("name=$STATE:$location_name");
 
-    $t->setCurrentBlock("TUNNEL");
-    $t->setVariable("TUNNEL-URL", "/locations/show.php?"
-        . urlenc("name=$STATE:$location_name"));
-    $t->setVariable("TUNNEL-TEXT", $location_name);
-    $t->setVariable("TYPE", tunnel_type2text($type));
-    $t->setVariable("STATUS", locn_status2text($status));
-    $t->setVariable("LENGTH", $len_str);
-    $t->setVariable("PHOTOS", $photos);
-    $t->setVariable("DISTANCE", $distance);
-    $t->setVariable("BETWEEN", "$prev_location and $next_location");
-    $t->parseCurrentBlock();
-    $t->parse("LINE-OR-TUNNEL");
+    $tp['rows'][] = [
+        'u_tunnel' => [
+                'nc_url' => $url,
+                'text' => $location_name,
+                'type' => tunnel_type2text($type),
+                'status' => locn_status2text($status),
+                'ne_length' => $len_str,
+                'nphotos' => $photos,
+                'distance' => $distance,
+                'between' => "$prev_location and $next_location",
+            ],
+    ];
 
     $prev_line_name = $line_name;
 }
 $stmt->close();
 
-$t->setCurrentBlock("CONTENT");
-$t->setVariable("TITLE", $title);
-$t->parseCurrentBlock();
-
-display_page($title, $t->get("CONTENT"));
+$latte = new Latte\Engine;
+display_page($title, $latte->renderToString('tunnels.latte', $tp));
 
 ?>

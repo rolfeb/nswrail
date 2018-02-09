@@ -1,0 +1,69 @@
+{*
+    Parameters:
+        title
+        highs[]
+            nc_line_url
+            line_text
+            height
+            nc_location_url
+            location_text
+        lows[]
+            nc_line_url
+            line_text
+            height
+            nc_location_url
+            location_text
+*}
+<h1>{$title}</h1>
+
+<p class="text">This page details some of the highest and lowest points on the NSW network.</p>
+
+<h2>Highest Points</h2>
+
+<table class="table table-sm table-responsive-md">
+<thead class="thead-dark">
+<tr>
+  <th>Line</th>
+  <th style="text-align:right">Height</th>
+  <th>Location</th>
+</tr>
+</thead>
+{foreach $highs as $p}
+  <tr>
+    <td><a href="{$p['nc_line_url']|nocheck}">{$p['line_text']}</a></td>
+    <td align="right">{$p['height']} m</td>
+    <td>
+    {if $p['nc_location_url']}
+      <a href="{$p['nc_location_url']|nocheck}">{$p['location_text']}</a>
+    {else}
+      {$p['location_text']}
+    {/if}
+    </td>
+  </tr>
+{/foreach}
+</table>
+
+<h2>Lowest Points</h2>
+
+<table class="table table-sm table-responsive-md">
+<thead class="thead-dark">
+<tr>
+  <th>Line</th>
+  <th style="text-align:right">Height</th>
+  <th>Location</th>
+</tr>
+</thead>
+{foreach $lows as $p}
+  <tr>
+    <td><a href="{$p['nc_line_url']|nocheck}">{$p['line_text']}</a></td>
+    <td align="right">{$p['height']} m</td>
+    <td>
+    {if $p['nc_location_url']}
+      <a href="{$p['nc_location_url']|nocheck}">{$p['location_text']}</a>
+    {else}
+      {$p['location_text']}
+    {/if}
+    </td>
+  </tr>
+{/foreach}
+</table>

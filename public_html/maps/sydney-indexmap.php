@@ -4,26 +4,17 @@ require_once "site.inc";
 
 $title = "Sydney Map";
 
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("indexmap.tpl", true, true);
-$t->setCurrentBlock("CONTENT");
-$t->setVariable("TITLE", $title);
-$t->setVariable("IMAGE", "/media/maps/sydney-indexmap.gif");
-$t->setVariable("IMAGEMAP", image_map());
-$t->parseCurrentBlock();
+$tp = [
+    'title' => $title,
+    'map' => '/media/maps/sydney-indexmap.gif',
+    'ne_imagemap' => implode("\n", file("sydney.map")),
+];
 
-display_page($title, $t->get("CONTENT"),
-    array(
+$latte = new Latte\Engine;
+display_page($title, $latte->renderToString('indexmap.latte', $tp),
+    [
         'HEAD-EXTRA' => '<script type="text/javascript" src="/c/js/overlib.js"><!-- overLIB (c) Erik Bosrup --></script>'
-    )
+    ]
 );
-
-exit;
-
-function image_map()
-{
-    # XXX: hard-coded version
-    return implode("\n", file("sydney.map"));
-}
 
 ?>

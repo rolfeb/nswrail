@@ -1,0 +1,54 @@
+{*
+    Parameters:
+        title
+
+        rows[]
+            u_line
+                text
+            u_tunnel
+                nc_url
+                text
+                type
+                status
+                ne_length
+                nphotos
+                distance
+                between
+*}
+<h1>{$title}</h1>
+
+<table class="table table-sm">
+<thead class="thead-dark">
+<tr>
+    <th colspan="2">Location</th>
+    <th>Type</th>
+    <th>Status</th>
+    <th style="text-align: right;">Length</th>
+    <th style="text-align: right;">
+      <span class="material-icons" style="vertical-align: bottom;">photo_camera</span>
+    </th>
+    <th class="d-none d-lg-table-cell" style="text-align: right;">Distance</th>
+    <th class="d-none d-lg-table-cell">Between</th>
+</tr>
+</thead>
+{foreach $rows as $row}
+  {ifset $row['u_line']}
+    {var $line = $row['u_line']}
+    <tr class="table-info">
+      <td colspan="8">{$line['text']}</td>
+    </tr>
+  {else}
+    {var $tunnel = $row['u_tunnel']}
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="{$tunnel['nc_url']|nocheck}">{$tunnel['text']}</a></td>
+      <td>{$tunnel['type']}</td>
+      <td>{$tunnel['status']}</td>
+      <td align="right">{$tunnel['ne_length']|noescape}</td>
+      <td align="right">{$tunnel['nphotos']}</td>
+      <td class="d-none d-lg-table-cell" align="right">{$tunnel['distance']}</td>
+      <td class="d-none d-lg-table-cell">{$tunnel['between']}</td>
+    </tr>
+  {/ifset}
+{/foreach}
+</table>

@@ -6,7 +6,7 @@
 348,304,
 351,292,
 357,288
-" href="/lines/show.php?name=NSW:stockton" alt="Stockton Borehole Colliery Branch" onmouseover="return overlib('Stockton Borehole Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:stockton" alt="Stockton Borehole Colliery Branch" onmouseover="return overlib('Stockton Borehole Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 460,226,
 447,229,
@@ -18,7 +18,7 @@
 461,224,
 461,224,
 460,226
-" href="/lines/show.php?name=NSW:sandgate_cemetery" alt="Sandgate Cemetery Branch" onmouseover="return overlib('Sandgate Cemetery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:sandgate_cemetery" alt="Sandgate Cemetery Branch" onmouseover="return overlib('Sandgate Cemetery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 494,253,
 501,264,
@@ -30,7 +30,7 @@
 484,252,
 489,251,
 494,253
-" href="/lines/show.php?name=NSW:goninans" alt="Goninans Works Branch" onmouseover="return overlib('Goninans Works Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:goninans" alt="Goninans Works Branch" onmouseover="return overlib('Goninans Works Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 261,71,
 255,82,
@@ -42,7 +42,7 @@
 261,63,
 261,69,
 261,71
-" href="/lines/show.php?name=NSW:rutherford" alt="Rutherford Racecourse Branch" onmouseover="return overlib('Rutherford Racecourse Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:rutherford" alt="Rutherford Racecourse Branch" onmouseover="return overlib('Rutherford Racecourse Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 142,37,
 130,43,
@@ -54,7 +54,7 @@
 145,26,
 145,29,
 142,37
-" href="/lines/show.php?name=NSW:whitburn" alt="Whitburn Colliery Branch" onmouseover="return overlib('Whitburn Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:whitburn" alt="Whitburn Colliery Branch" onmouseover="return overlib('Whitburn Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 168,162,
 179,168,
@@ -66,7 +66,7 @@
 150,168,
 166,163,
 168,162
-" href="/lines/show.php?name=NSW:neath" alt="Neath Colliery Branch" onmouseover="return overlib('Neath Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:neath" alt="Neath Colliery Branch" onmouseover="return overlib('Neath Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 523,266,
 535,271,
@@ -78,7 +78,7 @@
 514,271,
 517,269,
 523,266
-" href="/lines/show.php?name=NSW:glebemain" alt="Glebemain Colliery Branch" onmouseover="return overlib('Glebemain Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:glebemain" alt="Glebemain Colliery Branch" onmouseover="return overlib('Glebemain Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 503,279,
 497,262,
@@ -92,7 +92,7 @@
 513,275,
 507,279,
 503,279
-" href="/lines/show.php?name=NSW:wickham" alt="Bullock Island Branch" onmouseover="return overlib('Bullock Island Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:wickham" alt="Bullock Island Branch" onmouseover="return overlib('Bullock Island Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 93,1,
 98,17,
@@ -106,7 +106,7 @@
 76,2,
 84,0,
 93,1
-" href="/lines/show.php?name=NSW:ayrfield" alt="Ayrfield Colliery Branch" onmouseover="return overlib('Ayrfield Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:ayrfield" alt="Ayrfield Colliery Branch" onmouseover="return overlib('Ayrfield Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 486,249,
 498,253,
@@ -124,7 +124,7 @@
 481,251,
 482,250,
 486,249
-" href="/lines/show.php?name=NSW:waratah" alt="Waratah Colliery Branch" onmouseover="return overlib('Waratah Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:waratah" alt="Waratah Colliery Branch" onmouseover="return overlib('Waratah Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 364,287,
 372,296,
@@ -148,7 +148,7 @@
 353,283,
 364,287,
 364,287
-" href="/lines/show.php?name=NSW:northern" alt="Northern Colliery Branch" onmouseover="return overlib('Northern Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:northern" alt="Northern Colliery Branch" onmouseover="return overlib('Northern Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 324,340,
 324,328,
@@ -171,7 +171,7 @@
 324,342,
 324,341,
 324,340
-" href="/lines/show.php?name=NSW:toronto" alt="Toronto Branch" onmouseover="return overlib('Toronto Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:toronto" alt="Toronto Branch" onmouseover="return overlib('Toronto Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 506,281,
 504,281,
@@ -200,7 +200,7 @@
 514,283,
 512,283,
 506,281
-" href="/lines/show.php?name=NSW:newcastle" alt="Newcastle Branch" onmouseover="return overlib('Newcastle Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:newcastle" alt="Newcastle Branch" onmouseover="return overlib('Newcastle Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 146,187,
 155,179,
@@ -218,7 +218,7 @@
 139,206,
 145,193,
 146,187
-" href="/lines/show.php?name=NSW:aberdare_south" alt="Aberdare South Railway" onmouseover="return overlib('Aberdare South Railway', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:aberdare_south" alt="Aberdare South Railway" onmouseover="return overlib('Aberdare South Railway', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 137,190,
 150,188,
@@ -248,7 +248,7 @@
 122,200,
 135,193,
 137,190
-" href="/lines/show.php?name=NSW:aberdare_central" alt="Aberdare Central Branch" onmouseover="return overlib('Aberdare Central Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:aberdare_central" alt="Aberdare Central Branch" onmouseover="return overlib('Aberdare Central Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 378,83,
 376,83,
@@ -269,7 +269,7 @@
 393,71,
 386,82,
 378,83
-" href="/lines/show.php?name=NSW:morpeth" alt="Morpeth Branch" onmouseover="return overlib('Morpeth Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:morpeth" alt="Morpeth Branch" onmouseover="return overlib('Morpeth Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 338,143,
 321,138,
@@ -295,7 +295,7 @@
 345,140,
 339,142,
 338,143
-" href="/lines/show.php?name=NSW:bloomfield" alt="Bloomfield Colliery Branch" onmouseover="return overlib('Bloomfield Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:bloomfield" alt="Bloomfield Colliery Branch" onmouseover="return overlib('Bloomfield Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 482,251,
 494,254,
@@ -330,7 +330,7 @@
 468,260,
 472,256,
 482,251
-" href="/lines/show.php?name=NSW:raspberry" alt="Raspberry Colliery Branch" onmouseover="return overlib('Raspberry Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:raspberry" alt="Raspberry Colliery Branch" onmouseover="return overlib('Raspberry Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 179,153,
 191,157,
@@ -354,7 +354,7 @@
 172,158,
 174,156,
 179,153
-" href="/lines/show.php?name=NSW:abermain_2" alt="Abermain Railway Branch" onmouseover="return overlib('Abermain Railway Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:abermain_2" alt="Abermain Railway Branch" onmouseover="return overlib('Abermain Railway Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 522,275,
 508,267,
@@ -376,7 +376,7 @@
 529,258,
 531,263,
 522,275
-" href="/lines/show.php?name=NSW:port_waratah" alt="Port Waratah Branch" onmouseover="return overlib('Port Waratah Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:port_waratah" alt="Port Waratah Branch" onmouseover="return overlib('Port Waratah Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 122,185,
 121,203,
@@ -410,7 +410,7 @@
 114,186,
 120,185,
 122,185
-" href="/lines/show.php?name=NSW:pelton" alt="Pelton Colliery Branch" onmouseover="return overlib('Pelton Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:pelton" alt="Pelton Colliery Branch" onmouseover="return overlib('Pelton Colliery Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 238,184,
 238,184,
@@ -459,7 +459,7 @@
 241,184,
 239,184,
 238,184
-" href="/lines/show.php?name=NSW:stanford_merthyr" alt="Stanford Merthyr Branch" onmouseover="return overlib('Stanford Merthyr Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:stanford_merthyr" alt="Stanford Merthyr Branch" onmouseover="return overlib('Stanford Merthyr Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 411,245,
 412,245,
@@ -485,7 +485,7 @@
 397,269,
 398,257,
 411,245
-" href="/lines/show.php?name=NSW:wallsend" alt="Wallsend Branch" onmouseover="return overlib('Wallsend Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:wallsend" alt="Wallsend Branch" onmouseover="return overlib('Wallsend Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 280,360,
 291,353,
@@ -530,7 +530,7 @@
 275,369,
 279,367,
 280,360
-" href="/lines/show.php?name=NSW:wangi" alt="Wangi Power Station Branch" onmouseover="return overlib('Wangi Power Station Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:wangi" alt="Wangi Power Station Branch" onmouseover="return overlib('Wangi Power Station Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 187,162,
 190,161,
@@ -572,7 +572,7 @@
 182,167,
 184,164,
 187,162
-" href="/lines/show.php?name=NSW:hebburn2" alt="Hebburn Railway Branch" onmouseover="return overlib('Hebburn Railway Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:hebburn2" alt="Hebburn Railway Branch" onmouseover="return overlib('Hebburn Railway Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 466,234,
 448,232,
@@ -597,7 +597,7 @@
 467,233,
 466,234,
 466,234
-" href="/lines/show.php?name=NSW:kooragang_island" alt="Kooragang Island Branch" onmouseover="return overlib('Kooragang Island Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:kooragang_island" alt="Kooragang Island Branch" onmouseover="return overlib('Kooragang Island Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 364,285,
 374,293,
@@ -649,7 +649,7 @@
 352,282,
 363,285,
 364,285
-" href="/lines/show.php?name=NSW:west_wallsend" alt="West Wallsend Branch" onmouseover="return overlib('West Wallsend Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:west_wallsend" alt="West Wallsend Branch" onmouseover="return overlib('West Wallsend Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 121,185,
 130,194,
@@ -706,7 +706,7 @@
 111,186,
 116,185,
 121,185
-" href="/lines/show.php?name=NSW:kalingo" alt="Kalingo Branch" onmouseover="return overlib('Kalingo Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:kalingo" alt="Kalingo Branch" onmouseover="return overlib('Kalingo Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 454,319,
 456,318,
@@ -776,7 +776,7 @@
 450,326,
 451,323,
 454,319
-" href="/lines/show.php?name=NSW:belmont" alt="Belmont Branch" onmouseover="return overlib('Belmont Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:belmont" alt="Belmont Branch" onmouseover="return overlib('Belmont Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 342,0,
 344,6,
@@ -829,7 +829,7 @@
 326,10,
 323,3,
 323,0
-" href="/lines/show.php?name=NSW:north_coast" alt="North Coast Line" onmouseover="return overlib('North Coast Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:north_coast" alt="North Coast Line" onmouseover="return overlib('North Coast Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 123,185,
 125,186,
@@ -927,7 +927,7 @@
 101,179,
 114,183,
 123,185
-" href="/lines/show.php?name=NSW:cessnock" alt="Cessnock Branch" onmouseover="return overlib('Cessnock Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:cessnock" alt="Cessnock Branch" onmouseover="return overlib('Cessnock Branch', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 215,181,
 215,180,
@@ -1046,7 +1046,7 @@
 218,190,
 217,187,
 215,181
-" href="/lines/show.php?name=NSW:richmond_vale" alt="Richmond Vale Railway" onmouseover="return overlib('Richmond Vale Railway', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:richmond_vale" alt="Richmond Vale Railway" onmouseover="return overlib('Richmond Vale Railway', HAUTO, WRAP);" onmouseout="return nd();"></area>
 <area shape="poly" coords="
 0,2,
 2,3,
@@ -1390,4 +1390,4 @@
 7,20,
 4,21,
 0,21
-" href="/lines/show.php?name=NSW:main_north" alt="Main North Line" onmouseover="return overlib('Main North Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
+" href="/lines/details.php?name=NSW:main_north" alt="Main North Line" onmouseover="return overlib('Main North Line', HAUTO, WRAP);" onmouseout="return nd();"></area>
