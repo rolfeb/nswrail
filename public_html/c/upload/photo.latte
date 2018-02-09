@@ -1,0 +1,29 @@
+{*
+    Parameters:
+        locations[]
+        photo_queue
+
+*}
+<datalist id="all-locations">
+  {foreach $locations as $location}<option value="{$location}">{/foreach}
+</datalist>
+
+<div class="container">
+  <h1>Photograph Upload</h1>
+  <div class="text">
+    <p>Use this screen to upload, annotate and publish photographs.</p>
+  </div
+
+  <h2>1. Upload Photos</h2>
+  <div class="file-loading">
+    <input id="upload" name="upload-filename[]" type="file" multiple>
+  </div>
+
+  <hr/>
+
+  <h2>2. Annotate and Publish Photos</h2>
+  <div class="text">
+    <p>The following photos are waiting to be annotated and published:</p>
+  </div>
+  <div id="photo-queue">{$photo_queue}</div>
+</div>

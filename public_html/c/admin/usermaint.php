@@ -53,10 +53,12 @@ function show_user_listing()
 {
     global $db;
 
-    $t = new HTML_Template_ITX(".");
-    if (!$t->loadTemplateFile("admin-user-listing.tpl", true, true)) {
-        return "<!-- ERROR: couldn't open admin-user-listing.tpl -->\n";
-    }
+    $title = 'User Listing';
+
+    $tp = [
+        'title' => $title,
+        'users' => [],
+    ];
 
     $stmt = $db->stmt_init();
     $stmt->prepare("
@@ -86,36 +88,33 @@ function show_user_listing()
             $statusstr = '-';
         }
 
-        $t->setCurrentBlock('USER-ENTRY');
-        if ($is_superuser) {
-            $t->setVariable('ROWCLASS', "table-info");
-        }
-        $t->setVariable('UID', $r['uid']);
-        $t->setVariable('USERNAME', $r['username']);
-        $t->setVariable('FULLNAME', $r['fullname']);
-        $t->setVariable('ROLE', $rolestr);
-        $t->setVariable('STATUS', $statusstr);
-        $t->setVariable('JOINED', $r['register_time']);
-        $t->setVariable('LOGIN', $r['last_login_time']);
-        $t->parseCurrentBlock();
+        $tp['users'][] = [
+            'rowclass' => $is_superuser ? 'table-info' : '',
+            'uid' => $r['uid'],
+            'username' => $r['username'],
+            'fullname' => $r['fullname'],
+            'role' => $rolestr,
+            'status' => $statusstr,
+            'joined' => $r['register_time'],
+            'login' => $r['last_login_time'],
+        ];
     }
     $stmt->close();
 
-    $title = 'User Listing';
-    $t->setCurrentBlock("CONTENT");
-    $t->setVariable('TITLE', $title);
-    $t->parseCurrentBlock();
-    display_page($title, $t->get("CONTENT"));
+    $latte = new Latte\Engine;
+    display_page($title, $latte->renderToString('admin-user-listing.latte', $tp));
 }
 
 function show_user_modify_screen()
 {
     global $db;
 
-    $t = new HTML_Template_ITX(".");
-    if (!$t->loadTemplateFile("admin-user-modify.tpl", true, true)) {
-        return "<!-- ERROR: couldn't open admin-user-modify.tpl -->\n";
-    }
+    $title = 'Modify User Details';
+    $tp = [
+        'title' => $title,
+        'roles' => [],
+        'statuses' => [],
+    ];
 
     $uid = quote_external($_REQUEST['uid']);
 
@@ -135,14 +134,13 @@ function show_user_modify_screen()
     $r = dbi_bind_to_array($stmt);
 
     if ($stmt->fetch()) {
-        $t->setCurrentBlock('USER-DETAIL');
-        $t->setVariable('UID', $r['uid']);
-        $t->setVariable('USERNAME', $r['username']);
-        $t->setVariable('FULLNAME', $r['fullname']);
-        $t->setVariable('REGISTER-TIME', $r['register_time']);
-        $t->setVariable('REGISTER-ADDR', $r['register_addr']);
-        $t->setVariable('LAST-LOGIN-TIME', $r['last_login_time']);
-        $t->setVariable('LAST-LOGIN-ADDR', $r['last_login_addr']);
+        $tp['uid'] = $r['uid'];
+        $tp['username'] = $r['username'];
+        $tp['fullname'] = $r['fullname'];
+        $tp['register_time'] = $r['register_time'];
+        $tp['register_addr'] = $r['register_addr'];
+        $tp['last_login_time'] = $r['last_login_time'];
+        $tp['last_login_addr'] = $r['last_login_addr'];
 
         $roles = [
             User::R_EDITOR      => 'editor',
@@ -150,13 +148,11 @@ function show_user_modify_screen()
             User::R_SUPERUSER   => 'superuser',
         ];
         foreach ($roles as $f => $s) {
-            $t->setCurrentBlock('ROLE-OPTION');
-            $t->setVariable('NAME', "ROLE-$s");
-            $t->setVariable('VALUE', $s);
-            if (($r['role'] & $f) != 0) {
-                $t->setVariable('CHECKED', 'checked');
-            }
-            $t->parseCurrentBlock();
+            $tp['roles'][] = [
+                'name' => "ROLE-$s",
+                'value' => $s,
+                'checked' => (($r['role'] & $f) != 0) ? 'checked' : '',
+            ];
         }
 
         $statuses = [
@@ -166,39 +162,32 @@ function show_user_modify_screen()
             User::S_PWDLOCKED   => 'pwdlocked',
         ];
         foreach ($statuses as $f => $s) {
-            $t->setCurrentBlock('STATUS-OPTION');
-            $t->setVariable('NAME', "STATUS-$s");
-            $t->setVariable('VALUE', $s);
-            if (($r['status'] & $f) != 0) {
-                $t->setVariable('CHECKED', 'checked');
-            }
-            $t->parseCurrentBlock();
+            $tp['statuses'][] = [
+                'name' => "STATUS-$s",
+                'value' => $s,
+                'checked' => (($r['status'] & $f) != 0) ? 'checked' : '',
+            ];
         }
 
     } else {
-        $t->setCurrentBlock('ERROR');
-        $t->setVariable('TEXT', "Invalid user ID: $uid");
-        $t->parseCurrentBlock();
+        $tp['error_text'] = "Invalid user ID: $uid";
     }
 
     $stmt->close();
 
-    $title = 'Modify User Details';
-    $t->setCurrentBlock("CONTENT");
-    $t->setVariable('TITLE', $title);
-    $t->parseCurrentBlock();
-
-    display_page($title, $t->get("CONTENT"));
+    $latte = new Latte\Engine;
+    display_page($title, $latte->renderToString('admin-user-modify.latte', $tp));
 }
 
 function show_user_add_screen()
 {
-    $t = new HTML_Template_ITX(".");
-    if (!$t->loadTemplateFile("admin-user-add.tpl", true, true)) {
-        return "<!-- ERROR: couldn't open admin-user-add.tpl -->\n";
-    }
+    $title = 'New User Details';
 
-    $t->setCurrentBlock('USER-DETAIL');
+    $tp = [
+        'title' => $title,
+        'roles' => [],
+        'statuses' => [],
+    ];
 
     $roles = [
         User::R_EDITOR      => 'editor',
@@ -206,10 +195,10 @@ function show_user_add_screen()
         User::R_SUPERUSER   => 'superuser',
     ];
     foreach ($roles as $f => $s) {
-        $t->setCurrentBlock('ROLE-OPTION');
-        $t->setVariable('NAME', "ROLE-$s");
-        $t->setVariable('VALUE', $s);
-        $t->parseCurrentBlock();
+        $tp['roles'][] = [
+            'name' => "ROLE-$s",
+            'value' => $s,
+        ];
     }
 
     $statuses = [
@@ -219,21 +208,14 @@ function show_user_add_screen()
         User::S_PWDLOCKED   => 'pwdlocked',
     ];
     foreach ($statuses as $f => $s) {
-        $t->setCurrentBlock('STATUS-OPTION');
-        $t->setVariable('NAME', "STATUS-$s");
-        $t->setVariable('VALUE', $s);
-        $t->parseCurrentBlock();
+        $tp['statuses'][] = [
+            'name' => "STATUS-$s",
+            'value' => $s,
+        ];
     }
 
-    $t->setCurrentBlock('USER-DETAIL');
-    $t->parseCurrentBlock();
-
-    $title = 'New User Details';
-    $t->setCurrentBlock("CONTENT");
-    $t->setVariable('TITLE', $title);
-    $t->parseCurrentBlock();
-
-    display_page($title, $t->get("CONTENT"));
+    $latte = new Latte\Engine;
+    display_page($title, $latte->renderToString('admin-user-add.latte', $tp));
 }
 
 function update_user_details()

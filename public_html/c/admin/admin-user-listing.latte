@@ -1,0 +1,44 @@
+{*
+    Parameters:
+        title
+        users[]
+            rowclass
+            uid
+            username
+            fullname
+            role
+            status
+            joined
+            login
+*}
+<h1>{$title}</h1>
+
+<p>
+<a href="/c/admin/usermaint.php?mode=add">Create new user</a>
+</p>
+
+<table class="table table-sm table-responsive-md">
+<thead class="thead-light">
+<tr>
+  <th>UID</th>
+  <th>Username</th>
+  <th>Full name</th>
+  <th>Role</th>
+  <th>Status</th>
+  <th>Joined</th>
+  <th>Last login</th>
+</tr>
+</thead>
+{foreach $users as $user}
+<!-- BEGIN USER-ENTRY -->
+<tr class="{$user['rowclass']}">
+  <td>{$user['uid']}</td>
+  <td><a href="/c/admin/usermaint.php?mode=modify&uid={$user['uid']}">{$user['username']}</a></td>
+  <td>{$user['fullname']}</td>
+  <td>{$user['role']}</td>
+  <td>{$user['status']}</td>
+  <td>{$user['joined']}</td>
+  <td>{$user['login']}</td>
+</tr>
+{/foreach}
+</table>

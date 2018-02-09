@@ -1,18 +1,26 @@
-<!-- BEGIN CONTENT -->
+{*
+    Parameters:
+        image_name
+        all_tag_names
+        this_year
+        tags[]
+            name
+            text
+*}
 <div class="row">
   <form method="post" onSubmit="return false;">
   <div class="photo-holder">
-    <img src="/c/upload/aj-view.php?image={IMAGE-NAME}">
+    <img src="/c/upload/aj-view.php?image={$image_name}">
     <br/>
-    <span><small>{IMAGE-NAME}</small></span>
+    <span><small>{$image_name}</small></span>
   </div>
   <div class="button-holder">
     <div>
       <button name="delete" class="btn btn-sm btn-danger" onClick="do_delete_photo(this);">Delete</button>
       <button type="publish" class="btn btn-sm btn-success" onClick="do_publish_photo(this);">Publish</button>
     </div>
-    <input type="hidden" class="image" name="image" value="{IMAGE-NAME}">
-    <input type="hidden" class="tagnames" name="tagnames" value="{ALL-TAG-NAMES}">
+    <input type="hidden" class="image" name="image" value="{$image_name}">
+    <input type="hidden" class="tagnames" name="tagnames" value="{$all_tag_names}">
   </div>
   <div class="detail-holder">
     <table style="clean" width="100%">
@@ -56,7 +64,7 @@
           <option value="12">Dec</option>
         </select>
         -
-        <input type="text" size="4" class="year" name="year" value="{THIS-YEAR}">
+        <input type="text" size="4" class="year" name="year" value="{$this_year}">
       </td>
     </tr>
     <tr>
@@ -66,9 +74,9 @@
     <tr>
       <th>Tags:</th>
       <td>
-          <!-- BEGIN PHOTO-TAG -->
-          <span class="tag"><input type="checkbox" class="tag-{NAME}" name="tag-{NAME}"><label for="{NAME}">{TEXT}</label></span>
-          <!-- END PHOTO-TAG -->
+          {foreach $tags as $tag}
+            <span class="tag"><input type="checkbox" class="tag-{$tag['name']}" name="tag-{$tag['name']}"><label for="{$tag['name']}">{$tag['text']}</label></span>
+          {/foreach}
       </td>
     </tr>
     <tr>
@@ -79,4 +87,3 @@
   </div>
   </form>
 </div>
-<!-- END CONTENT -->

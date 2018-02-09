@@ -22,32 +22,28 @@ function get_photo_queue_html()
 
 function show_upload_form()
 {
-    $t = new HTML_Template_ITX('.');
-    $t->loadTemplateFile('photo.tpl', true, true);
+    $tp = [
+        'photo_queue' => get_photo_queue_html(),
+        'locations' => [],
+    ];
 
     # populate the location name <datalist>
     foreach (get_locations() as $location) {
-        $t->setCurrentBlock('LOCATION');
-        $t->setVariable('LOCATION-NAME', $location);
-        $t->parseCurrentBlock();
+        $tp['locations'][] = [
+            'location' => $location,
+        ];
     }
-
-    $t->setCurrentBlock('CONTENT');
-
-    # populate the photo queue
-    $t->setVariable('PHOTO-QUEUE', get_photo_queue_html());
-
-    $t->parseCurrentBlock();
 
     $head = file_get_contents("photo-style.html");
     $head .= "\n";
     $head .= '<script type="text/javascript" src="/c/upload/photo.js"></script>';
     $head .= "\n";
 
-    display_page("Photograph Upload", $t->get("CONTENT"),
-        array(
+    $latte = new Latte\Engine;
+    display_page('Photograph Upload', $latte->renderToString('photo.latte', $tp),
+        [
             'HEAD-EXTRA' => $head
-        )
+        ]
     );
 }
 

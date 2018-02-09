@@ -1,0 +1,14 @@
+<!-- BEGIN CONTENT -->
+<!-- BEGIN SUCCESS -->
+{ifset $success}
+<p>Your account has been registered.</p>
+
+<p>A confirmation email has been sent to <b>{$email_addr}</b>.
+When you receive this, click on the link inside to activate your account.
+Once the account has been activated, you can log in.</p>
+{else}
+<p>An error occurred - your account could not be registered.</p>
+
+<p>Error: {$error_msg}</p>
+{/if}
+<p><a href="{$referrer}">Return to nswrail.net</a></p>

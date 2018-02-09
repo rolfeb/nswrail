@@ -7,31 +7,32 @@ use PHPMailer\PHPMailer\Exception;
 
 function display_registration_form()
 {
-    $t = new HTML_Template_ITX(".");
-    $t->loadTemplateFile("register.tpl", true, true);
-    $t->setCurrentBlock('CONTENT');
-    $t->setVariable('ADMIN-EMAIL', get_config('email-admin'));
+    $tp = [
+        'admin_email' => get_config('email-admin'),
+    ];
+
     if (isset($_SERVER['HTTP_REFERER']))
-        $t->setVariable('REFERRER', $_SERVER["HTTP_REFERER"]);
+        $tp['referrer'] = $_SERVER["HTTP_REFERER"];
     else
-        $t->setVariable('REFERRER', get_config('website-url'));
-    $t->parseCurrentBlock();
-    display_page("Registration", $t->get("CONTENT"),
-        array(
+        $tp['referrer'] = get_config('website-url');
+
+    $latte = new Latte\Engine;
+    display_page($title, $latte->renderToString('register.latte', $tp),
+        [
             'HEAD-EXTRA' => '<script type="text/javascript" src="/c/register/register.js"></script>'
-        )
+        ]
     );
 }
 
 function get_email_from_template($template, $website, $url)
 {
-    $t = new HTML_Template_ITX(".");
-    $t->loadTemplateFile($template, true, true);
-    $t->setCurrentBlock('CONTENT');
-    $t->setVariable('WEBSITE', $website);
-    $t->setVariable('URL', $url);
-    $t->parseCurrentBlock();
-    return $t->get("CONTENT");
+    $tp = [
+        'website' => $website;
+        'url' => $url;
+    ];
+
+    $latte = new Latte\Engine;
+    return $latte->renderToString($template, $tp);
 }
 
 function process_registration_form($emailaddr, $fullname, $password1, $password2, $referrer)
@@ -93,29 +94,29 @@ function process_registration_form($emailaddr, $fullname, $password1, $password2
     }
 
     // redirect to post-registration page
-    $t = new HTML_Template_ITX(".");
-    $t->loadTemplateFile("post-register.tpl", true, true);
-    $t->setCurrentBlock('CONTENT');
-    $t->setVariable('EMAIL-ADDR', $emailaddr);
-    $t->setVariable('REFERRER', $referrer);
-    $t->parseCurrentBlock();
-    display_page("Registration", $t->get("CONTENT"));
+    $tp = [
+        'email_addr' => $emailaddr;
+        'referrer' => $referrer;
+    ];
+
+    $latte = new Latte\Engine;
+    display_page('Registration', $latte->renderToString('post-register.latte', $tp));
 }
 
 function activate_new_account($activate_code)
 {
-    // try activating the account
+    # try activating the account
     User::activate_user_via_code($activate_code);
     Audit::addentry(Audit::A_ACTIVATE, $activate_code);
 
-    // display success message
-    $t = new HTML_Template_ITX(".");
-    $t->loadTemplateFile("post-activate.tpl", true, true);
-    $t->setCurrentBlock('CONTENT');
-    $t->setVariable('WEBSITE-URL', get_config('website-url'));
-    $t->setVariable('WEBSITE', get_config('website'));
-    $t->parseCurrentBlock();
-    display_page("Account activation", $t->get("CONTENT"));
+    # display success message
+    $tp = [
+        'website_url' => get_config('website-url');
+        'website' => get_config('website');
+    ];
+
+    $latte = new Latte\Engine;
+    display_page('Account activation', $latte->renderToString('post-activate.latte', $tp));
 }
 
 try {
