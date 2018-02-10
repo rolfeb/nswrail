@@ -487,7 +487,6 @@ if ($line)
 $l = get_location_details($state, $location);
 
 $head_extra = '';
-$body_extra = '';
 
 $version = $l["version"];
 
@@ -580,9 +579,6 @@ $head_extra .= "\n" . implode(file('show.hdr'), "");
 $args = array();
 if ($head_extra)
     $args['HEAD-EXTRA'] = $head_extra;
-if ($body_extra)
-    $args['BODY-EXTRA'] = $body_extra;
-
 $latte = new Latte\Engine;
 display_page($title, $latte->renderToString('details.latte', $tp), $args);
 

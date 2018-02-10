@@ -23,13 +23,11 @@ require "audit.inc";
 require "config.inc";
 require "dbutil.inc";
 require "dbutil_line.inc";
+require "dbutil_location.inc";
 require "error.inc";
 require "init.inc";
-require "page_header.inc";
-require "page_utils.inc";
-require "page_utils_main.inc";
+require "display_page.inc";
 require "util.inc";
-require "r_location.php";
 require "card_page.inc";
 
 ?>

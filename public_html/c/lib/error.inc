@@ -8,39 +8,34 @@ function error_page($message, $url=NULL)
         $url = get_config('website-url');
     }
 
-    $template_dir   = "$BASE_PATH/c/tpl";
+    $title = 'Error';
 
-    $t = new HTML_Template_ITX($template_dir);
-    if (!$t->loadTemplateFile("error.tpl", true, true)) {
-        return "<!-- ERROR: couldn't open error.tpl -->\n";
-    }
+    $tp = [
+        'title' => $title,
+        'text' => $message,
+        'continue_url' => $url,
+    ];
 
-    $t->setCurrentBlock('CONTENT');
-    $t->setVariable('TEXT', $message);
-    $t->setVariable('URL', $url);
-    $t->parseCurrentBlock();
+    $template = "$BASE_PATH/c/tpl/page-error.latte";
 
-    display_page("ERROR", $t->get("CONTENT"));
-    exit();
+    $latte = new Latte\Engine;
+    display_page($title, $latte->renderToString($template, $tp));
 }
 
 function noperm_page()
 {
     global $BASE_PATH;
 
-    $template_dir   = "$BASE_PATH/c/tpl";
+    $title = 'Error';
 
-    $t = new HTML_Template_ITX($template_dir);
-    if (!$t->loadTemplateFile("noperm.tpl", true, true)) {
-        return "<!-- ERROR: couldn't open noperm.tpl -->\n";
-    }
+    $tp = [
+        'title' => $title,
+    ];
 
-    $t->setCurrentBlock('CONTENT');
-    $t->touchBlock('CONTENT');
-    $t->parseCurrentBlock();
+    $template = "$BASE_PATH/c/tpl/page-noperm.latte";
 
-    display_page("ERROR", $t->get("CONTENT"));
-    exit();
+    $latte = new Latte\Engine;
+    display_page($title, $latte->renderToString($template, $tp));
 }
 
 class UserError extends Exception { }
