@@ -24,7 +24,7 @@
     <dd>
       <b>{$row['article_title']} ({$row['author']})</b>
       <br />
-      {ifset opt_text}
+      {ifset $row['opt_text']}
         {$row['opt_text']}
       <br />
       {/ifset}

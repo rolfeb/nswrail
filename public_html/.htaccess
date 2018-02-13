@@ -1,7 +1,8 @@
 #
 # PHP settings
 #
-php_value include_path ".:/work/dev/nswrail-dev/public_html/c:/work/pear/PEAR:/work/dev/nswrail-dev"
+# XXX: clean this up!
+php_value include_path "/work/dev/nswrail-dev/phplib:/work/dev/nswrail-dev/public_html/c/lib:/work/dev/nswrail-dev/public_html/c:/work/pear/PEAR:/work/dev/nswrail-dev/:."
 php_value date.timezone "Australia/NSW"
 
 #
@@ -9,6 +10,7 @@ php_value date.timezone "Australia/NSW"
 #  These are accessed via $_SERVER['variable'].
 #
 SetEnv BASE_PATH                "/work/dev/nswrail-dev/public_html"
+SetEnv PHPLIB_DIR               "/work/dev/nswrail-dev/phplib"
 SetEnv TEMPLATE_DIR             "/work/dev/nswrail-dev/templates"
 SetEnv NSWRAIL_CONFIG_FILE      "/work/dev/nswrail-dev/config/nswrail-dev.json"
 
