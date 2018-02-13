@@ -2,10 +2,8 @@
 
 require "site.inc";
 
-$title = "NSW Railway Lines That Were Never Completed";
-
 $tp = [
-    'title' => $title,
+    'title' => "NSW Railway Lines That Were Never Completed",
     'lines' => [],
 ];
 
@@ -40,7 +38,6 @@ foreach ($lines as $l) {
     ];
 }
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('never_completed.latte', $tp));
+normal_page('infra-never-completed.latte', $tp);
 
 ?>

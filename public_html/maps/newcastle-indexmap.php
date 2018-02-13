@@ -1,17 +1,14 @@
 <?php
 
-require_once "site.inc";
-
-$title = "Newcastle Map";
+require "site.inc";
 
 $tp = [
-    'title' => $title,
+    'title' => "Newcastle Map",
     'map' => '/media/maps/newcastle-indexmap.gif',
     'ne_imagemap' => implode("\n", file("newcastle.map")),
 ];
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('indexmap.latte', $tp),
+normal_page('maps-indexmap.latte', $tp,
     [
         'HEAD-EXTRA' => '<script type="text/javascript" src="/c/js/overlib.js"><!-- overLIB (c) Erik Bosrup --></script>'
     ]

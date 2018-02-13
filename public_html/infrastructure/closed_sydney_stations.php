@@ -2,10 +2,8 @@
 
 require "site.inc";
 
-$title = "Closed Sydney Railway Stations";
-
 $tp = [
-    'title' => $title,
+    'title' => "Closed Sydney Railway Stations",
     'rows' => [],
 ];
 
@@ -151,7 +149,6 @@ foreach ($rows as $row)
     $curr_line_name = $line_name;
 }
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('closed_sydney_stations.latte', $tp));
+normal_page('infra-closed-sydney-stations.latte', $tp);
 
 ?>

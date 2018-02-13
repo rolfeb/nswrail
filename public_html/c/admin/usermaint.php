@@ -101,8 +101,7 @@ function show_user_listing()
     }
     $stmt->close();
 
-    $latte = new Latte\Engine;
-    display_page($title, $latte->renderToString('admin-user-listing.latte', $tp));
+    normal_page('admin-user-listing.latte', $tp);
 }
 
 function show_user_modify_screen()
@@ -175,8 +174,7 @@ function show_user_modify_screen()
 
     $stmt->close();
 
-    $latte = new Latte\Engine;
-    display_page($title, $latte->renderToString('admin-user-modify.latte', $tp));
+    normal_page('admin-user-modify.latte', $tp);
 }
 
 function show_user_add_screen()
@@ -214,8 +212,7 @@ function show_user_add_screen()
         ];
     }
 
-    $latte = new Latte\Engine;
-    display_page($title, $latte->renderToString('admin-user-add.latte', $tp));
+    normal_page('admin-user-add.latte', $tp);
 }
 
 function update_user_details()

@@ -2,10 +2,8 @@
 
 require "site.inc";
 
-$title = "NSW Railway Tunnels";
-
 $tp = [
-    'title' => $title,
+    'title' => "NSW Railway Tunnels",
     'rows' => [],
 ];
 
@@ -114,7 +112,6 @@ while ($stmt->fetch()) {
 }
 $stmt->close();
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('tunnels.latte', $tp));
+normal_page('infra-tunnels.latte', $tp);
 
 ?>

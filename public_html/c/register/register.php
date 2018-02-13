@@ -16,8 +16,7 @@ function display_registration_form()
     else
         $tp['referrer'] = get_config('website-url');
 
-    $latte = new Latte\Engine;
-    display_page($title, $latte->renderToString('register.latte', $tp),
+    normal_page('register-form.latte', $tp,
         [
             'HEAD-EXTRA' => '<script type="text/javascript" src="/c/register/register.js"></script>'
         ]
@@ -31,8 +30,10 @@ function get_email_from_template($template, $website, $url)
         'url' => $url;
     ];
 
+    $template_dir = $_SERVER['TEMPLATE_DIR'];
+
     $latte = new Latte\Engine;
-    return $latte->renderToString($template, $tp);
+    return $latte->renderToString("$template_dir/$template", $tp);
 }
 
 function process_registration_form($emailaddr, $fullname, $password1, $password2, $referrer)
@@ -84,8 +85,8 @@ function process_registration_form($emailaddr, $fullname, $password1, $password2
 
         $mail->isHTML(true);
         $mail->Subject = "Please confirm account registration: $website";
-        $mail->Body    = get_email_from_template("email-html.tpl", $website, $confirm_url);
-        $mail->AltBody = get_email_from_template("email-plain.tpl", $website, $confirm_url);
+        $mail->Body    = get_email_from_template("register-email-html.tpl", $website, $confirm_url);
+        $mail->AltBody = get_email_from_template("register-email-plain.tpl", $website, $confirm_url);
 
         $mail->send();
     } catch (Exception $e) {
@@ -95,12 +96,12 @@ function process_registration_form($emailaddr, $fullname, $password1, $password2
 
     // redirect to post-registration page
     $tp = [
-        'email_addr' => $emailaddr;
-        'referrer' => $referrer;
+        'title' => 'Registration',
+        'email_addr' => $emailaddr,
+        'referrer' => $referrer,
     ];
 
-    $latte = new Latte\Engine;
-    display_page('Registration', $latte->renderToString('post-register.latte', $tp));
+    normal_page('register-post-register.latte', $tp);
 }
 
 function activate_new_account($activate_code)
@@ -111,12 +112,12 @@ function activate_new_account($activate_code)
 
     # display success message
     $tp = [
-        'website_url' => get_config('website-url');
-        'website' => get_config('website');
+        'title' => 'Account activation',
+        'website_url' => get_config('website-url'),
+        'website' => get_config('website'),
     ];
 
-    $latte = new Latte\Engine;
-    display_page('Account activation', $latte->renderToString('post-activate.latte', $tp));
+    normal_page('register-post-activate.latte', $tp);
 }
 
 try {

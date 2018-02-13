@@ -2,14 +2,11 @@
 
 require "site.inc";
 
-$title = "The Lithgow Zig-Zag";
-
 $tp = [
-    'title' => $title,
+    'title' => "The Lithgow Zig-Zag",
 ];
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('lithgow-zigzag.latte', $tp));
+normal_page('articles-lithgow_zigzag.latte', $tp);
 
 
 ?>

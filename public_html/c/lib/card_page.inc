@@ -39,9 +39,7 @@ function display_card_page($title, $text, $cards, $auth_cards)
     $tp = _add_cards($tp, $cards, false);
     $tp = _add_cards($tp, $auth_cards, true);
 
-    $latte = new Latte\Engine;
-    $tpldir = dirname(__FILE__) . '/../tpl/';
-    display_page($title, $latte->renderToString($tpldir . 'card-page.latte', $tp));
+    normal_page('util-card-layout.latte', $tp);
 }
 
 ?>

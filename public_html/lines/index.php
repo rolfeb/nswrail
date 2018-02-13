@@ -143,7 +143,6 @@ $tp = create_tab_content($tp, 'NSW regional', 'nsw', $lines_nsw, true);
 $tp = create_tab_content($tp, 'Sydney network', 'sydney', $lines_sydney, false);
 $tp = create_tab_content($tp, 'Newcastle network', 'newcastle', $lines_newcastle, false);
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('index.latte', $tp));
+normal_page('line-index.latte', $tp);
 
 ?>

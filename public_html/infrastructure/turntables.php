@@ -1,11 +1,9 @@
 <?php
 
-require_once "site.inc";
-
-$title = "Railway Turntables";
+require "site.inc";
 
 $tp = [
-    'title' => $title,
+    'title' => "Railway Turntables",
     'regions' => [],
 ];
 
@@ -155,7 +153,6 @@ while ($stmt->fetch()) {
 }
 $stmt->close();
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('turntables.latte', $tp));
+normal_page('infra-turntables.latte', $tp);
 
 ?>

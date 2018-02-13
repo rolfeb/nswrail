@@ -1,0 +1,44 @@
+{*
+    Parameters:
+        title
+        
+        opt_results[]
+            month
+            year
+            volume
+            issue
+            article_title
+            author
+            opt_text
+            pages
+
+        opt_warning
+            
+*}
+<h1>{$title}</h1>
+
+{ifset $opt_results}
+  <dl>
+  {foreach $opt_results as $row}
+    <dt><b>{$row['month']} {$row['year']}</b> (Vol {$row['volume']} No. {$row['issue']})</dt>
+    <dd>
+      <b>{$row['article_title']} ({$row['author']})</b>
+      <br />
+      {ifset opt_text}
+        {$row['opt_text']}
+      <br />
+      {/ifset}
+      page[s]: {$row['pages']}
+    </dd>
+  {/foreach}
+  </dl>
+{/ifset}
+
+
+{ifset $opt_warning}
+<p><b>{$opt_warning}</b></p>
+{/ifset}
+
+<div class="text">
+Perform <a href="bulletin.php">another search</a>
+</div>

@@ -128,7 +128,47 @@ function display_page($title, $content, $args = null)
     $tp['page_content'] = $content;
 
     $latte = new Latte\Engine;
-    $latte->render("$BASE_PATH/c/tpl/page-normal.latte", $tp);
+    $latte->render($_SERVER['TEMPLATE_DIR'] . "/page-normal.latte", $tp);
+}
+
+function normal_page($template, $parameters, $args = null)
+{
+    $template_dir = $_SERVER['TEMPLATE_DIR'];
+
+    $c_latte = new Latte\Engine;
+    $content = $c_latte->renderToString("$template_dir/$template", $parameters);
+
+    $tp = [
+        'title' => 'NSWrail.net',
+        'page_content' => $content,
+    ];
+
+    if (array_key_exists('title', $parameters)) {
+        $tp['title'] = $parameters['title'];
+    };
+
+    $basic_page = false;
+    if (is_array($args)) {
+        if (array_key_exists("HEAD-EXTRA", $args)) {
+            $tp['opt_head_extra'] = $args["HEAD-EXTRA"];
+        }
+
+        if (array_key_exists("BODY-EXTRA", $args)) {
+            $tp['opt_body_extra'] = $args["BODY-EXTRA"];
+        }
+
+        if (array_key_exists("BASIC-PAGE", $args)) {
+            $basic_page = true;
+        }
+    }
+
+    if (!$basic_page) {
+        $tp = add_header($tp);
+        $tp = add_menu($tp);
+    }
+
+    $latte = new Latte\Engine;
+    $latte->render("$template_dir/page-normal.latte", $tp);
 }
 
 ?>

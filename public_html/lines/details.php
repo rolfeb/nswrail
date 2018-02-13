@@ -844,8 +844,6 @@ foreach ($footnotes as $seq => $text) {
     ];
 }
 
-
-$latte = new Latte\Engine;
-display_page($fullname, $latte->renderToString('details.latte', $tp));
+normal_page('line-details.latte', $tp);
 
 ?>

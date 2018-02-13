@@ -2,10 +2,8 @@
 
 require "site.inc";
 
-$title = "Formally Closed NSW Railway Lines";
-
 $tp = [
-    'title' => $title,
+    'title' => "Formally Closed NSW Railway Lines",
     'lines' => [],
 ];
 
@@ -70,7 +68,6 @@ foreach ($closed as $l)
     ];
 }
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('formally_closed.latte', $tp));
+normal_page('infra-formally-closed-lines.latte', $tp);
 
 ?>

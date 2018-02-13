@@ -2,10 +2,8 @@
 
 require "site.inc";
 
-$title = "NSW Railway Altitude Highs and Lows";
-
 $tp = [
-    'title' => $title,
+    'title' => "NSW Railway Altitude Highs and Lows",
     'highs' => [],
     'lows' => [],
 ];
@@ -136,7 +134,6 @@ foreach ($lowest as $l) {
     ];
 }
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('altitude.latte', $tp));
+normal_page('infra-altitude.latte', $tp);
 
 ?>

@@ -3,10 +3,9 @@
 require "site.inc";
 
 $MAX = 30;
-$title = "NSW Railway $MAX Shortest Lived Sections";
 
 $tp = [
-    'title' => $title,
+    'title' => "NSW Railway $MAX Shortest Lived Sections",
     'sections' => [],
 ];
 
@@ -118,7 +117,6 @@ while ($stmt->fetch()) {
 }
 $stmt->close();
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('short_lived_sections.latte', $tp));
+normal_page('infra-short-lived-sections.latte', $tp);
 
 ?>

@@ -2,10 +2,8 @@
 
 require "site.inc";
 
-$title = "NSW Railway Lines Other Than Standard Gauge";
-
 $tp = [
-    'title' => $title,
+    'title' => "NSW Railway Lines Other Than Standard Gauge",
     'lines' => [],
 ];
 
@@ -95,7 +93,6 @@ foreach ($lines as $l) {
     ];
 }
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('other_gauge.latte', $tp));
+normal_page('infra-other-gauge.latte', $tp);
 
 ?>

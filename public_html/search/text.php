@@ -248,10 +248,9 @@ function perform_search($tp)
     return $tp;
 }
 
-$title = "Text Search";
 
 $tp = [
-    'title' => $title
+    'title' => "Text Search",
 ];
 
 $searchmode = quote_external(get_post("searchmode"));
@@ -260,8 +259,7 @@ if ($searchmode) {
     $tp = perform_search($tp);
 }
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('text.latte', $tp));
+normal_page('search-text.latte', $tp);
 
 return;
 

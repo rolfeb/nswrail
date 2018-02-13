@@ -139,8 +139,7 @@ function theme_gallery($theme, $themeextra, $title, $intro)
 
     # TODO: add dummy entries to pad out a full row if there is only a single partial row
 
-    $latte = new Latte\Engine;
-    display_page($title, $latte->renderToString('gallery.latte', $tp));
+    normal_page('photo-gallery.latte', $tp);
 }
 
 #

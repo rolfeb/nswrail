@@ -1,11 +1,10 @@
 <?php
 
-require_once "site.inc";
+require "site.inc";
 
-$title = "ARHS Bulletin Index Search";
-
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("bulletin.tpl");
+$tp = [
+    'title' => "ARHS Bulletin Index Search",
+];
 
 $stmt = $db->stmt_init();
 $stmt->prepare("
@@ -21,24 +20,21 @@ $stmt->prepare("
 ")
     or dbi_error_trace("prepare failed");
 
-$last_date = "[unknown]";
-
 $stmt->execute();
 $stmt->bind_result($month, $year);
 
-if ($stmt->fetch())
-{
-    $months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
-        "Sep", "Oct", "Nov", "Dec");
+if ($stmt->fetch()) {
+    $months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
+        "Sep", "Oct", "Nov", "Dec"];
 
     $last_date = $months[$month-1] . " $year";
+} else {
+    $last_date = "[unknown]";
 }
 $stmt->close();
 
-$t->setCurrentBlock("CONTENT");
-$t->setVariable("TITLE", $title);
-$t->setVariable("LATEST", $last_date);
-$t->parseCurrentBlock();
-display_page($title, $t->get("CONTENT"));
+$tp['latest_year'] = $last_date;
+
+normal_page('search-bulletin.latte', $tp);
 
 ?>

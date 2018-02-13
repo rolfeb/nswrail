@@ -2,10 +2,8 @@
 
 require 'site.inc';
 
-$title = 'Planned NSW Railway Lines';
-
 $tp = [
-    'title' => $title,
+    'title' => 'Planned NSW Railway Lines',
     'lines' => [],
 ];
 
@@ -317,7 +315,6 @@ modifications as may be considered desirable by the Constructing Authority.
 EOS
 ];
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('planned.latte', $tp));
+normal_page('articles-planned.latte', $tp);
 
 ?>

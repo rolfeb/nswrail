@@ -30,8 +30,10 @@ function get_photo_queue_item_html($tp, $image)
         ];
     }
 
+    $template_dir = $_SERVER['TEMPLATE_DIR'];
+
     $latte = new Latte\Engine;
-    return $latte->renderToString('photo-queue-item.latte', $tp);
+    return $latte->renderToString("$template_dir/upload-photo-queue-item.latte", $tp);
 }
 
 ?>

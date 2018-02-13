@@ -2,10 +2,8 @@
 
 require "site.inc";
 
-$title = "NSW Railway Spirals";
-
 $tp = [
-    'title' => $title,
+    'title' => "NSW Railway Spirals",
     'spirals' => [],
 ];
 
@@ -26,7 +24,6 @@ foreach ($spirals as $l)
     ];
 }
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('spirals.latte', $tp));
+normal_page('infra-spirals.latte', $tp);
 
 ?>

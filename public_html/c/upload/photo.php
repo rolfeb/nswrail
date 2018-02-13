@@ -39,8 +39,7 @@ function show_upload_form()
     $head .= '<script type="text/javascript" src="/c/upload/photo.js"></script>';
     $head .= "\n";
 
-    $latte = new Latte\Engine;
-    display_page('Photograph Upload', $latte->renderToString('photo.latte', $tp),
+    normal_page('upload-photo.latte', $tp,
         [
             'HEAD-EXTRA' => $head
         ]
@@ -60,6 +59,5 @@ try {
 } catch (Exception $e) {
     report_error($e);
 }
-
 
 ?>

@@ -2,13 +2,10 @@
 
 require "site.inc";
 
-$title = "NSW Turntables and Triangles Map";
-
 $tp = [
-    'title' => $title,
+    'title' => "NSW Turntables and Triangles Map",
 ];
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('turning-facilities.latte', $tp));
+normal_page('maps-turning-facilities.latte', $tp);
 
 ?>

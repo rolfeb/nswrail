@@ -2,11 +2,10 @@
 
 require "site.inc";
 
-$title = "The Widemere Quarry Branch";
+$tp = [
+    'title' => "The Widemere Quarry Branch",
+];
 
-$tp = ['title' => $title];
-
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('widemere.latte', $tp));
+normal_page('articles-widemere.latte', $tp);
 
 ?>

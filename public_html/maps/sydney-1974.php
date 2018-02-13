@@ -1,14 +1,11 @@
 <?php
 
-require_once "site.inc";
-
-$title = "Sydney Network Map - 1974";
+require "site.inc";
 
 $tp = [
-    'title' => $title,
+    'title' => "Sydney Network Map - 1974",
 ];
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('sydney-1974.latte', $tp));
+normal_page('maps-sydney-1974.latte', $tp);
 
 ?>

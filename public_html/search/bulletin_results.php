@@ -1,8 +1,10 @@
 <?php
 
-require_once "site.inc";
+require "site.inc";
 
-$title = "ARHS Bulletin Search Results";
+$tp = [
+    'title' => "ARHS Bulletin Search Results",
+];
 
 $title_keywords = quote_external(get_post("titlekeywords"));
 $title_join = quote_external(get_post("titlejoin"));
@@ -15,8 +17,6 @@ $issue = quote_external(get_post("issue"));
 $month = quote_external(get_post("month"));
 $year = quote_external(get_post("year"));
 
-$t = new HTML_Template_ITX(".");
-$t->loadTemplateFile("bulletin_results.tpl");
 
 $months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
     "Sep", "Oct", "Nov", "Dec");
@@ -154,11 +154,12 @@ $stmt->execute();
 $stmt->bind_result($art_title, $author, $notes, $volume, $issue, $month, $year,
     $pages);
 
-while ($stmt->fetch())
-{
+while ($stmt->fetch()) {
     $art_title = htmlentities($art_title);
     $notes = htmlentities($notes);
 
+    $tp['opt_warning'] = 'WARNING: results disabled due to security issues';
+    /*
     $t->setCurrentBlock("ARTICLE");
     $t->setVariable("ART_TITLE", $art_title);
     $t->setVariable("AUTHOR", $author);
@@ -170,14 +171,10 @@ while ($stmt->fetch())
     $t->setVariable("YEAR", $year);
     $t->setVariable("PAGES", $pages);
     $t->parseCurrentBlock();
+    */
 }
 $stmt->close();
 
-$t->setCurrentBlock("CONTENT");
-$t->setVariable("TITLE", $title);
-$t->setVariable("QUERY", "$where_clause");
-$t->parseCurrentBlock();
-
-display_page($title, $t->get("CONTENT"));
+normal_page('search-bulletin-results.latte', $tp);
 
 ?>

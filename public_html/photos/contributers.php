@@ -37,7 +37,6 @@ while ($stmt->fetch()) {
 }
 $stmt->close();
 
-$latte = new Latte\Engine;
-display_page($title, $latte->renderToString('contributers.latte', $tp));
+normal_page('photo-contributers.latte', $tp);
 
 ?>

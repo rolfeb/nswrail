@@ -2,40 +2,26 @@
 
 function error_page($message, $url=NULL)
 {
-    global $BASE_PATH;
-
     if (!isset($url)) {
         $url = get_config('website-url');
     }
 
-    $title = 'Error';
-
     $tp = [
-        'title' => $title,
+        'title' => 'Error',
         'text' => $message,
         'continue_url' => $url,
     ];
 
-    $template = "$BASE_PATH/c/tpl/page-error.latte";
-
-    $latte = new Latte\Engine;
-    display_page($title, $latte->renderToString($template, $tp));
+    normal_page('page-error.latte', $tp);
 }
 
 function noperm_page()
 {
-    global $BASE_PATH;
-
-    $title = 'Error';
-
     $tp = [
-        'title' => $title,
+        'title' => 'Error',
     ];
 
-    $template = "$BASE_PATH/c/tpl/page-noperm.latte";
-
-    $latte = new Latte\Engine;
-    display_page($title, $latte->renderToString($template, $tp));
+    normal_page('page-noperm.latte', $tp);
 }
 
 class UserError extends Exception { }
