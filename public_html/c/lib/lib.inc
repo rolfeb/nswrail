@@ -5,7 +5,7 @@ if (version_compare(PHP_VERSION, "5.6") == -1) {
     require "thirdparty/password_compat/lib/password.php";
 }
 
-require "HTML/Template/ITX.php";
+# require "HTML/Template/ITX.php";
 require "HTML/BBCodeParser.php";
 
 require 'thirdparty/PHPMailer/src/Exception.php';

@@ -312,7 +312,7 @@ function dbi_error_trace($text)
 
 function url_location($state, $location, $line='')
 {
-    $url = "/locations/show.php?" . urlenc("name=$state:$location");
+    $url = "/locations/details.php?" . urlenc("name=$state:$location");
  
     if ($line) {
         $url .= "&" . urlenc("line=$line");

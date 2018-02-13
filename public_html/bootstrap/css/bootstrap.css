@@ -9299,4 +9299,8 @@ ul .line-open-closed {
 .table-clean td {
   border: none;
 }
+
+.caption-highlight {
+  background-color: #ffc107;
+}
 /*# sourceMappingURL=bootstrap.css.map */
