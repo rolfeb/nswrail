@@ -1,7 +1,5 @@
 <?php
 
-require "site.inc";
-require "gallery.inc";
+require "phplib/photos/turntable.php";
 
-theme_gallery(PhotoThemes::Turntable, "", "NSW Railway Turntable Photos", "");
 ?>

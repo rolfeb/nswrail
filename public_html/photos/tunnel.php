@@ -1,7 +1,5 @@
 <?php
 
-require "site.inc";
-require "gallery.inc";
+require "phplib/photos/tunnel.php";
 
-theme_gallery(PhotoThemes::Tunnel, "", "NSW Railway Tunnel Photos", "");
 ?>

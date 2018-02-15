@@ -2,7 +2,7 @@
 # PHP settings
 #
 # XXX: clean this up!
-php_value include_path "/work/dev/nswrail-dev/phplib:/work/dev/nswrail-dev/public_html/c/lib:/work/dev/nswrail-dev/public_html/c:/work/pear/PEAR:/work/dev/nswrail-dev/:."
+php_value include_path "/work/dev/nswrail-dev/phplib:/work/dev/nswrail-dev/phplib/lib:/work/dev/nswrail-dev/public_html/c:/work/pear/PEAR:/work/dev/nswrail-dev/:."
 php_value date.timezone "Australia/NSW"
 
 #

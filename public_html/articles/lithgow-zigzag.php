@@ -1,12 +1,5 @@
 <?php
 
-require "site.inc";
-
-$tp = [
-    'title' => "The Lithgow Zig-Zag",
-];
-
-normal_page('articles-lithgow_zigzag.latte', $tp);
-
+require "phplib/articles/lithgow-zigzag.php";
 
 ?>

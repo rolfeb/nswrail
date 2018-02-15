@@ -1,7 +1,5 @@
 <?php
 
-require "site.inc";
-require "gallery.inc";
+require "phplib/photos/diagram.php";
 
-theme_gallery(PhotoThemes::Diagram, "", "NSW Railway Signal Diagram Photos", "");
 ?>

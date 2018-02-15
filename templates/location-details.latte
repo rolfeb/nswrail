@@ -2,9 +2,9 @@
     Parameters:
         title
 
+        opt_prev_next_icon
         ne_line_prev_url
         line_prev_name
-        prev_next_icon
         ne_line_next_url
         line_next_name
 
@@ -61,6 +61,7 @@
 *}
 <h1>{$title}</h1>
 
+{ifset $opt_prev_next_icon}
 <div class="d-flex justify-content-center">
   <div style="flex: 9; display: flex; justify-content: center;">
     {ifset $ne_line_prev_url}
@@ -68,7 +69,7 @@
     {/ifset}
   </div>
   <div style="flex: 1; display: flex; justify-content: center;">
-    <span><img src="{$prev_next_icon}" alt=""></span>
+    <span><img src="{$opt_prev_next_icon}" alt=""></span>
   </div>
   <div style="flex: 9; display: flex; justify-content: center;">
     {ifset $ne_line_next_url}
@@ -76,6 +77,7 @@
     {/ifset}
   </div>
 </div>
+{/ifset}
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
@@ -279,7 +281,7 @@ $('#imageDisplay').on('show.bs.modal', function(e) {
   
     // custom icon for the location
     var icon = new google.maps.MarkerImage(
-      'images/crosshair.png',
+      '/media/images/crosshair.png',
       new google.maps.Size(63, 63),   // size
       new google.maps.Point(0, 0),    // origin
       new google.maps.Point(32, 32)   // anchor

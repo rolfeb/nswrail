@@ -1,7 +1,5 @@
 <?php
 
-require "site.inc";
-require "gallery.inc";
+require "phplib/photos/safeworking.php";
 
-theme_gallery(PhotoThemes::Safeworking, "", "NSW Railway Safeworking Photos", "");
 ?>

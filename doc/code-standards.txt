@@ -3,3 +3,48 @@
 - .inc files contain functions / classes only
 - .php files contain code executed as part of a request (and maybe also functions)
 - prefer ' over " for strings, unless variable interpolation is needed
+- Use $_REQUEST[] in preference to $_POST[] or $_GET[]
+- Always use blocks for if, else, while etc
+    - { and } are on line start/end, not their own line (except for functions)
+- for php request pages, put functions at top then the main code
+- standard permission check:
+    if (!$user->is_<role>()) {
+        noperm_page();
+    }
+
+Style
+-----
+
+- Standard table layout:
+    <table class="table table-sm table-responsive-md">
+    <thead class="thead-light">
+
+    Where rows are colours, it is better to make the heading line stand out more
+    using:
+        <thead class="thead-dark">
+
+    Right align a <th>:
+        <th style="text-align:right">
+
+    Make a table not span the full width of the container:
+        <table class="table table-sm table-responsive-md" style="width: auto !important">
+
+
+- Standard form buttons:
+    <input type="submit" class=btn btn-secondary" name="action" value="Cancel">
+    <input type="reset" class=btn btn-secondary" value="Reset">
+    <input type="submit" class="btn btn-primary" name="action" value="Submit">
+
+Standard php behaviour
+----------------------
+
+All .php scripts must catch exceptions at the top level
+All form handling scripts must consult $_GET or $_POST as appropriate
+All form handling scripts must apply type-checking to GET/POST values
+All content must be abstracted into a function and moved out of public_html
+
+SQL behaviour
+-------------
+
+Bind variables must be used for all SQL parameterisation
+There is no need to check for errors from mysqli functions (exceptions are used)

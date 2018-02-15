@@ -1,7 +1,5 @@
 <?php
 
-require "site.inc";
-require "gallery.inc";
+require "phplib/photos/signal_box.php";
 
-theme_gallery(PhotoThemes::Signalbox, "", "NSW Signal Box Photos", "");
 ?>

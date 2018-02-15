@@ -1,7 +1,5 @@
 <?php
 
-require "site.inc";
-require "gallery.inc";
+require "phplib/photos/night.php";
 
-theme_gallery(PhotoThemes::Night, "", "NSW Railway Station Night Photos", "");
 ?>
