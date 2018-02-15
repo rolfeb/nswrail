@@ -1,13 +1,16 @@
 #
 # PHP settings
 #
-php_value include_path ".:/home/rolfeb/public_html/test/c:/home/rolfeb/PEAR:/home/rolfeb:/home/rolfeb/pear/PEAR"
+php_value include_path "/home/rolfeb/phplib:/home/rolfeb/phplib/lib:/home/rolfeb/test/public_html/c:/home/rolfeb:."
 php_value date.timezone "Australia/NSW"
 
 #
 # Configuration parameters
+#  These are accessed via $_SERVER['variable'].
 #
 SetEnv BASE_PATH                "/home/rolfeb/public_html/test"
+SetEnv PHPLIB_DIR               "/home/rolfeb/phplib"
+SetEnv TEMPLATE_DIR             "/home/rolfeb/templates"
 SetEnv NSWRAIL_CONFIG_FILE      "/home/rolfeb/config/test.nswrail.net.json"
 
 #
@@ -30,6 +33,7 @@ RewriteRule ^index.html$    / [R]
 # Other settings
 #
 DirectoryIndex index.php
+Header set X-Robots-Tag "noindex, nofollow"
 
 #
 # Permissions
