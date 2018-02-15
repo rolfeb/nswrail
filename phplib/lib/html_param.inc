@@ -1,5 +1,10 @@
 <?php
 
+function is_intstr($s)
+{
+    return filter_var($s, FILTER_VALIDATE_INT) !== FALSE;
+}
+
 function is_stringN($s, $n)
 {
     if ($s == '') {
@@ -27,7 +32,9 @@ function check($key, $checker, $is_get, $is_optional)
 
     if (!array_key_exists($key, $dict)) {
         if ($is_optional) {
-            if ($checker == 'is_string') {
+            if ($checker == 'is_intstr') {
+                return NULL;
+            } else if ($checker == 'is_string') {
                 return '';
             } else if ($checker == 'is_string2') {
                 return ':';
@@ -39,8 +46,13 @@ function check($key, $checker, $is_get, $is_optional)
     }
     $v = $dict[$key];
     if (!$checker($v)) {
-        throw new SecurityError("bad type for '$method' parameter: $key");
+        throw new SecurityError("bad type for '$method' parameter: $key=[$v]");
     }
+
+    if ($checker == 'is_intstr') {
+        return intval($v);
+    }
+
     return $v;
 }
 
@@ -51,7 +63,7 @@ function param_string($key, $dict, $is_optional)
 
 function param_integer($key, $dict, $is_optional)
 {
-    return check($key, 'is_int', $dict, $is_optional);
+    return check($key, 'is_intstr', $dict, $is_optional);
 }
 
 function param_string2($key, $dict, $is_optional)
@@ -93,9 +105,19 @@ function param_get_integer($key)
     return param_integer($key, $_GET, FALSE);
 }
 
+function param_get_integer_opt($key)
+{
+    return param_integer($key, $_GET, TRUE);
+}
+
 function param_post_integer($key)
 {
     return param_integer($key, $_POST, FALSE);
+}
+
+function param_post_integer_opt($key)
+{
+    return param_integer($key, $_POST, TRUE);
 }
 
 /* string:string */

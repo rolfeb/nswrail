@@ -178,40 +178,6 @@ function html_markup_textblock($text)
     return "<p>$text</p>";
 }
 
-function get_post($varname, $defval = NULL)
-{
-    if (array_key_exists($varname, $_POST)) {
-        $v = $_POST[$varname];
-    } elseif (array_key_exists($varname, $_GET)) {
-        $v = $_GET[$varname];
-    } else {
-        $v = $defval;
-    }
-    return urldecode($v);
-}
-
-function post_only($varname, $defval = NULL)
-{
-    if (array_key_exists($varname, $_POST)) {
-        $v = $_POST[$varname];
-    } else {
-        $v = $defval;
-    }
-    return urldecode($v);
-}
-
-
-function quote_external($text)
-{
-    global $db;
-
-    if (get_magic_quotes_gpc()) {
-        $text = stripslashes($text);
-    }
-
-    return $db->real_escape_string($text);
-}
-
 function make_canonical_name($name)
 {
     # replace _ with space

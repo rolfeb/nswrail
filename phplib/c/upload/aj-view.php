@@ -20,7 +20,7 @@ if ($user->is_guest()) {
     noperm_page();
 }
 
-$image = $_REQUEST['image'];
+$image = param_get_string('image');
 
 try {
     display_thumbnail_image($image);

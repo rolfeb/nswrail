@@ -48,11 +48,11 @@ function perform_search($tp)
 {
     global $db;
 
-    $keywords = quote_external(get_post("keywords"));
-    $keyword_join = quote_external(get_post("keywordjoin"));
-    $match_locnname = quote_external(get_post("matchlocnname"));
-    $match_locndesc = quote_external(get_post("matchlocndesc"));
-    $match_photo = quote_external(get_post("matchphotos"));
+    $keywords = param_get_string_opt("keywords");
+    $keyword_join = param_get_string_opt("keywordjoin");
+    $match_locnname = param_get_string_opt("matchlocnname");
+    $match_locndesc = param_get_string_opt("matchlocndesc");
+    $match_photo = param_get_string_opt("matchphotos");
 
     $rows = [];
 
@@ -254,7 +254,7 @@ function run_search_text()
         'title' => "Text Search",
     ];
 
-    $searchmode = quote_external(get_post("searchmode"));
+    $searchmode = param_get_string_opt("searchmode");
 
     if ($searchmode) {
         $tp = perform_search($tp);

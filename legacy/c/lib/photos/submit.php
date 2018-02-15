@@ -1,6 +1,6 @@
 <?php
 
-require_once 'site.inc';
+require 'site.inc';
 
 if (!auth_priv_normal())
     noperm_page();

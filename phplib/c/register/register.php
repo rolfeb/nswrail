@@ -121,25 +121,22 @@ function activate_new_account($activate_code)
 }
 
 try {
-    if (isset($_POST['username'])) {
+    if (param_post_string_opt('username') != '') {
         #
         # This is a registration form submittal
         #
-        if (!isset($_POST['fullname']) || !isset($_POST['password1']) || !isset($_POST['password2'])) {
-            throw new InternalError('missing parameter');
-        }
-        $emailaddr = $_POST['username'];
-        $fullname = $_POST['fullname'];
-        $password1 = $_POST['password1'];
-        $password2 = $_POST['password2'];
-        $referrer = $_POST['referrer'];
+        $emailaddr = param_post_string('username');
+        $fullname = param_post_string('fullname');
+        $password1 = param_post_string('password1');
+        $password2 = param_post_string('password2');
+        $referrer = param_post_string('referrer');
 
         process_registration_form($emailaddr, $fullname, $password1, $password2, $referrer);
-    } else if (isset($_GET['id'])) {
+    } else if (param_get_string_opt('id') != '') {
         #
         # This is a registration activation
         #
-        $activate_code = $_GET['id'];
+        $activate_code = param_get_string_opt('id');
 
         activate_new_account($activate_code);
     } else {

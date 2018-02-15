@@ -10,16 +10,16 @@ function run_search_bulletin_results()
         'title' => "ARHS Bulletin Search Results",
     ];
 
-    $title_keywords = quote_external(get_post("titlekeywords"));
-    $title_join = quote_external(get_post("titlejoin"));
-    $author_keywords = quote_external(get_post("authorkeywords"));
-    $synopsis_keywords = quote_external(get_post("synopsiskeywords"));
-    $synopsis_join = quote_external(get_post("synopsisjoin"));
-    $volume = quote_external(get_post("volume"));
-    $volume_type = quote_external(get_post("volumetype"));
-    $issue = quote_external(get_post("issue"));
-    $month = quote_external(get_post("month"));
-    $year = quote_external(get_post("year"));
+    $title_keywords = param_get_string_opt("titlekeywords");
+    $title_join = param_get_string_opt("titlejoin");
+    $author_keywords = param_get_string_opt("authorkeywords");
+    $synopsis_keywords = param_get_string_opt("synopsiskeywords");
+    $synopsis_join = param_get_string_opt("synopsisjoin");
+    $volume = param_get_integer_opt("volume");
+    $volume_type = param_get_string_opt("volumetype");
+    $issue = param_get_integer_opt("issue");
+    $month = param_get_integer_opt("month");
+    $year = param_get_integer_opt("year");
 
 
     $months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
@@ -95,7 +95,7 @@ function run_search_bulletin_results()
         $where_clause = "$where_clause( $subclause )";
     }
 
-    if ($volume) {
+    if ($volume !== NULL) {
         #
         # Include volume in search
         #
@@ -108,7 +108,7 @@ function run_search_bulletin_results()
         $where_clause = "$where_clause( $subclause )";
     }
 
-    if ($issue) {
+    if ($issue !== NULL) {
         #
         # Include issue in search
         #
@@ -121,7 +121,7 @@ function run_search_bulletin_results()
         $where_clause = "$where_clause( $subclause )";
     }
 
-    if ($month) {
+    if ($month !== NULL) {
         #
         # Include month in search
         #
@@ -134,7 +134,7 @@ function run_search_bulletin_results()
         $where_clause = "$where_clause( $subclause )";
     }
 
-    if ($year) {
+    if ($year !== NULL) {
         #
         # Include year in search
         #

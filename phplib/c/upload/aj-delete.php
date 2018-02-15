@@ -28,7 +28,7 @@ if ($user->is_guest()) {
 }
 
 try {
-    $image = $_REQUEST['key'];
+    $image = param_get_string('key');
     delete_uploaded_image($image);
     $reply = [];
 } catch (Exception $e) {

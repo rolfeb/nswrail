@@ -147,15 +147,15 @@ if ($user->is_guest()) {
 }
 
 try {
-    $state = $_REQUEST['state'];
-    $location = $_REQUEST['location'];
-    $file = $_REQUEST['file'];
-    $daterange = $_REQUEST['daterange'];
-    $day = $_REQUEST['day'];
-    $month = $_REQUEST['month'];
-    $year = $_REQUEST['year'];
-    $caption = $_REQUEST['caption'];
-    $tags = $_REQUEST['tags'];
+    $state = param_post_string('state');
+    $location = param_post_string('location');
+    $file = param_post_string('file');
+    $daterange = param_post_integer('daterange');
+    $day = param_post_integer('day');
+    $month = param_post_integer('month');
+    $year = param_post_integer('year');
+    $caption = param_post_string('caption');
+    $tags = param_post_string('tags');
 
     publish_uploaded_image($state, $location, $file, $daterange, $day, $month,
         $year, $caption, $tags);

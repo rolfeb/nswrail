@@ -14,10 +14,12 @@ function try_login($username, $password, $remote_ip)
 }
 
 try {
-    # XXX: validate args (especially missing)
-    $username = quote_external($_POST["username"]);
-    $password = quote_external($_POST["password"]);
-    $referer = quote_external($_SERVER["HTTP_REFERER"]);
+    $username = param_post_string("username");
+    $password = param_post_string("password"];
+    $referer = $_SERVER["HTTP_REFERER"];
+    if (!isset($referer)) {
+        $referer = get_config('website-url');
+    }
 
     header("Cache-control: private");
 

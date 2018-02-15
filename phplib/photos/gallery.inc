@@ -24,9 +24,9 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     #
     # Get current display state
     #
-    $order = quote_external(get_post("order", ""));     # location, year
-    $mode = quote_external(get_post("mode", ""));       # thumbnail, text
-    $page = quote_external(get_post("page", "1"));
+    $order = param_get_string_opt("order");     # = "location", "year"
+    $mode = param_get_string_opt("mode");       # = "thumbnail", "listing"
+    $page = param_get_integer_opt("page");
 
     if ($order != "location" && $order != "year") {
         $order = "location";
@@ -34,7 +34,7 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     if ($mode != "thumbnail" && $mode != "listing") {
         $mode = "thumbnail";
     }
-    if ($page < 1) {
+    if ($page === NULL || $page < 1) {
         $page = 1;
     }
 

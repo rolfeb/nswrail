@@ -115,7 +115,7 @@ function show_user_modify_screen()
         'statuses' => [],
     ];
 
-    $uid = quote_external($_REQUEST['uid']);
+    $uid = param_post_integer('uid');
 
     $stmt = $db->stmt_init();
     $stmt->prepare("
@@ -221,11 +221,11 @@ function update_user_details()
     global $map_role_flag_to_string;
     global $map_status_flag_to_string;
 
-    $uid = $_REQUEST['uid'];
-    $username = $_REQUEST['username'];
-    $fullname = $_REQUEST['fullname'];
-    $password1 = $_REQUEST['password1'];
-    $password2 = $_REQUEST['password2'];
+    $uid = param_post_integer('uid');
+    $username = param_post_string('username');
+    $fullname = param_post_string('fullname');
+    $password1 = param_post_string('password1');
+    $password2 = param_post_string('password2');
 
     if (strlen($username) < 5
             || strpos($username, "@") == false
@@ -239,13 +239,13 @@ function update_user_details()
 
     $role = 0;
     foreach ($map_role_flag_to_string as $f => $s) {
-        if (isset($_REQUEST["ROLE-$s"])) {
+        if (param_post_string_opt("ROLE-$s") != '') {
             $role |= $f;
         }
     }
     $status = 0;
     foreach ($map_status_flag_to_string as $f => $s) {
-        if (isset($_REQUEST["STATUS-$s"])) {
+        if (param_post_string_opt("STATUS-$s") != '') {
             $status |= $f;
         }
     }
@@ -293,10 +293,10 @@ function create_user_details()
     global $map_role_flag_to_string;
     global $map_status_flag_to_string;
 
-    $username = $_REQUEST['username'];
-    $fullname = $_REQUEST['fullname'];
-    $password1 = $_REQUEST['password1'];
-    $password2 = $_REQUEST['password2'];
+    $username = param_post_string_opt('username');
+    $fullname = param_post_string_opt('fullname');
+    $password1 = param_post_string_opt('password1');
+    $password2 = param_post_string_opt('password2');
 
     if (strlen($username) < 5
             || strpos($username, "@") == false
@@ -314,13 +314,13 @@ function create_user_details()
 
     $role = 0;
     foreach ($map_role_flag_to_string as $f => $s) {
-        if (isset($_REQUEST["ROLE-$s"])) {
+        if (param_post_string_opt("ROLE-$s"]) != '') {
             $role |= $f;
         }
     }
     $status = 0;
     foreach ($map_status_flag_to_string as $f => $s) {
-        if (isset($_REQUEST["STATUS-$s"])) {
+        if (param_post_string_opt("STATUS-$s"]) != '') {
             $status |= $f;
         }
     }
@@ -361,24 +361,25 @@ if (!$user->is_superuser()) {
 }
 
 try {
-    if (isset($_REQUEST['mode'])) {
-        $mode = $_REQUEST['mode'];
-
+    $mode = param_get_string_opt('mode');
+    if ($mode != '') {
         if ($mode == 'add') {
-            if (!isset($_REQUEST['action'])) {
+            $action = param_get_string_opt('action');
+            if ($action == '') {
                 show_user_add_screen();
             } else {
-                if ($_REQUEST['action'] == 'Cancel') {
+                if ($action == 'Cancel') {
                     header("Location: usermaint.php");
                     exit();
                 }
                 create_user_details();
             }
         } elseif ($mode == 'modify') {
-            if (!isset($_REQUEST['action'])) {
+            $action = param_get_string_opt('action');
+            if ($action == '') {
                 show_user_modify_screen();
             } else {
-                if ($_REQUEST['action'] == 'Cancel') {
+                if ($action == 'Cancel') {
                     header("Location: usermaint.php");
                     exit();
                 }

@@ -52,10 +52,6 @@ if ($user->is_guest()) {
 
 try {
     show_upload_form();
-    # print_r($_REQUEST);
-    # print_r($_FILES);
-    # throw new InternalError('not yet implemented');
-
 } catch (Exception $e) {
     report_error($e);
 }
