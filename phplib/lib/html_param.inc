@@ -56,112 +56,112 @@ function check($key, $checker, $is_get, $is_optional)
     return $v;
 }
 
-function param_string($key, $dict, $is_optional)
+function param_string($key, $is_get, $is_optional)
 {
-    return check($key, 'is_string', $dict, $is_optional);
+    return check($key, 'is_string', $is_get, $is_optional);
 }
 
-function param_integer($key, $dict, $is_optional)
+function param_integer($key, $is_get, $is_optional)
 {
-    return check($key, 'is_intstr', $dict, $is_optional);
+    return check($key, 'is_intstr', $is_get, $is_optional);
 }
 
-function param_string2($key, $dict, $is_optional)
+function param_string2($key, $is_get, $is_optional)
 {
-    return check($key, 'is_string2', $dict, $is_optional);
+    return check($key, 'is_string2', $is_get, $is_optional);
 }
 
-function param_string3($key, $dict, $is_optional)
+function param_string3($key, $is_get, $is_optional)
 {
-    return check($key, 'is_string3', $dict, $is_optional);
+    return check($key, 'is_string3', $is_get, $is_optional);
 }
 
 /* string */
 
 function param_get_string($key)
 {
-    return param_string($key, $_GET, FALSE);
+    return param_string($key, TRUE, FALSE);
 }
 
 function param_get_string_opt($key)
 {
-    return param_string($key, $_GET, TRUE);
+    return param_string($key, TRUE, TRUE);
 }
 
 function param_post_string($key)
 {
-    return param_string($key, $_POST, FALSE);
+    return param_string($key, FALSE, FALSE);
 }
 
 function param_post_string_opt($key)
 {
-    return param_string($key, $_POST, TRUE);
+    return param_string($key, FALSE, TRUE);
 }
 
 /* integer */
 
 function param_get_integer($key)
 {
-    return param_integer($key, $_GET, FALSE);
+    return param_integer($key, TRUE, FALSE);
 }
 
 function param_get_integer_opt($key)
 {
-    return param_integer($key, $_GET, TRUE);
+    return param_integer($key, TRUE, TRUE);
 }
 
 function param_post_integer($key)
 {
-    return param_integer($key, $_POST, FALSE);
+    return param_integer($key, FALSE, FALSE);
 }
 
 function param_post_integer_opt($key)
 {
-    return param_integer($key, $_POST, TRUE);
+    return param_integer($key, FALSE, TRUE);
 }
 
 /* string:string */
 
 function param_get_string2($key)
 {
-    return explode(':', param_string2($key, $_GET, FALSE));
+    return explode(':', param_string2($key, TRUE, FALSE));
 }
 
 function param_get_string2_opt($key)
 {
-    return explode(':', param_string2($key, $_GET, TRUE));
+    return explode(':', param_string2($key, TRUE, TRUE));
 }
 
 function param_post_string2($key)
 {
-    return explode(':', param_string2($key, $_POST, FALSE));
+    return explode(':', param_string2($key, FALSE, FALSE));
 }
 
 function param_post_string2_opt($key)
 {
-    return explode(':', param_string2($key, $_POST, TRUE));
+    return explode(':', param_string2($key, FALSE, TRUE));
 }
 
 /* string:string:string */
 
 function param_get_string3($key)
 {
-    return explode(':', param_string3($key, $_GET, FALSE));
+    return explode(':', param_string3($key, TRUE, FALSE));
 }
 
 function param_get_string3_opt($key)
 {
-    return explode(':', param_string3($key, $_GET, TRUE));
+    return explode(':', param_string3($key, TRUE, TRUE));
 }
 
 function param_post_string3($key)
 {
-    return explode(':', param_string3($key, $_POST, FALSE));
+    return explode(':', param_string3($key, FALSE, FALSE));
 }
 
 function param_post_string3_opt($key)
 {
-    return explode(':', param_string3($key, $_POST, TRUE));
+    return explode(':', param_string3($key, FALSE, TRUE));
 }
 
 ?>

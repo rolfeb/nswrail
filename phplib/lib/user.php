@@ -35,7 +35,7 @@ class User
         # check password and status
         $stmt = $this->_db->stmt_init();
 
-        if (!$stmt->prepare('
+        $stmt->prepare('
             select
                 U.uid,
                 U.password,
@@ -44,9 +44,7 @@ class User
                 r_user U
             where
                 U.username = ?
-        ')) {
-            throw new InternalError('prepare failed: ' . $stmt->error);
-        }
+        ');
 
         $stmt->bind_param('s', $username);
         $stmt->execute();
@@ -71,31 +69,31 @@ class User
         # Update last-login details
         $stmt = $this->_db->stmt_init();
 
-        if (!$stmt->prepare('
+        $stmt->prepare('
             update r_user
             set
                 last_login_addr = ?,
                 last_login_time = ?
             where
                 uid = ?
-        ')) {
-            throw new InternalError('prepare failed: ' . $stmt->error);
-        }
+        ');
 
         $now_dt = date('Y-m-d H:i:s');
         $stmt->bind_param('ssi', $ip_addr, $now_dt, $uid);
-
         $stmt->execute();
         $stmt->close();
 
         # Load this user and set their session
         $this->load_user_from_db(NULL, $username);
+        session_regenerate_id();
         $_SESSION['uid'] = $this->uid;
 	}
 
 	public function logout()
     {
+		session_unset();
 		session_destroy();
+        session_regenerate_id();
 
         $this->load_guest_user();
 	}
