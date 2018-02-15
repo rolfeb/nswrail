@@ -7,7 +7,7 @@ if (version_compare(PHP_VERSION, "5.6") == -1) {
 }
 
 # require "HTML/Template/ITX.php";
-require "HTML/BBCodeParser.php";
+# require "HTML/BBCodeParser.php";
 
 require 'thirdparty/PHPMailer/src/Exception.php';
 require 'thirdparty/PHPMailer/src/PHPMailer.php';

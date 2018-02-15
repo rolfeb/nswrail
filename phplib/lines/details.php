@@ -619,9 +619,9 @@ function run_lines_details()
     }
 
     if ($state == 'NSW') {
-        $ovmap = "/maps/images/ovmaps/$line.png";
+        $ovmap = "/media/maps/ovmaps/$line.png";
     } else {
-        $ovmap = "/maps/images/ovmaps/$line" . '_' . strtolower($state) . '.png';
+        $ovmap = "/media/maps/ovmaps/$line" . '_' . strtolower($state) . '.png';
     }
     $tp['ovmap_url'] = $ovmap;
 
