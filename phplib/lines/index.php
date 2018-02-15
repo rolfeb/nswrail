@@ -32,8 +32,7 @@ function retrieve_category($category, $params)
             R.region = ? $where_extra
         order by
             R.description
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     if (!is_null($traffic)) {
         $stmt->bind_param("sss", $state, $region, $traffic);

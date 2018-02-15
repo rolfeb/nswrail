@@ -92,18 +92,14 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     }
 
     $stmt = $db->stmt_init();
-    $stmt->prepare($sql)
-        or dbi_error_trace("prepare failed");
-
+    $stmt->prepare($sql);
     $stmt->execute();
     $stmt->store_result();
     $nrows = $stmt->num_rows;
     $stmt->close();
 
     $stmt = $db->stmt_init();
-    $stmt->prepare("$sql limit $select_limits")
-        or dbi_error_trace("prepare failed");
-
+    $stmt->prepare("$sql limit $select_limits");
     $stmt->execute();
     $stmt->bind_result($state, $line, $location_state, $location, $file,
         $seqno, $year, $owner_fullname, $owner_uid, $caption);

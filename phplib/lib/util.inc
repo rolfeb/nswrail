@@ -262,20 +262,6 @@ function changelog($file)
     return $log;
 }
 
-function dbi_error_trace($text)
-{
-    global $db;
-
-    ob_start();
-    debug_print_backtrace();
-    $trace = ob_get_contents();
-    ob_end_clean();
-
-    $trace = implode(explode('\n', $trace), '<br>\n');
-
-    die("$text [" . $db->error . "]<br><pre>" . $trace . "</pre>");
-}
-
 function url_location($state, $location, $line='')
 {
     $url = "/locations/details.php?" . urlenc("name=$state:$location");

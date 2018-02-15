@@ -89,8 +89,7 @@ function get_location_details($state, $location)
             LAT.location_state = ?
             and
             LAT.location_name = ?
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
@@ -131,8 +130,7 @@ function get_location_history($state, $location)
             LEV.location_name = ?
         order by
             LEV.seqno
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
@@ -178,8 +176,7 @@ function get_location_text($state, $location, $type)
         order by
             LT.seqno desc
         limit 1
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("sss", $state, $location, $type);
     $stmt->execute();
@@ -209,8 +206,7 @@ function get_location_nphotos($state, $location)
             LP.location_name = ?
             and
             LP.hold is null
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
@@ -238,8 +234,7 @@ function get_location_ndiagrams($state, $location)
             LD.location_state = ?
             and
             LD.location_name = ?
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
@@ -276,8 +271,7 @@ function get_location_turntables($state, $location)
             LTT.location_name = ?
         order by
             LTT.seqno
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
@@ -381,8 +375,7 @@ function add_location_lines($tp, $state, $location)
             RL.mainline,
             RL.line_state,
             RL.line_name
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
@@ -492,8 +485,7 @@ function add_link_details($tp, $state, $location)
             LU.location_name = ?
         order by
             LU.seqno
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
@@ -533,8 +525,7 @@ function add_photo_details($tp, $state, $location)
             LP.hold is null
         order by
             LP.year
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
@@ -585,8 +576,7 @@ function add_photo_thumbnails($tp, $state, $location, $line_state, $line, $segme
             LP.month,
             LP.day,
             LP.seqno
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
@@ -650,8 +640,7 @@ function add_diagram_images($tp, $state, $location)
             LD.location_name = ?
         order by
             LD.year
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
@@ -707,8 +696,7 @@ function add_prev_next_links($tp, $state, $location, $line_state, $line, $segmen
         $sql_base
         and
         RL.seqno = RLn.seqno - 1
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ssiss", $line_state, $line, $segment, $state, $location);
     $stmt->execute();
@@ -722,8 +710,7 @@ function add_prev_next_links($tp, $state, $location, $line_state, $line, $segmen
         $sql_base
         and
         RL.seqno = RLn.seqno + 1
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ssiss", $line_state, $line, $segment, $state, $location);
     $stmt->execute();

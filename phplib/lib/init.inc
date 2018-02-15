@@ -143,8 +143,7 @@ function get_database_timestamp()
             DB.last_update
         from
             r_website DB
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
         
     $stmt->execute();
     $stmt->bind_result($timestamp);

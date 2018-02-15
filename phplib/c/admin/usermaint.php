@@ -68,8 +68,7 @@ function show_user_listing()
             r_user
         order by
             uid
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->execute();
     $r = dbi_bind_to_array($stmt);
@@ -125,8 +124,7 @@ function show_user_modify_screen()
             r_user
         where
             uid = ?
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("i", $uid); 
     $stmt->execute();

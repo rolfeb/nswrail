@@ -21,6 +21,7 @@ Phase 1a - core functionality
 [ ] questions for faq, photo submission
 [ ] add about/plans.txt
 [ ] rewrite landing page text
+
 [ ] fix security issues
     [y] move templates out of public_html
         [y] remove Latte instance from caller to display_page()
@@ -37,12 +38,13 @@ Phase 1a - core functionality
         [y] about
         [y] c
 
-    [ ] function to extract and type-check GET/POST values - rm quote_external
-    [ ] deprecate use of $_REQUEST
-    [ ] remove error check from database function calls
-    [ ] review all unescaped HTML output
+    [y] function to extract and type-check GET/POST values - rm quote_external
+    [y] deprecate use of $_REQUEST
+    [y] remove error check from database function calls
+    [ ] review all unescaped HTML output in Latte templates
     [ ] HTML checker on post-markdown output
     [ ] session best practices
+        [ ] re-session on privilege changes
     [ ] look at moving to PDO?
     [ ] throw exceptions on all errors, espcially from library code
         [y] throw exceptions on mysqli errors
@@ -50,14 +52,13 @@ Phase 1a - core functionality
     [ ] sanitise uploaded file types and names
     [ ] disable php execution in /media
     [ ] add a random CSRF token to each form?
-    [ ] re-session on privilege changes
     [ ] validate all SQL construction
     [ ] log errors to log/* (log_errors=On, error_log=...)
     [ ] php.ini
         [ ] disable allow_url_fopen, allow_url_include
     [ ] fold menu.cfg into main config file?
 
-[ ] deprecate prettyPhoto stuff
+[y] deprecate prettyPhoto stuff
 [ ] fix photo gallery layout on mobile
 [ ] Tenterfield in line detail page has blank close date
 [ ] colliery line symbols aren't consistent...

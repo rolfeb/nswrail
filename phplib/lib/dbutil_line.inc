@@ -29,8 +29,7 @@ function dbline_get_details($state, $line)
         group by
             RS.line_state,
             RS.line_name
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $line);
     $stmt->execute();
@@ -57,8 +56,7 @@ function dbline_get_details($state, $line)
         order by
             RT.seqno desc
         limit 1
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $line);
     $stmt->execute();
@@ -93,8 +91,7 @@ function get_line_status_class($state, $line)
             SEV.line_state = ?
             and
             SEV.line_name = ?
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt1->bind_param("ss", $state, $line);
     $stmt1->execute();
@@ -127,8 +124,7 @@ function get_line_status_class($state, $line)
         order by
             SEV.seqno desc
         limit 1
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $sections = array(
         "ON"    => 0,
@@ -197,8 +193,7 @@ function get_linemap_count($state, $line)
             RM.line_state = ?
             and
             RM.line_name = ?
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $line);
     $stmt->execute();
@@ -283,8 +278,7 @@ function dbline_get_length($state, $line)
             R.line_state,
             R.line_name,
             RS.segment
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $line);
     $stmt->execute();
@@ -340,8 +334,7 @@ function dbline_get_station_count($state, $line)
             L.location_name = RL.location_name
             and
             L.type in ('station', 'platform', 'halt')
-    ")
-        or dbi_error_trace("prepare failed");
+    ");
 
     $stmt->bind_param("ss", $state, $line);
     $stmt->execute();

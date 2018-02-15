@@ -86,8 +86,7 @@ function perform_search($tp)
                 where
                     ($subclause)
                 limit 201
-            ")
-                or dbi_error_trace("prepare failed");
+            ");
 
             call_user_func_array(array($stmt, 'bind_param'), $valrefs);
 
@@ -138,8 +137,7 @@ function perform_search($tp)
                 where
                     ($subclause)
                 limit 201
-            ")
-                or dbi_error_trace("prepare failed");
+            ");
 
             call_user_func_array([$stmt, 'bind_param'], $valrefs);
 
@@ -201,8 +199,7 @@ function perform_search($tp)
                     and
                     ($subclause)
                 limit 201
-            ")
-                or dbi_error_trace("prepare failed");
+            ");
 
             call_user_func_array([$stmt, 'bind_param'], $valrefs);
 
