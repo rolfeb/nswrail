@@ -14,7 +14,7 @@ function run_photos_contributers()
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
-            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as fullname,
+            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as owner,
             count(*)
         from
             r_location_photo RP left join r_user U on RP.owner_uid = U.uid
@@ -32,7 +32,7 @@ function run_photos_contributers()
         $tp['people'][] = [
             'name' => $fullname,
             'count' => $count,
-            'photos-url' => urlenc("/photos/owner.php?owner=" . $fullname),
+            'photos-url' => "/photos/owner.php?" . http_build_query(['owner' => $fullname]),
         ];
     }
     $stmt->close();

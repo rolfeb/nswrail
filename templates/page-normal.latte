@@ -37,7 +37,7 @@
   {* Other stuff *}
   <link type="image/gif" rel="shortcut icon" href="/c/images/favicon.gif" />
   {ifset $opt_head_extra}
-    {$opt_head_extra|noescape}
+    {$opt_head_extra|noescape}{*neok*}
   {/ifset}
 </head>
 <body {ifset $opt_body_extra}{$opt_body_extra}{/ifset}>
@@ -128,7 +128,7 @@
   {*
    * page content
    *}
-  {$page_content|noescape}
+  {$page_content|noescape}{*neok*}
 </div>
 </body>
 </html>

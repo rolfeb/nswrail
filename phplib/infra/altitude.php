@@ -100,7 +100,12 @@ function run_infra_altitude()
         list($line_state, $line_name, $line_desc, $location_state, $location_name, $location, $height) = $l;
 
         if ($location_name) {
-            $location_url = '/locations/show.php?' . urlenc("name=$location_state:$location_name");
+            $location_url =
+                '/locations/details.php?'
+                .
+                http_build_query([
+                    'name' => "$location_state:$location_name",
+                ]);
             $location_text = $location_name;
         } else {
             $location_url = '';
@@ -108,10 +113,15 @@ function run_infra_altitude()
         }
 
         $tp['highs'][] = [
-            'nc_line_url' => '/lines/details.php?' . urlenc("name=$line_state:$line_name"),
+            'ne_line_url' =>
+                '/lines/details.php?'
+                .
+                http_build_query([
+                    'name' => "$line_state:$line_name",
+                ]),
             'line_text' => $line_desc,
             'height' => $height,
-            'nc_location_url' => $location_url,
+            'ne_location_url' => $location_url,
             'location_text' => $location_text,
         ];
     }
@@ -120,7 +130,12 @@ function run_infra_altitude()
         list($line_state, $line_name, $line_desc, $location_state, $location_name, $location, $height) = $l;
 
         if ($location_name) {
-            $location_url = '/locations/show.php?' . urlenc("name=$location_state:$location_name");
+            $location_url =
+                '/locations/details.php?'
+                .
+                http_build_query([
+                    'name' => "$location_state:$location_name",
+                ]);
             $location_text = $location_name;
         } else {
             $location_url = '';
@@ -128,10 +143,15 @@ function run_infra_altitude()
         }
 
         $tp['lows'][] = [
-            'nc_line_url' => '/lines/details.php?' . urlenc("name=$line_state:$line_name"),
+            'ne_line_url' =>
+                '/lines/details.php?'
+                .
+                http_build_query([
+                    'name' => "$line_state:$line_name",
+                ]),
             'line_text' => $line_desc,
             'height' => $height,
-            'nc_location_url' => $location_url,
+            'ne_location_url' => $location_url,
             'location_text' => $location_text,
         ];
     }

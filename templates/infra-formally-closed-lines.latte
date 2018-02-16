@@ -2,10 +2,10 @@
     Parameters:
         title
         lines[]
-            nc_url
+            ne_url
             text
             closed
-            no_act_url
+            nc_act_url
             act
 *}
 <h1>{$title}</h1>
@@ -27,9 +27,9 @@ see no traffic are technically "out of use" (even the lifted ones).</p>
 </thead>
 {foreach $lines as $line}
   <tr>
-    <td><a href="{$line['nc_url']|nocheck}">{$line['text']}</a></td>
+    <td><a href="{$line['ne_url']|noescape}{*neok*}">{$line['text']}</a></td>
     <td align="right">{$line['closed']}</td>
-    <td><a href="{$line['no_act_url']|nocheck}">{$line['act']}</a></td>
+    <td><a href="{$line['nc_act_url']|nocheck}{*ncok*}">{$line['act']}</a></td>
   </tr>
 {/foreach}
 </table>

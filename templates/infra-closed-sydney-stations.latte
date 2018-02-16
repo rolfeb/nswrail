@@ -5,7 +5,7 @@
             u_line
                 text
             u_location
-                nc_url
+                ne_url
                 text
                 type
                 closure
@@ -37,7 +37,7 @@ been completely removed.</p>
     {var $loc = $row['u_location']}
     <tr>
       <td></td>
-      <td><a href="{$loc['nc_url']|nocheck}">{$loc['text']}</a></td>
+      <td><a href="{$loc['ne_url']|noescape}{*neok*}">{$loc['text']}</a></td>
       <td>{$loc['type']}</td>
       <td>{$loc['closure']}</td>
     </tr>

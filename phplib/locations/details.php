@@ -308,7 +308,7 @@ function add_location_history($tp, $state, $location)
         $count++;
 
         $name = $h["name"];
-        $date = date_cpts2html($h["day"], $h["month"], $h["year"],
+        $date_html = date_cpts2html($h["day"], $h["month"], $h["year"],
             $h["year_error"]);
 
         switch ($h["type"])
@@ -341,7 +341,7 @@ function add_location_history($tp, $state, $location)
         }
 
         $tp['history'][] = [
-            'ne_date' => $date,
+            'ne_date' => $date_html,
             'event' => $text,
         ];
     }
@@ -384,7 +384,7 @@ function add_location_lines($tp, $state, $location)
     $count = 0;
     while ($stmt->fetch()) {
         $tp['lines'][] = [
-            'nc_url' => '/lines/details.php?' . urlenc("name=$line_state:$line"),
+            'no_url' => '/lines/details.php?' . urlenc("name=$line_state:$line"),
             'text' => $description,
         ];
     }
@@ -493,7 +493,7 @@ function add_link_details($tp, $state, $location)
 
     while ($stmt->fetch()) {
         $tp['links'][] = [
-            'nc_url' => $url,
+            'url' => $url,
             'text' => $text,
         ];
     }
@@ -720,14 +720,22 @@ function add_prev_next_links($tp, $state, $location, $line_state, $line, $segmen
     $stmt->close();
 
     if ($prev_location) {
-        $tp['ne_line_prev_url'] = "/locations/details.php?"
-            . urlenc("name=$prev_state:$prev_location&line=$line_state:$line:$segment");
+        $tp['ne_line_prev_url'] =
+            "/locations/details.php?"
+            . http_build_query([
+                'name' => "$prev_state:$prev_location",
+                'line' => "$line_state:$line:$segment",
+            ]);
         $tp['line_prev_name'] = $prev_location;
     }
 
     if ($next_location) {
-        $tp['ne_line_next_url'] = '/locations/details.php?'
-            . urlenc("name=$next_state:$next_location&line=$line_state:$line:$segment");
+        $tp['ne_line_next_url'] =
+            "/locations/details.php?"
+            . http_build_query([
+                'name' => "$next_state:$next_location",
+                'line' => "$line_state:$line:$segment",
+            ]);
         $tp['line_next_name'] = $next_location;
     }
 
@@ -771,11 +779,11 @@ function run_locations_details()
 
     if ($l["geox"] and $l["geoy"])
     {
-        $latlong = sprintf("(%.4f&deg;, %.4f&deg;)",
+        $latlong_html = sprintf("(%.4f&deg;, %.4f&deg;)",
                         $l["geox"], $l["geoy"]);
     }
     else
-        $latlong = "unknown";
+        $latlong_html = "unknown";
     if ($l["geoexact"] and $l["geoexact"] == "Y")
         $posaccuracy = 'exact';
     else
@@ -816,7 +824,7 @@ function run_locations_details()
      * Add any photos or diagrams to the page
      */
     $tp = add_photo_thumbnails($tp, $state, $location, $line_state, $line_name, $segment);
-    $tp = add_diagram_images($tp, $state, $location);
+    ### $tp = add_diagram_images($tp, $state, $location);
 
     /*
      * Add the location map
@@ -843,7 +851,7 @@ function run_locations_details()
 
     $tp['facility'] = locn_type2text($l["type"]);
     $tp['status'] = locn_status2text($l["status"]);
-    $tp['ne_latlong'] = $latlong;
+    $tp['ne_latlong'] = $latlong_html;
     $tp['posaccuracy'] = $posaccuracy;
     $tp['distance'] = $km_syd;
     $tp['origin'] = $origin;

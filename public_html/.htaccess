@@ -5,6 +5,11 @@
 php_value include_path "/work/dev/nswrail-dev/phplib:/work/dev/nswrail-dev/phplib/lib:/work/dev/nswrail-dev/public_html/c:/work/pear/PEAR:/work/dev/nswrail-dev/:."
 php_value date.timezone "Australia/NSW"
 
+#php_flag log_errors On
+php_value error_log             "/work/dev/nswrail-dev/log/php-error.log"
+php_flag display_errors On
+
+
 #
 # Configuration parameters
 #  These are accessed via $_SERVER['variable'].
@@ -12,6 +17,7 @@ php_value date.timezone "Australia/NSW"
 SetEnv BASE_PATH                "/work/dev/nswrail-dev/public_html"
 SetEnv PHPLIB_DIR               "/work/dev/nswrail-dev/phplib"
 SetEnv TEMPLATE_DIR             "/work/dev/nswrail-dev/templates"
+SetEnv LOG_DIR             	    "/work/dev/nswrail-dev/log"
 SetEnv NSWRAIL_CONFIG_FILE      "/work/dev/nswrail-dev/config/nswrail-dev.json"
 
 #

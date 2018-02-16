@@ -6,7 +6,7 @@
             $line
             $act
             $text
-            $opt_cost
+            $opt_ne_cost
             $opt_footnote
  *}
 <h1>{$title}</h1>
@@ -27,8 +27,8 @@ completed.</p>
   {$line['text']}
   </div>
 
-  {ifset $line['opt_cost']}
-    <p>Estimated cost: {$line['opt_cost']|noescape}</p>
+  {ifset $line['opt_ne_cost']}
+    <p>Estimated cost: {$line['opt_ne_cost']|noescape}{*neok*}</p>
   {/ifset}
   
   <!-- BEGIN NOTE-SECTION -->

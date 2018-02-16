@@ -17,6 +17,90 @@ abstract class PhotoThemes
     const Tunnel        = 'tunnel';
 }
 
+function encode_argv_url($params)
+{
+    $args = [];
+    foreach ($params as $k => $v) {
+        $args[] = "$k=$v";
+    }
+
+    return "?" . urlenc(implode("&", $args));
+}
+
+#
+# Display the results page selector
+#
+function add_navigation($tp, $page, $npages, $order, $mode, $extra_params)
+{
+    #
+    # Display links to change mode or ordering
+    #
+    $params = [
+        'page' => 1,
+        'order' => $order,
+    ];
+    $params = array_merge($params, $extra_params);
+
+    if ($mode == "thumbnail") {
+        $params["mode"] = "listing";
+        $tp['alt_display_label'] = 'Listing';
+    } else {
+        $params["mode"] = "thumbnail";
+        $tp['alt_display_label'] = 'Thumbnails';
+    }
+    $tp['ne_alt_display_url'] = encode_argv_url($params);
+
+    $params = [
+        'page' => 1,
+        'mode' => $mode,
+    ];
+    $params = array_merge($params, $extra_params);
+
+    if ($order == "location") {
+        $params["order"] = "year";
+        $tp['alt_order_label'] = 'Year';
+    } else {
+        $params["order"] = "location";
+        $tp['alt_order_label'] = 'Location';
+    }
+    $tp['ne_alt_order_url'] = encode_argv_url($params);
+
+    if ($npages <= 1) {
+        return $tp;
+    }
+
+    if ($mode == "thumbnail") {
+        #
+        # Instantiate the page navigation templates for the top and bottom of
+        # the page
+        #
+        $tp['page'] = $page;
+        $tp['npages'] = $npages;
+
+        $params = [
+            'mode' => $mode,
+            'order' => $order,
+        ];
+        $params = array_merge($params, $extra_params);
+
+        if ($page > 1) {
+            $params['page'] = 1;
+            $tp['ne_nav_first_page_url'] = encode_argv_url($params);
+            $params['page'] = $page - 1;
+            $tp['ne_nav_prev_page_url'] = encode_argv_url($params);
+        }
+
+        if ($page < $npages) {
+            $params['page'] = $page + 1;
+            $tp['ne_nav_next_page_url'] = encode_argv_url($params);
+            $params['page'] = $npages;
+            $tp['ne_nav_last_page_url'] = encode_argv_url($params);
+        }
+    }
+
+    return $tp;
+}
+
 function theme_gallery($theme, $themeextra, $title, $intro)
 {
     global $db;
@@ -64,6 +148,8 @@ function theme_gallery($theme, $themeextra, $title, $intro)
         'photos' => [],
     ];
 
+    $extra_param = [];
+
     switch ($theme)
     {
     case PhotoThemes::Diagram:
@@ -88,6 +174,7 @@ function theme_gallery($theme, $themeextra, $title, $intro)
 
     case PhotoThemes::Owner:
         list($sql, $bind_types, $bind_params) = sql_owner($order, $themeextra);
+        $extra_param = ['owner' => $themeextra];
         break;
     }
 
@@ -126,7 +213,7 @@ function theme_gallery($theme, $themeextra, $title, $intro)
         $npages = 1;
     }
 
-    $tp = add_navigation($tp, $page, $npages, $order, $mode);
+    $tp = add_navigation($tp, $page, $npages, $order, $mode, $extra_param);
 
     while ($stmt->fetch()) {
         $tp['photos'][] = [
@@ -144,86 +231,6 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     # TODO: add dummy entries to pad out a full row if there is only a single partial row
 
     normal_page('photo-gallery.latte', $tp);
-}
-
-#
-# Display the results page selector
-#
-function add_navigation($tp, $page, $npages, $order, $mode)
-{
-    #
-    # Convert the URL query parameters into an associative array
-    #
-    $url = parse_url($_SERVER["REQUEST_URI"]);
-    if (array_key_exists("query", $url))
-        $args = explode("&", $url["query"]);
-    else
-        $args = array();
-
-    $argv = array();
-    foreach ($args as $kv)
-    {
-        list($key, $value) = explode("=", $kv);
-        $argv[$key] = $value;
-    }
-
-    #
-    # Display navigation to change mode or ordering
-    #
-    $m_argv = $argv;
-
-    if ($mode == "thumbnail") {
-        $m_argv["mode"] = "listing";
-        unset($m_argv["order"]);
-        unset($m_argv["page"]);
-        $tp['alt_display_label'] = 'Listing';
-    } else {
-        unset($m_argv["mode"]);
-        $m_argv["page"] = 1;
-        $tp['alt_display_label'] = 'Thumbnails';
-    }
-    $tp['alt_display_url'] = encode_argv_url($m_argv);
-
-    $m_argv = $argv;
-    if ($order == "location") {
-        $m_argv["order"] = "year";
-        $m_argv["page"] = 1;
-        $tp['alt_order_label'] = 'Year';
-    } else {
-        unset($m_argv["order"]);
-        $m_argv["page"] = 1;
-        $tp['alt_order_label'] = 'Location';
-    }
-    $tp['alt_order_url'] = encode_argv_url($m_argv);
-
-    if ($npages <= 1) {
-        return $tp;
-    }
-
-    if ($mode == "thumbnail") {
-        #
-        # Instantiate the page navigation templates for the top and bottom of
-        # the page
-        #
-        $tp['page'] = $page;
-        $tp['npages'] = $npages;
-
-        if ($page > 1) {
-            $tp['nav_first_page_url'] =
-                set_and_encode_argv_url($argv, "page", 1);
-            $tp['nav_prev_page_url'] =
-                set_and_encode_argv_url($argv, "page", $page - 1);
-        }
-
-        if ($page < $npages) {
-            $tp['nav_next_page_url'] = 
-                set_and_encode_argv_url($argv, "page", $page + 1);
-            $tp['nav_last_page_url'] = 
-                set_and_encode_argv_url($argv, "page", $npages);
-        }
-    }
-
-    return $tp;
 }
 
 #
@@ -246,7 +253,7 @@ function sql_photo_tag($theme, $sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as fullname,
+            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as owner,
             RP.owner_uid,
             RP.caption
         from
@@ -290,7 +297,7 @@ function sql_historic($sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as fullname,
+            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as owner,
             RP.owner_uid,
             RP.caption
         from
@@ -338,7 +345,7 @@ function sql_recent($sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as fullname,
+            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as owner,
             RP.owner_uid,
             RP.caption
         from
@@ -380,7 +387,7 @@ function sql_tunnel($sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as fullname,
+            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as owner,
             RP.owner_uid,
             RP.caption
         from
@@ -434,7 +441,7 @@ function sql_owner($sorting, $owner_insecure)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as fullname,
+            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as owner,
             RP.owner_uid,
             RP.caption
         from
@@ -467,27 +474,6 @@ function sql_owner($sorting, $owner_insecure)
     $bind_values = [&$owner_insecure, &$owner_insecure];
 
     return [$sql, $bind_types, $bind_values];
-}
-
-function encode_argv_url($argv)
-{
-    $params = array();
-    foreach ($argv as $k => $v)
-    {
-        $params[] = "$k=$v";
-    }
-
-    return "?" . urlenc(implode("&", $params));
-}
-
-function set_and_encode_argv_url($argv, $key, $value)
-{
-    if (strlen($value) > 0)
-        $argv[$key] = $value;
-    else
-        unset($argv[$key]);
-
-    return encode_argv_url($argv);
 }
 
 ?>

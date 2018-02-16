@@ -97,22 +97,26 @@ function run_infra_short_lived_sections()
         $month2, $year2, $year_error2, $tdiff, $length);
 
     while ($stmt->fetch()) {
-        $opened = date_cpts2text($day1, $month1, $year1, $year_error1);
-        $closed = date_cpts2text($day2, $month2, $year2, $year_error2);
+        $opened_html = date_cpts2html($day1, $month1, $year1, $year_error1);
+        $closed_html = date_cpts2html($day2, $month2, $year2, $year_error2);
 
         if ($length) {
             $length = sprintf("%.1f", $length);
         } else {
             $length = "?";
         }
+        $url = '/lines/details.php?' .
+            http_build_query([
+                'name' => "$STATE:$line",
+            ]);
 
         $tp['sections'][] = [
-            'nc_url' => '/lines/details.php?' . urlenc("name=$STATE:$line"),
+            'ne_url' => $url,
             'text' => $line_desc,
             'start' => $start_name,
             'end' => $end_name,
-            'ne_opened' => $opened,
-            'ne_closed' => $closed,
+            'ne_opened' => $opened_html,
+            'ne_closed' => $closed_html,
             'years' => floor($tdiff / 12),
             'months' => $tdiff % 12,
             'length' => $length

@@ -8,7 +8,7 @@
                 u_line
                     text
                 u_turntable
-                    nc_url
+                    ne_url
                     text
                     size_type
                     status
@@ -99,7 +99,7 @@ following have been removed or are no longer functional.</p>
       {var $tt = $row['u_turntable']}
       <tr>
         <td></td>
-        <td><a href="{$tt['nc_url']|nocheck}">{$tt['text']}</a></td>
+        <td><a href="{$tt['ne_url']|noescape}{*neok*}">{$tt['text']}</a></td>
         <td align="right">{$tt['size_type']}</td>
         <td>{$tt['status']}</td>
         <td>{$tt['notes']}</td>

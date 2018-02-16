@@ -14,7 +14,7 @@
         max_icons
         locations[]
             icons[]
-            nc_url
+            ne_url
             name
             facility
             status
@@ -64,7 +64,7 @@
     </div>
   </div>
   <div class="text">
-    {$ne_description|noescape}
+    {$ne_description|noescape}{*neok*}
   
     {foreach $links as $link}
       {if $iterator->first}<h2>Links</h2><ul>{/if}
@@ -98,11 +98,11 @@
         <td style="background-image: url({$icon}); background-position: center center; background-repeat: no-repeat; min-width: 22px;"></td>
       {/foreach}
 
-      <td class="name"><span><a href="{$loc['nc_url']|noescape}">{$loc['name']}</a></span></td>
+      <td class="name"><span><a href="{$loc['ne_url']|noescape}{*neok*}">{$loc['name']}</a></span></td>
       <td class="facility"><span>{$loc['facility']}</span></td>
       <td class="status"><span>{$loc['status']}</span></td>
-      <td class="text-right"><span>{$loc['ne_opened']|noescape}</span></td>
-      <td class="text-right"><span>{$loc['ne_closed']|noescape}</span></td>
+      <td class="text-right"><span>{$loc['ne_opened']|noescape}{*neok*}</span></td>
+      <td class="text-right"><span>{$loc['ne_closed']|noescape}{*neok*}</span></td>
       <td class="text-right"><span>{$loc['distance']}</span></td>
       <td class="text-right"><span>{$loc['nphotos']}</span></td>
     </tr>
@@ -127,8 +127,8 @@
       <tr>
         <td>&nbsp;</td>
         <td>{$sec['name']}</td>
-        <td class="text-right">{$sec['ne_opened']|noescape}<sup>{$sec['opened_fn_ids']}</sup></td>
-        <td class="text-right">{$sec['ne_closed']|noescape}<sup>{$sec['closed_fn_ids']}</sup></td>
+        <td class="text-right">{$sec['ne_opened']|noescape}{*neok*}<sup>{$sec['opened_fn_ids']}</sup></td>
+        <td class="text-right">{$sec['ne_closed']|noescape}{*neok*}<sup>{$sec['closed_fn_ids']}</sup></td>
         <td>{$sec['usage']}</td>
       </tr>
     {else} {* must be a segment *}
@@ -143,7 +143,7 @@
 
   {foreach $hist_footnotes as $fn}
     {if $iterator->first}<hr/>{/if}
-    <sup>{$fn['id']}</sup> {$fn['ne_text']|noescape}<br />
+    <sup>{$fn['id']}</sup> {$fn['ne_text']|noescape}{*neok*}<br />
   {/foreach}
 </div>
 </div>

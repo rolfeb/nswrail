@@ -2,7 +2,7 @@
     Parameters:
         title
         spirals[]
-            nc_url
+            ne_url
             text
             location1
             location2
@@ -27,7 +27,7 @@ a spiral was laid.</p>
 </thead>
 {foreach $spirals as $spiral}
   <tr>
-    <td><a href="{$spiral['nc_url']|nocheck}">{$spiral['text']}</a></td>
+    <td><a href="{$spiral['ne_url']|noescape}{*neok*}">{$spiral['text']}</a></td>
     <td>{$spiral['location1']} and {$spiral['location2']}</td>
   </tr>
 {/foreach}

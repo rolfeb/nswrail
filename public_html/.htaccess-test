@@ -4,6 +4,10 @@
 php_value include_path "/home/rolfeb/phplib:/home/rolfeb/phplib/lib:/home/rolfeb/test/public_html/c:/home/rolfeb:."
 php_value date.timezone "Australia/NSW"
 
+php_flag display_errors Off
+php_flag log_errors On
+php_value error_log             "/home/rolfeb/log/php-error.log"
+
 #
 # Configuration parameters
 #  These are accessed via $_SERVER['variable'].
@@ -11,6 +15,7 @@ php_value date.timezone "Australia/NSW"
 SetEnv BASE_PATH                "/home/rolfeb/public_html/test"
 SetEnv PHPLIB_DIR               "/home/rolfeb/phplib"
 SetEnv TEMPLATE_DIR             "/home/rolfeb/templates"
+SetEnv LOG_DIR                  "/home/rolfeb/log"
 SetEnv NSWRAIL_CONFIG_FILE      "/home/rolfeb/config/test.nswrail.net.json"
 
 #

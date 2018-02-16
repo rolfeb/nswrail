@@ -2,16 +2,16 @@
     Parameters:
         title
         highs[]
-            nc_line_url
+            ne_line_url
             line_text
             height
-            nc_location_url
+            ne_location_url
             location_text
         lows[]
-            nc_line_url
+            ne_line_url
             line_text
             height
-            nc_location_url
+            ne_location_url
             location_text
 *}
 <h1>{$title}</h1>
@@ -30,11 +30,11 @@
 </thead>
 {foreach $highs as $p}
   <tr>
-    <td><a href="{$p['nc_line_url']|nocheck}">{$p['line_text']}</a></td>
+    <td><a href="{$p['ne_line_url']|noescape}{*neok*}">{$p['line_text']}</a></td>
     <td align="right">{$p['height']} m</td>
     <td>
-    {if $p['nc_location_url']}
-      <a href="{$p['nc_location_url']|nocheck}">{$p['location_text']}</a>
+    {if $p['ne_location_url']}
+      <a href="{$p['ne_location_url']|noescape}{*neok*}">{$p['location_text']}</a>
     {else}
       {$p['location_text']}
     {/if}
@@ -55,11 +55,11 @@
 </thead>
 {foreach $lows as $p}
   <tr>
-    <td><a href="{$p['nc_line_url']|nocheck}">{$p['line_text']}</a></td>
+    <td><a href="{$p['ne_line_url']|noescape}">{$p['line_text']}</a></td>
     <td align="right">{$p['height']} m</td>
     <td>
-    {if $p['nc_location_url']}
-      <a href="{$p['nc_location_url']|nocheck}">{$p['location_text']}</a>
+    {if $p['ne_location_url']}
+      <a href="{$p['ne_location_url']|noescape}">{$p['location_text']}</a>
     {else}
       {$p['location_text']}
     {/if}

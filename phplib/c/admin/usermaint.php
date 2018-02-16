@@ -92,8 +92,8 @@ function show_user_listing()
             'uid' => $r['uid'],
             'username' => $r['username'],
             'fullname' => $r['fullname'],
-            'role' => $rolestr,
-            'status' => $statusstr,
+            'ne_role' => $rolestr,
+            'ne_status' => $statusstr,
             'joined' => $r['register_time'],
             'login' => $r['last_login_time'],
         ];
@@ -114,7 +114,7 @@ function show_user_modify_screen()
         'statuses' => [],
     ];
 
-    $uid = param_post_integer('uid');
+    $uid = param_get_integer('uid');
 
     $stmt = $db->stmt_init();
     $stmt->prepare("
@@ -308,13 +308,13 @@ function create_user_details()
 
     $role = 0;
     foreach ($map_role_flag_to_string as $f => $s) {
-        if (param_post_string_opt("ROLE-$s"]) != '') {
+        if (param_post_string_opt("ROLE-$s") != '') {
             $role |= $f;
         }
     }
     $status = 0;
     foreach ($map_status_flag_to_string as $f => $s) {
-        if (param_post_string_opt("STATUS-$s"]) != '') {
+        if (param_post_string_opt("STATUS-$s") != '') {
             $status |= $f;
         }
     }
@@ -352,9 +352,12 @@ if (!$user->is_superuser()) {
 
 try {
     $mode = param_get_string_opt('mode');
+    if ($mode == '') {
+        $mode = param_post_string_opt('mode');
+    }
     if ($mode != '') {
         if ($mode == 'add') {
-            $action = param_get_string_opt('action');
+            $action = param_post_string_opt('action');
             if ($action == '') {
                 show_user_add_screen();
             } else {
@@ -365,7 +368,7 @@ try {
                 create_user_details();
             }
         } elseif ($mode == 'modify') {
-            $action = param_get_string_opt('action');
+            $action = param_post_string_opt('action');
             if ($action == '') {
                 show_user_modify_screen();
             } else {

@@ -48,10 +48,15 @@ function retrieve_category($category, $params)
     {
         $line_class = get_line_status_class($state, $line);
 
+        $url = "details.php?" .
+            http_build_query([
+                'name' => "$state:$line",
+            ]);
+
         $category['lines'][] = [
             'name' => $description,
             'class' => "line-$line_class",
-            'url' => "details.php?" . urlenc("name=$state:$line"),
+            'ne_url' => $url,
         ];
     }
     $stmt->close();

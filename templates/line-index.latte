@@ -1,22 +1,22 @@
 {*
     Parameters:
-        $title
+        title
 
-        $tabs[]:
-            $active
-            $tab_label
-            $tab_id
+        tabs[]:
+            active
+            tab_label
+            tab_id
 
-        $pages[]
-            $id
-            $active
-            $columns[]
-                $categories[]
-                    $name
-                    $lines[]
-                        $name
-                        $class
-                        $url
+        pages[]
+            id
+            active
+            columns[]
+                categories[]
+                    name
+                    lines[]
+                        name
+                        class
+                        ne_url
 *}
 <h1>{$title}</h1>
 
@@ -50,7 +50,7 @@
         <ul>
           {foreach $category['lines'] as $line}
           <li class="{$line['class']}">
-            <a href="{$line['url']|nocheck}">{$line['name']}</a>
+            <a href="{$line['ne_url']|noescape}{*neok*}">{$line['name']}</a>
           </li>
           {/foreach}
         </ul>

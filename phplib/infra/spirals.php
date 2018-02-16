@@ -18,8 +18,13 @@ function run_infra_spirals()
     {
         list($state, $line_name, $line_desc, $location1, $location2) = $l;
 
+        $url = '/lines/details.php?' .
+            http_build_query([
+                'name' => "$state:$line_name",
+            ]);
+
         $tp['spirals'][] = [
-            'nc_url' => '/lines/details.php?' . urlenc("name=$state:$line_name"),
+            'ne_url' => $url,
             'text' => $line_desc,
             'location1' => $location1,
             'location2' => $location2,

@@ -106,7 +106,10 @@ function add_locations($tp, $state, $line, $maxsegment)
 
         if ($stmt->fetch()) {
             $url = "/locations/details.php?"
-                . urlenc("name=$location_state:$location&line=$state:$line:$main_segment");
+                . http_build_query([
+                    'name' => "$location_state:$location",
+                    'line' => "$state:$line:$main_segment",
+                ]);
 
             if ($distance == NULL) {
                 $distance = "";
@@ -155,7 +158,7 @@ function add_locations($tp, $state, $line, $maxsegment)
 
             $tp['locations'][] = [
                 'icons' => $icon_urls,
-                'nc_url' => $url,
+                'ne_url' => $url,
                 'name' => $location,
                 'facility' => locn_type2text($type),
                 'status' => locn_status2text($status),
@@ -718,7 +721,7 @@ function run_lines_details()
 
     while ($stmt->fetch()) {
         $section = "$segment: $start_name - $end_name";
-        $date = date_cpts2html($day, $month, $year, $year_error);
+        $date_html = date_cpts2html($day, $month, $year, $year_error);
 
         $n = 0;
         if (is_array($sections) and array_key_exists($section, $sections)) {
@@ -727,7 +730,7 @@ function run_lines_details()
 
         if ($type == "ON" or $type == "OT") {
             $sections[$section][$n+1] = [];
-            $sections[$section][$n+1]["open"] = $date;
+            $sections[$section][$n+1]["open"] = $date_html;
             $sections[$section][$n+1]["close"] = "";
             $sections[$section][$n+1]["usage"] = 
                 $type == "ON" ? "general" : "tourism";
@@ -738,7 +741,7 @@ function run_lines_details()
                 push($sections[$section][$n+1]["openfn"], $fn);
             }
         } elseif ($type == "CN" or $type == "CT") {
-            $sections[$section][$n]["close"] = $date;
+            $sections[$section][$n]["close"] = $date_html;
 
             if ($text) {
                 $fn = add_footnote($footnotes, $text);
@@ -747,7 +750,7 @@ function run_lines_details()
             }
         } elseif ($type == "LT") {
             if (!$text) {
-                $text = "Last train ran $date";
+                $text = "Last train ran $date_html";
             }
 
             $fn = add_footnote($footnotes, $text);
@@ -755,8 +758,8 @@ function run_lines_details()
             push($sections[$section][$n]["closefn"], $fn);
         } elseif ($type == "LI") {
             if (!$text) {
-                if ($date != "unknown") {
-                    $text = "Track lifted $date";
+                if ($date_html != "unknown") {
+                    $text = "Track lifted $date_html";
                 } else {
                     $text = "Track has been lifted";
                 }

@@ -2,7 +2,7 @@
     Parameters:
         title
         sections[]
-            nc_url
+            ne_url
             text
             start
             end
@@ -32,10 +32,10 @@ NSW. Note that it doesn't include some major deviations.</p>
 </thead>
 {foreach $sections as $s}
   <tr>
-    <td><a href="{$s['nc_url']|nocheck}">{$s['text']}</a></td>
+    <td><a href="{$s['ne_url']|noescape}{*neok*}">{$s['text']}</a></td>
     <td>{$s['start']} to {$s['end']}</td>
-    <td align="right">{$s['ne_opened']|noescape}</td>
-    <td align="right">{$s['ne_closed']|noescape}</td>
+    <td align="right">{$s['ne_opened']|noescape}{*neok*}</td>
+    <td align="right">{$s['ne_closed']|noescape}{*neok*}</td>
     <td align="right">{$s['years']}y&nbsp;{$s['months']}m</td>
     <td align="right">{$s['length']}&nbsp;km</td>
   </tr>

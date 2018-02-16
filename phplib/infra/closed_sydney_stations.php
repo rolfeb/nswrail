@@ -140,9 +140,14 @@ function run_infra_closed_sydney_stations()
         else
             $closure = get_location_event_date_str($location_state, $location_name, 'CN', False);
 
+        $url = '/locations/details.php?' .
+            http_build_query([
+                'name' => "$location_state:$location_name"
+            ]);
+
         $tp['rows'][] = [
             'u_location' => [
-                    'nc_url' => '/locations/details.php?' . urlenc("name=$location_state:$location_name"),
+                    'ne_url' => $url,
                     'text' => $location_name,
                     'type' => locn_type2text($type),
                     'closure' => $closure,

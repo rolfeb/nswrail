@@ -128,8 +128,10 @@ function run_infra_turntables()
             $curr_line_name = $line_name;
         }
 
-        $url = "/locations/show.php"
-            . urlenc("?name=$location_state:$location_name");
+        $url = "/locations/details.php?" .
+            http_build_query([
+                'name' => "$location_state:$location_name",
+            ]);
 
         if (!$size) {
             $size = "?";
@@ -145,7 +147,7 @@ function run_infra_turntables()
 
         $tp['regions'][$nr]['rows'][] = [
             'u_turntable' => [
-                    'nc_url' => $url,
+                    'ne_url' => $url,
                     'text' => $location_name,
                     'size_type' => $size_type,
                     'status' => $status_lookup[$status],

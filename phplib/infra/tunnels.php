@@ -96,16 +96,19 @@ function run_infra_tunnels()
             $photos = "";
         }
 
-        $len_str = join('<br/>', explode(',', tunnel_lengths2text($lengths)));
-        $url = "/locations/show.php?" . urlenc("name=$STATE:$location_name");
+        $len_html = join('<br>', explode(',', tunnel_lengths2text($lengths)));
+        $url = "/locations/details.php?" .
+            http_build_query([
+                'name' => "$STATE:$location_name",
+            ]);
 
         $tp['rows'][] = [
             'u_tunnel' => [
-                    'nc_url' => $url,
+                    'ne_url' => $url,
                     'text' => $location_name,
                     'type' => tunnel_type2text($type),
                     'status' => locn_status2text($status),
-                    'ne_length' => $len_str,
+                    'ne_length' => $len_html,
                     'nphotos' => $photos,
                     'distance' => $distance,
                     'between' => "$prev_location and $next_location",

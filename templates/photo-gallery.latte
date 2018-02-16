@@ -2,34 +2,34 @@
     Display an image gallery, either as a text listing or a table of thumbnails
 
     Parameters:
-        $title
-        $introduction
+        title
+        introduction
 
-        $is_listing
+        ne_alt_display_url
+        alt_display_label
+        ne_alt_order_url
+        alt_order_label
 
-        $alt_display_url
-        $alt_display_label
-        $alt_order_url
-        $alt_order_label
+        is_listing
 
-        # if !$is_listing:
-            $page
-            $npages
-            $nav_prev_page_url
-            $nav_first_page_url
-            $nav_next_page_url
-            $nav_last_page_url
+        # if !is_listing:
+            page
+            npages
+            ne_nav_prev_page_url
+            ne_nav_first_page_url
+            ne_nav_next_page_url
+            ne_nav_last_page_url
 
-            $num_columns
+            num_columns
 
-        $photos[]:
-            'photo_img'
-            'thumb_img'
-            'location'
-            'date'
-            'text'
-            'uid'
-            'fullname'
+        photos[]
+            photo_img
+            thumb_img
+            location
+            date
+            text
+            uid
+            fullname
 *}
 <h1>{$title}</h1>
 
@@ -37,8 +37,10 @@
 
 {* display type, order selector *}
 <div style="float: left">
-[Display as: <a href="{$alt_display_url|noescape}">{$alt_display_label}</a>
-Order by: <a href="{$alt_order_url|noescape}">{$alt_order_label}</a>]
+[Display as:
+<a href="{$ne_alt_display_url|noescape}{*neok*}">{$alt_display_label}</a>
+Order by:
+<a href="{$ne_alt_order_url|noescape}{*neok*}">{$alt_order_label}</a>]
 </div>
 
 {if !$is_listing}
@@ -47,20 +49,20 @@ Order by: <a href="{$alt_order_url|noescape}">{$alt_order_label}</a>]
   {if $npages > 1}
     <div style="text-align: right;">
       Page: 
-      {ifset $nav_prev_page_url}
-      <a href={$nav_first_page_url|noescape}><img src="/c/images/button-arrow-full-left.png" alt="first"></a>
-      <a href={$nav_prev_page_url|noescape}><img src="/c/images/button-arrow-left.png" alt="prev"></a>
+      {ifset $ne_nav_prev_page_url}
+        <a href="{$ne_nav_first_page_url|noescape}{*neok*}"><img src="/c/images/button-arrow-full-left.png" alt="first"></a>
+        <a href="{$ne_nav_prev_page_url|noescape}{*neok*}"><img src="/c/images/button-arrow-left.png" alt="prev"></a>
       {else}
-      <img src="/c/images/button-arrow-left-ghosted.png" alt="first">
-      <img src="/c/images/button-arrow-full-left-ghosted.png" alt="first">
+        <img src="/c/images/button-arrow-left-ghosted.png" alt="first">
+        <img src="/c/images/button-arrow-full-left-ghosted.png" alt="first">
       {/ifset}
       {$page} of {$npages}
-      {ifset $nav_next_page_url}
-      <a href={$nav_next_page_url|noescape}><img src="/c/images/button-arrow-right.png" alt="next"></a>
-      <a href={$nav_last_page_url|noescape}><img src="/c/images/button-arrow-full-right.png" alt="last"></a>
+      {ifset $ne_nav_next_page_url}
+        <a href="{$ne_nav_next_page_url|noescape}{*neok*}"><img src="/c/images/button-arrow-right.png" alt="next"></a>
+        <a href="{$ne_nav_last_page_url|noescape}{*neok*}"><img src="/c/images/button-arrow-full-right.png" alt="last"></a>
       {else}
-      <img src="/c/images/button-arrow-right-ghosted.png" alt="next">
-      <img src="/c/images/button-arrow-full-right-ghosted.png" alt="last">
+        <img src="/c/images/button-arrow-right-ghosted.png" alt="next">
+        <img src="/c/images/button-arrow-full-right-ghosted.png" alt="last">
       {/ifset}
     </div>
   {/if}

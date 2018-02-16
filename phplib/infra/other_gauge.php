@@ -81,13 +81,16 @@ function run_infra_other_gauge()
         list($state, $line_name, $line_desc, $gauge, $notes) = $l;
 
         if ($line_name) {
-            $url = "/lines/details.php?" . urlenc("name=$state:$line_name");
+            $url = "/lines/details.php?" .
+                http_build_query([
+                    'name' => "$state:$line_name",
+                ]);
         } else {
             $url = '';
         }
 
         $tp['lines'][] = [
-            'nc_url' => $url,
+            'ne_url' => $url,
             'text' => $line_desc,
             'gauge' => $gauge,
             'notes' => $notes,

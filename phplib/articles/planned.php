@@ -12,7 +12,7 @@ function run_articles_planned()
     $tp['lines'][] = [
         'line' => 'Cobar - Wilcannia',
         'act' => 'Cobar to Wilcannia Railway Act 1902 No 85',
-        'opt_cost' => '&pound;543,527',
+        'opt_ne_cost' => '&pound;543,527',
         'text' => <<<'EOS'
 Cobar to Wilcannia Railway. This line is an extension of
 the Nyngan to Cobar railway, and beginning at four hundred
@@ -40,7 +40,7 @@ EOS
     $tp['lines'][] = [
         'line' => 'Coonabarabran - Burren Junction',
         'act' => 'Coonabarabran to Burren Junction Railway Act 1913 No 12',
-        'opt_cost' => '&pound;403,288',
+        'opt_ne_cost' => '&pound;403,288',
         'opt_footnote' => 'Although this line was not constructed, the Baradine-Gwabegar
 section was built as part of the line from Wallerawang to Gwabegar',
         'text' => <<<'EOS'
@@ -69,7 +69,7 @@ EOS
     $tp['lines'][] = [
         'line' => 'Canowindra - Gregra',
         'act' => 'Canowindra to Gregra Railway Act 1924 No 54',
-        'opt_cost' => '&pound;216,198',
+        'opt_ne_cost' => '&pound;216,198',
         'text' => <<<'EOS'
 This railway commences at a point on the branch line from Canowindra to
 Eugowra about 1 mile north-westerly from Canowindra Station, and proceeds
@@ -92,7 +92,7 @@ EOS
     $tp['lines'][] = [
         'line' => 'Casino - Bonalbo',
         'act' => 'Casino to Bonalbo Railway Act 1928 No 16',
-        'opt_cost' => '&pound;943,647',
+        'opt_ne_cost' => '&pound;943,647',
         'opt_footnote' => 'Construction was started but only as far as creating some of the earthworks.',
         'text' => <<<'EOS'
 This railway commences at the centre of the Casino platform on the existing
@@ -122,7 +122,7 @@ EOS
     $tp['lines'][] = [
         'line' => 'Glen Innes - Inverell',
         'act' => 'Glen Innes to Inverell Railway Act 1950 No 7',
-        'opt_cost' => '&pound;3,000,000',
+        'opt_ne_cost' => '&pound;3,000,000',
         'text' => <<<'EOS'
 The proposed railway commences at a point on the Main Northern Line 423
 miles 50 chains from Sydney distant 20 chains north of Glen Innes station
@@ -146,7 +146,7 @@ EOS
     $tp['lines'][] = [
         'line' => 'Gilgandra - Collie',
         'act' => 'Gilgandra to Collie Railway Act 1915 No 47',
-        'opt_cost' => '&pound;105,000',
+        'opt_ne_cost' => '&pound;105,000',
         'text' => <<<'EOS'
 This railway commences by a junction with the existing line from Dubbo to
 Coonamble, at Gilgandra station, about 322 miles from Sydney, and proceeds
@@ -163,7 +163,7 @@ EOS
     $tp['lines'][] = [
         'line' => 'Guyra - Dorrigo',
         'act' => 'Guyra to Dorrigo Railway Act 1928 No 15',
-        'opt_cost' => '&pound;1,940,440',
+        'opt_ne_cost' => '&pound;1,940,440',
         'text' => <<<'EOS'
 This railway commences on the existing Great Northern Railway at 288 miles 
 from Newcastle about 2 miles north of Guyra Railway Station, thence it 
@@ -187,7 +187,7 @@ EOS
     $tp['lines'][] = [
         'line' => 'Inverell - Ashford',
         'act' => 'Inverell to Ashford Railway Act 1927 No 27',
-        'opt_cost' => '&pound;262,000',
+        'opt_ne_cost' => '&pound;262,000',
         'text' => <<<'EOS'
 This railway commences by a junction with the branch line from Moree to
 Inverell at 508 miles from Sydney and about 2 miles north-westerly from
@@ -207,7 +207,7 @@ EOS
     $tp['lines'][] = [
         'line' => 'Rand - Bull Plain',
         'act' => 'Rand to Bull Plain Railway Act 1924 No 60',
-        'opt_cost' => '&pound;175,933',
+        'opt_ne_cost' => '&pound;175,933',
         'text' => <<<'EOS'
 This line commences at the southern end of Rand Station on the northern bank of
 Billabong Creek at 393 miles 56 chains from Sydney; it immediately crosses that
@@ -226,7 +226,7 @@ EOS
     $tp['lines'][] = [
         'line' => 'St Leonards - Eastwood',
         'act' => 'St. Leonards to Eastwood Railway Act 1927 No 26',
-        'opt_cost' => '&pound;693,918',
+        'opt_ne_cost' => '&pound;693,918',
         'text' => <<<'EOS'
 The proposed electric railway commences at a point on the Milson's Point to
 Hornsby line at 3 miles 30 chains from Milson's Point, and about 40 chains
@@ -248,7 +248,7 @@ EOS
     $tp['lines'][] = [
         'line' => 'Sandy Hollow - Maryvale',
         'act' => 'Sandy Hollow, via Gulgong, to Maryvale Railway Act 1927 No 28',
-        'opt_cost' => '&pound;1,353,789',
+        'opt_ne_cost' => '&pound;1,353,789',
         'opt_footnote' => 'The section Sandy Hollow - Gulgong was started, abandoned, and later completed in the 1980s.',
         'text' => <<<'EOS'
 This railway connecting the northern and western railway systems commences 
@@ -281,7 +281,7 @@ EOS
     $tp['lines'][] = [
         'line' => 'Thirlmere - Burragorang',
         'act' => 'Thirlmere to Burragorang Railway Act 1951 No 28',
-        'opt_cost' => '&pound;934,000',
+        'opt_ne_cost' => '&pound;934,000',
         'text' => <<<'EOS'
 The proposed railway commences at Thirlmere on the Picton
 to Mittagong Loop about 57 miles from Sydney and swings in a
@@ -303,7 +303,7 @@ EOS
     $tp['lines'][] = [
         'line' => 'Wyalong - Condobolin',
         'act' => 'Wyalong Towards Condobolin Railway Act 1923 No 47',
-        'opt_cost' => '&pound;158,400',
+        'opt_ne_cost' => '&pound;158,400',
         'text' => <<<'EOS'
 This railway commences at the western end of the West Wyalong Station at 346
 miles 20 chains from Sydney, and proceeds in a north-easterly direction for

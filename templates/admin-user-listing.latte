@@ -6,8 +6,8 @@
             uid
             username
             fullname
-            role
-            status
+            ne_role
+            ne_status
             joined
             login
 *}
@@ -35,8 +35,8 @@
   <td>{$user['uid']}</td>
   <td><a href="/c/admin/usermaint.php?mode=modify&uid={$user['uid']}">{$user['username']}</a></td>
   <td>{$user['fullname']}</td>
-  <td>{$user['role']}</td>
-  <td>{$user['status']}</td>
+  <td>{$user['ne_role']|noescape}{*neok*}</td>
+  <td>{$user['ne_status']|noescape}{*neok*}</td>
   <td>{$user['joined']}</td>
   <td>{$user['login']}</td>
 </tr>

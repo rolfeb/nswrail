@@ -98,7 +98,7 @@ function perform_search($tp)
 
                 $rows[] = [
                     'name' => $location,
-                    'ec_context' => '',
+                    'ne_context' => '',
                     'u_location' => [
                             'url' => $url,
                         ],
@@ -150,7 +150,7 @@ function perform_search($tp)
 
                 $rows[] = [
                     'name' => $location,
-                    'ec_context' => $text,
+                    'ne_context' => $text,
                     'u_location' => [
                             'url' => $url,
                         ],
@@ -213,7 +213,7 @@ function perform_search($tp)
 
                 $rows[] = [
                     'name' => $location,
-                    'ec_context' => $context,
+                    'ne_context' => $context,
                     'u_photo' => [
                             'photo_img' => "/media/photos/$file",
                             'date' => $date,

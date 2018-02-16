@@ -4,7 +4,7 @@
 
         opt_results[]
             name
-            ec_context
+            ne_context
 
             u_location
                 url
@@ -44,7 +44,7 @@ text information within this site.</p>
         <img src="/media/images/camera-icon.gif"/>
       </td>
     {/ifset}
-    <td>{$row['ec_context']|noescape}</td>
+    <td>{$row['ne_context']|noescape}</td>{*neok*}
   </tr>
 {/foreach}
 </table>

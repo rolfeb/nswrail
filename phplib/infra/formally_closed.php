@@ -61,11 +61,16 @@ function run_infra_formally_closed_lines()
     {
         list($line_state, $line_name, $line_desc, $d, $m, $y, $act, $act_url) = $l;
 
+        $url = '/lines/details.php?' .
+            http_build_query([
+                'name' => "$line_state:$line_name",
+            ]);
+
         $tp['lines'][] = [
-            'nc_url' => '/lines/details.php?' . urlenc("name=$line_state:$line_name"),
+            'ne_url' => $url,
             'text' => $line_desc,
             'closed' => date_cpts2text($d, $m, $y, 0),
-            'no_act_url' => $act_url,
+            'nc_act_url' => $act_url,
             'act' => $act,
         ];
     }

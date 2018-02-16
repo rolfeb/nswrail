@@ -33,8 +33,13 @@ function run_infra_never_completed()
     foreach ($lines as $l) {
         list($line_state, $line_name, $line_desc, $length) = $l;
 
+        $url = '/lines/details.php?' .
+            http_build_query([
+                'name' => "$line_state:$line_name",
+            )];
+
         $tp['lines'][] = [
-            'nc_url' => '/lines/details.php?' . urlenc("name=$line_state:$line_name"),
+            'ne_url' => $url,
             'text' => $line_desc,
             'length' => $length,
         ];

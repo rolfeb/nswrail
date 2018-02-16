@@ -2,7 +2,7 @@
     Parameters:
         title
         lines[]
-            nc_url
+            ne_url
             text
             gauge
             notes
@@ -24,7 +24,7 @@ standard gauge (1435mm or 4ft 8&frac12;in).</p>
   <tr>
     <td>
       {if $line['nc_url']}
-        <a href="{$line['nc_url']|nocheck}">{$line['text']}</a>
+        <a href="{$line['ne_url']|noescape}{*neok*}">{$line['text']}</a>
       {else}
         {$line['text']}
       {/if}

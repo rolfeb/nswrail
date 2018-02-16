@@ -16,7 +16,7 @@
         facility
         status
         lines[]
-            nc_url
+            ne_url
             text
         ne_latlong
         posaccuracy
@@ -37,7 +37,7 @@
         desc_text
         curr_text
         links[]
-            nc_url
+            url
             text
 
         decades[]
@@ -65,7 +65,7 @@
 <div class="d-flex justify-content-center">
   <div style="flex: 9; display: flex; justify-content: center;">
     {ifset $ne_line_prev_url}
-      <span style="margin-left: auto;"><a href="{$ne_line_prev_url|noescape}">{$line_prev_name}</a></span>
+      <span style="margin-left: auto;"><a href="{$ne_line_prev_url|noescape}{*neok*}">{$line_prev_name}</a></span>
     {/ifset}
   </div>
   <div style="flex: 1; display: flex; justify-content: center;">
@@ -73,7 +73,7 @@
   </div>
   <div style="flex: 9; display: flex; justify-content: center;">
     {ifset $ne_line_next_url}
-      <span style="margin-right: auto;"><a href="{$ne_line_next_url|noescape}">{$line_next_name}</a></span>
+      <span style="margin-right: auto;"><a href="{$ne_line_next_url|noescape}{*neok*}">{$line_next_name}</a></span>
     {/ifset}
   </div>
 </div>
@@ -124,14 +124,14 @@
       <th>Lines:</th>
       <td>
           {foreach $lines as $line}
-            <a href="{$line['nc_url']|nocheck}">{$line['text']}</a><br/>
+            <a href="{$line['url']}">{$line['text']}</a><br/>
           {/foreach}
       </td>
   </tr>
   <tr>
       <th>Location:</th>
       <td>
-          <span id="v-location-xy">{$ne_latlong|noescape}</span> [<span id="v-location-exact">{$posaccuracy}</span>] GDA94
+          <span id="v-location-xy">{$ne_latlong|noescape}{*neok*}</span> [<span id="v-location-exact">{$posaccuracy}</span>] GDA94
       </td>
   </tr>
   <tr>
@@ -148,7 +148,7 @@
     <td>
       <table class="table-clean">
         {foreach $history as $h}
-          <tr><td align="right">{$h['ne_date']|noescape}</td> <td>{$h['event']}</td></tr>
+          <tr><td align="right">{$h['ne_date']|noescape}{*neok*}</td> <td>{$h['event']}</td></tr>
         {/foreach}
       </table>
     </td>
@@ -195,7 +195,7 @@
       <th>Links:</th>
       <td>
         {foreach $links as $link}
-          <a href="{$link['nc_url']|nocheck}">{$link['text']}</a><br/>
+          <a href="{$link['ne_url']|noescape}">{$link['text']}</a><br/>
         {/foreach}
       </td>
     </tr>
