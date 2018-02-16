@@ -562,7 +562,7 @@ function add_photo_thumbnails($tp, $state, $location, $line_state, $line, $segme
             LP.file,
             LP.hold,
             LP.year,
-            IFNULL(U.fullname, LP.legacy_owner) as fullname,
+            IFNULL(U.fullname, IFNULL(LP.legacy_owner, 'Rolfe Bozier')) as fullname,
             LP.owner_uid,
             LP.caption
         from

@@ -16,9 +16,7 @@ function is_valid_location($state, $location)
             location_state = ?
             and
             location_name = ?
-    ")
-        or die("prepare failed: " . $db->error . "\n");
-
+    ");
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
     $ok = $stmt->fetch();
@@ -47,14 +45,12 @@ function get_location_event_date_str($state, $location, $type, $first)
             type = ?
         order by 
             seqno
-    ")
-        or die("prepare failed: " . $db->error . "\n");
-
+    ");
     $stmt->bind_param("sss", $state, $location, $type);
     $stmt->execute();
     $stmt->bind_result($day, $month, $year, $year_error);
 
-    $found = False;
+    $found = FALSE;
     while ($stmt->fetch())
     {
         $found = True;
@@ -89,7 +85,6 @@ function count_photos($state, $location)
             and
             LP.hold is null
     ");
-
     $stmt->bind_param("ss", $state, $location);
     $stmt->execute();
     $stmt->bind_result($count);

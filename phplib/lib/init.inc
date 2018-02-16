@@ -47,7 +47,14 @@ function init_request()
     /*
      * Manage user session
      */
+    $s = session_status();
+    if ($s == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    /*
     session_start();
+    */
 
     $user = new User($db);
 

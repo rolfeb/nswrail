@@ -14,7 +14,7 @@ function run_photos_contributers()
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
-            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) owner,
+            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as fullname,
             count(*)
         from
             r_location_photo RP left join r_user U on RP.owner_uid = U.uid
@@ -25,14 +25,14 @@ function run_photos_contributers()
         order by
             owner
     ");
-    $stmt->bind_result($owner, $count);
+    $stmt->bind_result($fullname, $count);
     $stmt->execute();
 
     while ($stmt->fetch()) {
         $tp['people'][] = [
-            'name' => $owner,
+            'name' => $fullname,
             'count' => $count,
-            'photos-url' => urlenc("/photos/owner.php?owner=" . $owner),
+            'photos-url' => urlenc("/photos/owner.php?owner=" . $fullname),
         ];
     }
     $stmt->close();
@@ -40,7 +40,6 @@ function run_photos_contributers()
     return $tp;
 }
 
-# require "phplib/photos/contributers.php";
 normal_page_wrapper('run_photos_contributers', 'photo-contributers.latte');
 
 ?>

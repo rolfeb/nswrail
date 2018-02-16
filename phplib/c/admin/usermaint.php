@@ -257,7 +257,7 @@ function update_user_details()
     }
 
     $stmt = $db->stmt_init();
-    if (!$stmt->prepare("
+    $stmt->prepare("
         update
             r_user
         set
@@ -267,9 +267,7 @@ function update_user_details()
             status = ?
         where
             uid = ?
-    ")) {
-        throw new InternalError('prepare failed: ' . $stmt->error);
-    }
+    ");
 
     if ($password1 != '') {
         $stmt->bind_param("sssiii", $username, $fullname, $enc_password, $role, $status, $uid);
@@ -277,9 +275,7 @@ function update_user_details()
         $stmt->bind_param("ssiii", $username, $fullname, $role, $status, $uid);
     }
 
-    if (!$stmt->execute()) {
-        throw new InternalError('execute failed: ' . $stmt->error);
-    }
+    $stmt->execute();
     $stmt->close();
 
     header("Location: usermaint.php");
@@ -326,7 +322,7 @@ function create_user_details()
     $enc_password = password_hash($password1, PASSWORD_DEFAULT);
 
     $stmt = $db->stmt_init();
-    if (!$stmt->prepare('
+    $stmt->prepare('
         insert into
             r_user
             (
@@ -339,16 +335,12 @@ function create_user_details()
                 register_addr
             )
         values(?, ?, ?, ?, ?, sysdate(), ?)
-    ')) {
-        throw new InternalError('prepare failed: ' . $stmt->error);
-    }
+    ');
 
     $addr = "127.0.0.1";
     $stmt->bind_param("sssiis", $username, $fullname, $enc_password, $role, $status, $addr);
 
-    if (!$stmt->execute()) {
-        throw new InternalError('execute failed: ' . $stmt->error);
-    }
+    $stmt->execute();
     $stmt->close();
 
     header("Location: usermaint.php");

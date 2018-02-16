@@ -129,7 +129,7 @@ class User
         $stmt = $this->_db->stmt_init();
 
         if (!is_null($uid)) {
-            if (!$stmt->prepare('
+            $stmt->prepare('
                 select
                     uid,
                     username,
@@ -139,14 +139,11 @@ class User
                     r_user
                 where
                     uid = ?
-            ')) {
-                throw new InternalError('prepare failed: ' . $stmt->error);
-            }
-
+            ');
             $stmt->bind_param('s', $uid);
         }
         else {
-            if (!$stmt->prepare('
+            $stmt->prepare('
                 select
                     uid,
                     username,
@@ -156,10 +153,7 @@ class User
                     r_user
                 where
                     username = ?
-            ')) {
-                throw new InternalError('prepare failed: ' . $stmt->error);
-            }
-
+            ');
             $stmt->bind_param('s', $username);
         }
 
@@ -193,17 +187,14 @@ class User
 
         $stmt = $db->stmt_init();
 
-        if (!$stmt->prepare('
+        $stmt->prepare('
             select
                 1
             from
                 r_user U
             where
                 U.username = ?
-        ')) {
-            throw new InternalError('prepare failed: ' . $stmt->error);
-        }
-
+        ');
         $stmt->bind_param('s', $addr);
         $stmt->execute();
         $exists = $stmt->fetch();
@@ -218,7 +209,7 @@ class User
 
         $stmt = $db->stmt_init();
 
-        if (!$stmt->prepare('
+        $stmt->prepare('
             insert into
             r_user (
                 username,
@@ -230,18 +221,12 @@ class User
                 status
             )
             values (?, ?, ?, ?, ?, ?, ?)
-        ')) {
-            throw new InternalError('prepare failed: ' . $stmt->error);
-        }
+        ');
 
         $status = User::S_UNCONFIRMED;
         $now_dt = date('Y-m-d H:i:s');
         $stmt->bind_param('ssssssi', $addr, $fullname, $enc_password, $register_addr, $now_dt, $activate_id, $status);
-
-        if (!$stmt->execute()) {
-            throw new InternalError('execute failed: ' . $stmt->error);
-        }
-
+        $stmt->execute();
         $stmt->close();
     }
 
@@ -253,7 +238,7 @@ class User
 
         $flag = User::S_UNCONFIRMED;
 
-        if (!$stmt->prepare("
+        $stmt->prepare("
             update r_user
             set
                 status = (status & ~($flag)),
@@ -262,14 +247,9 @@ class User
                 activate_code = ?
                 and
                 (status & ($flag)) != 0
-        ")) {
-            throw new InternalError('prepare failed: ' . $stmt->error);
-        }
-
+        ");
         $stmt->bind_param('s', $activate_code);
-        if (!$stmt->execute()) {
-            throw new InternalError('Account activation failed: ' . $stmt->error);
-        }
+        $stmt->execute();
         $stmt->close();
     }
 }

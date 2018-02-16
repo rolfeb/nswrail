@@ -103,7 +103,7 @@ function publish_uploaded_image($state, $location, $image, $daterange, $day,
     # insert row into database
     $stmt = $db->stmt_init();
 
-    if (!$stmt->prepare('
+    $stmt->prepare('
         insert into
             r_location_photo
             (
@@ -121,16 +121,11 @@ function publish_uploaded_image($state, $location, $image, $daterange, $day,
                 height
             )
         values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ')) {
-        throw new InternalError('prepare failed: ' . $stmt->error);
-    }
-
+    ');
     $stmt->bind_param('sssiiiiissii', $state, $location, $image_base, $uid,
                       $daterange, $day, $month, $year, $caption, $tags, $width,
                       $height);
-    if (!$stmt->execute()) {
-        throw new InternalError('execute failed: ' . $stmt->error);
-    }
+    $stmt->execute();
     $stmt->close();
 
     # move and rename images

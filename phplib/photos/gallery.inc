@@ -71,28 +71,33 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     case PhotoThemes::Safeworking:
     case PhotoThemes::Signalbox:
     case PhotoThemes::Turntable:
-        $sql = sql_photo_tag($theme, $order);
+        list($sql, $bind_types, $bind_params) = sql_photo_tag($theme, $order);
         break;
 
     case PhotoThemes::Historic:
-        $sql = sql_historic($order);
+        list($sql, $bind_types, $bind_params) = sql_historic($order);
         break;
 
     case PhotoThemes::Recent:
-        $sql = sql_recent($order);
+        list($sql, $bind_types, $bind_params) = sql_recent($order);
         break;
 
     case PhotoThemes::Tunnel:
-        $sql = sql_tunnel($order);
+        list($sql, $bind_types, $bind_params) = sql_tunnel($order);
         break;
 
     case PhotoThemes::Owner:
-        $sql = sql_owner($order, $themeextra);
+        list($sql, $bind_types, $bind_params) = sql_owner($order, $themeextra);
         break;
     }
 
     $stmt = $db->stmt_init();
     $stmt->prepare($sql);
+    if (count($bind_types) > 0) {
+        $typestr = join('', $bind_types);
+        $valrefs = array_merge([&$typestr], $bind_params);
+        call_user_func_array(array($stmt, 'bind_param'), $valrefs);
+    }
     $stmt->execute();
     $stmt->store_result();
     $nrows = $stmt->num_rows;
@@ -100,6 +105,9 @@ function theme_gallery($theme, $themeextra, $title, $intro)
 
     $stmt = $db->stmt_init();
     $stmt->prepare("$sql limit $select_limits");
+    if (count($bind_types) > 0) {
+        call_user_func_array(array($stmt, 'bind_param'), $valrefs);
+    }
     $stmt->execute();
     $stmt->bind_result($state, $line, $location_state, $location, $file,
         $seqno, $year, $owner_fullname, $owner_uid, $caption);
@@ -238,7 +246,7 @@ function sql_photo_tag($theme, $sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, RP.legacy_owner) as fullname,
+            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as fullname,
             RP.owner_uid,
             RP.caption
         from
@@ -258,7 +266,7 @@ function sql_photo_tag($theme, $sorting)
             $sort
     ";
 
-    return $sql;
+    return [$sql, [], []];
 }
 
 #
@@ -282,7 +290,7 @@ function sql_historic($sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, RP.legacy_owner) as fullname,
+            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as fullname,
             RP.owner_uid,
             RP.caption
         from
@@ -306,7 +314,7 @@ function sql_historic($sorting)
             $sort
     ";
 
-    return $sql;
+    return [$sql, [], []];
 }
 
 #
@@ -330,7 +338,7 @@ function sql_recent($sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, RP.legacy_owner) as fullname,
+            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as fullname,
             RP.owner_uid,
             RP.caption
         from
@@ -350,7 +358,7 @@ function sql_recent($sorting)
             $sort
     ";
 
-    return $sql;
+    return [$sql, [], []];
 }
 
 #
@@ -372,7 +380,7 @@ function sql_tunnel($sorting)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, RP.legacy_owner) as fullname,
+            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as fullname,
             RP.owner_uid,
             RP.caption
         from
@@ -397,13 +405,13 @@ function sql_tunnel($sorting)
             $sort
     ";
 
-    return $sql;
+    return [$sql, [], []];
 }
 
 #
 # Construct a statement to retrieve photos for a given owner.
 #
-function sql_owner($sorting, $owner)
+function sql_owner($sorting, $owner_insecure)
 {
     if ($sorting == 'year') {
         $sort = 'RP.year, RL.location_name, RP.seqno';
@@ -411,7 +419,7 @@ function sql_owner($sorting, $owner)
         $sort = 'RL.location_name, RP.seqno';
     }
 
-    if ($owner == 'Rolfe Bozier') {
+    if ($owner_insecure == 'Rolfe Bozier') {
         $extra = 'or RP.owner is null';
     } else {
         $extra = '';
@@ -426,7 +434,7 @@ function sql_owner($sorting, $owner)
             RP.file,
             RP.seqno,
             RP.year,
-            IFNULL(U.fullname, RP.legacy_owner) as fullname,
+            IFNULL(U.fullname, IFNULL(RP.legacy_owner, 'Rolfe Bozier')) as fullname,
             RP.owner_uid,
             RP.caption
         from
@@ -447,15 +455,18 @@ function sql_owner($sorting, $owner)
             RP.hold is null
             and
             (
-                RP.legacy_owner = '$owner'
+                RP.legacy_owner = ?
                 or
-                U.fullname = '$owner' $extra
+                U.fullname = ? $extra
             )
         order by
             $sort
     ";
 
-    return $sql;
+    $bind_types = ['s', 's'];
+    $bind_values = [&$owner_insecure, &$owner_insecure];
+
+    return [$sql, $bind_types, $bind_values];
 }
 
 function encode_argv_url($argv)

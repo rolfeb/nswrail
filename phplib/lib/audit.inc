@@ -18,7 +18,7 @@ class Audit
         global $user;
 
         $stmt = $db->stmt_init();
-        if (!$stmt->prepare('
+        $stmt->prepare('
             insert into
             r_audit (
                 event_time,
@@ -28,16 +28,12 @@ class Audit
                 text
             )
             values (?, ?, ?, ?, ?)
-        ')) {
-            throw new InternalError('prepare failed: ' . $stmt->error);
-        }
+        ');
 
         $now_dt = date('Y-m-d H:i:s');
         $ip = $_SERVER['REMOTE_ADDR'];
         $stmt->bind_param('ssiss', $now_dt, $type, $user->uid, $ip, $text);
-        if (!$stmt->execute()) {
-            throw new InternalError('execute failed: ' . $stmt->error);
-        }
+        $stmt->execute();
         $stmt->close();
     }
 }

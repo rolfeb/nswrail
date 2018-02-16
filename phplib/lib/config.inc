@@ -15,7 +15,7 @@ function get_config($key)
 }
 
 #
-# Manage settings. These are parameters that are net really site-specific.
+# Manage settings. These are parameters that are not really site-specific.
 #
 function get_setting($key)
 {
