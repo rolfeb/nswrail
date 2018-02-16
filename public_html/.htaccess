@@ -30,11 +30,19 @@ RewriteRule ^(.*).txt$      /c/txtpage.php?file=$1.txt [L]
 # redirect invalid URLs
 RewriteRule ^index.html$    / [R]
 
+# disable insecure HTTP methods
+RewriteCond %{REQUEST_METHOD} !^(GET|POST)
+RewriteRule .* - [R=405,L]
+
 #
 # Other settings
 #
 DirectoryIndex index.php
-Header set X-Robots-Tag "noindex, nofollow"
+Header set "X-Robots-Tag" "noindex, nofollow"
+Header set "X-Frame-Options" "deny"
+Header set "X-XSS-Protection" "1"
+Header set "X-Content-Type-Options" "nosniff"
+Header unset "X-Powered-By"
 
 #
 # Permissions

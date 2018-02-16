@@ -1,6 +1,7 @@
 <?php
 
 $BASE_PATH          = $_SERVER['BASE_PATH'];
+$PHPLIB_DIR         = $_SERVER['PHPLIB_DIR'];
 
 require_once "lib.inc";
 

@@ -1,21 +1,10 @@
 <?php
 
-function add_header($tp)
-{
-    global $user;
-
-    if (!$user->is_guest()) {
-        $tp['opt_username'] = $user->fullname;
-    }
-
-    return $tp;
-}
-
 function add_menu($tp)
 {
-    global $BASE_PATH, $user;
+    global $PHPLIB_DIR, $user;
 
-    $config_file    = "$BASE_PATH/c/menu.cfg";
+    $config_file    = "$PHPLIB_DIR/menu.cfg";
 
     $has_role = [
         NULL  => True,
@@ -98,10 +87,19 @@ function add_menu($tp)
     return $tp;
 }
 
+function add_header($tp)
+{
+    global $user;
+
+    if (!$user->is_guest()) {
+        $tp['opt_username'] = $user->fullname;
+    }
+
+    return $tp;
+}
+
 function display_page($title, $content, $args = null)
 {
-    global $BASE_PATH;
-
     $tp = [
         'title' => $title,
     ];
