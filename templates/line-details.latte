@@ -52,7 +52,7 @@
 <div class="tab-content">
 <div class="tab-pane active container" id="tab-desc">
   <div class="float-right d-none d-lg-block my-1">
-    <div class="card" style="width: 15rem">
+    <div class="card">
       <img class="card-img-top" src="{$ovmap_url}">
       <div class="card-body">
         <h3>Summary</h3>
@@ -65,12 +65,9 @@
   </div>
   <div class="text">
     {$ne_description|noescape}{*neok*}
-  
     {foreach $links as $link}
       {if $iterator->first}<h2>Links</h2><ul>{/if}
-
       <li><a class="offhost" href="{$link['url']}">{$link['text']}</a></li>
-
       {if $iterator->last}</ul>{/if}
     {/foreach}
   </div>
@@ -79,23 +76,23 @@
   <thead class="thead-dark">
   <tr>
     {for $i = 0; $i < $max_icons; $i++}
-      <th class="icon" style="width: 22px"></td>
+      <th></td>
     {/for}
     <th class="name">Name</th>
     <th class="facility">Facility</th>
     <th class="status">Status</th>
-    <th style="text-align: right">Opened</th>
-    <th style="text-align: right">Closed</th>
-    <th style="text-align: right">km</th>
-    <th style="text-align: right;">
-      <span class="material-icons" style="vertical-align: bottom;">photo_camera</span>
+    <th class="text-right">Opened</th>
+    <th class="text-right">Closed</th>
+    <th class="text-right">km</th>
+    <th class="text-right;">
+      <span class="material-icons align-bottom">photo_camera</span>
     </th>
   </tr>
   </thead>
   {foreach $locations as $loc}
-    <tr style="margin:0; line-height: 1.4;">
+    <tr class="m-0">
       {foreach $loc['icons'] as $icon}
-        <td style="background-image: url({$icon}); background-position: center center; background-repeat: no-repeat; min-width: 22px;"></td>
+        <td class="line-icon {$icon}"></td>
       {/foreach}
 
       <td class="name"><span><a href="{$loc['ne_url']|noescape}{*neok*}">{$loc['name']}</a></span></td>
@@ -116,8 +113,8 @@
   <thead class="thead-dark">
   <tr>
     <th colspan="2">Section</th>
-    <th style="text-align: right">Opened</th>
-    <th style="text-align: right">Closed</th>
+    <th class="text-right">Opened</th>
+    <th class="text-right">Closed</th>
     <th>Usage</th>
   </tr>
   {foreach $hist_rows as $row}

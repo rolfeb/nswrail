@@ -37,7 +37,7 @@
         desc_text
         curr_text
         links[]
-            url
+            ne_url
             text
 
         decades[]
@@ -62,18 +62,18 @@
 <h1>{$title}</h1>
 
 {ifset $opt_prev_next_icon}
-<div class="d-flex justify-content-center">
-  <div style="flex: 9; display: flex; justify-content: center;">
+<div class="d-flex justify-content-center" id="locn-next-prev-selector">
+  <div class="nps-prev">
     {ifset $ne_line_prev_url}
-      <span style="margin-left: auto;"><a href="{$ne_line_prev_url|noescape}{*neok*}">{$line_prev_name}</a></span>
+      <span class="ml-auto"><a href="{$ne_line_prev_url|noescape}{*neok*}">{$line_prev_name}</a></span>
     {/ifset}
   </div>
-  <div style="flex: 1; display: flex; justify-content: center;">
+  <div class="nps-icon">
     <span><img src="{$opt_prev_next_icon}" alt=""></span>
   </div>
-  <div style="flex: 9; display: flex; justify-content: center;">
+  <div class="nps-next">
     {ifset $ne_line_next_url}
-      <span style="margin-right: auto;"><a href="{$ne_line_next_url|noescape}{*neok*}">{$line_next_name}</a></span>
+      <span class="mr-auto"><a href="{$ne_line_next_url|noescape}{*neok*}">{$line_next_name}</a></span>
     {/ifset}
   </div>
 </div>
@@ -101,11 +101,11 @@
 <div class="tab-pane active container" id="tab-desc">
 
   <span id="message1">{$map_message1}</span>
-  <div class="location-map float-lg-right" style="border: 1px solid black;">
+  <div class="location-map float-lg-right">
     {ifset $map_geox}
-      <div id="googleMap" style="width: 400px; height: 400px;"></div>
+      <div id="googleMap"></div>
     {else}
-      <div class="text-center mt-5" id="message2" style="width: 400px; height: 400px;">
+      <div class="text-center mt-5" id="message2">
         <h3 class="text-muted">{$map_message2}</h3>
       </div>
     {/ifset}
@@ -124,7 +124,7 @@
       <th>Lines:</th>
       <td>
           {foreach $lines as $line}
-            <a href="{$line['url']}">{$line['text']}</a><br/>
+            <a href="{$line['ne_url']|noescape}{*neok*}">{$line['text']}</a><br/>
           {/foreach}
       </td>
   </tr>
@@ -215,43 +215,7 @@
   {/foreach}
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="imageDisplay" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="modal-location"></h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" style="overflow: auto">
-          <img id="modal-photo" style="display: block; margin: 0 auto;">
-      </div>
-      <div class="modal-footer justify-content-start">
-        <div>
-        <p class="text" id="modal-text"></p>
-        Copyright: <span id="modal-owner"></span>
-        <a id="modal-contact" data-toggle="tooltip" title="Please contact if you wish to use this photograph" href="/c/lib/mailer.php?uid=tbd"><span class="material-icons" style="vertical-align: bottom;">email</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-$('#imageDisplay').on('show.bs.modal', function(e) {
-  var m_photo = e.relatedTarget.dataset.photo;
-  var m_location = e.relatedTarget.dataset.location;
-  var m_text = e.relatedTarget.dataset.text;
-  var m_uid = e.relatedTarget.dataset.uid;
-  var m_fullname = e.relatedTarget.dataset.fullname;
-  document.getElementById('modal-location').innerHTML = m_location;
-  document.getElementById('modal-photo').src = m_photo;
-  document.getElementById('modal-text').innerHTML = m_text;
-  document.getElementById('modal-owner').innerHTML = m_fullname;
-  document.getElementById('modal-contact').href = '/c/lib/mailer.php?uid=' + m_uid;
-});
-</script>
+{include photo-display-dialog.latte}
 {/if}
 
 {if sizeof($diagrams) > 0}
@@ -268,32 +232,9 @@ $('#imageDisplay').on('show.bs.modal', function(e) {
 {/if}
 
 {ifset $map_geox}
-  <script>
-  var map;
-  function initMapCB() {
-    var latlong = new google.maps.LatLng({$map_geoy}, {$map_geox});
-  
-    // instantiate the map
-    map = new google.maps.Map(document.getElementById('googleMap'), {
-      center: latlong,
-      zoom: {$map_scale}
-    });
-  
-    // custom icon for the location
-    var icon = new google.maps.MarkerImage(
-      '/media/images/crosshair.png',
-      new google.maps.Size(63, 63),   // size
-      new google.maps.Point(0, 0),    // origin
-      new google.maps.Point(32, 32)   // anchor
-    );
-  
-    // add marker for this location
-    var marker = new google.maps.Marker({
-      map: map,
-      position: latlong,
-      icon: icon,
-    });
-  }
-  </script>
+  <input type="hidden" id="map-geox" name="geox" value="{$map_geox}">
+  <input type="hidden" id="map-geoy" name="geoy" value="{$map_geoy}">
+  <input type="hidden" id="map-scale" name="scale" value="{$map_scale}">
+  <script src="/locations/google-maps.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key={$google_map_apikey}&callback=initMapCB" async defer></script>
 {/ifset}

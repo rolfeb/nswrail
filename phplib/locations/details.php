@@ -383,8 +383,13 @@ function add_location_lines($tp, $state, $location)
 
     $count = 0;
     while ($stmt->fetch()) {
+        $url = '/lines/details.php?' .
+            http_build_query([
+                'name' => "$line_state:$line",
+            ]);
+
         $tp['lines'][] = [
-            'no_url' => '/lines/details.php?' . urlenc("name=$line_state:$line"),
+            'ne_url' => $url,
             'text' => $description,
         ];
     }
@@ -493,7 +498,7 @@ function add_link_details($tp, $state, $location)
 
     while ($stmt->fetch()) {
         $tp['links'][] = [
-            'url' => $url,
+            'ne_url' => $url,
             'text' => $text,
         ];
     }

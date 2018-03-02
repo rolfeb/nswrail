@@ -19,7 +19,7 @@
   {foreach $cards as $card}
   <div class="card {ifset $card['opt_style']}$card['opt_style']{/ifset} mb-2">
     <a href="{$card['url']}">
-      <div class="card-body" style="overflow: auto">
+      <div class="card-body">
         {ifset $card['opt_thumbnail_url']}
           <img src="{$card['opt_thumbnail_url']}" class="float-right ml-2"/>
         {/ifset}

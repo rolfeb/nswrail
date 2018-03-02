@@ -1,8 +1,5 @@
 /*!
- * Bootstrap v4.0.0 (https://getbootstrap.com)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * vim: ts=2 sw=2
  */
 :root {
   --blue: #007bff;
@@ -9243,6 +9240,10 @@ h1,
   }
 }
 
+.card-body {
+  overflow: auto;
+}
+
 .text {
   font-family: "PT Serif";
   font-size: 1.25rem;
@@ -9302,5 +9303,433 @@ ul .line-open-closed {
 
 .caption-highlight {
   background-color: #ffc107;
+}
+
+.photo-dialog-body {
+  overflow: auto;
+}
+
+.photo-dialog-body img {
+  display: block;
+  margin: 0 auto;
+}
+
+.nps-prev {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 9;
+  -ms-flex: 9;
+  flex: 9;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.nps-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.nps-next {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 9;
+  -ms-flex: 9;
+  flex: 9;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.location-map {
+  border: 1px solid #000;
+}
+
+.location-map > div {
+  width: 400px;
+  height: 400px;
+}
+
+.line-icon {
+  width: 22px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.brd_o {
+  background-image: url("/media/icons/brd_o.png");
+}
+
+.crv1_c {
+  background-image: url("/media/icons/crv1_c.png");
+}
+
+.crv1_l {
+  background-image: url("/media/icons/crv1_l.png");
+}
+
+.crv1_o {
+  background-image: url("/media/icons/crv1_o.png");
+}
+
+.crv2_c {
+  background-image: url("/media/icons/crv2_c.png");
+}
+
+.crv2_l {
+  background-image: url("/media/icons/crv2_l.png");
+}
+
+.crv2_o {
+  background-image: url("/media/icons/crv2_o.png");
+}
+
+.crv2_t {
+  background-image: url("/media/icons/crv2_t.png");
+}
+
+.end_l {
+  background-image: url("/media/icons/end_l.png");
+}
+
+.end_o {
+  background-image: url("/media/icons/end_o.png");
+}
+
+.hbr1_o {
+  background-image: url("/media/icons/hbr1_o.png");
+}
+
+.hlt_cc {
+  background-image: url("/media/icons/hlt_cc.png");
+}
+
+.hlt_ll {
+  background-image: url("/media/icons/hlt_ll.png");
+}
+
+.hlt_oo {
+  background-image: url("/media/icons/hlt_oo.png");
+}
+
+.hlt_tt {
+  background-image: url("/media/icons/hlt_tt.png");
+}
+
+.hor1_o {
+  background-image: url("/media/icons/hor1_o.png");
+}
+
+.hor2_o {
+  background-image: url("/media/icons/hor2_o.png");
+}
+
+.jct0_c_oo {
+  background-image: url("/media/icons/jct0_c_oo.png");
+}
+
+.jct0_l_cc {
+  background-image: url("/media/icons/jct0_l_cc.png");
+}
+
+.jct0_o_oo {
+  background-image: url("/media/icons/jct0_o_oo.png");
+}
+
+.jct1_o_oo {
+  background-image: url("/media/icons/jct1_o_oo.png");
+}
+
+.jct2_cc_c {
+  background-image: url("/media/icons/jct2_cc_c.png");
+}
+
+.jct2_ll_c {
+  background-image: url("/media/icons/jct2_ll_c.png");
+}
+
+.jct2_oc_o {
+  background-image: url("/media/icons/jct2_oc_o.png");
+}
+
+.jct2_oo_c {
+  background-image: url("/media/icons/jct2_oo_c.png");
+}
+
+.jct2_oo_l {
+  background-image: url("/media/icons/jct2_oo_l.png");
+}
+
+.jct2_oo_n {
+  background-image: url("/media/icons/jct2_oo_n.png");
+}
+
+.jct2_oo_o {
+  background-image: url("/media/icons/jct2_oo_o.png");
+}
+
+.jct2_oo_t {
+  background-image: url("/media/icons/jct2_oo_t.png");
+}
+
+.jct3_ll_l {
+  background-image: url("/media/icons/jct3_ll_l.png");
+}
+
+.jct3_ol_o {
+  background-image: url("/media/icons/jct3_ol_o.png");
+}
+
+.jct3_oo_c {
+  background-image: url("/media/icons/jct3_oo_c.png");
+}
+
+.jct3_oo_l {
+  background-image: url("/media/icons/jct3_oo_l.png");
+}
+
+.jct3_oo_o {
+  background-image: url("/media/icons/jct3_oo_o.png");
+}
+
+.jct3_ot_o {
+  background-image: url("/media/icons/jct3_ot_o.png");
+}
+
+.jct3_tt_c {
+  background-image: url("/media/icons/jct3_tt_c.png");
+}
+
+.jct4_lo_o {
+  background-image: url("/media/icons/jct4_lo_o.png");
+}
+
+.jct4_lt_t {
+  background-image: url("/media/icons/jct4_lt_t.png");
+}
+
+.jct4_oo_c {
+  background-image: url("/media/icons/jct4_oo_c.png");
+}
+
+.jct4_oo_o {
+  background-image: url("/media/icons/jct4_oo_o.png");
+}
+
+.jct4_to_o {
+  background-image: url("/media/icons/jct4_to_o.png");
+}
+
+.jctstn0_c_oo {
+  background-image: url("/media/icons/jctstn0_c_oo.png");
+}
+
+.jctstn0_l_oo {
+  background-image: url("/media/icons/jctstn0_l_oo.png");
+}
+
+.jctstn0_o_oo {
+  background-image: url("/media/icons/jctstn0_o_oo.png");
+}
+
+.jctstn2_cc_l {
+  background-image: url("/media/icons/jctstn2_cc_l.png");
+}
+
+.jctstn2_ll_c {
+  background-image: url("/media/icons/jctstn2_ll_c.png");
+}
+
+.jctstn2_ll_l {
+  background-image: url("/media/icons/jctstn2_ll_l.png");
+}
+
+.jctstn2_oo_c {
+  background-image: url("/media/icons/jctstn2_oo_c.png");
+}
+
+.jctstn2_oo_l {
+  background-image: url("/media/icons/jctstn2_oo_l.png");
+}
+
+.jctstn2_oo_n {
+  background-image: url("/media/icons/jctstn2_oo_n.png");
+}
+
+.jctstn2_oo_o {
+  background-image: url("/media/icons/jctstn2_oo_o.png");
+}
+
+.jctstn2_tt_n {
+  background-image: url("/media/icons/jctstn2_tt_n.png");
+}
+
+.jctstn3_oc_o {
+  background-image: url("/media/icons/jctstn3_oc_o.png");
+}
+
+.jctstn3_oo_l {
+  background-image: url("/media/icons/jctstn3_oo_l.png");
+}
+
+.jctstn4_ll_l {
+  background-image: url("/media/icons/jctstn4_ll_l.png");
+}
+
+.jctstn4_lo_o {
+  background-image: url("/media/icons/jctstn4_lo_o.png");
+}
+
+.jctstn4_lt_c {
+  background-image: url("/media/icons/jctstn4_lt_c.png");
+}
+
+.lop_c_cc {
+  background-image: url("/media/icons/lop_c_cc.png");
+}
+
+.lop_c_ll {
+  background-image: url("/media/icons/lop_c_ll.png");
+}
+
+.lop_c_oo {
+  background-image: url("/media/icons/lop_c_oo.png");
+}
+
+.lop_c_tt {
+  background-image: url("/media/icons/lop_c_tt.png");
+}
+
+.lop_n_oo {
+  background-image: url("/media/icons/lop_n_oo.png");
+}
+
+.lop_o_oo {
+  background-image: url("/media/icons/lop_o_oo.png");
+}
+
+.min_o {
+  background-image: url("/media/icons/min_o.png");
+}
+
+.min_oo {
+  background-image: url("/media/icons/min_oo.png");
+}
+
+.oth1_l {
+  background-image: url("/media/icons/oth1_l.png");
+}
+
+.oth1_o {
+  background-image: url("/media/icons/oth1_o.png");
+}
+
+.sdg_c_c {
+  background-image: url("/media/icons/sdg_c_c.png");
+}
+
+.sdg_c_oo {
+  background-image: url("/media/icons/sdg_c_oo.png");
+}
+
+.sdg_o_oo {
+  background-image: url("/media/icons/sdg_o_oo.png");
+}
+
+.stn1_c {
+  background-image: url("/media/icons/stn1_c.png");
+}
+
+.stn1_l {
+  background-image: url("/media/icons/stn1_l.png");
+}
+
+.stn1_o {
+  background-image: url("/media/icons/stn1_o.png");
+}
+
+.stn_cc {
+  background-image: url("/media/icons/stn_cc.png");
+}
+
+.stn_co {
+  background-image: url("/media/icons/stn_co.png");
+}
+
+.stn_ct {
+  background-image: url("/media/icons/stn_ct.png");
+}
+
+.stn_ll {
+  background-image: url("/media/icons/stn_ll.png");
+}
+
+.stn_ol {
+  background-image: url("/media/icons/stn_ol.png");
+}
+
+.stn_oo {
+  background-image: url("/media/icons/stn_oo.png");
+}
+
+.stn_ot {
+  background-image: url("/media/icons/stn_ot.png");
+}
+
+.stn_tc {
+  background-image: url("/media/icons/stn_tc.png");
+}
+
+.stn_tt {
+  background-image: url("/media/icons/stn_tt.png");
+}
+
+.tnk_c {
+  background-image: url("/media/icons/tnk_c.png");
+}
+
+.tnk_o {
+  background-image: url("/media/icons/tnk_o.png");
+}
+
+.tnl_c {
+  background-image: url("/media/icons/tnl_c.png");
+}
+
+.tnl_l {
+  background-image: url("/media/icons/tnl_l.png");
+}
+
+.tnl_o {
+  background-image: url("/media/icons/tnl_o.png");
+}
+
+.tnl_t {
+  background-image: url("/media/icons/tnl_t.png");
+}
+
+.ver_l {
+  background-image: url("/media/icons/ver_l.png");
+}
+
+.ver_o {
+  background-image: url("/media/icons/ver_o.png");
+}
+
+.ver_t {
+  background-image: url("/media/icons/ver_t.png");
+}
+
+.yrd_o_oo {
+  background-image: url("/media/icons/yrd_o_oo.png");
 }
 /*# sourceMappingURL=bootstrap.css.map */

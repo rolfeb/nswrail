@@ -36,7 +36,7 @@ function run_infra_never_completed()
         $url = '/lines/details.php?' .
             http_build_query([
                 'name' => "$line_state:$line_name",
-            )];
+            ]);
 
         $tp['lines'][] = [
             'ne_url' => $url,

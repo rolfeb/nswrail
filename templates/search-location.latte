@@ -1,0 +1,40 @@
+{*
+     Paramaters:
+         title
+
+         opt_results[]
+            ne_url
+            location
+            ne_line_url
+            line
+
+         opt_warning
+ *}
+<h1>{$title}</h1>
+
+{ifset $opt_results}
+<h2>Results:</h2>
+
+<table class="table table-sm table-nonfluid">
+<tr>
+  <th>Location</th>
+  <th>Line</th>
+</tr>
+{foreach $opt_results as $row}
+  <tr>
+    <td><a href="{$row['ne_url']|noescape}{*neok*}">{$row['location']}</a></td>
+    <td><a href="{$row['ne_line_url']|noescape}{*neok*}">{$row['line']}</a></td>
+  </tr>
+{/foreach}
+</table>
+{/ifset}
+
+{ifset $opt_warning}
+<p><b>{$opt_warning}</b></p>
+{/ifset}
+
+<h2>Search:</h2>
+
+<form class="form-inline" action="/search/location.php" method="get">
+  <input type="search" class="form-control" name="location" size="20" placeholder="enter location">
+</form>

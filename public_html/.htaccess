@@ -49,7 +49,7 @@ Header set "X-Frame-Options" "deny"
 Header set "X-XSS-Protection" "1"
 Header set "X-Content-Type-Options" "nosniff"
 Header unset "X-Powered-By"
-Header set "Content-Security-Policy" "default-src 'self'; font-src fonts.googleapis.com *.gstatic.com; img-src 'self' *.gstatic.com maps.google.com maps.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' maps.googleapis.com cdnjs.cloudflare.com code.jquery.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com"
+Header set "Content-Security-Policy-Report-Only" "default-src 'self'; font-src fonts.googleapis.com *.gstatic.com; img-src 'self' *.gstatic.com maps.google.com maps.googleapis.com; script-src 'self' maps.googleapis.com cdnjs.cloudflare.com code.jquery.com; style-src 'self' fonts.googleapis.com"
 
 #
 # Permissions

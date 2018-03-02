@@ -172,7 +172,10 @@ function normal_page($template, $parameters, $args = null)
 function normal_page_wrapper($run_function, $template, $args=NULL)
 {
     try {
-        normal_page($template, $run_function(), $args);
+        $tp = $run_function();
+        if ($tp != NULL) {
+           normal_page($template, $tp, $args);
+        }
     } catch (\Exception $e) {
         report_error($e);
     }

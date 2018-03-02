@@ -147,17 +147,17 @@ function add_locations($tp, $state, $line, $maxsegment)
                 $close_date = "-";
             }
 
-            $icon_urls = [];
+            $icon_classes = [];
             for ($i = 0; $i < $max_depth + 1; $i++) {
                 if ($icons[$i]) {
-                    $icon_urls[] = '/media/icons/' . $icons[$i] . '.png';
+                    $icon_classes[] = $icons[$i];
                 } else {
-                    $icon_urls[] = '';
+                    $icon_classes[] = '';
                 }
             }
 
             $tp['locations'][] = [
-                'icons' => $icon_urls,
+                'icons' => $icon_classes,
                 'ne_url' => $url,
                 'name' => $location,
                 'facility' => locn_type2text($type),

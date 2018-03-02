@@ -33,12 +33,12 @@ text information within this site.</p>
   <tr>
     {ifset $row['u_location']}
       {var locn = $row['u_location']}
-      <td style="white-space: nowrap;">
+      <td class="text-nowrap">
         <a href="{$locn['url']}">{$row['name']}</a>
       </td>
     {else}
       {var p = $row['u_photo']}
-      <td style="white-space: nowrap;">
+      <td class="text-nowrap">
         <a data-toggle="modal" data-target="#imageDisplay" data-photo="{$p['photo_img']}" data-location="{$row['name']} ({$p['date']})" data-text="{$p['caption']}" data-id="{$p['uid']}" data-fullname="{$p['fullname']}" href="#">{$row['name']}</a>
         &nbsp;
         <img src="/media/images/camera-icon.gif"/>
