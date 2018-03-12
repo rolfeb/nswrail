@@ -9365,8 +9365,16 @@ ul .line-open-closed {
   background-position: center center;
 }
 
+.brd_l {
+  background-image: url("/media/icons/brd_l.png");
+}
+
 .brd_o {
   background-image: url("/media/icons/brd_o.png");
+}
+
+.crs_o {
+  background-image: url("/media/icons/crs_o.png");
 }
 
 .crv1_c {
@@ -9395,6 +9403,18 @@ ul .line-open-closed {
 
 .crv2_t {
   background-image: url("/media/icons/crv2_t.png");
+}
+
+.crv3_oc {
+  background-image: url("/media/icons/crv3_oc.png");
+}
+
+.crv3_oo {
+  background-image: url("/media/icons/crv3_oo.png");
+}
+
+.end_c {
+  background-image: url("/media/icons/end_c.png");
 }
 
 .end_l {
@@ -9433,6 +9453,10 @@ ul .line-open-closed {
   background-image: url("/media/icons/hor2_o.png");
 }
 
+.jct0_c_cc {
+  background-image: url("/media/icons/jct0_c_cc.png");
+}
+
 .jct0_c_oo {
   background-image: url("/media/icons/jct0_c_oo.png");
 }
@@ -9441,8 +9465,52 @@ ul .line-open-closed {
   background-image: url("/media/icons/jct0_l_cc.png");
 }
 
+.jct0_l_lo {
+  background-image: url("/media/icons/jct0_l_lo.png");
+}
+
+.jct0_l_oc {
+  background-image: url("/media/icons/jct0_l_oc.png");
+}
+
+.jct0_l_ol {
+  background-image: url("/media/icons/jct0_l_ol.png");
+}
+
+.jct0_l_oo {
+  background-image: url("/media/icons/jct0_l_oo.png");
+}
+
+.jct0_n_oo {
+  background-image: url("/media/icons/jct0_n_oo.png");
+}
+
+.jct0_o_oc {
+  background-image: url("/media/icons/jct0_o_oc.png");
+}
+
 .jct0_o_oo {
   background-image: url("/media/icons/jct0_o_oo.png");
+}
+
+.jct0_t_oo {
+  background-image: url("/media/icons/jct0_t_oo.png");
+}
+
+.jct1_c_oo {
+  background-image: url("/media/icons/jct1_c_oo.png");
+}
+
+.jct1_l_ {
+  background-image: url("/media/icons/jct1_l_.png");
+}
+
+.jct1_l_oo {
+  background-image: url("/media/icons/jct1_l_oo.png");
+}
+
+.jct1_n_oo {
+  background-image: url("/media/icons/jct1_n_oo.png");
 }
 
 .jct1_o_oo {
@@ -9453,8 +9521,16 @@ ul .line-open-closed {
   background-image: url("/media/icons/jct2_cc_c.png");
 }
 
+.jct2_cc_l {
+  background-image: url("/media/icons/jct2_cc_l.png");
+}
+
 .jct2_ll_c {
   background-image: url("/media/icons/jct2_ll_c.png");
+}
+
+.jct2_oc_l {
+  background-image: url("/media/icons/jct2_oc_l.png");
 }
 
 .jct2_oc_o {
@@ -9481,8 +9557,24 @@ ul .line-open-closed {
   background-image: url("/media/icons/jct2_oo_t.png");
 }
 
+.jct3_cc_c {
+  background-image: url("/media/icons/jct3_cc_c.png");
+}
+
+.jct3_cl_l {
+  background-image: url("/media/icons/jct3_cl_l.png");
+}
+
 .jct3_ll_l {
   background-image: url("/media/icons/jct3_ll_l.png");
+}
+
+.jct3_lo_o {
+  background-image: url("/media/icons/jct3_lo_o.png");
+}
+
+.jct3_oc_o {
+  background-image: url("/media/icons/jct3_oc_o.png");
 }
 
 .jct3_ol_o {
@@ -9509,6 +9601,10 @@ ul .line-open-closed {
   background-image: url("/media/icons/jct3_tt_c.png");
 }
 
+.jct4_ll_l {
+  background-image: url("/media/icons/jct4_ll_l.png");
+}
+
 .jct4_lo_o {
   background-image: url("/media/icons/jct4_lo_o.png");
 }
@@ -9529,16 +9625,60 @@ ul .line-open-closed {
   background-image: url("/media/icons/jct4_to_o.png");
 }
 
+.jct7_ll_oo {
+  background-image: url("/media/icons/jct7_ll_oo.png");
+}
+
+.jct7_oo_oc {
+  background-image: url("/media/icons/jct7_oo_oc.png");
+}
+
 .jctstn0_c_oo {
   background-image: url("/media/icons/jctstn0_c_oo.png");
+}
+
+.jctstn0_l_cc {
+  background-image: url("/media/icons/jctstn0_l_cc.png");
 }
 
 .jctstn0_l_oo {
   background-image: url("/media/icons/jctstn0_l_oo.png");
 }
 
+.jctstn0_l_tt {
+  background-image: url("/media/icons/jctstn0_l_tt.png");
+}
+
+.jctstn0_n_oo {
+  background-image: url("/media/icons/jctstn0_n_oo.png");
+}
+
+.jctstn0_n_tt {
+  background-image: url("/media/icons/jctstn0_n_tt.png");
+}
+
+.jctstn0_o_oc {
+  background-image: url("/media/icons/jctstn0_o_oc.png");
+}
+
+.jctstn0_o_ol {
+  background-image: url("/media/icons/jctstn0_o_ol.png");
+}
+
 .jctstn0_o_oo {
   background-image: url("/media/icons/jctstn0_o_oo.png");
+}
+
+.jctstn1_l_ll {
+  background-image: url("/media/icons/jctstn1_l_ll.png");
+}
+
+.jctstn1_n_oo {
+  background-image: url("/media/icons/jctstn1_n_oo.png");
+}
+
+.jctstn1_o_oo {
+  background-image: url("/media/icons/jctstn1_o_oo.png");
 }
 
 .jctstn2_cc_l {
@@ -9551,6 +9691,14 @@ ul .line-open-closed {
 
 .jctstn2_ll_l {
   background-image: url("/media/icons/jctstn2_ll_l.png");
+}
+
+.jctstn2_oc_o {
+  background-image: url("/media/icons/jctstn2_oc_o.png");
+}
+
+.jctstn2_ol_o {
+  background-image: url("/media/icons/jctstn2_ol_o.png");
 }
 
 .jctstn2_oo_c {
@@ -9569,8 +9717,20 @@ ul .line-open-closed {
   background-image: url("/media/icons/jctstn2_oo_o.png");
 }
 
+.jctstn2_tt_l {
+  background-image: url("/media/icons/jctstn2_tt_l.png");
+}
+
 .jctstn2_tt_n {
   background-image: url("/media/icons/jctstn2_tt_n.png");
+}
+
+.jctstn3_cc_c {
+  background-image: url("/media/icons/jctstn3_cc_c.png");
+}
+
+.jctstn3_ll_l {
+  background-image: url("/media/icons/jctstn3_ll_l.png");
 }
 
 .jctstn3_oc_o {
@@ -9579,6 +9739,10 @@ ul .line-open-closed {
 
 .jctstn3_oo_l {
   background-image: url("/media/icons/jctstn3_oo_l.png");
+}
+
+.jctstn3_oo_o {
+  background-image: url("/media/icons/jctstn3_oo_o.png");
 }
 
 .jctstn4_ll_l {
@@ -9593,12 +9757,28 @@ ul .line-open-closed {
   background-image: url("/media/icons/jctstn4_lt_c.png");
 }
 
+.jctstn4_oo_o {
+  background-image: url("/media/icons/jctstn4_oo_o.png");
+}
+
+.jctstn7_ll_oo {
+  background-image: url("/media/icons/jctstn7_ll_oo.png");
+}
+
+.line_l {
+  background-image: url("/media/icons/line_l.png");
+}
+
 .lop_c_cc {
   background-image: url("/media/icons/lop_c_cc.png");
 }
 
 .lop_c_ll {
   background-image: url("/media/icons/lop_c_ll.png");
+}
+
+.lop_c_ol {
+  background-image: url("/media/icons/lop_c_ol.png");
 }
 
 .lop_c_oo {
@@ -9617,12 +9797,28 @@ ul .line-open-closed {
   background-image: url("/media/icons/lop_o_oo.png");
 }
 
+.min_l {
+  background-image: url("/media/icons/min_l.png");
+}
+
+.min_ll {
+  background-image: url("/media/icons/min_ll.png");
+}
+
 .min_o {
   background-image: url("/media/icons/min_o.png");
 }
 
 .min_oo {
   background-image: url("/media/icons/min_oo.png");
+}
+
+.oth0_l {
+  background-image: url("/media/icons/oth0_l.png");
+}
+
+.oth1_c {
+  background-image: url("/media/icons/oth1_c.png");
 }
 
 .oth1_l {
@@ -9633,16 +9829,48 @@ ul .line-open-closed {
   background-image: url("/media/icons/oth1_o.png");
 }
 
+.sdg1_c {
+  background-image: url("/media/icons/sdg1_c.png");
+}
+
 .sdg_c_c {
   background-image: url("/media/icons/sdg_c_c.png");
+}
+
+.sdg_c_cc {
+  background-image: url("/media/icons/sdg_c_cc.png");
+}
+
+.sdg_c_ll {
+  background-image: url("/media/icons/sdg_c_ll.png");
 }
 
 .sdg_c_oo {
   background-image: url("/media/icons/sdg_c_oo.png");
 }
 
+.sdg_c_tt {
+  background-image: url("/media/icons/sdg_c_tt.png");
+}
+
+.sdg_o_o {
+  background-image: url("/media/icons/sdg_o_o.png");
+}
+
+.sdg_o_oc {
+  background-image: url("/media/icons/sdg_o_oc.png");
+}
+
 .sdg_o_oo {
   background-image: url("/media/icons/sdg_o_oo.png");
+}
+
+.stn0_l {
+  background-image: url("/media/icons/stn0_l.png");
+}
+
+.stn0_o {
+  background-image: url("/media/icons/stn0_o.png");
 }
 
 .stn1_c {
@@ -9653,12 +9881,24 @@ ul .line-open-closed {
   background-image: url("/media/icons/stn1_l.png");
 }
 
+.stn1_n {
+  background-image: url("/media/icons/stn1_n.png");
+}
+
 .stn1_o {
   background-image: url("/media/icons/stn1_o.png");
 }
 
+.stn1_t {
+  background-image: url("/media/icons/stn1_t.png");
+}
+
 .stn_cc {
   background-image: url("/media/icons/stn_cc.png");
+}
+
+.stn_cn {
+  background-image: url("/media/icons/stn_cn.png");
 }
 
 .stn_co {
@@ -9669,12 +9909,28 @@ ul .line-open-closed {
   background-image: url("/media/icons/stn_ct.png");
 }
 
+.stn_ii {
+  background-image: url("/media/icons/stn_ii.png");
+}
+
 .stn_ll {
   background-image: url("/media/icons/stn_ll.png");
 }
 
+.stn_nn {
+  background-image: url("/media/icons/stn_nn.png");
+}
+
+.stn_oc {
+  background-image: url("/media/icons/stn_oc.png");
+}
+
 .stn_ol {
   background-image: url("/media/icons/stn_ol.png");
+}
+
+.stn_on {
+  background-image: url("/media/icons/stn_on.png");
 }
 
 .stn_oo {
@@ -9709,12 +9965,20 @@ ul .line-open-closed {
   background-image: url("/media/icons/tnl_l.png");
 }
 
+.tnl_n {
+  background-image: url("/media/icons/tnl_n.png");
+}
+
 .tnl_o {
   background-image: url("/media/icons/tnl_o.png");
 }
 
 .tnl_t {
   background-image: url("/media/icons/tnl_t.png");
+}
+
+.ver_c {
+  background-image: url("/media/icons/ver_c.png");
 }
 
 .ver_l {
@@ -9727,6 +9991,38 @@ ul .line-open-closed {
 
 .ver_t {
   background-image: url("/media/icons/ver_t.png");
+}
+
+.yrd0_c {
+  background-image: url("/media/icons/yrd0_c.png");
+}
+
+.yrd1_o_oo_c {
+  background-image: url("/media/icons/yrd1_o_oo_c.png");
+}
+
+.yrd1_o_oo_o {
+  background-image: url("/media/icons/yrd1_o_oo_o.png");
+}
+
+.yrd_c_c {
+  background-image: url("/media/icons/yrd_c_c.png");
+}
+
+.yrd_c_cc {
+  background-image: url("/media/icons/yrd_c_cc.png");
+}
+
+.yrd_c_ll {
+  background-image: url("/media/icons/yrd_c_ll.png");
+}
+
+.yrd_c_oo {
+  background-image: url("/media/icons/yrd_c_oo.png");
+}
+
+.yrd_o_o {
+  background-image: url("/media/icons/yrd_o_o.png");
 }
 
 .yrd_o_oo {
