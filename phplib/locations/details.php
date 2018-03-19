@@ -456,7 +456,7 @@ function add_infra_details($tp, $state, $location)
 
             $text = "";
             if ($x["text"]) {
-                $text = " (<i>" . $x["text"] . "</i>)";
+                $text = " (<i>" . htmlspecialchars($x["text"]) . "</i>)";
             }
 
             array_push($entries, sprintf("%s %s, %s%s", $size, $type, $status, $text));
@@ -466,7 +466,7 @@ function add_infra_details($tp, $state, $location)
     }
 
     if (count($infra)) {
-        $tp['other_details'] = implode("<br>", $infra);
+        $tp['ne_other_details'] = implode("<br>", $infra);
     }
 
     return $tp;

@@ -9265,6 +9265,17 @@ h1,
   }
 }
 
+@media (min-width: 992px) {
+  .multicolumn-3 {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-gap: 30px;
+    -moz-column-gap: 30px;
+    column-gap: 30px;
+  }
+}
+
 .blockquote {
   font-style: italic;
 }
@@ -9299,6 +9310,10 @@ ul .line-open-closed {
 
 .table-clean td {
   border: none;
+}
+
+.table-transpose thead th {
+  vertical-align: middle;
 }
 
 .caption-highlight {
@@ -9363,14 +9378,6 @@ ul .line-open-closed {
   position: absolute;
   z-index: 1000;
   visibility: hidden;
-}
-
-@media (min-width: 992px) {
-  .multicolumn-3 {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: 3;
-  }
 }
 
 .line-icon {

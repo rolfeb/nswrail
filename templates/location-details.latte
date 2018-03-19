@@ -32,7 +32,7 @@
 
         station_details
         goods_details
-        other_details
+        ne_other_details
         opt_photo_years
         desc_text
         curr_text
@@ -112,7 +112,7 @@
   </div>
   <span id="message3">{$map_message3}</span>
   
-  <table class="table table-sm table-nonfluid mt-3">
+  <table class="table table-sm table-nonfluid table-transpose mt-3">
   <thead class="thead-light">
   <tr>
       <th>Main&nbsp;facility:</th>
@@ -166,10 +166,10 @@
       <td>{$goods_details}</td>
     </tr>
   {/ifset}
-  {ifset $other_details}
+  {ifset $ne_other_details}
     <tr>
       <th>Other&nbsp;facilities:</th>
-      <td>{$other_details}</td>
+      <td>{$ne_other_details|noescape}{*neok*}</td>
     </tr>
   {/ifset}
   {ifset $opt_photo_years}
@@ -200,6 +200,7 @@
       </td>
     </tr>
   {/if}
+  </thead>
   </table>
 </div>
 
