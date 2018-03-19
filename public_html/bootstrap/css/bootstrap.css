@@ -9359,6 +9359,20 @@ ul .line-open-closed {
   height: 400px;
 }
 
+.overlib-map {
+  position: absolute;
+  z-index: 1000;
+  visibility: hidden;
+}
+
+@media (min-width: 992px) {
+  .multicolumn-3 {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+}
+
 .line-icon {
   width: 22px;
   background-repeat: no-repeat;

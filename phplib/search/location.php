@@ -106,7 +106,7 @@ function run_location_search()
         list($line_state, $line_name, $description, $location_state,
             $location_name, $old_name) = current($results);
 
-        $url = "/locations/show.php?" .
+        $url = "/locations/details.php?" .
             http_build_query([
                 'name' => "$location_state:$location_name",
             ]);
