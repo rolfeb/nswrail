@@ -5,6 +5,9 @@ function load_config()
     global $config;
 
     $config = json_decode(file_get_contents($_SERVER['NSWRAIL_CONFIG_FILE']), true);
+    if ($config == NULL) {
+        throw new SecurityError('Error parsing config file: ' . json_last_error_msg());
+    }
 }
 
 function get_config($key)
