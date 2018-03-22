@@ -26,8 +26,8 @@ function display_registration_form()
 function get_email_from_template($template, $website, $url)
 {
     $tp = [
-        'website' => $website;
-        'url' => $url;
+        'website' => $website,
+        'url' => $url,
     ];
 
     $template_dir = $_SERVER['TEMPLATE_DIR'];
@@ -85,8 +85,8 @@ function process_registration_form($emailaddr, $fullname, $password1, $password2
 
         $mail->isHTML(true);
         $mail->Subject = "Please confirm account registration: $website";
-        $mail->Body    = get_email_from_template("register-email-html.tpl", $website, $confirm_url);
-        $mail->AltBody = get_email_from_template("register-email-plain.tpl", $website, $confirm_url);
+        $mail->Body    = get_email_from_template("register-email-html.latte", $website, $confirm_url);
+        $mail->AltBody = get_email_from_template("register-email-plain.latte", $website, $confirm_url);
 
         $mail->send();
     } catch (Exception $e) {

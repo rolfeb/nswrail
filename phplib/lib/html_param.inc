@@ -44,7 +44,7 @@ function check($key, $checker, $is_get, $is_optional)
         }
         throw new SecurityError("missing '$method' parameter: $key");
     }
-    $v = urldecode($dict[$key]);
+    $v = $dict[$key];
     if (!$checker($v)) {
         throw new SecurityError("bad type for '$method' parameter: $key=[$v]");
     }

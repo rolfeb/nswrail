@@ -58,14 +58,14 @@ function commit()
 {
     global $db;
 
-    mysql_query("commit", $db) or die("commit failed");
+    mysqli_commit($db) or die("commit failed");
 }
 
 function rollback()
 {
     global $db;
 
-    mysql_query("rollback", $db) or die("rollback failed");
+    mysqli_rollback($db) or die("rollback failed");
 }
 
 function dbi_bind_to_array($stmt)
