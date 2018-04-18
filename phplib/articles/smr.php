@@ -12,5 +12,3 @@ function run_articles_smr()
 }
 
 normal_page_wrapper('run_articles_smr', 'articles-smr.latte');
-
-?>

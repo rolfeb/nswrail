@@ -34,5 +34,3 @@ function run_infra_spirals()
 }
 
 normal_page_wrapper('run_infra_spirals', 'infra-spirals.latte');
-
-?>

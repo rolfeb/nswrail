@@ -180,5 +180,3 @@ function normal_page_wrapper($run_function, $template, $args=NULL)
         report_error($e);
     }
 }
-
-?>

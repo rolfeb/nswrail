@@ -4,6 +4,7 @@ require "site.inc";
 
 function run_infra_tunnels()
 {
+    /** @var mysqli $db */
     global $db;
 
     $tp = [
@@ -123,5 +124,3 @@ function run_infra_tunnels()
 }
 
 normal_page_wrapper('run_infra_tunnels', 'infra-tunnels.latte');
-
-?>

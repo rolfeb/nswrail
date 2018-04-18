@@ -163,5 +163,3 @@ function param_post_string3_opt($key)
 {
     return explode(':', param_string3($key, FALSE, TRUE));
 }
-
-?>

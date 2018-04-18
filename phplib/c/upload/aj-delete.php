@@ -5,6 +5,11 @@
 #
 require 'site.inc';
 
+
+/**
+ * @param $image
+ * @throws InternalError
+ */
 function delete_uploaded_image($image)
 {
     global $user;
@@ -36,5 +41,3 @@ try {
 }
 
 print(json_encode($reply));
-
-?>

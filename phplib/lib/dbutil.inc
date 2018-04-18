@@ -2,6 +2,7 @@
 
 function get_available_photo_tags()
 {
+    /** @var mysqli $db */
     global $db;
 
     $tag_list = [];
@@ -31,6 +32,7 @@ function get_available_photo_tags()
 
 function get_locations()
 {
+    /** @var mysqli $db */
     global $db;
 
     $location_list = [];
@@ -56,6 +58,7 @@ function get_locations()
 
 function commit()
 {
+    /** @var mysqli $db */
     global $db;
 
     mysqli_commit($db) or die("commit failed");
@@ -63,11 +66,16 @@ function commit()
 
 function rollback()
 {
+    /** @var mysqli $db */
     global $db;
 
     mysqli_rollback($db) or die("rollback failed");
 }
 
+/**
+ * @param mysqli_stmt $stmt
+ * @return array
+ */
 function dbi_bind_to_array($stmt)
 {
     $params = array();
@@ -83,5 +91,3 @@ function dbi_bind_to_array($stmt)
 
     return $row;
 }
-
-?>

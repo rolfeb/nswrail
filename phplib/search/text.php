@@ -9,6 +9,11 @@ require "site.inc";
 #   1. The text string is untrusted.
 #   2. The keyword is untrusted.
 #
+/**
+ * @param $text
+ * @param $keywords
+ * @return string
+ */
 function highlight_keywords($text, $keywords)
 {
     foreach ($keywords as $kw) {
@@ -35,6 +40,11 @@ function highlight_keywords($text, $keywords)
     return $text;
 }
 
+/**
+ * @param $a
+ * @param $b
+ * @return int
+ */
 function sort_by_location($a, $b)
 {
     if ($a['name'] == $b['name']) {
@@ -44,10 +54,13 @@ function sort_by_location($a, $b)
     }
 }
 
-function perform_search($tp)
+/**
+ * @param mysqli $db
+ * @param $tp
+ * @return mixed
+ */
+function perform_search($db, $tp)
 {
-    global $db;
-
     $keywords = param_get_string_opt("keywords");
     $keyword_join = param_get_string_opt("keywordjoin");
     $match_locnname = param_get_string_opt("matchlocnname");
@@ -207,7 +220,6 @@ function perform_search($tp)
             $stmt->bind_result($state, $location, $seqno, $file, $daterange, $day, $month, $year, $caption, $uid, $fullname);
 
             while ($stmt->fetch()) {
-                $url = url_location_photo($state, $location, $seqno);
                 $context = highlight_keywords($caption, $keyword_list);
                 $date = date_cpts2html($day, $month, $year, $daterange);
 
@@ -245,8 +257,14 @@ function perform_search($tp)
     return $tp;
 }
 
+/**
+ * @return array|mixed
+ */
 function run_search_text()
 {
+    /** @var mysqli $db */
+    global $db;
+
     $tp = [
         'title' => "Text Search",
     ];
@@ -254,12 +272,10 @@ function run_search_text()
     $searchmode = param_get_string_opt("searchmode");
 
     if ($searchmode) {
-        $tp = perform_search($tp);
+        $tp = perform_search($db, $tp);
     }
 
     return $tp;
 }
 
 normal_page_wrapper('run_search_text', 'search-text.latte');
-
-?>

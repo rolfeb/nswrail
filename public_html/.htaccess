@@ -37,7 +37,7 @@ RewriteRule ^(.*).txt$      /c/txtpage.php?file=$1.txt [L]
 RewriteRule ^index.html$    / [R]
 
 # disable insecure HTTP methods
-RewriteCond %{REQUEST_METHOD} !^(GET|POST)
+RewriteCond %{REQUEST_METHOD} !^(GET|POST|HEAD)
 RewriteRule .* - [R=405,L]
 
 #

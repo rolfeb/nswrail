@@ -160,5 +160,3 @@ function run_infra_altitude()
 }
 
 normal_page_wrapper('run_infra_altitude', 'infra-altitude.latte');
-
-?>

@@ -4,6 +4,7 @@ require "site.inc";
 
 function run_search_bulletin_results()
 {
+    /** @var mysqli $db */
     global $db;
 
     $tp = [
@@ -16,7 +17,7 @@ function run_search_bulletin_results()
     $synopsis_keywords = param_get_string_opt("synopsiskeywords");
     $synopsis_join = param_get_string_opt("synopsisjoin");
     $volume = param_get_integer_opt("volume");
-    $volume_type = param_get_string_opt("volumetype");
+    # $volume_type = param_get_string_opt("volumetype");
     $issue = param_get_integer_opt("issue");
     $month = param_get_integer_opt("month");
     $year = param_get_integer_opt("year");
@@ -212,5 +213,3 @@ function run_search_bulletin_results()
 }
 
 normal_page_wrapper('run_search_bulletin_results', 'search-bulletin-results.latte');
-
-?>

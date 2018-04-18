@@ -76,5 +76,3 @@ function run_infra_index()
 }
 
 card_page_wrapper('run_infra_index');
-
-?>

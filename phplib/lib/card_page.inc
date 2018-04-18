@@ -51,5 +51,3 @@ function card_page_wrapper($run_function)
         report_error($e);
     }
 }
-
-?>

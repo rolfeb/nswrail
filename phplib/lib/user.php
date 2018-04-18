@@ -11,6 +11,7 @@ class User
     const S_PWDEXPIRED  = 0x04;
     const S_PWDLOCKED   = 0x08;
 
+    /** @var mysqli $_db */
     private $_db;
 
     public $uid;
@@ -183,6 +184,7 @@ class User
 
     public static function email_address_in_use($addr)
     {
+        /** @var mysqli $db */
         global $db;
 
         $stmt = $db->stmt_init();
@@ -205,6 +207,7 @@ class User
 
     public static function register_new_user($addr, $fullname, $enc_password, $activate_id, $register_addr)
     {
+        /** @var mysqli $db */
         global $db;
 
         $stmt = $db->stmt_init();
@@ -232,6 +235,7 @@ class User
 
     public static function activate_user_via_code($activate_code)
     {
+        /** @var mysqli $db */
         global $db;
 
         $stmt = $db->stmt_init();
@@ -253,5 +257,3 @@ class User
         $stmt->close();
     }
 }
-
-?>

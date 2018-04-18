@@ -5,9 +5,12 @@
 #
 require 'site.inc';
 
-#
-# Convert a location name to a directory name.
-#
+/**
+ * Convert a location name to a directory name.
+ *
+ * @param $location
+ * @return mixed|string
+ */
 function convert_location_to_folder($location)
 {
     $location = strtolower($location);
@@ -17,11 +20,18 @@ function convert_location_to_folder($location)
     return $location;
 }
 
-#
-# If an image name is being re-used, then try giving it a numeric suffix.
-# If this still fails after several goes, then give up - the user needs a
-# better workflow!
-#
+/**
+ * Create a unique filename.
+ *
+ * If an image name is being re-used, then try giving it a numeric suffix.
+ * If this still fails after several goes, then give up - the user needs a
+ * better workflow!
+ *
+ * @param $publish_dir
+ * @param $image_base
+ * @return string
+ * @throws InternalError
+ */
 function make_unique_filename($publish_dir, $image_base)
 {
     $pi = pathinfo($image_base);
@@ -38,12 +48,26 @@ function make_unique_filename($publish_dir, $image_base)
     throw new InternalError("Error: couldn't make unique file for $image_base");
 }
 
-#
-# Publish the given image
-#
+/**
+ * Publish the given image
+ *
+ * @param $state
+ * @param $location
+ * @param $image
+ * @param $daterange
+ * @param $day
+ * @param $month
+ * @param $year
+ * @param $caption
+ * @param $tags
+ * @throws ImagickException
+ * @throws InternalError
+ * @throws UserError
+ */
 function publish_uploaded_image($state, $location, $image, $daterange, $day,
-    $month, $year, $caption, $tags)
+                                $month, $year, $caption, $tags)
 {
+    /** @var mysqli $db */
     global $db, $user;
 
     # [re]validate parameters
@@ -161,5 +185,3 @@ try {
 }
 
 print(json_encode($reply));
-
-?>

@@ -2,7 +2,7 @@
 
 require 'site.inc';
 
-function get_photo_queue_item_html($tp, $image)
+function get_photo_queue_item_html($image)
 {
     $photo_tags = get_available_photo_tags();
 
@@ -35,5 +35,3 @@ function get_photo_queue_item_html($tp, $image)
     $latte = new Latte\Engine;
     return $latte->renderToString("$template_dir/upload-photo-queue-item.latte", $tp);
 }
-
-?>

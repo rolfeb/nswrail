@@ -14,5 +14,3 @@ function run_maps_newcastle_1950()
 }
 
 normal_page_wrapper('run_maps_newcastle_1950', 'maps-generic.latte');
-
-?>

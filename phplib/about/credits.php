@@ -4,19 +4,17 @@ require "site.inc";
 
 function run_about_credits()
 {
-    $contributers = [];
+    $contributors = [];
     foreach (file("credits.dat") as $name) {
-        $contributers[] = trim($name);
+        $contributors[] = trim($name);
     }
 
     $tp = [
         'title' => "NSWrail.net Credits",
-        'contributers' => implode(', ', $contributers),
+        'contributors' => implode(', ', $contributors),
     ];
 
     return $tp;
 }
 
 normal_page_wrapper('run_about_credits', 'about-credits.latte');
-
-?>

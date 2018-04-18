@@ -16,6 +16,10 @@ $map_status_flag_to_string = [
     User::S_PWDLOCKED   => 'pwdlocked',
 ];
 
+/**
+ * @param $role
+ * @return array
+ */
 function role_as_str_array($role)
 {
     $roles = [];
@@ -31,6 +35,10 @@ function role_as_str_array($role)
     return $roles;
 }
 
+/**
+ * @param $status
+ * @return array
+ */
 function status_as_str_array($status)
 {
     $statuses = [];
@@ -49,7 +57,10 @@ function status_as_str_array($status)
     return $statuses;
 }
 
-function show_user_listing()
+/**
+ * @param mysqli $db
+ */
+function show_user_listing($db)
 {
     global $db;
 
@@ -103,7 +114,10 @@ function show_user_listing()
     normal_page('admin-user-listing.latte', $tp);
 }
 
-function show_user_modify_screen()
+/**
+ * @param mysqli $db
+ */
+function show_user_modify_screen($db)
 {
     global $db;
 
@@ -175,6 +189,9 @@ function show_user_modify_screen()
     normal_page('admin-user-modify.latte', $tp);
 }
 
+/**
+ *
+ */
 function show_user_add_screen()
 {
     $title = 'New User Details';
@@ -213,7 +230,11 @@ function show_user_add_screen()
     normal_page('admin-user-add.latte', $tp);
 }
 
-function update_user_details()
+/**
+ * @param mysqli $db
+ * @throws InternalError
+ */
+function update_user_details($db)
 {
     global $db;
     global $map_role_flag_to_string;
@@ -248,8 +269,8 @@ function update_user_details()
         }
     }
 
-    if ($password != '') {
-        $enc_password = password_hash($password, PASSWORD_DEFAULT);
+    if ($password1 != '') {
+        $enc_password = password_hash($password1, PASSWORD_DEFAULT);
         $extra = "password = ?, ";
     }
     else {
@@ -281,7 +302,12 @@ function update_user_details()
     header("Location: usermaint.php");
 }
 
-function create_user_details()
+/**
+ * @param mysqli $db
+ * @throws InternalError
+ * @throws UserError
+ */
+function create_user_details($db)
 {
     global $db;
     global $map_role_flag_to_string;
@@ -346,6 +372,12 @@ function create_user_details()
     header("Location: usermaint.php");
 }
 
+/** @var mysqli $db */
+global $db;
+
+/** @var User $user */
+global $user;
+
 if (!$user->is_superuser()) {
     noperm_page();
 }
@@ -365,25 +397,23 @@ try {
                     header("Location: usermaint.php");
                     exit();
                 }
-                create_user_details();
+                create_user_details($db);
             }
         } elseif ($mode == 'modify') {
             $action = param_post_string_opt('action');
             if ($action == '') {
-                show_user_modify_screen();
+                show_user_modify_screen($db);
             } else {
                 if ($action == 'Cancel') {
                     header("Location: usermaint.php");
                     exit();
                 }
-                update_user_details();
+                update_user_details($db);
             }
         }
     } else {
-        show_user_listing();
+        show_user_listing($db);
     }
 } catch (Exception $e) {
     report_error($e, "/c/admin/usermaint.php");
 }
-
-?>

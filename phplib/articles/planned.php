@@ -320,5 +320,3 @@ EOS
 }
 
 normal_page_wrapper('run_articles_planned', 'articles-planned.latte');
-
-?>

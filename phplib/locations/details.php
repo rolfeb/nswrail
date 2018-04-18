@@ -5,10 +5,14 @@ require "site.inc";
 /*
  * Return general details for a location
  */
-function get_location_details($state, $location)
+/**
+ * @param mysqli $db
+ * @param $state
+ * @param $location
+ * @return array|null
+ */
+function get_location_details($db, $state, $location)
 {
-    global $db;
-
     $result = null;
 
     /*
@@ -55,10 +59,10 @@ function get_location_details($state, $location)
         if (!$status)
             $status = "unknown";
 
-        $desc = get_location_text($state, $location, 'DESC');
-        $curr = get_location_text($state, $location, 'CURR');
-        $nphoto = get_location_nphotos($state, $location);
-        $ndiagram = get_location_ndiagrams($state, $location);
+        $desc = get_location_text($db, $state, $location, 'DESC');
+        $curr = get_location_text($db, $state, $location, 'CURR');
+        $nphoto = get_location_nphotos($db, $state, $location);
+        $ndiagram = get_location_ndiagrams($db, $state, $location);
 
         $result = array(
             "line_state" => $line_state,
@@ -108,10 +112,14 @@ function get_location_details($state, $location)
 /*
  * Return location history information
  */
-function get_location_history($state, $location)
+/**
+ * @param mysqli $db
+ * @param $state
+ * @param $location
+ * @return array
+ */
+function get_location_history($db, $state, $location)
 {
-    global $db;
-
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
@@ -157,10 +165,15 @@ function get_location_history($state, $location)
     return $result;
 }
 
-function get_location_text($state, $location, $type)
+/**
+ * @param mysqli $db
+ * @param $state
+ * @param $location
+ * @param $type
+ * @return string
+ */
+function get_location_text($db, $state, $location, $type)
 {
-    global $db;
-
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
@@ -190,10 +203,14 @@ function get_location_text($state, $location, $type)
     return $text;
 }
 
-function get_location_nphotos($state, $location)
+/**
+ * @param mysqli $db
+ * @param $state
+ * @param $location
+ * @return int
+ */
+function get_location_nphotos($db, $state, $location)
 {
-    global $db;
-
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
@@ -220,10 +237,14 @@ function get_location_nphotos($state, $location)
     return $nphotos;
 }
 
-function get_location_ndiagrams($state, $location)
+/**
+ * @param mysqli $db
+ * @param $state
+ * @param $location
+ * @return int
+ */
+function get_location_ndiagrams($db, $state, $location)
 {
-    global $db;
-
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
@@ -251,10 +272,14 @@ function get_location_ndiagrams($state, $location)
 /*
  * Return location turntable information
  */
-function get_location_turntables($state, $location)
+/**
+ * @param mysqli $db
+ * @param $state
+ * @param $location
+ * @return array|null
+ */
+function get_location_turntables($db, $state, $location)
 {
-    global $db;
-
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
@@ -298,9 +323,16 @@ function get_location_turntables($state, $location)
     return $results;
 }
 
-function add_location_history($tp, $state, $location)
+/**
+ * @param mysqli $db
+ * @param $tp
+ * @param $state
+ * @param $location
+ * @return mixed
+ */
+function add_location_history($db, $tp, $state, $location)
 {
-    $history = get_location_history($state, $location);
+    $history = get_location_history($db, $state, $location);
 
     $count = 0;
     foreach ($history as $h)
@@ -349,10 +381,15 @@ function add_location_history($tp, $state, $location)
     return $tp;
 }
 
-function add_location_lines($tp, $state, $location)
+/**
+ * @param mysqli $db
+ * @param $tp
+ * @param $state
+ * @param $location
+ * @return mixed
+ */
+function add_location_lines($db, $tp, $state, $location)
 {
-    global $db;
-
     /* XXX: move to dbutil.php */
     $stmt = $db->stmt_init();
     $stmt->prepare("
@@ -381,7 +418,6 @@ function add_location_lines($tp, $state, $location)
     $stmt->execute();
     $stmt->bind_result($line_state, $line, $description);
 
-    $count = 0;
     while ($stmt->fetch()) {
         $url = '/lines/details.php?' .
             http_build_query([
@@ -398,7 +434,14 @@ function add_location_lines($tp, $state, $location)
     return $tp;
 }
 
-function add_station_details($tp, $state, $location)
+/**
+ * @param mysqli $db
+ * @param $tp
+ * @param $state
+ * @param $location
+ * @return mixed
+ */
+function add_station_details($db, $tp, $state, $location)
 {
     /* TODO: implement station details? */
 
@@ -409,7 +452,14 @@ function add_station_details($tp, $state, $location)
     return $tp;
 }
 
-function add_goods_details($tp, $state, $location)
+/**
+ * @param mysqli $db
+ * @param $tp
+ * @param $state
+ * @param $location
+ * @return mixed
+ */
+function add_goods_details($db, $tp, $state, $location)
 {
     /* TODO: implement goods details? */
 
@@ -420,14 +470,21 @@ function add_goods_details($tp, $state, $location)
     return $tp;
 }
 
-function add_infra_details($tp, $state, $location)
+/**
+ * @param mysqli $db
+ * @param $tp
+ * @param $state
+ * @param $location
+ * @return mixed
+ */
+function add_infra_details($db, $tp, $state, $location)
 {
     $infra = [];
 
     /*
      * Turntable details
      */
-    $list = get_location_turntables($state, $location);
+    $list = get_location_turntables($db, $state, $location);
     if ($list) {
         $label = sprintf("<b>Turntable%s</b>: ", count($list) > 1 ? "s" : "");
 
@@ -472,10 +529,15 @@ function add_infra_details($tp, $state, $location)
     return $tp;
 }
 
-function add_link_details($tp, $state, $location)
+/**
+ * @param mysqli $db
+ * @param $tp
+ * @param $state
+ * @param $location
+ * @return mixed
+ */
+function add_link_details($db, $tp, $state, $location)
 {
-    global $db;
-
     /* XXX: move to dbutil.php */
     $stmt = $db->stmt_init();
     $stmt->prepare("
@@ -507,10 +569,15 @@ function add_link_details($tp, $state, $location)
     return $tp;
 }
 
-function add_photo_details($tp, $state, $location)
+/**
+ * @param mysqli $db
+ * @param $tp
+ * @param $state
+ * @param $location
+ * @return mixed
+ */
+function add_photo_details($db, $tp, $state, $location)
 {
-    global $db;
-
     /*
      * Build a list of the years for which we have photos for this location
      */
@@ -556,10 +623,18 @@ function add_photo_details($tp, $state, $location)
 /*
  * Add any photographs for this location to the page
  */
-function add_photo_thumbnails($tp, $state, $location, $line_state, $line, $segment)
+/**
+ * @param mysqli $db
+ * @param $tp
+ * @param $state
+ * @param $location
+ * @param $line_state
+ * @param $line
+ * @param $segment
+ * @return mixed
+ */
+function add_photo_thumbnails($db, $tp, $state, $location, $line_state, $line, $segment)
 {
-    global $db;
-
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
@@ -624,13 +699,17 @@ function add_photo_thumbnails($tp, $state, $location, $line_state, $line, $segme
     return $tp;
 }
 
-/*
+/**
  * Add any diagrams for this location to the page
+ *
+ * @param mysqli $db
+ * @param $tp
+ * @param $state
+ * @param $location
+ * @return mixed
  */
-function add_diagram_images($tp, $state, $location)
+function add_diagram_images($db, $tp, $state, $location)
 {
-    global $db;
-
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
@@ -662,10 +741,18 @@ function add_diagram_images($tp, $state, $location)
     return $tp;
 }
 
-function add_prev_next_links($tp, $state, $location, $line_state, $line, $segment)
+/**
+ * @param mysqli $db
+ * @param $tp
+ * @param $state
+ * @param $location
+ * @param $line_state
+ * @param $line
+ * @param $segment
+ * @return mixed
+ */
+function add_prev_next_links($db, $tp, $state, $location, $line_state, $line, $segment)
 {
-    global $db;
-
     $prev_state = null;
     $prev_location = null;
     $next_state = null;
@@ -758,8 +845,14 @@ function add_prev_next_links($tp, $state, $location, $line_state, $line, $segmen
     return $tp;
 }
 
+/**
+ * @return array|mixed
+ */
 function run_locations_details()
 {
+    /** @var mysqli $db */
+    global $db;
+
     list($state, $location) = param_get_string2('name');
     list($line_state, $line_name, $segment) = param_get_string3_opt('line');
 
@@ -776,11 +869,9 @@ function run_locations_details()
         'diagrams' => [],
     ];
 
-    $l = get_location_details($state, $location);
+    $l = get_location_details($db, $state, $location);
 
     $head_extra = '';
-
-    $version = $l["version"];
 
     if ($l["geox"] and $l["geoy"])
     {
@@ -807,16 +898,16 @@ function run_locations_details()
     else
         $km_syd = "unknown";
 
-    $tp = add_location_history($tp, $state, $location);
-    $tp = add_location_lines($tp, $state, $location);
-    $tp = add_station_details($tp, $state, $location);
-    $tp = add_goods_details($tp, $state, $location);
-    $tp = add_infra_details($tp, $state, $location);
-    $tp = add_link_details($tp, $state, $location);
-    $tp = add_photo_details($tp, $state, $location);
+    $tp = add_location_history($db, $tp, $state, $location);
+    $tp = add_location_lines($db, $tp, $state, $location);
+    $tp = add_station_details($db, $tp, $state, $location);
+    $tp = add_goods_details($db, $tp, $state, $location);
+    $tp = add_infra_details($db, $tp, $state, $location);
+    $tp = add_link_details($db, $tp, $state, $location);
+    $tp = add_photo_details($db, $tp, $state, $location);
 
     if ($line_state != "" and $line_name != "")
-        $tp = add_prev_next_links($tp, $state, $location, $line_state, $line_name, $segment);
+        $tp = add_prev_next_links($db, $tp, $state, $location, $line_state, $line_name, $segment);
 
     if (array_key_exists("altdist", $l))
     {
@@ -828,8 +919,8 @@ function run_locations_details()
     /*
      * Add any photos or diagrams to the page
      */
-    $tp = add_photo_thumbnails($tp, $state, $location, $line_state, $line_name, $segment);
-    ### $tp = add_diagram_images($tp, $state, $location);
+    $tp = add_photo_thumbnails($db, $tp, $state, $location, $line_state, $line_name, $segment);
+    ### $tp = add_diagram_images($db, $tp, $state, $location);
 
     /*
      * Add the location map
@@ -875,5 +966,3 @@ function run_locations_details()
 }
 
 normal_page_wrapper('run_locations_details', 'location-details.latte');
-
-?>

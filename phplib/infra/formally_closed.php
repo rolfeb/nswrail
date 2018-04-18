@@ -78,5 +78,3 @@ function run_infra_formally_closed_lines()
 }
 
 normal_page_wrapper('run_infra_formally_closed_lines', 'infra-formally-closed-lines.latte');
-
-?>

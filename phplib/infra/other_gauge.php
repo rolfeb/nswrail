@@ -100,5 +100,3 @@ function run_infra_other_gauge()
 }
 
 normal_page_wrapper('run_infra_other_gauge', 'infra-other-gauge.latte');
-
-?>

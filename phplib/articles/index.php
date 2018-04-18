@@ -53,5 +53,3 @@ EOS;
 }
 
 card_page_wrapper('run_articles_index');
-
-?>

@@ -4,6 +4,7 @@ require "site.inc";
 
 function run_infra_turntables()
 {
+    /** @var mysqli $db */
     global $db;
 
     $tp = [
@@ -162,5 +163,3 @@ function run_infra_turntables()
 }
 
 normal_page_wrapper('run_infra_turntables', 'infra-turntables.latte');
-
-?>

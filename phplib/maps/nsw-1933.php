@@ -11,5 +11,3 @@ function run_maps_nsw_1933()
 }
 
 normal_page_wrapper('run_maps_nsw_1933', 'maps-nsw-1933.latte');
-
-?>

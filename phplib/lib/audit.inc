@@ -14,6 +14,7 @@ class Audit
 
     public static function addentry($type, $text=NULL)
     {
+        /** @var mysqli $db */
         global $db;
         global $user;
 
@@ -37,5 +38,3 @@ class Audit
         $stmt->close();
     }
 }
-
-?>

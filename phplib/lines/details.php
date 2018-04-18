@@ -4,6 +4,7 @@ require "site.inc";
 
 function add_links($tp, $state, $line)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt = $db->stmt_init();
@@ -38,6 +39,7 @@ function add_links($tp, $state, $line)
 
 function add_locations($tp, $state, $line, $maxsegment)
 {
+    /** @var mysqli $db */
     global $db;
 
     /*
@@ -88,9 +90,6 @@ function add_locations($tp, $state, $line, $maxsegment)
         $location_state = $data["state"];
         $location_name = $data["location"];
         $main_segment = $data["segment"];
-        $depth = $data["depth"];
-        $line_first = ($l == 0);
-        $line_last = ($l == $max_location);
 
         /* initialise the icon array */
         $icons = $location_icons["$location_state:$location_name"];
@@ -117,15 +116,15 @@ function add_locations($tp, $state, $line, $maxsegment)
                 $distance = sprintf("%.3f", $distance);
             }
 
-            $nphotos = get_location_nphotos($location_state, $location);
+            $nphotos = get_location_nphotos($db, $location_state, $location);
             $nphotos == 0 && $nphotos = "";
 
-            $nurls = get_location_nurls($location_state, $location);
+            $nurls = get_location_nurls($db, $location_state, $location);
             $nurls == 0 && $nurls = "";
 
             $open_date = get_location_open_date($location_state,
                 $location);
-            $close_date = get_location_close_date($location_state,
+            $close_date = get_location_close_date($db, $location_state,
                 $location);
 
             if (!$close_date) {
@@ -176,6 +175,7 @@ function add_locations($tp, $state, $line, $maxsegment)
 
 function read_line_locations($line_state, $line_name)
 {
+    /** @var mysqli $db */
     global $db;
 
     /*
@@ -287,6 +287,7 @@ function read_line_locations($line_state, $line_name)
 
 function read_location_icons($state, $line)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt = $db->stmt_init();
@@ -326,6 +327,7 @@ function read_location_icons($state, $line)
 
 function read_line_segment_depth($state, $line)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt = $db->stmt_init();
@@ -367,6 +369,7 @@ function index_of(&$location_list, $location)
 
 function read_line_segments($state, $line)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt = $db->stmt_init();
@@ -406,6 +409,7 @@ function read_line_segments($state, $line)
 
 function get_location_open_date($state, $location)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt = $db->stmt_init();
@@ -443,10 +447,14 @@ function get_location_open_date($state, $location)
     return $date;
 }
 
-function get_location_close_date($state, $location)
+/**
+ * @param mysqli $db
+ * @param $state
+ * @param $location
+ * @return string
+ */
+function get_location_close_date($db, $state, $location)
 {
-    global $db;
-
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
@@ -481,10 +489,14 @@ function get_location_close_date($state, $location)
     return $date;
 }
 
-function get_location_nphotos($state, $location)
+/**
+ * @param mysqli $db
+ * @param $state
+ * @param $location
+ * @return int
+ */
+function get_location_nphotos($db, $state, $location)
 {
-    global $db;
-
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
@@ -512,10 +524,14 @@ function get_location_nphotos($state, $location)
     return $nphotos;
 }
 
-function    get_location_ndiagrams($state, $location)
+/**
+ * @param mysqli $db
+ * @param $state
+ * @param $location
+ * @return int
+ */
+function get_location_ndiagrams($db, $state, $location)
 {
-    global $db;
-
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
@@ -541,10 +557,14 @@ function    get_location_ndiagrams($state, $location)
     return $ndiagrams;
 }
 
-function get_location_nurls($state, $location)
+/**
+ * @param mysqli $db
+ * @param $state
+ * @param $location
+ * @return int
+ */
+function get_location_nurls($db, $state, $location)
 {
-    global $db;
-
     $stmt = $db->stmt_init();
     $stmt->prepare("
         select
@@ -588,6 +608,7 @@ function push(&$array, $v)
 
 function run_lines_details()
 {
+    /** @var mysqli $db */
     global $db;
 
     list($state, $line) = param_get_string2("name");
@@ -837,5 +858,3 @@ function run_lines_details()
 }
 
 normal_page_wrapper('run_lines_details', 'line-details.latte');
-
-?>

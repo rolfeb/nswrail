@@ -41,5 +41,3 @@ function report_error($e, $url=NULL)
     }
     error_page($msg, $url);
 }
-
-?>

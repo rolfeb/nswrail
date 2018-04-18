@@ -12,5 +12,3 @@ function run_maps_turning_facilities()
 }
 
 normal_page_wrapper('run_maps_turning_facilities', 'maps-turning-facilities.latte');
-
-?>

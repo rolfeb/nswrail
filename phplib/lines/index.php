@@ -2,10 +2,14 @@
 
 require "site.inc";
 
-function retrieve_category($category, $params)
+/**
+ * @param mysqli $db
+ * @param $category
+ * @param $params
+ * @return array
+ */
+function retrieve_category($db, $category, $params)
 {
-    global $db;
-
     $category = [
         'name' => $category,
         'lines' => [],
@@ -64,7 +68,16 @@ function retrieve_category($category, $params)
     return $category;
 }
 
-function create_tab_content($tp, $tab_label, $tab_id, $layout, $is_active)
+/**
+ * @param mysqil $db
+ * @param $tp
+ * @param $tab_label
+ * @param $tab_id
+ * @param $layout
+ * @param $is_active
+ * @return mixed
+ */
+function create_tab_content($db, $tp, $tab_label, $tab_id, $layout, $is_active)
 {
     $tp['tabs'][] = [
         'tab_label' => $tab_label,
@@ -79,7 +92,7 @@ function create_tab_content($tp, $tab_label, $tab_id, $layout, $is_active)
         ];
         foreach ($column as $category) {
             list($heading, $params) = $category;
-            $tp_column['categories'][] = retrieve_category($heading, $params);
+            $tp_column['categories'][] = retrieve_category($db, $heading, $params);
         }
         $tp_columns[] = $tp_column;
     }
@@ -93,8 +106,14 @@ function create_tab_content($tp, $tab_label, $tab_id, $layout, $is_active)
     return $tp;
 }
 
+/**
+ * @return array|mixed
+ */
 function run_lines_index()
 {
+    /** @var mysqli $db */
+    global $db;
+
     $lines_nsw = [
         [
             [ 'Trunk Lines',        [ 'NSW', 'T', NULL ] ],
@@ -143,13 +162,11 @@ function run_lines_index()
     ];
 
     # define the tabs
-    $tp = create_tab_content($tp, 'NSW regional', 'nsw', $lines_nsw, true);
-    $tp = create_tab_content($tp, 'Sydney network', 'sydney', $lines_sydney, false);
-    $tp = create_tab_content($tp, 'Newcastle network', 'newcastle', $lines_newcastle, false);
+    $tp = create_tab_content($db, $tp, 'NSW regional', 'nsw', $lines_nsw, true);
+    $tp = create_tab_content($db, $tp, 'Sydney network', 'sydney', $lines_sydney, false);
+    $tp = create_tab_content($db, $tp, 'Newcastle network', 'newcastle', $lines_newcastle, false);
 
     return $tp;
 }
 
 normal_page_wrapper('run_lines_index', 'line-index.latte');
-
-?>

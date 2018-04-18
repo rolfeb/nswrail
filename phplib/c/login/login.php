@@ -4,6 +4,7 @@ require 'site.inc';
 
 function try_login($username, $password, $remote_ip)
 {
+    /** @var User $user */
     global $user;
 
     $user->login($username, $password, $remote_ip);
@@ -29,5 +30,3 @@ try {
 } catch (Exception $e) {
     report_error($e);
 }
-
-?>

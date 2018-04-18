@@ -4,6 +4,7 @@ require_once 'site.inc';
 
 function logout()
 {
+    /** @var User $user */
     global $user;
 
     Audit::addentry(Audit::A_LOGOUT);
@@ -20,5 +21,3 @@ try {
 } catch (Exception $e) {
     report_error($e);
 }
-
-?>

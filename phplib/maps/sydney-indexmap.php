@@ -18,5 +18,3 @@ normal_page_wrapper('run_maps_sydney_indexmap', 'maps-indexmap.latte',
         'HEAD-EXTRA' => '<script type="text/javascript" src="/c/js/overlib.js"><!-- overLIB (c) Erik Bosrup --></script>'
     ]
 );
-
-?>

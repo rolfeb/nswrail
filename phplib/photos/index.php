@@ -76,5 +76,3 @@ function run_photos_index()
 }
 
 card_page_wrapper('run_photos_index');
-
-?>

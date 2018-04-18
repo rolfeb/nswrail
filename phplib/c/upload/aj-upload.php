@@ -6,18 +6,23 @@
 require 'site.inc';
 require 'photo-util.php';
 
+/**
+ * @return string the filename of the uploaded file
+ * @throws ImagickException
+ * @throws InternalError
+ */
 function save_upload_in_staging_area()
 {
     global $user;
 
     $params = $_FILES['upload-filename'];
     $r_filename = basename($params['name'][0]);
-    $r_type = $params['type'][0];
+    # $r_type = $params['type'][0];
     $r_tmpfile = $params['tmp_name'][0];
-    $r_error = $params['error'][0];
-    $r_size = $params['size'][0];
+    # $r_error = $params['error'][0];
+    # $r_size = $params['size'][0];
 
-    # XXX: validate params: size, error, type
+    # TODO: validate params: size, error, type
 
     $stage_dir = get_config('stage-dir') . "/" . $user->uid;
     $thumb_dir = "$stage_dir/small";
@@ -80,5 +85,3 @@ try {
 }
 
 print(json_encode($reply));
-
-?>

@@ -12,5 +12,3 @@ function run_articles_station_names()
 }
 
 normal_page_wrapper('run_articles_station_names', 'articles-station-names.latte');
-
-?>

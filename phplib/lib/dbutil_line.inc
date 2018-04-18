@@ -1,10 +1,15 @@
 <?php
 
-/*
+/**
  * Get the line details
+ *
+ * @param $state
+ * @param $line
+ * @return array
  */
 function dbline_get_details($state, $line)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt = $db->stmt_init();
@@ -70,11 +75,16 @@ function dbline_get_details($state, $line)
     return array($fullname, $region, $traffic, $maxsegment, $desc, $version);
 }
 
-/*
+/**
  * Given a line, work out its current overall status
+ *
+ * @param $state
+ * @param $line
+ * @return string
  */
 function get_line_status_class($state, $line)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt1 = $db->stmt_init();
@@ -153,7 +163,7 @@ function get_line_status_class($state, $line)
     $ON = $sections["ON"];
     $OT = $sections["OT"];
     $CX = $sections["CN"] + $sections["CT"];
-    $LI = $sections["LI"];
+    # $LI = $sections["LI"];
     $NO = $sections["NO"];
 
     #
@@ -179,8 +189,14 @@ function get_line_status_class($state, $line)
     }
 }
 
+/**
+ * @param $state
+ * @param $line
+ * @return int
+ */
 function get_linemap_count($state, $line)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt = $db->stmt_init();
@@ -208,16 +224,15 @@ function get_linemap_count($state, $line)
 }
 
 /**
- * dbline_get_length
- *
  * Given a line, return the length of all track in km.
  *
- * Returns an array of:
- *  - total length in km
- *  - flag that is true if some segment lengths are unknown
+ * @param $state
+ * @param $line
+ * @return array an array of: total length in km, flag that is true if some segment lengths are unknown
  */
 function dbline_get_length($state, $line)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt = $db->stmt_init();
@@ -303,16 +318,15 @@ function dbline_get_length($state, $line)
 }
 
 /**
- * dbline_get_station_count
- *
  * Given a line, return the number of active and closed stations
  *
- * Returns an array of:
- *  - number of stations in use
- *  - total number of stations on the line
+ * @param $state
+ * @param $line
+ * @return array an array of: number of stations in use, total number of stations on the line
  */
 function dbline_get_station_count($state, $line)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt = $db->stmt_init();
@@ -354,5 +368,3 @@ function dbline_get_station_count($state, $line)
 
     return array($active_count, $total_count);
 }
-
-?>

@@ -4,6 +4,7 @@ require "site.inc";
 
 function run_infra_short_lived_sections()
 {
+    /** @var mysqli $db */
     global $db;
 
     $MAX = 30;
@@ -128,5 +129,3 @@ function run_infra_short_lived_sections()
 }
 
 normal_page_wrapper('run_infra_short_lived_sections', 'infra-short-lived-sections.latte');
-
-?>

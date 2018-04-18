@@ -32,5 +32,3 @@ function get_setting($key)
 
     return $settings[$key];
 }
-
-?>

@@ -48,5 +48,3 @@ function run_infra_never_completed()
 }
 
 normal_page_wrapper('run_infra_never_completed', 'infra-never-completed.latte');
-
-?>

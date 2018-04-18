@@ -93,5 +93,3 @@ function run_maps_index()
 }
 
 card_page_wrapper('run_maps_index');
-
-?>

@@ -280,5 +280,3 @@ function url_location_photo($state, $location, $seqno)
 
     return $url;
 }
-
-?>

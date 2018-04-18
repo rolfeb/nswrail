@@ -14,5 +14,3 @@ function run_maps_sydney_1969()
 }
 
 normal_page_wrapper('run_maps_sydney_1969', 'maps-generic.latte');
-
-?>

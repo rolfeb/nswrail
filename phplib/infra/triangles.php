@@ -12,5 +12,3 @@ function run_infra_triangles()
 }
 
 normal_page_wrapper('run_infra_triangles', 'infra-triangles.latte');
-
-?>

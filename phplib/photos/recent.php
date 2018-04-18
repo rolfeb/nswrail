@@ -11,4 +11,3 @@ last $recent weeks.
 ";
 
 theme_gallery(PhotoThemes::Recent, "", "Recently Added NSW Railway Photos", $intro);
-?>

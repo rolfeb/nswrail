@@ -7,5 +7,3 @@ $LOG_DIR            = $_SERVER['LOG_DIR'];
 require_once "lib.inc";
 
 init_request();
-
-?>

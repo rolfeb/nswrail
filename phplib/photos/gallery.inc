@@ -2,6 +2,9 @@
 
 require "site.inc";
 
+/**
+ * Class PhotoThemes
+ */
 abstract class PhotoThemes
 {
     # the following must match values in r_location_photo.tags:
@@ -17,6 +20,10 @@ abstract class PhotoThemes
     const Tunnel        = 'tunnel';
 }
 
+/**
+ * @param $params
+ * @return string
+ */
 function encode_argv_url($params)
 {
     $args = [];
@@ -30,6 +37,15 @@ function encode_argv_url($params)
 #
 # Display the results page selector
 #
+/**
+ * @param $tp
+ * @param $page
+ * @param $npages
+ * @param $order
+ * @param $mode
+ * @param $extra_params
+ * @return mixed
+ */
 function add_navigation($tp, $page, $npages, $order, $mode, $extra_params)
 {
     #
@@ -101,8 +117,15 @@ function add_navigation($tp, $page, $npages, $order, $mode, $extra_params)
     return $tp;
 }
 
+/**
+ * @param $theme
+ * @param $themeextra
+ * @param $title
+ * @param $intro
+ */
 function theme_gallery($theme, $themeextra, $title, $intro)
 {
+    /** @var mysqli $db */
     global $db;
 
     #
@@ -157,7 +180,7 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     case PhotoThemes::Safeworking:
     case PhotoThemes::Signalbox:
     case PhotoThemes::Turntable:
-        list($sql, $bind_types, $bind_params) = sql_photo_tag($theme, $order);
+        list($sql, $bind_types, $bind_params) = sql_photo_tag($db, $theme, $order);
         break;
 
     case PhotoThemes::Historic:
@@ -202,10 +225,6 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     if ($mode == "thumbnail") {
         $npages = ceil($nrows / ($THUMBNAIL_COLUMNS * $THUMBNAIL_PAGEROWS));
 
-        $first = ($page - 1) * $THUMBNAIL_COLUMNS * $THUMBNAIL_PAGEROWS;
-        $last = $page * $THUMBNAIL_COLUMNS * $THUMBNAIL_PAGEROWS - 1;
-        $select_limits = "$first,$last";
-
         $tp['page'] = $page;
         $tp['npages'] = $npages;
         $tp['num_columns'] = $THUMBNAIL_COLUMNS;
@@ -233,11 +252,16 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     normal_page('photo-gallery.latte', $tp);
 }
 
-#
-# Construct a statement to retrieve photos matching the given theme
-# identifier (r_location_photo.themes).
-#
-function sql_photo_tag($theme, $sorting)
+/**
+ * Construct a statement to retrieve photos matching the given theme
+ * identifier (r_location_photo.themes).
+ *
+ * @param mysqli $db
+ * @param $theme
+ * @param $sorting
+ * @return array
+ */
+function sql_photo_tag($db, $theme, $sorting)
 {
     if ($sorting == "year")
         $sort = "RP.year, RL.location_name, RP.seqno";
@@ -279,6 +303,10 @@ function sql_photo_tag($theme, $sorting)
 #
 # Construct a statement to retrieve "historic" photos.
 #
+/**
+ * @param $sorting
+ * @return array
+ */
 function sql_historic($sorting)
 {
     $age = get_setting('HISTORIC_PHOTO_YEARS');
@@ -327,6 +355,10 @@ function sql_historic($sorting)
 #
 # Construct a statement to retrieve recently-released photos.
 #
+/**
+ * @param $sorting
+ * @return array
+ */
 function sql_recent($sorting)
 {
     $RECENT_DAYS = get_setting('RECENT_PHOTO_UPLOAD_WEEKS') * 4;
@@ -371,6 +403,10 @@ function sql_recent($sorting)
 #
 # Construct a statement to retrieve tunnel photos.
 #
+/**
+ * @param $sorting
+ * @return array
+ */
 function sql_tunnel($sorting)
 {
     if ($sorting == "year")
@@ -418,6 +454,11 @@ function sql_tunnel($sorting)
 #
 # Construct a statement to retrieve photos for a given owner.
 #
+/**
+ * @param $sorting
+ * @param $owner_insecure
+ * @return array
+ */
 function sql_owner($sorting, $owner_insecure)
 {
     if ($sorting == 'year') {
@@ -475,5 +516,3 @@ function sql_owner($sorting, $owner_insecure)
 
     return [$sql, $bind_types, $bind_values];
 }
-
-?>

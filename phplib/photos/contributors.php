@@ -2,8 +2,9 @@
 
 require "site.inc";
 
-function run_photos_contributers()
+function run_photos_contributors()
 {
+    /** @var mysqli $db */
     global $db;
 
     $tp = [
@@ -40,6 +41,4 @@ function run_photos_contributers()
     return $tp;
 }
 
-normal_page_wrapper('run_photos_contributers', 'photo-contributers.latte');
-
-?>
+normal_page_wrapper('run_photos_contributors', 'photo-contributors.latte');

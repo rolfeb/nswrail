@@ -31,5 +31,3 @@ require "display_page.inc";
 require "util.inc";
 require "card_page.inc";
 require "html_param.inc";
-
-?>

@@ -11,4 +11,3 @@ were taken at least $age years ago.
 ";
 
 theme_gallery(PhotoThemes::Historic, "", "Historic NSW Railway Photos", $intro);
-?>

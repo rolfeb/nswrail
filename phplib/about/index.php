@@ -18,8 +18,8 @@ function run_about_index()
             ''
         ],
         [
-            '/photos/contributers.php',
-            'Photo contributers',
+            '/photos/contributors.php',
+            'Photo contributors',
             'Here are all the people who contributed photos.',
             ''
         ],
@@ -42,5 +42,3 @@ function run_about_index()
 }
 
 card_page_wrapper('run_about_index');
-
-?>

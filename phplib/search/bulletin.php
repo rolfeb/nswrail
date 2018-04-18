@@ -4,6 +4,7 @@ require "site.inc";
 
 function run_search_bulletin()
 {
+    /** @var mysqli $db */
     global $db;
 
     $tp = [
@@ -41,5 +42,3 @@ function run_search_bulletin()
 }
 
 normal_page_wrapper('run_search_bulletin', 'search-bulletin.latte');
-
-?>

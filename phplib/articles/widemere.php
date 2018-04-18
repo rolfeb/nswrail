@@ -11,5 +11,3 @@ function run_articles_widemere()
 }
 
 normal_page_wrapper('run_articles_widemere', 'articles-widemere.latte');
-
-?>

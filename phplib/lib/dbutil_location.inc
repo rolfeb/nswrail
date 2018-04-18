@@ -4,6 +4,7 @@ require_once 'dbutil.inc';
 
 function is_valid_location($state, $location)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt = $db->stmt_init();
@@ -26,6 +27,7 @@ function is_valid_location($state, $location)
 
 function get_location_event_date_str($state, $location, $type, $first)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt = $db->stmt_init();
@@ -69,6 +71,7 @@ function get_location_event_date_str($state, $location, $type, $first)
 
 function count_photos($state, $location)
 {
+    /** @var mysqli $db */
     global $db;
 
     $stmt = $db->stmt_init();
@@ -96,5 +99,3 @@ function count_photos($state, $location)
 
     return $count;
 }
-
-?>

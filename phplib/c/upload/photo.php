@@ -55,5 +55,3 @@ try {
 } catch (Exception $e) {
     report_error($e);
 }
-
-?>

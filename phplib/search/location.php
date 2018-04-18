@@ -4,6 +4,7 @@ require "site.inc";
 
 function run_location_search()
 {
+    /** @var mysqli $db */
     global $db;
 
     $tp = [
@@ -155,5 +156,3 @@ function run_location_search()
 }
 
 normal_page_wrapper('run_location_search', 'search-location.latte');
-
-?>

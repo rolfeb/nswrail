@@ -24,9 +24,17 @@ SetEnv NSWRAIL_CONFIG_FILE      "/home/rolfeb/config/test.nswrail.net.json"
 RewriteEngine on
 RewriteBase /
 
+# Allow Lets Encrypt test to work
+RewriteCond %{REQUEST_URI} ^\/[A-F0-9]{32}.txt(?:\ Comodo\ DCV)?$ [OR]
+RewriteCond %{REQUEST_URI} ^\/[0-9]+\..+\.cpaneldcv$ [OR]
+RewriteCond %{REQUEST_URI} /\.well\-known\/acme\-challenge
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule (.*) - [L]
+
+
 # Uncomment for HTTPS
-## RewriteCond %{HTTPS} !=on
-## RewriteRule ^/?(.*)         https://%{SERVER_NAME}/$1 [R,L]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^/?(.*)         https://%{SERVER_NAME}/$1 [R,L]
 
 # .txt files are passed through the BBCode parser
 RewriteRule ^(.*).txt$      /c/txtpage.php?file=$1.txt [L]
@@ -68,3 +76,6 @@ Order allow,deny
     Header set Cache-Control no-store
 </FilesMatch>
 
+<Location "/.well-known">
+    Allow from all
+</Location>

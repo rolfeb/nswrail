@@ -9266,7 +9266,7 @@ h1,
 }
 
 @media (min-width: 992px) {
-  .multicolumn-3 {
+  .text-3column {
     -webkit-column-count: 3;
     -moz-column-count: 3;
     column-count: 3;
