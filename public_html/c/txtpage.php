@@ -41,5 +41,3 @@ $t->setVariable('TEXT', $text);
 $t->parseCurrentBlock();
 
 display_page($title, $t->get("CONTENT"));
-
-?>

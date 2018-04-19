@@ -3,17 +3,17 @@
  */
 
 function refresh_year() {
-    e = document.getElementById('year')
+    let e = document.getElementById('year');
     if (e)
         e.innerHTML = $('#slider').slider("value")
 }
 function refresh_map() {
-    selected = $('#slider').slider("value")
+    let selected = $('#slider').slider("value");
 
-    i = 1860
+    let i = 1860;
     while (i <= 2000)
     {
-        e = document.getElementById(i)
+        e = document.getElementById(i);
         if (e)
         {
             if (i == selected)
@@ -23,12 +23,12 @@ function refresh_map() {
         }
         i += 5
     }
-    e = document.getElementById('year')
+    let e = document.getElementById('year');
     if (e)
         e.innerHTML = $('#slider').slider("value")
 }
 function loaded() {
-    e = document.getElementById('loading')
+    let e = document.getElementById('loading');
     if (e)
         e.style.display = 'none';
     $('#slider').slider("value", "2000");

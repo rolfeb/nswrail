@@ -36,4 +36,3 @@ array(
 );
 
 show_links("NSW Maps and Satellite Images", $intro, $links);
-?>

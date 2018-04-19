@@ -49,5 +49,3 @@ function by_text($a, $b)
 {
     return strcmp($a[1], $b[1]);
 }
-
-?>

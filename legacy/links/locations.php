@@ -98,4 +98,3 @@ array(
 );
 
 show_links("NSW Railway Location Links", $intro, $links);
-?>

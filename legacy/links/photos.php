@@ -110,4 +110,3 @@ array(
 );
 
 show_links("NSW Railway Photograph Links", $intro, $links);
-?>

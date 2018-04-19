@@ -4,5 +4,3 @@
  */
 
 require "phplib/locations/details.php";
-
-?>

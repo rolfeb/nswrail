@@ -17,7 +17,7 @@ $(document).ready(function() {
     });
 
     $('#upload').on('fileuploaded', function(event, data, previewId, index) {
-        var form = data.form, files = data.files, extra = data.extra,
+        let form = data.form, files = data.files, extra = data.extra,
             response = data.response, reader = data.reader;
 
         // append the new entry to the queue
@@ -34,7 +34,7 @@ function daysInMonth(m, y)
 {
     switch (parseInt(m)) {
     case 2:
-        return (y % 4 == 0 && y % 100) || y % 400 == 0 ? 29 : 28;
+        return (y % 4 === 0 && y % 100) || y % 400 === 0 ? 29 : 28;
     case 9: case 4 : case 6 : case 11 :
         return 30;
     default:
@@ -53,18 +53,29 @@ function isValidDate(d, m, y)
 function do_publish_photo(elt)
 {
     // walk up to the enclosing DIV.row element
-    rowdiv = null;
+    let rowdiv = null;
     while (elt.parentElement) {
         elt = elt.parentElement;
-        if (elt.nodeName == 'DIV' && elt.className == 'row') {
+        if (elt.nodeName === 'DIV' && elt.className === 'row') {
             rowdiv = elt;
             break;
         }
     }
 
     // get DOM elements/values from below the rowdiv
+    let f_state;
+    let f_location;
+    let f_daterange;
+    let f_day;
+    let f_month;
+    let f_year;
+    let f_caption;
+    let f_image;
+    let f_tagnames;
+
+    let e_error = rowdiv.getElementsByClassName('error')[0];
+
     try {
-        e_error = rowdiv.getElementsByClassName('error')[0];
         f_state = rowdiv.getElementsByClassName('state')[0].value;
         f_location = rowdiv.getElementsByClassName('location')[0].value;
         f_daterange = rowdiv.getElementsByClassName('daterange')[0].value;
@@ -81,17 +92,17 @@ function do_publish_photo(elt)
     }
 
     // validate the form contents
-    today = new Date();
-    this_year = today.getFullYear();
-    this_month = today.getMonth() + 1;
-    this_day = today.getDate();
+    let today = new Date();
+    let this_year = today.getFullYear();
+    let this_month = today.getMonth() + 1;
+    let this_day = today.getDate();
 
-    if (f_location.length == 0) {
+    if (f_location.length === 0) {
         e_error.innerHTML = 'Error: location must be specified';
         return false;
     }
 
-    if (f_year.length == 0) {
+    if (f_year.length === 0) {
         e_error.innerHTML = 'Error: year must be specified';
         return false;
     } else {
@@ -105,18 +116,18 @@ function do_publish_photo(elt)
         }
     }
 
-    if (f_daterange == 'exact') {
-        if (f_day.length == 0) {
+    if (f_daterange === 'exact') {
+        if (f_day.length === 0) {
             e_error.innerHTML = 'Error: day must be specified for "exact" dates';
             return false;
-        } else if (f_month == '') {
+        } else if (f_month === '') {
             e_error.innerHTML = 'Error: month must be specified for "exact" dates';
             return false;
         }
     }
 
     if (f_day.length > 0) {
-        if (f_month == 0) {
+        if (f_month === 0) {
             e_error.innerHTML = 'Error: cannot specify day without month';
             return false;
         }
@@ -126,14 +137,14 @@ function do_publish_photo(elt)
         }
     }
 
-    future_date = false;
+    let future_date = false;
     if (f_year > this_year) {
         future_date = true;
-    } else if (f_month != '') {
-        if (f_year == this_year && f_month > this_month) {
+    } else if (f_month !== '') {
+        if (f_year === this_year && f_month > this_month) {
             future_date = true;
         } else if (f_day.length > 0) {
-            if (f_year == this_year && f_month == this_month && f_day > this_day) {
+            if (f_year === this_year && f_month === this_month && f_day > this_day) {
                 future_date = true;
             }
         }
@@ -143,26 +154,26 @@ function do_publish_photo(elt)
         return false;
     }
 
-    if (f_caption.length == 0) {
+    if (f_caption.length === 0) {
         e_error.innerHTML = 'Error: caption must be specified';
         return false;
     }
 
     // look up the checked tags; f_tagnames contains all possible tags, so
     // we use this to look up each tag checkbox in turn.
-    checked_tags = [];
-    alltags = f_tagnames.split(',');
+    let checked_tags = [];
+    let alltags = f_tagnames.split(',');
     for (let i = 0; i < alltags.length; i++) {
-        tag_field = 'tag-' + alltags[i];
+        let tag_field = 'tag-' + alltags[i];
         if (rowdiv.getElementsByClassName(tag_field)[0].checked) {
             checked_tags.push(alltags[i]);
         }
     }
-    f_tags = checked_tags.join(',');
+    let f_tags = checked_tags.join(',');
 
     e_error.innerHTML = '';
 
-    form_data = {
+    let form_data = {
         'state': f_state,
         'location': f_location,
         'file': f_image,
@@ -180,7 +191,7 @@ function do_publish_photo(elt)
         'data': form_data,
         'dataType': 'json',
         'success': function(data, text, jqXHR) {
-            reply = JSON.parse(jqXHR.responseText);
+            let reply = JSON.parse(jqXHR.responseText);
             if ('error' in reply) {
                 e_error.innerHTML = 'Publish failed: ' + reply['error'];
             } else {
@@ -204,17 +215,19 @@ function do_publish_photo(elt)
 function do_delete_photo(elt)
 {
     // walk up to the enclosing DIV.row element
-    rowdiv = null;
+    let rowdiv = null;
     while (elt.parentElement) {
         elt = elt.parentElement;
-        if (elt.nodeName == 'DIV' && elt.className == 'row') {
+        if (elt.nodeName === 'DIV' && elt.className === 'row') {
             rowdiv = elt;
             break;
         }
     }
 
-    error = '';
+    let error = '';
     // get DOM elements/values from below the rowdiv
+    let e_error;
+    let f_image;
     try {
         e_error = rowdiv.getElementsByClassName('error')[0];
         f_image = rowdiv.getElementsByClassName('image')[0].value;

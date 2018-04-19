@@ -47,4 +47,3 @@ array(
 );
 
 show_links("General NSW Railway Links", $intro, $links);
-?>

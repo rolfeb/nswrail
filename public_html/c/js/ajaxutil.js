@@ -7,7 +7,7 @@
  */
 function aj_new_request()
 {
-    req = false;
+    let req = false;
 
     // For Safari, Firefox, and other non-MS browsers
     if (window.XMLHttpRequest)

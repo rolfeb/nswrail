@@ -4,5 +4,3 @@
  */
 
 require "phplib/photos/tunnel.php";
-
-?>

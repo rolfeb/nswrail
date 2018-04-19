@@ -4,5 +4,3 @@
  */
 
 require "phplib/infra/altitude.php";
-
-?>

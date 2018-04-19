@@ -4,5 +4,3 @@
  */
 
 require "phplib/infra/index.php";
-
-?>

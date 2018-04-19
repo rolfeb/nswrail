@@ -12,7 +12,7 @@ $(function() {
         buttons: {
             "Login": function() {
                 $(this).dialog("close");
-                form = this.getElementsByTagName("form")[0];
+                let form = this.getElementsByTagName("form")[0];
                 form.submit();
             },
             "Cancel": function() {

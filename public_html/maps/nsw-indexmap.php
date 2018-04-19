@@ -4,5 +4,3 @@
  */
 
 require "phplib/maps/nsw-indexmap.php";
-
-?>

@@ -4,5 +4,3 @@
  */
 
 require "phplib/lines/index.php";
-
-?>

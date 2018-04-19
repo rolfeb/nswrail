@@ -4,5 +4,3 @@
  */
 
 require "phplib/photos/turntable.php";
-
-?>

@@ -4,5 +4,3 @@
  */
 
 require "phplib/photos/safeworking.php";
-
-?>

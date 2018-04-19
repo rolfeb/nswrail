@@ -2,14 +2,14 @@
  * Copyright (c) 2018. Rolfe Bozier
  */
 
-var map;
+let map;
 function initMapCB()
 {
-    var geox = parseFloat(document.getElementById("map-geox").value);
-    var geoy = parseFloat(document.getElementById("map-geoy").value);
-    var scale = parseInt(document.getElementById("map-scale").value);
+    let geox = parseFloat(document.getElementById("map-geox").value);
+    let geoy = parseFloat(document.getElementById("map-geoy").value);
+    let scale = parseInt(document.getElementById("map-scale").value);
 
-    var latlong = new google.maps.LatLng(geoy, geox);
+    let latlong = new google.maps.LatLng(geoy, geox);
 
     // instantiate the map
     map = new google.maps.Map(document.getElementById('googleMap'), {
@@ -18,7 +18,7 @@ function initMapCB()
     });
 
     // custom icon for the location
-    var icon = new google.maps.MarkerImage(
+    let icon = new google.maps.MarkerImage(
         '/media/images/crosshair.png',
         new google.maps.Size(63, 63),   // size
         new google.maps.Point(0, 0),    // origin
@@ -26,7 +26,7 @@ function initMapCB()
     );
 
     // add marker for this location
-    var marker = new google.maps.Marker({
+    let marker = new google.maps.Marker({
         map: map,
         position: latlong,
         icon: icon,

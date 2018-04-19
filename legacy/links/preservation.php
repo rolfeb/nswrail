@@ -30,4 +30,3 @@ array(
 );
 
 show_links("NSW Railway Preservation Links", $intro, $links);
-?>

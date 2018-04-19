@@ -205,4 +205,3 @@ array(
 );
 
 show_links("NSW Railway Operators", $intro, $links);
-?>
