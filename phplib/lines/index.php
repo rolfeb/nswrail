@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require "site.inc";
 
@@ -24,6 +27,7 @@ function retrieve_category($db, $category, $params)
     }
 
     $stmt = $db->stmt_init();
+    /** @noinspection SyntaxError */
     $stmt->prepare("
         select
             R.line_name,
@@ -69,7 +73,7 @@ function retrieve_category($db, $category, $params)
 }
 
 /**
- * @param mysqil $db
+ * @param mysqli $db
  * @param $tp
  * @param $tab_label
  * @param $tab_id

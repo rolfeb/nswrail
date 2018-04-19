@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require "site.inc";
 
@@ -370,6 +373,10 @@ function add_location_history($db, $tp, $state, $location)
             if ($h["name"])
                 $text .= ", renamed $name";
             break;
+
+        default:
+            $text = "Unknown event";
+            break;
         }
 
         $tp['history'][] = [
@@ -435,13 +442,10 @@ function add_location_lines($db, $tp, $state, $location)
 }
 
 /**
- * @param mysqli $db
  * @param $tp
- * @param $state
- * @param $location
  * @return mixed
  */
-function add_station_details($db, $tp, $state, $location)
+function add_station_details($tp)
 {
     /* TODO: implement station details? */
 
@@ -453,13 +457,10 @@ function add_station_details($db, $tp, $state, $location)
 }
 
 /**
- * @param mysqli $db
  * @param $tp
- * @param $state
- * @param $location
  * @return mixed
  */
-function add_goods_details($db, $tp, $state, $location)
+function add_goods_details($tp)
 {
     /* TODO: implement goods details? */
 
@@ -628,12 +629,9 @@ function add_photo_details($db, $tp, $state, $location)
  * @param $tp
  * @param $state
  * @param $location
- * @param $line_state
- * @param $line
- * @param $segment
  * @return mixed
  */
-function add_photo_thumbnails($db, $tp, $state, $location, $line_state, $line, $segment)
+function add_photo_thumbnails($db, $tp, $state, $location)
 {
     $stmt = $db->stmt_init();
     $stmt->prepare("
@@ -847,6 +845,7 @@ function add_prev_next_links($db, $tp, $state, $location, $line_state, $line, $s
 
 /**
  * @return array|mixed
+ * @throws SecurityError
  */
 function run_locations_details()
 {
@@ -900,8 +899,8 @@ function run_locations_details()
 
     $tp = add_location_history($db, $tp, $state, $location);
     $tp = add_location_lines($db, $tp, $state, $location);
-    $tp = add_station_details($db, $tp, $state, $location);
-    $tp = add_goods_details($db, $tp, $state, $location);
+    $tp = add_station_details($tp);
+    $tp = add_goods_details($tp);
     $tp = add_infra_details($db, $tp, $state, $location);
     $tp = add_link_details($db, $tp, $state, $location);
     $tp = add_photo_details($db, $tp, $state, $location);
@@ -919,7 +918,7 @@ function run_locations_details()
     /*
      * Add any photos or diagrams to the page
      */
-    $tp = add_photo_thumbnails($db, $tp, $state, $location, $line_state, $line_name, $segment);
+    $tp = add_photo_thumbnails($db, $tp, $state, $location);
     ### $tp = add_diagram_images($db, $tp, $state, $location);
 
     /*

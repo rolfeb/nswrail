@@ -1,5 +1,10 @@
 <?php
+/** Copyright (c) 2018. Rolfe Bozier */
 
+/**
+ * @param $message
+ * @param null $url
+ */
 function error_page($message, $url=NULL)
 {
     if (!isset($url)) {
@@ -15,6 +20,9 @@ function error_page($message, $url=NULL)
     normal_page('page-error.latte', $tp);
 }
 
+/**
+ *
+ */
 function noperm_page()
 {
     $tp = [
@@ -24,10 +32,25 @@ function noperm_page()
     normal_page('page-noperm.latte', $tp);
 }
 
+/**
+ * Class UserError
+ */
 class UserError extends Exception { }
+
+/**
+ * Class InternalError
+ */
 class InternalError extends Exception { }
+
+/**
+ * Class SecurityError
+ */
 class SecurityError extends Exception { }
 
+/**
+ * @param Exception $e
+ * @param null $url
+ */
 function report_error($e, $url=NULL)
 {
     if ($e instanceOf UserError) {

@@ -1,7 +1,13 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require "site.inc";
 
+/**
+ * @return array
+ */
 function run_infra_closed_sydney_stations()
 {
     /** @var mysqli $db */

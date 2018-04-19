@@ -1,7 +1,14 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require 'site.inc';
 
+/**
+ * @param $image
+ * @throws ImagickException
+ */
 function display_thumbnail_image($image)
 {
     global $user;
@@ -20,9 +27,9 @@ if ($user->is_guest()) {
     noperm_page();
 }
 
-$image = param_get_string('image');
-
 try {
+    $image = param_get_string('image');
+
     display_thumbnail_image($image);
 } catch (Exception $e) {
     print($e->getMessage());

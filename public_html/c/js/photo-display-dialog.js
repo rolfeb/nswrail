@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Rolfe Bozier
+ */
+
 $('#imageDisplay').on('show.bs.modal', function(e) {
   var m_photo = e.relatedTarget.dataset.photo;
   var m_location = e.relatedTarget.dataset.location;

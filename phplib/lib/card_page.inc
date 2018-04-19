@@ -1,5 +1,18 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ * @param $tp
+ * @param $cards
+ * @param $restricted_cards
+ * @return mixed
+ */
 
+/**
+ * @param $tp
+ * @param $cards
+ * @param $restricted_cards
+ * @return mixed
+ */
 function _add_cards($tp, $cards, $restricted_cards)
 {
     for ($i = 0; $i < sizeof($cards); $i++) {
@@ -30,6 +43,12 @@ function _add_cards($tp, $cards, $restricted_cards)
     return $tp;
 }
 
+/**
+ * @param $title
+ * @param $text
+ * @param $cards
+ * @param $auth_cards
+ */
 function card_page($title, $text, $cards, $auth_cards)
 {
     $tp = [
@@ -42,6 +61,9 @@ function card_page($title, $text, $cards, $auth_cards)
     normal_page('util-card-layout.latte', $tp);
 }
 
+/**
+ * @param $run_function
+ */
 function card_page_wrapper($run_function)
 {
     try {

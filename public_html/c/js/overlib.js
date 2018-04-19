@@ -1,22 +1,6 @@
-//\/////
-//\  overLIB 4.06 - You may not remove or change this notice.
-//\  Copyright Erik Bosrup 1998-2004. All rights reserved.
-//\
-//\  Contributors are listed on the homepage.
-//\  This file might be old, always check for the latest version at:
-//\  http://www.bosrup.com/web/overlib/
-//\
-//\  Please read the license agreement (available through the link above)
-//\  before using overLIB. Direct any licensing questions to erik@bosrup.com.
-//\
-//\  Do not sell this as your own work or remove this copyright notice. 
-//\  For full details on copying or changing this script please read the
-//\  license agreement at the link above. Please give credit on sites that
-//\  use overLIB and submit changes of the script so other people can use
-//\  them as well.
-//   $Revision: 434 $                $Date: 2010-08-22 10:39:39 +1000 (Sun, 22 Aug 2010) $
-//\/////
-//\mini
+/*
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 ////////
 // PRE-INIT

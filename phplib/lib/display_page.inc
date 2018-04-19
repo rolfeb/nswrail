@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ * @param $tp
+ * @return mixed
+ */
 
 function add_menu($tp)
 {
@@ -87,6 +92,10 @@ function add_menu($tp)
     return $tp;
 }
 
+/**
+ * @param $tp
+ * @return mixed
+ */
 function add_header($tp)
 {
     global $user;
@@ -98,6 +107,11 @@ function add_header($tp)
     return $tp;
 }
 
+/**
+ * @param $title
+ * @param $content
+ * @param null $args
+ */
 function display_page($title, $content, $args = null)
 {
     $tp = [
@@ -129,6 +143,11 @@ function display_page($title, $content, $args = null)
     $latte->render($_SERVER['TEMPLATE_DIR'] . "/page-normal.latte", $tp);
 }
 
+/**
+ * @param $template
+ * @param $parameters
+ * @param null $args
+ */
 function normal_page($template, $parameters, $args = null)
 {
     $template_dir = $_SERVER['TEMPLATE_DIR'];
@@ -169,6 +188,11 @@ function normal_page($template, $parameters, $args = null)
     $latte->render("$template_dir/page-normal.latte", $tp);
 }
 
+/**
+ * @param $run_function
+ * @param $template
+ * @param null $args
+ */
 function normal_page_wrapper($run_function, $template, $args=NULL)
 {
     try {

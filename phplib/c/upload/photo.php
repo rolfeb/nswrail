@@ -1,8 +1,14 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require 'site.inc';
 require 'photo-util.php';
 
+/**
+ * @return string
+ */
 function get_photo_queue_html()
 {
     global $user;
@@ -20,6 +26,9 @@ function get_photo_queue_html()
     return $html;
 }
 
+/**
+ *
+ */
 function show_upload_form()
 {
     $tp = [

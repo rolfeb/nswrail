@@ -1,7 +1,16 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require "site.inc";
 
+/**
+ * @param $tp
+ * @param $state
+ * @param $line
+ * @return mixed
+ */
 function add_links($tp, $state, $line)
 {
     /** @var mysqli $db */
@@ -37,11 +46,15 @@ function add_links($tp, $state, $line)
     return $tp;
 }
 
-function add_locations($tp, $state, $line, $maxsegment)
+/**
+ * @param mysqli $db
+ * @param $tp
+ * @param $state
+ * @param $line
+ * @return mixed
+ */
+function add_locations($db, $tp, $state, $line)
 {
-    /** @var mysqli $db */
-    global $db;
-
     /*
      * Construct location list
      */
@@ -173,6 +186,11 @@ function add_locations($tp, $state, $line, $maxsegment)
     return $tp;
 }
 
+/**
+ * @param $line_state
+ * @param $line_name
+ * @return mixed
+ */
 function read_line_locations($line_state, $line_name)
 {
     /** @var mysqli $db */
@@ -285,6 +303,11 @@ function read_line_locations($line_state, $line_name)
     return $location_list;
 }
 
+/**
+ * @param $state
+ * @param $line
+ * @return array
+ */
 function read_location_icons($state, $line)
 {
     /** @var mysqli $db */
@@ -325,6 +348,11 @@ function read_location_icons($state, $line)
     return $location_list;
 }
 
+/**
+ * @param $state
+ * @param $line
+ * @return int
+ */
 function read_line_segment_depth($state, $line)
 {
     /** @var mysqli $db */
@@ -355,6 +383,11 @@ function read_line_segment_depth($state, $line)
     return $depth;
 }
 
+/**
+ * @param $location_list
+ * @param $location
+ * @return int
+ */
 function index_of(&$location_list, $location)
 {
     for ($i = 0; $i < count($location_list); $i++) {
@@ -367,6 +400,11 @@ function index_of(&$location_list, $location)
     return -1;
 }
 
+/**
+ * @param $state
+ * @param $line
+ * @return array
+ */
 function read_line_segments($state, $line)
 {
     /** @var mysqli $db */
@@ -398,15 +436,20 @@ function read_line_segments($state, $line)
     $stmt->execute();
     $stmt->bind_result($maxseqno, $text) ;
 
-    $i = 0;
+    $result = [];
     while ($stmt->fetch()) {
-        $result[$i++] = [ "maxseq" => $maxseqno, "text" => $text ];
+        $result[] = [ "maxseq" => $maxseqno, "text" => $text ];
     }
     $stmt->close();
 
     return $result;
 }
 
+/**
+ * @param $state
+ * @param $location
+ * @return string
+ */
 function get_location_open_date($state, $location)
 {
     /** @var mysqli $db */
@@ -594,6 +637,11 @@ function get_location_nurls($db, $state, $location)
  * Return the existing footnote for the given text, or a new footnote
  * number if notalready present.
  */
+/**
+ * @param $footnotes
+ * @param $text
+ * @return false|int|string
+ */
 function add_footnote(&$footnotes, $text)
 {
     $fn = array_search($text, $footnotes);
@@ -601,11 +649,19 @@ function add_footnote(&$footnotes, $text)
     return $fn ? $fn : count($footnotes) + 1;
 }
 
+/**
+ * @param $array
+ * @param $v
+ */
 function push(&$array, $v)
 {
     $array[count($array)] = $v;
 }
 
+/**
+ * @return array|mixed
+ * @throws SecurityError
+ */
 function run_lines_details()
 {
     /** @var mysqli $db */
@@ -660,7 +716,7 @@ function run_lines_details()
     $tp['ne_description'] = html_markup_textblock(htmlentities($desc));
 
     $tp = add_links($tp, $state, $line);
-    $tp = add_locations($tp, $state, $line, $maxsegment);
+    $tp = add_locations($db, $tp, $state, $line);
 
     /*
      * Collect the History tab details

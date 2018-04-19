@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require 'site.inc';
 
@@ -116,6 +119,7 @@ function show_user_listing($db)
 
 /**
  * @param mysqli $db
+ * @throws SecurityError
  */
 function show_user_modify_screen($db)
 {
@@ -233,6 +237,7 @@ function show_user_add_screen()
 /**
  * @param mysqli $db
  * @throws InternalError
+ * @throws SecurityError
  */
 function update_user_details($db)
 {
@@ -278,6 +283,7 @@ function update_user_details($db)
     }
 
     $stmt = $db->stmt_init();
+    /** @noinspection SyntaxError */
     $stmt->prepare("
         update
             r_user
@@ -306,6 +312,7 @@ function update_user_details($db)
  * @param mysqli $db
  * @throws InternalError
  * @throws UserError
+ * @throws SecurityError
  */
 function create_user_details($db)
 {

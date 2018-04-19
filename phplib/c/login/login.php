@@ -1,7 +1,17 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require 'site.inc';
 
+/**
+ * @param $username
+ * @param $password
+ * @param $remote_ip
+ * @return null
+ * @throws UserError
+ */
 function try_login($username, $password, $remote_ip)
 {
     /** @var User $user */

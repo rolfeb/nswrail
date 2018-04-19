@@ -1,10 +1,16 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require_once "site.inc";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+/**
+ *
+ */
 function display_registration_form()
 {
     $tp = [
@@ -23,6 +29,12 @@ function display_registration_form()
     );
 }
 
+/**
+ * @param $template
+ * @param $website
+ * @param $url
+ * @return string
+ */
 function get_email_from_template($template, $website, $url)
 {
     $tp = [
@@ -36,6 +48,15 @@ function get_email_from_template($template, $website, $url)
     return $latte->renderToString("$template_dir/$template", $tp);
 }
 
+/**
+ * @param $emailaddr
+ * @param $fullname
+ * @param $password1
+ * @param $password2
+ * @param $referrer
+ * @throws InternalError
+ * @throws UserError
+ */
 function process_registration_form($emailaddr, $fullname, $password1, $password2, $referrer)
 {
     // repeat the browser-side checking
@@ -104,6 +125,9 @@ function process_registration_form($emailaddr, $fullname, $password1, $password2
     normal_page('register-post-register.latte', $tp);
 }
 
+/**
+ * @param $activate_code
+ */
 function activate_new_account($activate_code)
 {
     # try activating the account

@@ -1,7 +1,17 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 /*
  * Convert date components into human-readable form
+ */
+/**
+ * @param $day
+ * @param $month
+ * @param $year
+ * @param int $year_error
+ * @return string
  */
 function date_cpts2text($day, $month, $year, $year_error=0)
 {
@@ -34,6 +44,13 @@ function date_cpts2text($day, $month, $year, $year_error=0)
     return $date;
 }
 
+/**
+ * @param $day
+ * @param $month
+ * @param $year
+ * @param int $year_error
+ * @return string
+ */
 function date_cpts2html($day, $month, $year, $year_error=0)
 {
     $months = array("?", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
@@ -65,6 +82,10 @@ function date_cpts2html($day, $month, $year, $year_error=0)
     return $date;
 }
 
+/**
+ * @param $type
+ * @return mixed|string
+ */
 function locn_type2text($type)
 {
     $lookup = array(
@@ -89,6 +110,9 @@ function locn_type2text($type)
     return array_key_exists($type, $lookup) ? $lookup[$type] : "Unknown";
 }
 
+/**
+ * @return array
+ */
 function locn_typelist()
 {
     return array("station", "platform", "junction", "siding", "loop",
@@ -96,6 +120,10 @@ function locn_typelist()
         "crossing", "mine", "other", "unknown");
 }
 
+/**
+ * @param $status
+ * @return mixed|string
+ */
 function locn_status2text($status)
 {
     $lookup = array(
@@ -111,21 +139,35 @@ function locn_status2text($status)
     return array_key_exists($status, $lookup) ? $lookup[$status] : "Unknown";
 }
 
+/**
+ * @return array
+ */
 function locn_statuslist()
 {
     return array("unknown", "not opened", "in use", "reused", "closed");
 }
 
+/**
+ * @return array
+ */
 function locn_eventtypelist()
 {
     return array("", "ON", "RN", "MV", "CN", "PL");
 }
 
+/**
+ * @return array
+ */
 function date_errorlist()
 {
     return array(0, 1, 2, -1, -2);
 }
 
+/**
+ * @param $location
+ * @param $type
+ * @return string
+ */
 function locn_fulltitle($location, $type)
 {
     if ($type == "station" or $type == "halt") {
@@ -142,6 +184,10 @@ function locn_fulltitle($location, $type)
     }
 }
 
+/**
+ * @param $type
+ * @return mixed|string
+ */
 function tunnel_type2text($type)
 {
     $lookup = array(
@@ -153,6 +199,10 @@ function tunnel_type2text($type)
     return array_key_exists($type, $lookup) ? $lookup[$type] : "Unknown";
 }
 
+/**
+ * @param $lengths
+ * @return null|string|string[]
+ */
 function tunnel_lengths2text($lengths)
 {
     if ($lengths != "") {
@@ -166,6 +216,10 @@ function tunnel_lengths2text($lengths)
 /*
  * Mark up a block of text in HTML, preserving paragraphs
  */
+/**
+ * @param $text
+ * @return string
+ */
 function html_markup_textblock($text)
 {
     if ($text == "") {
@@ -178,6 +232,10 @@ function html_markup_textblock($text)
     return "<p>$text</p>";
 }
 
+/**
+ * @param $name
+ * @return null|string|string[]
+ */
 function make_canonical_name($name)
 {
     # replace _ with space
@@ -192,6 +250,10 @@ function make_canonical_name($name)
     return $name;
 }
 
+/**
+ * @param $name
+ * @return null|string|string[]
+ */
 function make_file_name($name)
 {
     # replace space with _
@@ -206,6 +268,10 @@ function make_file_name($name)
     return $name;
 }
 
+/**
+ * @param $string
+ * @return string
+ */
 function urlenc($string)
 {
     return htmlentities(preg_replace("/ /", "+", $string), ENT_QUOTES, "UTF-8");
@@ -215,6 +281,10 @@ function urlenc($string)
 # Returns an array of changelog entries. Each element is a hash of date, text
 # information.
 #
+/**
+ * @param $file
+ * @return array
+ */
 function changelog($file)
 {
     $text = "";
@@ -262,6 +332,12 @@ function changelog($file)
     return $log;
 }
 
+/**
+ * @param $state
+ * @param $location
+ * @param string $line
+ * @return string
+ */
 function url_location($state, $location, $line='')
 {
     $url = "/locations/details.php?" . urlenc("name=$state:$location");
@@ -273,6 +349,12 @@ function url_location($state, $location, $line='')
     return $url;
 }
 
+/**
+ * @param $state
+ * @param $location
+ * @param $seqno
+ * @return string
+ */
 function url_location_photo($state, $location, $seqno)
 {
     $url = "/locations/gphoto.php?" . urlenc("name=$state:$location:$seqno")

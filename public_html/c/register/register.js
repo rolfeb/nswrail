@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Rolfe Bozier
+ */
+
 function validate_register_form()
 {
     email = document.getElementById("register_username").value;

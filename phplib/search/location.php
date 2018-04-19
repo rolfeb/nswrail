@@ -1,7 +1,14 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require "site.inc";
 
+/**
+ * @return array
+ * @throws SecurityError
+ */
 function run_location_search()
 {
     /** @var mysqli $db */

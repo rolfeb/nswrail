@@ -1,7 +1,13 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require 'site.inc';
 
+/**
+ * @return array
+ */
 function run_articles_planned()
 {
     $tp = [

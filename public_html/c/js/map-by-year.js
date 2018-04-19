@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Rolfe Bozier
+ */
+
 function refresh_year() {
     e = document.getElementById('year')
     if (e)

@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
+
 #
 # AJAX callback handler
 #   aj-delete.php: delete a staged image on the server

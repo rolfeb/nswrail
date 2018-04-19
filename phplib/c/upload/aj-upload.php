@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
+
 #
 # aj-upload.php
 #   AJAX callback handler: upload and save an image in the staging area

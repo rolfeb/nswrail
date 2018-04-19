@@ -1,7 +1,14 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require "site.inc";
 
+/**
+ * @return array
+ * @throws SecurityError
+ */
 function run_search_bulletin_results()
 {
     /** @var mysqli $db */
@@ -28,6 +35,7 @@ function run_search_bulletin_results()
 
     $where_clause = '';
     $bind_types = '';
+    $match_sql = [];
     $bind_params = [];
 
     if ($title_keywords) {
@@ -154,6 +162,7 @@ function run_search_bulletin_results()
         $where_clause = "where $where_clause";
 
     $stmt = $db->stmt_init();
+    /** @noinspection SyntaxError */
     $stmt->prepare("
         select
             BI.title,

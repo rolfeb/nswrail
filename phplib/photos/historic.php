@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require "site.inc";
 require "gallery.inc";
@@ -10,4 +13,4 @@ This page contains photos of a historic nature, defined as those which
 were taken at least $age years ago.
 ";
 
-theme_gallery(PhotoThemes::Historic, "", "Historic NSW Railway Photos", $intro);
+run_theme_gallery(PhotoThemes::Historic, "", "Historic NSW Railway Photos", $intro);

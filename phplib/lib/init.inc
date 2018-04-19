@@ -1,15 +1,19 @@
 <?php
-
 /**
- * @throws SecurityError
+ * Copyright (c) 2018. Rolfe Bozier
  */
+
 function init_request()
 {
     /** @var mysqli $db */
     global $db;
     global $user;
 
-    load_config();
+    try {
+        load_config();
+    } catch (\Exception $e) {
+        print('Error: ' . $e->getMessage());
+    }
 
     /*
      * Connect to the database
@@ -96,6 +100,9 @@ It will be back shortly.
     return 1;
 }
 
+/**
+ * @return bool
+ */
 function server_is_devel()
 {
     return (
@@ -105,6 +112,9 @@ function server_is_devel()
     );
 }
 
+/**
+ * @return bool
+ */
 function server_is_stage()
 {
     return
@@ -115,12 +125,18 @@ function server_is_stage()
     );
 }
 
+/**
+ * @return bool
+ */
 function server_is_production()
 {
     return ($_SERVER["SERVER_NAME"] != "nswrail-proto"
         && $_SERVER["SERVER_NAME"] != "nswrail-stage");
 }
 
+/**
+ * @return int
+ */
 function get_database_timestamp()
 {
     /** @var mysqli $db */

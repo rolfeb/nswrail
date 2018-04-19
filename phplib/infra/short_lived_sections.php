@@ -1,7 +1,13 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require "site.inc";
 
+/**
+ * @return array
+ */
 function run_infra_short_lived_sections()
 {
     /** @var mysqli $db */

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Rolfe Bozier
+ */
+
 $(document).ready(function() {
     $("#upload").fileinput({
         theme: "fa",

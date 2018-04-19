@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require "site.inc";
 
@@ -122,6 +125,8 @@ function add_navigation($tp, $page, $npages, $order, $mode, $extra_params)
  * @param $themeextra
  * @param $title
  * @param $intro
+ * @throws InternalError
+ * @throws SecurityError
  */
 function theme_gallery($theme, $themeextra, $title, $intro)
 {
@@ -180,7 +185,7 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     case PhotoThemes::Safeworking:
     case PhotoThemes::Signalbox:
     case PhotoThemes::Turntable:
-        list($sql, $bind_types, $bind_params) = sql_photo_tag($db, $theme, $order);
+        list($sql, $bind_types, $bind_params) = sql_photo_tag($theme, $order);
         break;
 
     case PhotoThemes::Historic:
@@ -199,6 +204,9 @@ function theme_gallery($theme, $themeextra, $title, $intro)
         list($sql, $bind_types, $bind_params) = sql_owner($order, $themeextra);
         $extra_param = ['owner' => $themeextra];
         break;
+
+    default:
+        throw new InternalError("invalid theme: " . $theme);
     }
 
     $stmt = $db->stmt_init();
@@ -216,6 +224,7 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     $stmt = $db->stmt_init();
     $stmt->prepare("$sql limit $select_limits");
     if (count($bind_types) > 0) {
+        /** @noinspection PhpUndefinedVariableInspection */
         call_user_func_array(array($stmt, 'bind_param'), $valrefs);
     }
     $stmt->execute();
@@ -253,15 +262,29 @@ function theme_gallery($theme, $themeextra, $title, $intro)
 }
 
 /**
+ * @param $theme
+ * @param $themeextra
+ * @param $title
+ * @param $intro
+ */
+function run_theme_gallery($theme, $themeextra, $title, $intro)
+{
+    try {
+        run_theme_gallery($theme, $themeextra, $title, $intro);
+    } catch (\Exception $e) {
+        report_error($e);
+    }
+}
+
+/**
  * Construct a statement to retrieve photos matching the given theme
  * identifier (r_location_photo.themes).
  *
- * @param mysqli $db
  * @param $theme
  * @param $sorting
  * @return array
  */
-function sql_photo_tag($db, $theme, $sorting)
+function sql_photo_tag($theme, $sorting)
 {
     if ($sorting == "year")
         $sort = "RP.year, RL.location_name, RP.seqno";
@@ -473,6 +496,7 @@ function sql_owner($sorting, $owner_insecure)
         $extra = '';
     }
 
+    /** @noinspection SyntaxError */
     $sql = "
         select
             RL.line_state,

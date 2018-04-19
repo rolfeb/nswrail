@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require "site.inc";
 
@@ -58,6 +61,7 @@ function sort_by_location($a, $b)
  * @param mysqli $db
  * @param $tp
  * @return mixed
+ * @throws SecurityError
  */
 function perform_search($db, $tp)
 {
@@ -259,6 +263,7 @@ function perform_search($db, $tp)
 
 /**
  * @return array|mixed
+ * @throws SecurityError
  */
 function run_search_text()
 {

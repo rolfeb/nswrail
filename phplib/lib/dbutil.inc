@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 function get_available_photo_tags()
 {
@@ -30,6 +33,9 @@ function get_available_photo_tags()
     return $tag_list;
 }
 
+/**
+ * @return array
+ */
 function get_locations()
 {
     /** @var mysqli $db */
@@ -56,6 +62,9 @@ function get_locations()
     return $location_list;
 }
 
+/**
+ *
+ */
 function commit()
 {
     /** @var mysqli $db */
@@ -64,6 +73,9 @@ function commit()
     mysqli_commit($db) or die("commit failed");
 }
 
+/**
+ *
+ */
 function rollback()
 {
     /** @var mysqli $db */

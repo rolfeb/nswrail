@@ -1,7 +1,15 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require_once 'dbutil.inc';
 
+/**
+ * @param $state
+ * @param $location
+ * @return bool
+ */
 function is_valid_location($state, $location)
 {
     /** @var mysqli $db */
@@ -25,6 +33,13 @@ function is_valid_location($state, $location)
     return !!$ok;
 }
 
+/**
+ * @param $state
+ * @param $location
+ * @param $type
+ * @param $first
+ * @return string
+ */
 function get_location_event_date_str($state, $location, $type, $first)
 {
     /** @var mysqli $db */
@@ -53,6 +68,7 @@ function get_location_event_date_str($state, $location, $type, $first)
     $stmt->bind_result($day, $month, $year, $year_error);
 
     $found = FALSE;
+    $date_str = "";
     while ($stmt->fetch())
     {
         $found = True;
@@ -69,6 +85,11 @@ function get_location_event_date_str($state, $location, $type, $first)
     return 'unknown';
 }
 
+/**
+ * @param $state
+ * @param $location
+ * @return string
+ */
 function count_photos($state, $location)
 {
     /** @var mysqli $db */

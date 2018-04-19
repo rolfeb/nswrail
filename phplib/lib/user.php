@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 class User
 {
@@ -17,7 +20,12 @@ class User
     public $uid;
     public $username;
     public $fullname;
+    public $role;
 
+    /**
+     * User constructor.
+     * @param $db
+     */
     public function __construct($db)
     {
         $this->_db = $db;
@@ -29,6 +37,12 @@ class User
         }
     }
 
+    /**
+     * @param $username
+     * @param $password_in
+     * @param $ip_addr
+     * @throws UserError
+     */
     public function login($username, $password_in, $ip_addr)
     {
         # XXX: parameter validation?
@@ -90,7 +104,10 @@ class User
         $_SESSION['uid'] = $this->uid;
 	}
 
-	public function logout()
+    /**
+     *
+     */
+    public function logout()
     {
 		session_unset();
 		session_destroy();
@@ -99,32 +116,52 @@ class User
         $this->load_guest_user();
 	}
 
+    /**
+     * @return bool
+     */
     public function is_guest()
     {
         return $this->uid == -1;
     }
 
+    /**
+     * @return bool
+     */
     public function is_loggedin()
     {
         return $this->uid != -1;
     }
 
+    /**
+     * @return bool
+     */
     public function is_editor()
     {
         return !$this->is_guest() && ($this->role & (User::R_EDITOR|User::R_SUPERUSER)) != 0;
     }
 
+    /**
+     * @return bool
+     */
     public function is_moderator()
     {
         return !$this->is_guest() && ($this->role & (User::R_MODERATOR|User::R_SUPERUSER)) != 0;
     }
 
+    /**
+     * @return bool
+     */
     public function is_superuser()
     {
         return !$this->is_guest() && ($this->role & User::R_SUPERUSER) != 0;
     }
 
     # get user details from database, given uid or username
+
+    /**
+     * @param $uid
+     * @param $username
+     */
     private function load_user_from_db($uid, $username)
     {
         $stmt = $this->_db->stmt_init();
@@ -170,6 +207,9 @@ class User
         $stmt->close();
     }
 
+    /**
+     *
+     */
     private function load_guest_user()
     {
         $this->uid = -1;
@@ -182,6 +222,10 @@ class User
     # Class/static functions
     #
 
+    /**
+     * @param $addr
+     * @return bool
+     */
     public static function email_address_in_use($addr)
     {
         /** @var mysqli $db */
@@ -205,6 +249,13 @@ class User
         return $exists;
     }
 
+    /**
+     * @param $addr
+     * @param $fullname
+     * @param $enc_password
+     * @param $activate_id
+     * @param $register_addr
+     */
     public static function register_new_user($addr, $fullname, $enc_password, $activate_id, $register_addr)
     {
         /** @var mysqli $db */
@@ -233,6 +284,9 @@ class User
         $stmt->close();
     }
 
+    /**
+     * @param $activate_code
+     */
     public static function activate_user_via_code($activate_code)
     {
         /** @var mysqli $db */

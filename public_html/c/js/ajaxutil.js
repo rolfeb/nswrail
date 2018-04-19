@@ -1,4 +1,8 @@
 /*
+ * Copyright (c) 2018. Rolfe Bozier
+ */
+
+/*
  * Get an XMLHttpRequest object in a portable way.
  */
 function aj_new_request()

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Rolfe Bozier
+ */
+
 $(function() {
     $("#login-form").dialog("destroy");
 

@@ -1,5 +1,11 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
+/**
+ * @throws SecurityError
+ */
 function load_config()
 {
     global $config;
@@ -10,6 +16,10 @@ function load_config()
     }
 }
 
+/**
+ * @param $key
+ * @return mixed
+ */
 function get_config($key)
 {
     global $config;
@@ -20,6 +30,10 @@ function get_config($key)
 #
 # Manage settings. These are parameters that are not really site-specific.
 #
+/**
+ * @param $key
+ * @return mixed
+ */
 function get_setting($key)
 {
     $settings = [

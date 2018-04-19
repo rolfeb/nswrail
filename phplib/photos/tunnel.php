@@ -1,6 +1,9 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require "site.inc";
 require "gallery.inc";
 
-theme_gallery(PhotoThemes::Tunnel, "", "NSW Railway Tunnel Photos", "");
+run_theme_gallery(PhotoThemes::Tunnel, "", "NSW Railway Tunnel Photos", "");

@@ -1,7 +1,14 @@
 <?php
+/**
+ * Copyright (c) 2018. Rolfe Bozier
+ */
 
 require 'site.inc';
 
+/**
+ * @param $image
+ * @return string
+ */
 function get_photo_queue_item_html($image)
 {
     $photo_tags = get_available_photo_tags();
