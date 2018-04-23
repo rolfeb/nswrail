@@ -14,6 +14,7 @@ require 'photo-util.php';
  * @return string the filename of the uploaded file
  * @throws ImagickException
  * @throws InternalError
+ * @throws SecurityError
  */
 function save_upload_in_staging_area()
 {
@@ -26,8 +27,21 @@ function save_upload_in_staging_area()
     # $r_error = $params['error'][0];
     # $r_size = $params['size'][0];
 
-    # TODO: validate params: size, error, type
+    # only allow extensions: jpg, jpeg, png
+    $info = pathinfo($r_tmpfile);
+    if (!in_array($info['extension'], array('jpg', 'jpeg', 'png'))) {
+        throw new SecurityError("Error: invalid file extension: " . $info['extension']);
+    }
 
+    # only allow files containing image data
+    $f = finfo_open();
+    $mime_info = finfo_file($f, $r_tmpfile, FILEINFO_MIME_TYPE);
+    finfo_close($f);
+    if (!in_array($mime_info, array('image/jpeg', 'image/png'))) {
+        throw new SecurityError("Error: invalid file type: $mime_info");
+    }
+
+    # create stage directories, if necessary
     $stage_dir = get_config('stage-dir') . "/" . $user->uid;
     $thumb_dir = "$stage_dir/small";
     if (!file_exists($stage_dir)) {
