@@ -1,6 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-         "http://www.w3.org/TR/xhtml1/DTD/xhtml-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <title>NSWrail.net</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
@@ -23,10 +22,12 @@ div {
 </head>
 <body >
 <div>
-NSWrail.net is temporarily offline for some planned maintenance.
-<p/>
-Please check back again shortly (maybe in a couple of hours?)
-<p/>
+    <p>
+        NSWrail.net is temporarily offline for some planned maintenance.
+    </p>
+    <p>
+        Please check back again shortly (maybe in a couple of hours?)
+    </p>p>
 Regards,<br/>
 Rolfe
 </div>

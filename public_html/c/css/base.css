@@ -4,13 +4,13 @@
 
 body {
     /* eliminate page margins */
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     /* XXX: breaks overlib:
         position: absolute;
     */
     top: 1px;
-    left: 0px;
+    left: 0;
 
     /* global defaults */
     // font-size: 12px;
@@ -98,12 +98,12 @@ DIV#login INPUT.text {
  */
 img.lalign {
     float: left;
-    margin: 5px 5px 5px 0px;
+    margin: 5px 5px 5px 0;
 }
 
 img.ralign {
     float: right;
-    margin: 5px 0px 5px 5px;
+    margin: 5px 0 5px 5px;
 }
 
 /*
@@ -123,10 +123,7 @@ TABLE.clean {
 }
 TABLE.clean TH, TABLE.clean TD {
     border: 1px solid #c0c0c0;
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding: 0 6px;
 }
 TABLE.clean TH {
     text-decoration: none;
@@ -142,12 +139,12 @@ TABLE.clean TH.date-footnote, TABLE.clean TD.date-footnote {
     width:      12ex;
     text-align: right;
     border-right: none;
-    padding-right: 0px;
+    padding-right: 0;
 }
 TABLE.clean TH.footnote, TABLE.clean TD.footnote {
     width:      2ex;
     border-left: none;
-    padding-left: 0px;
+    padding-left: 0;
 }
 TABLE.clean TR.property TD {
     font-weight: bold;
@@ -193,7 +190,7 @@ DIV.mbcontent {
     padding-left: 10px;
     padding-right: 10px;
 }
-@media print { DIV.mbcontent { margin-left: 0px; } }
+@media print { DIV.mbcontent { margin-left: 0; } }
 
 DIV.content {
     padding-left: 10px;
@@ -253,13 +250,12 @@ DIV.search H2 {
     display: inline
 }
 DIV.search FORM {
-    padding: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 DIV.search INPUT {
     border: 1px solid black;
-    border-style: solid;
     font-size: 1.0em;
 }
 
@@ -273,7 +269,7 @@ dd {
 .hlinks {
     float: left;
     width: 8em;
-    margin: 10px 10px 0px 10px;
+    margin: 10px 10px 0 10px;
     padding-left: 5px;
     background-color: #eee;
 }
@@ -286,7 +282,7 @@ dd {
 }
 
 .hlinks ul li {
-    padding-left: 0px;
+    padding-left: 0;
     padding-right: 5px;
     padding-bottom: 5px;
 }
@@ -334,7 +330,7 @@ dd {
 }
 
 .button img {
-    border: 0px;
+    border: 0;
 }
 
 /*
@@ -454,7 +450,6 @@ BODY.edit-mode INPUT,
 BODY.edit-mode TEXTAREA,
 BODY.edit-mode SELECT {
     border: 1px solid black;
-    border-style: solid;
 }
 
 /*
