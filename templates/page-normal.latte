@@ -53,13 +53,13 @@
         {ifset $opt_username}
         <div id="logged_in_ctrl">
           <span class="text-primary">{$opt_username}</span>
-          <a href="/c/php/auth/settings.php" class="btn btn-info">settings</a>
-          <a href="/c/login/logout.php" class="btn btn-info">logout</a>
+          <a href="/c/php/auth/settings.php">settings</a>
+          <a href="/c/login/logout.php">logout</a>
         </div>
         {else}
         <div>
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#login-dialog">login</button>
-          <a href="/c/register/register.php" class="btn btn-info">register</a>
+          <a href="/c/register/register.php">register</a>
+          <a href="#" data-toggle="modal" data-target="#login-dialog">login</a>
         </div>
         {* login dialog *}
         <div class="modal fade" id="login-dialog">

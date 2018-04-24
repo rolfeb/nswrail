@@ -94,19 +94,6 @@ DIV#login INPUT.text {
 }
 
 /*
- * Image styles
- */
-img.lalign {
-    float: left;
-    margin: 5px 5px 5px 0;
-}
-
-img.ralign {
-    float: right;
-    margin: 5px 0 5px 5px;
-}
-
-/*
  * Clean Table
  *  - 1 pixel border around cells
  *  - cells padded on each side
@@ -134,12 +121,6 @@ TABLE.clean TH.rjust, TABLE.clean TD.rjust {
 TABLE.clean TH.date, TABLE.clean TD.date {
     width:      12ex;
     text-align: right;
-}
-TABLE.clean TH.date-footnote, TABLE.clean TD.date-footnote {
-    width:      12ex;
-    text-align: right;
-    border-right: none;
-    padding-right: 0;
 }
 TABLE.clean TH.footnote, TABLE.clean TD.footnote {
     width:      2ex;
@@ -186,12 +167,6 @@ TABLE.simple TD {
 DIV.page {
 }
 
-DIV.mbcontent {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-@media print { DIV.mbcontent { margin-left: 0; } }
-
 DIV.content {
     padding-left: 10px;
     padding-right: 10px;
@@ -216,11 +191,6 @@ DIV.message {
     text-align: center;
 }
 
-BODY.loginpage {
-    width: 40%;
-    padding-left: 30%;
-}
-
 SPAN#login-title {
     font-size: 1.5em;
     font-style: italic;
@@ -230,16 +200,6 @@ SPAN#login-title {
 SPAN#login-msg {
     color: red;
 }
-
-DIV#loginbox {
-    background-color: #eee;
-    padding-top: 10px;
-    padding-left: 30px;
-    padding-right: 10px;
-    border: 1px solid #000000;
-    margin-top: 100px;
-}
-
 
 DIV.search {
     padding: 2px;
@@ -264,27 +224,6 @@ DIV.search INPUT {
  */
 dd {
     margin-bottom: 1em;
-}
-
-.hlinks {
-    float: left;
-    width: 8em;
-    margin: 10px 10px 0 10px;
-    padding-left: 5px;
-    background-color: #eee;
-}
-
-.hlinks ul {
-    list-style: none;
-    margin-top: 4px;
-    margin-bottom: 0;
-    padding-left: 0;
-}
-
-.hlinks ul li {
-    padding-left: 0;
-    padding-right: 5px;
-    padding-bottom: 5px;
 }
 
 /*
@@ -346,21 +285,6 @@ div#logged_in_ctrl {
     float: right;
     position: relative;
     top: 1px;
-}
-div#login_ctrl {
-    float: right;
-    position: relative;
-    top: 1px;
-}
-
-div#login_form {
-    float: right;
-    display: none;
-}
-
-input#id_usernamex, input#id_password {
-    border: 1px solid #888;
-    font-size: 11px;
 }
 
 div#login_form input#submit {

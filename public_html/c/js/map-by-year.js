@@ -16,7 +16,7 @@ function refresh_map() {
         e = document.getElementById(i);
         if (e)
         {
-            if (i == selected)
+            if (i === selected)
                 e.style.display = 'block';
             else
                 e.style.display = 'none';

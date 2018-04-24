@@ -221,11 +221,11 @@
 
 {if sizeof($diagrams) > 0}
 {* Diagrams tab *}
-<div class="tab-pane container" id="tab-photo">
+<div class="tab-pane container" id="tab-diag">
   {foreach $diagrams as $d}
     <div>
       {$d['year']}:<br/>
-      <img src="{$d['img']}" border="1" alt="location diagram"></img>
+      <img src="{$d['img']}" border="1" alt="location diagram">
       &nbsp;
     </div>
   {/foreach}
