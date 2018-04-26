@@ -21,6 +21,7 @@ class User
     public $username;
     public $fullname;
     public $role;
+    public $status;
 
     /**
      * User constructor.
@@ -172,7 +173,8 @@ class User
                     uid,
                     username,
                     fullname,
-                    role
+                    role,
+                    status
                 from
                     r_user
                 where
@@ -186,7 +188,8 @@ class User
                     uid,
                     username,
                     fullname,
-                    role
+                    role,
+                    status
                 from
                     r_user
                 where
@@ -196,13 +199,14 @@ class User
         }
 
         $stmt->execute();
-        $stmt->bind_result($uid, $username, $fullname, $role);
+        $stmt->bind_result($uid, $username, $fullname, $role, $status);
         $stmt->fetch();
 
         $this->uid = $uid;
         $this->username = $username;
         $this->fullname = $fullname;
         $this->role = $role;
+        $this->status = $status;
 
         $stmt->close();
     }

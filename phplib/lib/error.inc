@@ -18,6 +18,7 @@ function error_page($message, $url=NULL)
     ];
 
     normal_page('page-error.latte', $tp);
+    exit();
 }
 
 /**
@@ -30,6 +31,7 @@ function noperm_page()
     ];
 
     normal_page('page-noperm.latte', $tp);
+    exit();
 }
 
 /**

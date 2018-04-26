@@ -1,0 +1,53 @@
+{*
+    Parameters:
+        title
+        error_text
+        uid
+        username
+        fullname
+        last_login_time
+        last_login_addr
+        register_time
+        register_addr
+        orig_referer
+*}
+<h1>{$title}</h1>
+
+{ifset $error_text}
+  <div class="message">{$error_text}</div>
+{else}
+  <form method="post" action="/c/admin/profile.php" enctype="multipart/form-data">
+  <table class="table table-sm table-responsive-md">
+  <tr>
+    <th>User name:</th>
+    <td>{$username}></td>
+  </tr>
+  <tr>
+    <th>Fullname:</th>
+    <td><input type="text" class="form-control" name="fullname" value="{$fullname}"></td>
+  </tr>
+  <tr>
+    <th>Password:</th>
+    <td><input type="password" class="form-control" name="password1" value=""></td>
+  </tr>
+  <tr>
+    <th>Password (confirm):</th>
+    <td><input type="password" class="form-control" name="password2" value=""></td>
+  </tr>
+  <tr>
+    <th>Last login:</th>
+    <td>{$last_login_time} (from {$last_login_addr})</td>
+  </tr>
+  <tr>
+    <th>Registered:</th>
+    <td>{$register_time} (from {$register_addr})</td>
+  </tr>
+  </table>
+  
+  <input type="hidden" name="uid" value="{$uid}"/>
+  <input type="hidden" name="orig_referer" value="{$orig_referer}"/>
+  <input type="submit" class="btn btn-secondary" name="action" value="Cancel">
+  <input type="reset" class="btn btn-secondary" value="Reset">
+  <input type="submit" class="btn btn-primary" name="action" value="Submit">
+  </form>
+{/ifset}

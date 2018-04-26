@@ -52,14 +52,14 @@
       <div id="auth">
         {ifset $opt_username}
         <div id="logged_in_ctrl">
-          <span class="text-primary">{$opt_username}</span>
-          <a href="/c/php/auth/settings.php">settings</a>
-          <a href="/c/login/logout.php">logout</a>
+          <span class="text-dark">{$opt_username}</span>
+          | <a href="/c/admin/profile.php">profile</a>
+          | <a href="/c/login/logout.php">logout</a>
         </div>
         {else}
         <div>
           <a href="/c/register/register.php">register</a>
-          <a href="#" data-toggle="modal" data-target="#login-dialog">login</a>
+          | <a href="#" data-toggle="modal" data-target="#login-dialog">login</a>
         </div>
         {* login dialog *}
         <div class="modal fade" id="login-dialog">

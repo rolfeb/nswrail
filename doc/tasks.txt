@@ -1,76 +1,48 @@
 Phase 1a - core functionality
 -----------------------------
 
-[ ] add search to navbar
-    [ ] add location search to the toolbar RHS?
-    [y] finish bulletin results
-    [y] combine search into single facility, open dropdown?, menubar RH end,
-        add advanced search page
-    [y] text search page should use GET so you can go back to it
-    [ ] clean up references to photo/gphoto links 
-
-[ ] reimplement txt pages as markdown
-[ ] fix photos/owner.php (via contributers.php)
+[ ] update text/info pages
+    [ ] about/faq.txt
+    [ ] about/submissions.txt
+    [ ] questions for faq, photo submission
+    [ ] add about/plans.txt
+    [ ] rewrite landing page text
+[ ] re-test registration
+[ ] re-test photo upload
 [ ] fix loading errors in web console?
-[ ] get rid of photo modal in locations/details.latte (include c/tpl/...)
-
 [ ] maybe compact register/login/settings/logout
+[ ] test.nswrail.net checks
+    [ ] re-test admin screens
+    [ ] re-test registration
+    [ ] re-test photo upload
+[ ] separate dev and master databases
+[ ] check page functionality for whole site
+[ ] check mobile functionality
+
+[ ] fix CSP for google maps page
+[ ] fix security issues
+    [ ] sanitise uploaded file types and names
+    [?] session best practices
+        [?] re-session on privilege changes
+        [ ] session cookie security: "The cookie has neither Secure nor HttpOnly flags set, make sure it does not store sensitive information."
+    [ ] throw exceptions on all errors, espcially from library code
+        [y] throw exceptions on mysqli errors
+    [ ] set header: Content-Security-Policy
+        [ ] bring external resources down locally
+        [ ] update/replace overlib?
+    [ ] disable php execution in /media
+    [ ] add a random CSRF token to each form?
+    [ ] php.ini
+        [ ] disable allow_url_fopen, allow_url_include
+
+[ ] fix photo gallery layout on mobile
+[ ] clean up expired tourist lines, e.g. Dumaresq - Glen Innes
 [ ] return to open tab on refresh
     https://stackoverflow.com/questions/18999501/bootstrap-3-keep-selected-tab-on-page-refresh
 
-[ ] questions for faq, photo submission
-[ ] add about/plans.txt
-[ ] rewrite landing page text
-
-[ ] fix security issues
-    [y] move templates out of public_html
-        [y] remove Latte instance from caller to display_page()
-    [y] move PHP function code out of public_html
-    [y] move any other non-php code out of public_html
-    [y] move *all* code into functions, leaving php files as stubs??
-        [y] lines
-        [y] locations
-        [y] infrastructure
-        [y] photos
-        [y] maps
-        [y] articles
-        [y] search
-        [y] about
-        [y] c
-
-    [y] function to extract and type-check GET/POST values - rm quote_external
-    [y] deprecate use of $_REQUEST
-    [y] remove error check from database function calls
-    [ ] review all unescaped HTML output in Latte templates
-    [ ] HTML checker on post-markdown output
-    [ ] session best practices
-        [ ] re-session on privilege changes
-    [ ] look at moving to PDO?
-    [ ] throw exceptions on all errors, espcially from library code
-        [y] throw exceptions on mysqli errors
-    [ ] set appropriate headers in HTTP replies
-    [ ] sanitise uploaded file types and names
-    [ ] disable php execution in /media
-    [ ] add a random CSRF token to each form?
-    [ ] validate all SQL construction
-    [ ] log errors to log/* (log_errors=On, error_log=...)
-    [ ] php.ini
-        [ ] disable allow_url_fopen, allow_url_include
-    [ ] fold menu.cfg into main config file?
-
-[y] deprecate prettyPhoto stuff
-[ ] fix photo gallery layout on mobile
-[ ] Tenterfield in line detail page has blank close date
-[ ] colliery line symbols aren't consistent...
-[ ] clean up expired tourist lines, e.g. Dumaresq - Glen Innes
-
-[ ] look at using git pulls to update the public server
 [ ] add capability to run DDL scripts on the server for updates?
-[ ] separate dev and master databases
 [ ] look at regression testing using splinter
-[ ] check page functionality for whole site
-[ ] check mobile functionality
-[ ] https on production system (+ test)
+[ ] Tenterfield in line detail page has blank close date
 
 
 Phase 1b - remaining new functionality
@@ -86,9 +58,7 @@ Phase 1b - remaining new functionality
 [ ] send information/faq email on registration
 [ ] allow users to change their email address (via old email link?)
 
-[ ] log internal error stack traces to a log file
 [ ] cron: email weekly audit trail to me
-
 [ ] add facility to take site offline
 
 [ ] test.nswrail.net: check login works
@@ -96,43 +66,34 @@ Phase 1b - remaining new functionality
 [ ] test.nswrail.net: check photo upload works
 [ ] mechanism to push changes to test and production via github
 [ ] release to public
+[ ] check cache control is working for images etc
 
 Phase 1c - optional improvements
 --------------------------------
 
 [ ] check all tables for large/small layout
-[ ] clean up explicit style attributes, .css files etc
-[ ] move all images to /media (e.g. maps/images, maps/ovmaps)
+[?] clean up explicit style attributes, .css files etc
+[?] move all images to /media (e.g. maps/images, maps/ovmaps)
 [ ] track down orphaned photos (files only)
-[ ] landing page text should be in the database?
-[ ] document functions + doxygen
 
 [ ] add forward/back arrows to location gallery
-[ ] extract gallery modal into separate code/template
-[ ] gallery: centre images horizontally in columns
-[ ] gallery: #columns should be responsive
+[?] gallery: #columns should be responsive
 [ ] gallery: make into an infinite scroller?
 [ ] gallery: change display, order by into dropdown with JS action
 [ ] gallery: add facility to moderate photos
 [ ] gallery: add facility to report an issue
 [ ] gallery: add facility to show held, reported photos
+[ ] add support for anonymous users
 
-[ ] re-enable full-screen google maps?
-[ ] re-enable "by-year" maps?
 [ ] script to re-associate existing photos with a new account
-[ ] auto-generate cards from directory contents?
 [ ] admin maintenance: add js form validation
 [ ] script: delete old unconfirmed accounts
 [ ] admin screen: show audit records
     - restrict by type, date, user etc
 [ ] lock account on too many failed logins
-[ ] muser.py: update account: set password?
-[ ] muser.py: create new account
-[ ] screen to maintain tags
 [ ] get photo tags from database
-[ ] maybe move photos out of public_html?
+    [ ] screen to maintain tags
 [ ] add moderation facility
-[ ] add support for anonymous users
 [ ] add support for specifying a default licence
 [ ] cron: script to purge stale images in the staging area
 [ ] review photos:
@@ -142,6 +103,21 @@ Phase 1c - optional improvements
     [ ] 338 in status N, released => "admin2"
 [ ] cron: automated backups (photos & database)
 [ ] re-enable lines/missing.php?
+[ ] re-enable full-screen google maps?
+
+
+Phase 1d - defer
+----------------
+
+[ ] document functions + doxygen
+[ ] landing page text should be in the database?
+[ ] reimplement txt pages as markdown + html-sanitize?
+    [ ] HTML checker on post-markdown output
+[ ] look at moving to PDO?
+[ ] muser.py: update account: set password?
+[ ] muser.py: create new account
+[ ] auto-generate cards from directory contents?
+[ ] re-enable "by-year" maps?
 
 
 Phase 2
@@ -238,3 +214,47 @@ Completed
     [y] convert maps to latte
     [y] convert locations to latte
     [y] convert c to latte
+[y] deprecate prettyPhoto stuff
+[n] look at using git pulls to update the public server
+[y] add search to navbar
+    [y] finish bulletin results
+    [y] combine search into single facility, open dropdown?, menubar RH end,
+        add advanced search page
+    [y] text search page should use GET so you can go back to it
+    [y] clean up references to photo/gphoto links 
+[y] fix security issues
+    [y] moved menu.cfg into phplib
+    [y] move templates out of public_html
+        [y] remove Latte instance from caller to display_page()
+    [y] move PHP function code out of public_html
+    [y] move any other non-php code out of public_html
+    [y] move *all* code into functions, leaving php files as stubs??
+        [y] lines
+        [y] locations
+        [y] infrastructure
+        [y] photos
+        [y] maps
+        [y] articles
+        [y] search
+        [y] about
+        [y] c
+    [y] function to extract and type-check GET/POST values - rm quote_external
+    [y] deprecate use of $_REQUEST
+    [y] remove error check from database function calls
+    [y] validate all SQL construction
+    [y] review all unescaped HTML output in Latte templates
+    [y] log errors to log/* (log_errors=On, error_log=...)
+    [y] check for omitted icons
+[y] google maps on location - satellite doesn't work
+[y] add location search to the toolbar RHS?
+[y] get rid of photo modal in locations/details.latte (include c/tpl/...)
+[y] fix photos/owner.php (via contributers.php)
+[y] re-test admin screens
+[y] broken icon URLs: Belmont Branch
+[y] colliery line symbols aren't consistent...
+[y] get rid of all inline style
+[y] https on production system (+ test)
+[y] extract gallery modal into separate code/template
+[y] gallery: centre images horizontally in columns
+[y] maybe move photos out of public_html?
+[y] log internal error stack traces to a log file
