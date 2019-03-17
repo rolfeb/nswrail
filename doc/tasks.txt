@@ -1,16 +1,24 @@
 Phase 1a - core functionality
 -----------------------------
 
+[ ] resync
+    [ ] commit open files
+    [ ] document code layout (devel, release)
+    [ ] document stage, test, live release processes
+    [ ] document backup processe
+    [ ] remove unnecessary stuff (old nswrail, PEAR, ...)
+    [ ] define release plan
 [ ] update text/info pages
     [ ] about/faq.txt
     [ ] about/submissions.txt
     [ ] questions for faq, photo submission
-    [ ] add about/plans.txt
+    [ ] add about/plans.txt, reference from index.latte
     [ ] rewrite landing page text
+[ ] replace/remove txtpage.php
+[ ] google maps replacement page
 [ ] re-test registration
 [ ] re-test photo upload
 [ ] fix loading errors in web console?
-[ ] maybe compact register/login/settings/logout
 [ ] test.nswrail.net checks
     [ ] re-test admin screens
     [ ] re-test registration
@@ -21,7 +29,6 @@ Phase 1a - core functionality
 
 [ ] fix CSP for google maps page
 [ ] fix security issues
-    [ ] sanitise uploaded file types and names
     [?] session best practices
         [?] re-session on privilege changes
         [ ] session cookie security: "The cookie has neither Secure nor HttpOnly flags set, make sure it does not store sensitive information."
@@ -34,12 +41,10 @@ Phase 1a - core functionality
     [ ] add a random CSRF token to each form?
     [ ] php.ini
         [ ] disable allow_url_fopen, allow_url_include
-
 [ ] fix photo gallery layout on mobile
 [ ] clean up expired tourist lines, e.g. Dumaresq - Glen Innes
 [ ] return to open tab on refresh
     https://stackoverflow.com/questions/18999501/bootstrap-3-keep-selected-tab-on-page-refresh
-
 [ ] add capability to run DDL scripts on the server for updates?
 [ ] look at regression testing using splinter
 [ ] Tenterfield in line detail page has blank close date
@@ -49,7 +54,6 @@ Phase 1b - remaining new functionality
 --------------------------------------
 
 [ ] implement "forgot password" functionality (via email link)
-[ ] add user settings page including password
 [ ] gallery: add facility to edit photo metadata or unpublish
 [ ] gallery: add facility to contact copyright owners + legacy
 [ ] think about migrating existing photo suppliers to users
@@ -136,125 +140,3 @@ Phase 3
 [ ] script to split large KML into <5M chunks fgor google maps
 [ ] look at setting up a new state from scratch
 [ ] add more states?
-
-
-Completed
----------
-
-[y] move passwords etc out of public_html
-[y] script: view/update accounts (muser.py)
-    y list accounts
-    y list accounts - select by enabled/disabled
-    y list accounts - select by role
-    y display account details
-    y update account: set/clr status
-    y update account: set/clr role
-[y] login via bootstrap dialog (or new page)
-[y] add role to r_user
-[y] move git repo up 1 level
-[y] rollback on error
-[n] error page -> bootstrap dialog?
-[n] registration form -> bootstrap button; add cancel
-[y] split config into dev/prod
-[y] move initialisation code to a function
-[n] move secure config to $HOME
-[y] get rid of l/* tree
-[y] admin screen: same functionality as view/update accounts script
-[y] move php code to lib; make functions only
-[y] implement authorisation mechanism
-[y] show menu entries based on authorisation
-[y] doco: code standard
-[y] make sure code meets standards
-[y] clean up auth_priv_* references
-[y] clean up direct inclusion of lib/*.inc files
-[y] fix tabs on location pages
-[y] photo upload: multi-photo front end
-[y] implement delete callback for uploaded files
-[y] on upload, create thumbnail and send back URL
-[y] design photo naming and location convention
-[y] work out how to handle legacy photos
-[y] photo validation: type, max size, max dimensions etc
-[y] photo annotation/deletion and publishing page
-[y] audit all upload operations
-[y] fix location photo gallery
-[y] implement photo publishing
-[y] local bootstrap + sass build
-[y] strip old CSS out, move to bootstrap-sass for all
-[y] move to card-page layout for infrastructure
-[y] move to card-page layout for articles
-[y] re-design landing page
-[y] migrate pages to basic bootstrap styling
-[y] try making card pages pure 2-column
-[y] switch to single "lines" page (tabs)
-[y] move to card-page layout for photos (with examples)
-[y] try a different sans-serif font
-[y] move to card-page layout for maps (with thumbnails)
-[n] add home icon to LH end of menu bar
-[y] add cards requiring authentication
-[n] better implementation for random photos
-[n] move menu config into database?
-[y] move to card-page layout for About
-[y] verify initial production test system: test.nswrail.net
-[y] tunnel: on mobile, drop photos, distance, between columns
-[y] fix line icons to be longer, but auto-cropped in table
-[y] fix line page layout
-[y] fix google maps for locations
-[y] fix location page layout
-[y] click on img-thumbnail should display over the top
-[y] use modal dialog on location photos as well
-[y] gallery: parameterize "history" definition
-[y] gallery: full-size image should be modal dialog
-[y] use modal photo viewer in photo theme listings as well
-[y] re-add administration tools to menu
-[y] anything which a user can change must pass through htmlentities()
-[y] replace templating engine with latte
-    [y] convert index.php to latte
-    [y] convert about to latte
-    [y] convert infrastructure, trivia to latte
-    [y] convert maps to latte
-    [y] convert locations to latte
-    [y] convert c to latte
-[y] deprecate prettyPhoto stuff
-[n] look at using git pulls to update the public server
-[y] add search to navbar
-    [y] finish bulletin results
-    [y] combine search into single facility, open dropdown?, menubar RH end,
-        add advanced search page
-    [y] text search page should use GET so you can go back to it
-    [y] clean up references to photo/gphoto links 
-[y] fix security issues
-    [y] moved menu.cfg into phplib
-    [y] move templates out of public_html
-        [y] remove Latte instance from caller to display_page()
-    [y] move PHP function code out of public_html
-    [y] move any other non-php code out of public_html
-    [y] move *all* code into functions, leaving php files as stubs??
-        [y] lines
-        [y] locations
-        [y] infrastructure
-        [y] photos
-        [y] maps
-        [y] articles
-        [y] search
-        [y] about
-        [y] c
-    [y] function to extract and type-check GET/POST values - rm quote_external
-    [y] deprecate use of $_REQUEST
-    [y] remove error check from database function calls
-    [y] validate all SQL construction
-    [y] review all unescaped HTML output in Latte templates
-    [y] log errors to log/* (log_errors=On, error_log=...)
-    [y] check for omitted icons
-[y] google maps on location - satellite doesn't work
-[y] add location search to the toolbar RHS?
-[y] get rid of photo modal in locations/details.latte (include c/tpl/...)
-[y] fix photos/owner.php (via contributers.php)
-[y] re-test admin screens
-[y] broken icon URLs: Belmont Branch
-[y] colliery line symbols aren't consistent...
-[y] get rid of all inline style
-[y] https on production system (+ test)
-[y] extract gallery modal into separate code/template
-[y] gallery: centre images horizontally in columns
-[y] maybe move photos out of public_html?
-[y] log internal error stack traces to a log file

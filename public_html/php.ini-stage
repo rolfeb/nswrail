@@ -4,7 +4,7 @@
 ; This file is currently sourced by /var/www/interpreters/php-script in
 ; production.
 ;
-include_path = ".:/work/dev/nswrail-dev/public_html/c:/work/dev/nswrail-dev";
+include_path = ".:/work/nswrail-stage/public_html/c:/work/nswrail-stage";
 
 log_errors = 1;
 

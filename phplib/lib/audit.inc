@@ -12,6 +12,7 @@ class Audit
     const A_UPLOAD      = 'upload';
     const A_PUBLISH     = 'publish';
     const A_SECURITY    = 'security';
+    const A_PWDRESET    = 'pwdreset';
 
     /**
      * Audit constructor.

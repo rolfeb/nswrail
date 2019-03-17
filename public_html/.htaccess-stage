@@ -2,11 +2,11 @@
 # PHP settings
 #
 # XXX: clean this up!
-php_value include_path "/work/dev/nswrail-dev/phplib:/work/dev/nswrail-dev/phplib/lib:/work/dev/nswrail-dev/public_html/c:/work/dev/nswrail-dev/:."
+php_value include_path "/work/nswrail-stage/phplib:/work/nswrail-stage/phplib/lib:/work/nswrail-stage/public_html/c:/work/nswrail-stage/:."
 php_value date.timezone "Australia/NSW"
 
 #php_flag log_errors On
-php_value error_log             "/work/dev/nswrail-dev/log/php-error.log"
+php_value error_log             "/work/nswrail-stage/log/php-error.log"
 php_flag display_errors On
 
 
@@ -14,11 +14,11 @@ php_flag display_errors On
 # Configuration parameters
 #  These are accessed via $_SERVER['variable'].
 #
-SetEnv BASE_PATH                "/work/dev/nswrail-dev/public_html"
-SetEnv PHPLIB_DIR               "/work/dev/nswrail-dev/phplib"
-SetEnv TEMPLATE_DIR             "/work/dev/nswrail-dev/templates"
-SetEnv LOG_DIR             	    "/work/dev/nswrail-dev/log"
-SetEnv NSWRAIL_CONFIG_FILE      "/work/dev/nswrail-dev/config/nswrail-dev.json"
+SetEnv BASE_PATH                "/work/nswrail-stage/public_html"
+SetEnv PHPLIB_DIR               "/work/nswrail-stage/phplib"
+SetEnv TEMPLATE_DIR             "/work/nswrail-stage/templates"
+SetEnv LOG_DIR             	    "/work/nswrail-stage/log"
+SetEnv NSWRAIL_CONFIG_FILE      "/work/nswrail-stage/config/nswrail-stage.json"
 
 #
 # URL rewriting

@@ -314,4 +314,29 @@ class User
         $stmt->execute();
         $stmt->close();
     }
+
+
+    /**
+     * @param $addr
+     * @param $reset_id
+     */
+    public static function save_reset_id($addr, $reset_id)
+    {
+        /** @var mysqli $db */
+        global $db;
+
+        $stmt = $db->stmt_init();
+
+        $stmt->prepare('
+            update r_user
+            set
+              activate_code = ?
+            where
+              username = ?
+        ');
+
+        $stmt->bind_param('ss', $reset_id, $addr);
+        $stmt->execute();
+        $stmt->close();
+    }
 }

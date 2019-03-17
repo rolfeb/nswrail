@@ -1,0 +1,26 @@
+<h1>Password Reset</h1>
+
+<div class="dialog" title="Password Reset">
+<p>This form lets you reset your password because you have forgotten it.</p>
+
+<p>Please enter your username (email address) below. If this username has been registered
+  at this site, an email will be sent to the address. This email will contain a link that allows you to
+  log in and reset your password.</p>
+
+<form action="/c/admin/pwdresetreq.php" method="post" onSubmit="return validate_register_form();">
+<table class="simple">
+<tr>
+  <td><label for="id_username">Email:</label></td>
+  <td><input type="text" size="40" name="username" id="username"></td>
+</tr>
+<tr>
+  <td colspan="2">
+    <div align="right">
+      <input type="submit" value="Send reset email">
+    </div>
+  </td>
+</tr>
+</table>
+<input type="hidden" name="referrer" value="{$referrer}">
+</form>
+</div>
