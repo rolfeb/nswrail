@@ -36,8 +36,8 @@ RewriteRule (.*) - [L]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^/?(.*)         https://%{SERVER_NAME}/$1 [R,L]
 
-# .txt files are passed through the BBCode parser
-RewriteRule ^(.*).txt$      /c/txtpage.php?file=$1.txt [L]
+# .md files are passed through the markdown parser
+RewriteRule ^(.*).md$       /c/mdpage.php?file=$1.md [L]
 
 # redirect invalid URLs
 RewriteRule ^index.html$    / [R]
