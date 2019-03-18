@@ -30,18 +30,19 @@ function run_maps_index()
             '/media/maps/thumbnails/newcastle-indexmap.png'
         ],
         [
+            '/maps/google-state-map.php',
+            'NSW Railway Google Map',
+            'A custom Google map showing all railway locations in the state',
+            '',
+        ],
+        [
             '/maps/turning-facilities.php',
             'Turning facilities map',
             'A map showing places where locomotives could be turned around (triangles, turntables).',
             '',
         ],
         /*
-        [
-            '/maps/google.php',
-            'Google Maps',
-            'TBD',
-            ''
-        ],
+
         [
             '/maps/nsw-by-year.php',
             'NSW by year',

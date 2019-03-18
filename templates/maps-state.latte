@@ -1,0 +1,24 @@
+{*
+    Parameters:
+        title
+
+        google_map_apikey
+        map_geox
+        map_geoy
+        map_scale
+*}
+<h1>{$title}</h1>
+
+
+<div class="state-map mt-3 ml-3">
+    <div id="googleMap"></div>
+</div>
+
+<input type="hidden" id="map-geox" name="geox" value="{$map_geox}">
+<input type="hidden" id="map-geoy" name="geoy" value="{$map_geoy}">
+<input type="hidden" id="map-scale" name="scale" value="{$map_scale}">
+<script src="/c/js/ajaxutil.js" type="text/javascript"></script>
+<script src="/c/js/json.js" type="text/javascript"></script>
+<script src="/maps/google-state-map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={$google_map_apikey}&callback=initMapCB" async defer></script>
+
