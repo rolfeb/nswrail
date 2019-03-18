@@ -18,6 +18,8 @@ require 'thirdparty/PHPMailer/src/SMTP.php';
 
 require 'thirdparty/latte/src/latte.php';
 
+require 'thirdparty/parsedown/Parsedown.php';
+
 
 # classes
 require "user.php";

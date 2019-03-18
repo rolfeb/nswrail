@@ -33,6 +33,8 @@ RewriteRule ^/?(.*)         https://%{SERVER_NAME}/$1 [R,L]
 # .txt files are passed through the BBCode parser
 RewriteRule ^(.*).txt$      /c/txtpage.php?file=$1.txt [L]
 
+RewriteRule ^(.*).md$       /c/mdpage.php?file=$1.md [L]
+
 # redirect invalid URLs
 RewriteRule ^index.html$    / [R]
 
@@ -66,7 +68,7 @@ Order allow,deny
     Header set Cache-Control max-age=1440,must-revalidate
 </FilesMatch>
 
-<FilesMatch "\.(php|txt|html)$">
+<FilesMatch "\.(php|txt|md|html)$">
     Allow from all
     Header set Cache-Control no-store
 </FilesMatch>
