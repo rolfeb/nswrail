@@ -157,7 +157,7 @@ function theme_gallery($theme, $themeextra, $title, $intro)
     $THUMBNAIL_PAGEROWS = 4;
 
     #
-    # Obtain the SQL statement returning the apppropriate photo list. If
+    # Obtain the SQL statement returning the appropriate photo list. If
     # we are displaying paged output, calculate the rows to fetch.
     #
     $select_limits = "999999";
@@ -270,7 +270,7 @@ function theme_gallery($theme, $themeextra, $title, $intro)
 function run_theme_gallery($theme, $themeextra, $title, $intro)
 {
     try {
-        run_theme_gallery($theme, $themeextra, $title, $intro);
+        theme_gallery($theme, $themeextra, $title, $intro);
     } catch (\Exception $e) {
         report_error($e);
     }
