@@ -317,10 +317,12 @@ class User
 
 
     /**
-     * @param $addr
+     * Mark a user as having requested a password reset.
+     *
+     * @param $username
      * @param $reset_id
      */
-    public static function save_reset_id($addr, $reset_id)
+    public static function save_pwdreset_id($username, $reset_id)
     {
         /** @var mysqli $db */
         global $db;
@@ -330,12 +332,76 @@ class User
         $stmt->prepare('
             update r_user
             set
-              activate_code = ?
+              pwdreset_code = ?,
+              pwdreset_timestamp = NOW()
             where
               username = ?
         ');
 
-        $stmt->bind_param('ss', $reset_id, $addr);
+        $stmt->bind_param('ss', $reset_id, $username);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    /**
+     * Reset a user's password given the reset_id
+     *
+     * @param $enc_password
+     * @param $reset_id
+     * @return bool
+     */
+    public static function set_password_via_code($enc_password, $reset_id)
+    {
+        /** @var mysqli $db */
+        global $db;
+
+        $stmt = $db->stmt_init();
+
+        $stmt->prepare('
+            update r_user
+            set
+              password = ?,
+              pwdreset_code = null,
+              pwdreset_timestamp = null
+            where
+              pwdreset_code = ?
+              and
+              pwdreset_timestamp > SUBDATE(NOW(), INTERVAL 1 DAY)
+        ');
+
+        $stmt->bind_param('ss', $enc_password, $reset_id);
+        $stmt->execute();
+        $count = mysqli_stmt_affected_rows($stmt);
+        $stmt->close();
+
+        if ($count != 1) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Clear any expired password reset codes
+     */
+    public static function expire_pwdreset_codes()
+    {
+        /** @var mysqli $db */
+        global $db;
+
+        $stmt = $db->stmt_init();
+
+        $stmt->prepare('
+            update r_user
+            set
+              pwdreset_code = null,
+              pwdreset_timestamp = null
+            where
+              pwdreset_code is not null
+              and
+              pwdreset_timestamp < SUBDATE(NOW(), INTERVAL 1 DAY)
+        ');
+
         $stmt->execute();
         $stmt->close();
     }

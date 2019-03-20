@@ -59,11 +59,11 @@ function process_request($emailaddr)
         $reset_id = md5(uniqid(rand(), true));
 
         // update user table with reset id
-        User::save_reset_id($emailaddr, $reset_id);
+        User::save_pwdreset_id($emailaddr, $reset_id);
         Audit::addentry(Audit::A_PWDRESET, $emailaddr);
 
         // send an email to the username
-        $pwdreset_url = get_config('website-url') . "/c/admin/pwdreset.php?id=$reset_id";
+        $pwdreset_url = get_config('website-url') . "/c/admin/pwdresetreq.php?id=$reset_id";
         $website = get_config('website');
 
         $mail = new PHPMailer(true);

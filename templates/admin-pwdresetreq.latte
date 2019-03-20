@@ -1,26 +1,51 @@
 <h1>Password Reset</h1>
 
 <div class="dialog" title="Password Reset">
-<p>This form lets you reset your password because you have forgotten it.</p>
+  <p>This form lets you reset your password because you have forgotten it.</p>
 
-<p>Please enter your username (email address) below. If this username has been registered
-  at this site, an email will be sent to the address. This email will contain a link that allows you to
-  log in and reset your password.</p>
+  <p>Please enter your username (email address) below. If this username has been registered
+    at this site, an email will be sent to the address. This email will contain a link that allows you to
+    log in and reset your password.</p>
 
-<form action="/c/admin/pwdresetreq.php" method="post" onSubmit="return validate_register_form();">
-<table class="simple">
-<tr>
-  <td><label for="id_username">Email:</label></td>
-  <td><input type="text" size="40" name="username" id="username"></td>
-</tr>
-<tr>
-  <td colspan="2">
-    <div align="right">
-      <input type="submit" value="Send reset email">
-    </div>
-  </td>
-</tr>
-</table>
-<input type="hidden" name="referrer" value="{$referrer}">
-</form>
+  <form action="/c/admin/pwdresetreq.php" method="post" onSubmit="return validate_form();">
+    <table class="simple">
+      <tr>
+        <td><label for="id_username">Email:</label></td>
+        <td><input type="text" size="40" name="username" id="username"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><p class="errormsg" id="error"></p></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div align="right">
+            <input type="submit" value="Send reset email">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <input type="hidden" name="referrer" value="{$referrer}">
+  </form>
 </div>
+
+<script>
+function validate_form()
+{
+    let email = document.getElementById("username").value;
+
+    let error = null;
+    if (email.length < 5) {
+        error = "ERROR: email address is too short";
+    } else if (email.indexOf("@") < 0) {
+        error = "ERROR: email address contains no '@'";
+    }
+    if (error) {
+        document.getElementById("error").innerHTML = error;
+        return false;
+    } else {
+        document.getElementById("error").innerHTML = '';
+    }
+
+    return true;
+}
+</script>
