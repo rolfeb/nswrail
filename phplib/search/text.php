@@ -27,9 +27,10 @@ function highlight_keywords($text, $keywords)
             $pos = stripos($remaining, $kw);
             if ($pos !== FALSE) {
                 # match -> escape the prefix, highlight the kw, and continue
+                $match = substr($remaining, $pos, $kw_len);
                 $done .=
                     htmlspecialchars(substr($remaining, 0, $pos))
-                    . "<span class=\"caption-highlight\">$kw</span>";
+                    . "<span class=\"caption-highlight\">$match</span>";
                 $remaining = 
                     substr($remaining, $pos + $kw_len);
             } else {
