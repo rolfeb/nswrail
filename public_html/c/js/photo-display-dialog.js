@@ -12,5 +12,9 @@ $('#imageDisplay').on('show.bs.modal', function(e) {
     document.getElementById('modal-photo').src = m_photo;
     document.getElementById('modal-text').innerHTML = m_text;
     document.getElementById('modal-owner').innerHTML = m_fullname;
-    document.getElementById('modal-contact').href = '/c/lib/mailer.php?uid=' + m_uid;
+    if (m_uid != '') {
+        document.getElementById('modal-contact').href = '/c/lib/mailer.php?uid=' + m_uid;
+    } else {
+        document.getElementById('modal-contact').style.display = 'none';
+    }
 });
