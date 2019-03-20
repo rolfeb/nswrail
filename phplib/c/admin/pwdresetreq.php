@@ -8,14 +8,41 @@ require 'site.inc';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+$javascript_block = <<<HEREDOC
+
+<script>
+function validate_form()
+{
+    let email = document.getElementById("username").value;
+
+    let error = null;
+    if (email.length < 5) {
+        error = "ERROR: email address is too short";
+    } else if (email.indexOf("@") < 0) {
+        error = "ERROR: email address contains no '@'";
+    }
+    if (error) {
+        document.getElementById("error").innerHTML = error;
+        return false;
+    } else {
+        document.getElementById("error").innerHTML = '';
+    }
+
+    return true;
+}
+</script>
+HEREDOC;
+
 /**
  *
  */
 function show_form()
 {
+    global $javascript_block;
+
     $tp = [];
 
-    normal_page('admin-pwdresetreq.latte', $tp);
+    normal_page('admin-pwdresetreq.latte', $tp, ['HEAD-EXTRA' => $javascript_block]);
 }
 
 
@@ -63,7 +90,7 @@ function process_request($emailaddr)
         Audit::addentry(Audit::A_PWDRESET, $emailaddr);
 
         // send an email to the username
-        $pwdreset_url = get_config('website-url') . "/c/admin/pwdresetreq.php?id=$reset_id";
+        $pwdreset_url = get_config('website-url') . "/c/admin/pwdreset.php?id=$reset_id";
         $website = get_config('website');
 
         $mail = new PHPMailer(true);

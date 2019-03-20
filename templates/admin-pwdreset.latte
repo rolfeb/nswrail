@@ -23,14 +23,14 @@
       </tr>
       <tr>
         <th>Password:</th>
-        <td><input type="password" class="form-control" name="password1" value=""></td>
+        <td><input type="password" class="form-control" name="password1" id="password1" value=""></td>
       </tr>
       <tr>
         <th>Password (confirm):</th>
-        <td><input type="password" class="form-control" name="password2" value=""></td>
+        <td><input type="password" class="form-control" name="password2" id="password2" value=""></td>
       </tr>
       <tr>
-        <td colspan="2"><p class="errormsg" id="error"></p></td>
+        <td colspan="2"><p class="errormsg text-danger" id="error"></p></td>
       </tr>
     </table>
     <input type="hidden" name="uid" value="{$uid}"/>
@@ -40,26 +40,3 @@
     <input type="submit" class="btn btn-primary" name="action" value="Submit">
   </form>
 </div>
-
-<script>
-function validate_form()
-{
-    let password1 = document.getElementById("password1").value;
-    let password2 = document.getElementById("password2").value;
-
-    let error = null;
-    if (password1.length < 6) {
-        error = "ERROR: password is too short";
-    } else if (password1 !== password2) {
-        error = "ERROR: passwords do not match";
-    }
-    if (error) {
-        document.getElementById("error").innerHTML = error;
-        return false;
-    } else {
-        document.getElementById("error").innerHTML = '';
-    }
-
-    return true;
-}
-</script>

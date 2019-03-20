@@ -14,7 +14,7 @@
         <td><input type="text" size="40" name="username" id="username"></td>
       </tr>
       <tr>
-        <td colspan="2"><p class="errormsg" id="error"></p></td>
+        <td colspan="2"><p class="errormsg text-danger" id="error"></p></td>
       </tr>
       <tr>
         <td colspan="2">
@@ -28,24 +28,3 @@
   </form>
 </div>
 
-<script>
-function validate_form()
-{
-    let email = document.getElementById("username").value;
-
-    let error = null;
-    if (email.length < 5) {
-        error = "ERROR: email address is too short";
-    } else if (email.indexOf("@") < 0) {
-        error = "ERROR: email address contains no '@'";
-    }
-    if (error) {
-        document.getElementById("error").innerHTML = error;
-        return false;
-    } else {
-        document.getElementById("error").innerHTML = '';
-    }
-
-    return true;
-}
-</script>

@@ -5,6 +5,31 @@
 
 require 'site.inc';
 
+$javascript_block = <<<HEREDOC
+<script type="text/javascript">
+function validate_form()
+{
+    let password1 = document.getElementById("password1").value;
+    let password2 = document.getElementById("password2").value;
+
+    let error = null;
+    if (password1.length < 6) {
+        error = "ERROR: password is too short";
+    } else if (password1 !== password2) {
+        error = "ERROR: passwords do not match";
+    }
+    if (error) {
+        document.getElementById("error").innerHTML = error;
+        return false;
+    } else {
+        document.getElementById("error").innerHTML = '';
+    }
+
+    return true;
+}
+</script>
+HEREDOC;
+
 /**
  * Display the form for the person to specify their new password.
  *
@@ -15,6 +40,8 @@ require 'site.inc';
  */
 function show_form($db)
 {
+    global $javascript_block;
+
     $reset_id = param_get_string('id');
 
     $tp = [];
@@ -49,7 +76,7 @@ function show_form($db)
 
     $stmt->close();
 
-    normal_page('admin-pwdreset.latte', $tp);
+    normal_page('admin-pwdreset.latte', $tp, ['HEAD-EXTRA' => $javascript_block]);
 }
 
 /**
