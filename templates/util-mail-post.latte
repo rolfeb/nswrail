@@ -1,0 +1,13 @@
+{*
+    Parameters:
+        referrer
+        error_msg
+*}
+{ifset $error_msg}
+<p>An error occurred - your account could not be registered.</p>
+
+<p>Error: {$error_msg}</p>
+{else}
+<p>Your email has been sent.</p>
+{/ifset}
+<p><a href="{$referrer}">Return to nswrail.net</a></p>

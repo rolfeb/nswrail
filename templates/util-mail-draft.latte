@@ -1,0 +1,43 @@
+{*
+  Parameters:
+    sender_email (if logged in)
+    recipient_name
+    recipient_uid
+    orig_referrer
+*}
+<h1>Send an email message</h1>
+
+<div class="dialog" title="Send an email message">
+  <p class="text">You can use this form to send an email to another user on this site.</p>
+  <p class="text">Note that your email address must be provided, so that the recipient can send
+    a reply back.</p>
+
+  <form action="/c/mailer/mailer.php" method="post" onSubmit="return validate_form();">
+    <table class="simple">
+      <tr>
+        <th>Your email address:</th>
+        <td><input type="text" class="form-control" name="sender_email" id="sender_email" value="{$sender_email}"></td>
+      </tr>
+      <tr>
+        <th>To:</th>
+        <td>{$recipient_name}</td>
+      </tr>
+      <tr>
+        <th>Subject:</th>
+        <td><input type="text" class="form-control" name="subject" id="subject" value=""></td>
+      </tr>
+      <tr>
+        <th>Message text:</th>
+        <td><textarea class="form-control" name="text" id="text"></textarea></td>
+      </tr>
+      <tr>
+        <td colspan="2"><p class="errormsg text-danger" id="error"></p></td>
+      </tr>
+    </table>
+    <input type="hidden" name="uid" value="{$recipient_uid}"/>
+    <input type="hidden" name="orig_referrer" value="{$orig_referrer}"/>
+    <input type="submit" class="btn btn-secondary" name="action" value="Cancel">
+    <input type="reset" class="btn btn-secondary" value="Reset">
+    <input type="submit" class="btn btn-primary" name="action" value="Submit">
+  </form>
+</div>

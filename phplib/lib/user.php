@@ -46,7 +46,7 @@ class User
      */
     public function login($username, $password_in, $ip_addr)
     {
-        # XXX: parameter validation?
+        # TODO: XXX: parameter validation?
 
         # check password and status
         $stmt = $this->_db->stmt_init();
@@ -251,6 +251,42 @@ class User
         $stmt->close();
 
         return $exists;
+    }
+
+
+    /**
+     * @param $uid
+     * @return array
+     * @throws SecurityError
+     */
+    public static function user_info_from_uid($uid)
+    {
+        /** @var mysqli $db */
+        global $db;
+
+        $stmt = $db->stmt_init();
+
+        $stmt->prepare('
+            select
+                username,
+                fullname
+            from
+                r_user
+            where
+                uid = ?
+        ');
+        $stmt->bind_param('i', $uid);
+        $stmt->bind_result($username, $fullname);
+        $stmt->execute();
+        if (!$stmt->fetch()) {
+            throw new SecurityError("No such uid: " . $uid);
+        }
+        $stmt->close();
+
+        return [
+            'username' => $username,
+            'fullname' => $fullname,
+            ];
     }
 
     /**
