@@ -431,6 +431,6 @@ td.pl_thumbnail img {
 /*
  * Properties for dialogs
  */
-.dialog p.errormsg {
+p.errormsg {
     color: #f00;
 }
