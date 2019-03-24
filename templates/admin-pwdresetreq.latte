@@ -1,3 +1,8 @@
+{*
+    Parameters:
+        referrer
+        on_submit
+*}
 <h1>Password Reset</h1>
 
 <div class="dialog" title="Password Reset">
@@ -7,7 +12,7 @@
     at this site, an email will be sent to the address. This email will contain a link that allows you to
     log in and reset your password.</p>
 
-  <form action="/c/admin/pwdresetreq.php" method="post" onSubmit="return validate_form();">
+  <form action="/c/admin/pwdresetreq.php" method="post" {ifset $on_submit}onSubmit="{$on_submit|noescape}"{/ifset}>
     <table class="simple">
       <tr>
         <td><label for="id_username">Email:</label></td>

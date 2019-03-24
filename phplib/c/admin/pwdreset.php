@@ -1,11 +1,12 @@
-<?php
+<?php /** @noinspection JSUnusedLocalSymbols */
 /**
  * Copyright (c) 2019 Rolfe Bozier
  */
 
 require 'site.inc';
 
-$javascript_block = <<<HEREDOC
+$javascript_block = /** @lang HTML */
+    <<<HEREDOC
 <script type="text/javascript">
 function validate_form()
 {
@@ -70,6 +71,7 @@ function show_form($db)
         $tp['username'] = $r['username'];
         $tp['fullname'] = $r['fullname'];
         $tp['reset_id'] = $reset_id;
+        $tp['on_submit'] = "return validate_form();";
     } else {
         throw new InternalError("Invalid password reset request");
     }

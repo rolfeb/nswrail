@@ -4,6 +4,7 @@
         fullname
         uid
         reset_id
+        on_submit
 *}
 <h1>Specify a New Password</h1>
 
@@ -11,7 +12,7 @@
   <p>This form lets you specify a new password because you have forgotten it.</p>
 
 
-  <form action="/c/admin/pwdreset.php" method="post" onSubmit="return validate_form();">
+  <form action="/c/admin/pwdreset.php" method="post" {ifset $on_submit}onSubmit="{$on_submit|noescape}"{/ifset}>
     <table class="simple">
       <tr>
         <th>User name:</th>

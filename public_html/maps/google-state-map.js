@@ -93,7 +93,7 @@ function load_markers(req)
     /*
      * Parse locations and create a list of Location objects
      */
-    dump = jsonParse(req.responseText);
+    let dump = jsonParse(req.responseText);
 
     for (let i = 0; i < dump.length; i++)
         AllLocations.push(new Location(dump[i]));
@@ -116,9 +116,6 @@ function redraw_markers()
     {
         let l = AllLocations[i];
 
-        lng = l.point.lng();
-        lat = l.point.lat();
-
         if (l.marker)
         {
             if (scale < 11 || !window.contains(l.point))
@@ -139,6 +136,7 @@ function redraw_markers()
 
 function create_marker(location)
 {
+    let url;
     if (location.type === "Junction" || location.type === "Tunnel"
             || location.type === "Border" || location.type === "Crossing"
             || location.type === "Dead End") {

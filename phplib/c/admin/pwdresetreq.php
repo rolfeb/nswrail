@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection JSUnusedLocalSymbols */
 /**
  * Copyright (c) 2018 Rolfe Bozier
  */
@@ -8,9 +8,9 @@ require 'site.inc';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$javascript_block = <<<HEREDOC
-
-<script>
+$javascript_block = /** @lang HTML */
+    <<<HEREDOC
+<script type="text/javascript">
 function validate_form()
 {
     let email = document.getElementById("username").value;
@@ -41,6 +41,8 @@ function show_form()
     global $javascript_block;
 
     $tp = [];
+
+    $tp['on_submit'] = "return validate_form();";
 
     normal_page('admin-pwdresetreq.latte', $tp, ['HEAD-EXTRA' => $javascript_block]);
 }

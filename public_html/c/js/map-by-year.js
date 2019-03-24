@@ -13,7 +13,7 @@ function refresh_map() {
     let i = 1860;
     while (i <= 2000)
     {
-        e = document.getElementById(i);
+        e = document.getElementById(i.toString());
         if (e)
         {
             if (i === selected)

@@ -191,16 +191,6 @@ DIV.message {
     text-align: center;
 }
 
-SPAN#login-title {
-    font-size: 1.5em;
-    font-style: italic;
-    font-family: serif;
-}
-
-SPAN#login-msg {
-    color: red;
-}
-
 DIV.search {
     padding: 2px;
     margin: 2px;
