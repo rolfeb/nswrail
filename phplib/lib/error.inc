@@ -60,9 +60,11 @@ function report_error($e, $url=NULL)
     } else if ($e instanceOf InternalError) {
         $msg = 'Internal Error: ' . $e->getMessage() . "\n";
         # $msg .= $e->getTraceAsString();
+        error_log($msg);
     } else {
         $msg = 'Unknown Error: ' . $e->getMessage() . "\n";
         $msg .= $e->getTraceAsString();
+        error_log($msg);
     }
     error_page($msg, $url);
 }

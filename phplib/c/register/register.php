@@ -127,12 +127,16 @@ function process_registration_form($emailaddr, $fullname, $password1, $password2
 
 /**
  * @param $activate_code
+ * @throws SecurityError
+ * @throws UserError
  */
 function activate_new_account($activate_code)
 {
     # try activating the account
-    User::activate_user_via_code($activate_code);
-    Audit::addentry(Audit::A_ACTIVATE, $activate_code);
+    $success = User::activate_user_via_code($activate_code);
+    if (!$success) {
+        throw new UserError("Failed to activate account");
+    }
 
     # display success message
     $tp = [

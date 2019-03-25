@@ -312,25 +312,45 @@ class User
                 register_addr,
                 register_time,
                 activate_code,
+                activate_timestamp,
                 status
             )
-            values (?, ?, ?, ?, ?, ?, ?)
+            values (?, ?, ?, ?, NOW(), ?, NOW(), ?)
         ');
 
         $status = User::S_UNCONFIRMED;
-        $now_dt = date('Y-m-d H:i:s');
-        $stmt->bind_param('ssssssi', $addr, $fullname, $enc_password, $register_addr, $now_dt, $activate_id, $status);
+        $stmt->bind_param('sssssi', $addr, $fullname, $enc_password, $register_addr, $activate_id,
+            $status);
         $stmt->execute();
         $stmt->close();
     }
 
     /**
      * @param $activate_code
+     * @throws SecurityError
      */
     public static function activate_user_via_code($activate_code)
     {
         /** @var mysqli $db */
         global $db;
+
+        $stmt = $db->stmt_init();
+
+        $stmt->prepare('
+            select
+                username
+            from
+                r_user
+            where
+                activate_code = ?
+        ');
+        $stmt->bind_param('s', $activate_code);
+        $stmt->bind_result($username);
+        $stmt->execute();
+        if (!$stmt->fetch()) {
+            throw new SecurityError("Attempted confirmation with invalid code: " . $activate_code);
+        }
+        $stmt->close();
 
         $stmt = $db->stmt_init();
 
@@ -340,13 +360,47 @@ class User
             update r_user
             set
                 status = (status & ~($flag)),
-                activate_code = NULL
+                activate_code = null,
+                activate_timestamp = null
             where
                 activate_code = ?
+                and
+                activate_timestamp > SUBDATE(NOW(), INTERVAL 1 DAY)
                 and
                 (status & ($flag)) != 0
         ");
         $stmt->bind_param('s', $activate_code);
+        $stmt->execute();
+        $count = mysqli_stmt_affected_rows($stmt);
+        $stmt->close();
+
+        if ($count != 1) {
+            return false;
+        }
+
+        Audit::addentry(Audit::A_ACTIVATE, $username);
+
+        return true;
+    }
+
+    /**
+     * Clear any expired unactivated accounts
+     */
+    public static function expire_unactivated_accounts()
+    {
+        /** @var mysqli $db */
+        global $db;
+
+        $stmt = $db->stmt_init();
+
+        $stmt->prepare('
+            delete from r_user
+            where
+              activate_code is not null
+              and
+              activate_timestamp < SUBDATE(NOW(), INTERVAL 1 DAY)
+        ');
+
         $stmt->execute();
         $stmt->close();
     }

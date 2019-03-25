@@ -119,6 +119,11 @@ if ($user->status != 0) {
     noperm_page();
 }
 
+if (!$user->is_loggedin()) {
+    $home = get_config('website-url');
+    header("Location: $home");
+}
+
 try {
     $action = param_post_string_opt('action');
 
