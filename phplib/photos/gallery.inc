@@ -245,8 +245,8 @@ function theme_gallery($theme, $themeextra, $title, $intro)
 
     while ($stmt->fetch()) {
         $tp['photos'][] = [
-            'photo_img' => "/media/photos/$file",
-            'thumb_img' => "/media/photos/thumbnails/$file",
+            'photo_img' => "/c/media.php?p=$file",
+            'thumb_img' => "/c/media.php?t=$file",
             'location' => $location,
             'date' => $year == 0 ? 'unknown' : $year,
             'text' => $caption,

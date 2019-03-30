@@ -684,8 +684,8 @@ function add_photo_thumbnails($db, $tp, $state, $location)
             }
 
             $tp['decades'][$last_d]['photos'][] = [
-                'photo_img' => "/media/photos/$base.jpg",
-                'thumb_img' => "/media/photos/thumbnails/$base.jpg",
+                'photo_img' => "/c/media.php?p=$base.jpg",
+                'thumb_img' => "/c/media.php?t=$base.jpg",
                 'date' => $year == 0 ? 'unknown' : $year,
                 'text' => $caption,
                 'uid' => $owner_uid,

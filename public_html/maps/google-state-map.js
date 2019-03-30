@@ -67,7 +67,7 @@ function Location(item)
     this.html += "<h1>" + this.name + "</h1>";
 
     if (this.thumbnail)
-        this.html += "<img src='/media/photos/thumbnails/" + this.thumbnail + "' />";
+        this.html += "<img src='/c/media.php?t=" + this.thumbnail + "' />";
     this.html += "<table class='simple'>";
     this.html += "<tr><th>Type:</th><td>" + this.type + "</td></tr>";
     this.html += "<tr><th>Status:</th><td>" + this.status + "</td></tr>";

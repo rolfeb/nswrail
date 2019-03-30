@@ -232,12 +232,12 @@ function perform_search($db, $tp)
                     'name' => $location,
                     'ne_context' => $context,
                     'u_photo' => [
-                            'photo_img' => "/media/photos/$file",
+                            'photo_img' => "/c/media.php?p=$file",
                             'date' => $date,
                             'caption' => $caption,
                             'uid' => $uid,
                             'fullname' => $fullname,
-                            'thumb_img' => "/media/photos/thumbnails/$file",
+                            'thumb_img' => "/c/media.php?t=$file",
                         ],
                 ];
             }
